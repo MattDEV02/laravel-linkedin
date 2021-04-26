@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="" />
+    <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/linkedin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/linkedin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Citta.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Citta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Nazione.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Nazione.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +30,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/routes/web.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -129,14 +141,17 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/kirschbaum-development/eloquent-power-joins" />
     </include_path>
   </component>
   <component name="ProjectId" id="1rczw2r9hjoyQNhmqmKrG6yaUH1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -167,7 +182,7 @@
       <workItem from="1619433780845" duration="1624000" />
       <workItem from="1619436894971" duration="118000" />
       <workItem from="1619439306197" duration="2256000" />
-      <workItem from="1619444224128" duration="3169000" />
+      <workItem from="1619444224128" duration="5018000" />
     </task>
     <servers />
   </component>

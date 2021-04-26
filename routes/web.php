@@ -18,15 +18,13 @@ use App\Models\Citta;
 
 
 Route::get('/', function () {
-   return Nazione::select([
-      'Nazione.nome as Nazione',
-      'c.nome as Citta'
-   ])
-      ->join('Citta as c', 'c.nazione_id', '=', 'Nazione.id')
-      ->get()
-      ;
+   return Nazione::select (
+      'Nazione.nome AS Nation',
+      'Citta.nome AS City'
+   )
+      ->joinRelationship('Citta')
+      ->where('Nazione.id', 18)
+      ->toSql();
 });
 
-Route::get('/test', function () {
-   return 2;
-});
+
