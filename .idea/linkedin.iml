@@ -115,6 +115,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kirschbaum-development/eloquent-power-joins" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/livewire/livewire" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

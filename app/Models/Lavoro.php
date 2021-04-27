@@ -2,21 +2,23 @@
 
 namespace App\Models;
 
+use App\Models\UtenteLavoro;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Citta;
-use Illuminate\Database\Eloquent\Relations\hasMany;
 use Kirschbaum\PowerJoins\PowerJoins;
 
-class Nazione extends Model
+
+
+class Lavoro extends Model
 {
    use HasFactory;
    use PowerJoins;
 
-   protected $table = 'Nazione';
+   protected $table = 'Lavoro';
    public $timestamps = false;
 
-   public function Citta(): object {
-      return $this->hasMany(Citta::class, 'nazione');
+   public function UtenteLavoro(): object {
+      return $this->hasOne(UtenteLavoro::class, 'lavoro');
    }
+
 }

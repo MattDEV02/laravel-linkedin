@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\UtenteLavoro;
 use Illuminate\Support\Facades\Route;
 use App\Models\Nazione;
 use App\Models\Citta;
-
+use App\Models\Utente;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +19,7 @@ use App\Models\Citta;
 
 
 Route::get('/', function () {
-   return Nazione::select (
-      'Nazione.nome AS Nation',
-      'Citta.nome AS City'
-   )
-      ->joinRelationship('Citta')
-      ->where('Nazione.id', 18)
+   return Utente::joinRelationship('UtenteLavoro')
       ->toSql();
 });
 

@@ -8,10 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/linkedin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/linkedin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Citta.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Citta.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Nazione.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Nazione.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,6 +140,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/vendor/kirschbaum-development/eloquent-power-joins" />
+      <path value="$PROJECT_DIR$/vendor/livewire/livewire" />
     </include_path>
   </component>
   <component name="ProjectId" id="1rczw2r9hjoyQNhmqmKrG6yaUH1" />
@@ -151,6 +150,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -182,7 +182,9 @@
       <workItem from="1619433780845" duration="1624000" />
       <workItem from="1619436894971" duration="118000" />
       <workItem from="1619439306197" duration="2256000" />
-      <workItem from="1619444224128" duration="5018000" />
+      <workItem from="1619444224128" duration="5931000" />
+      <workItem from="1619468199252" duration="3435000" />
+      <workItem from="1619535739280" duration="1493000" />
     </task>
     <servers />
   </component>
