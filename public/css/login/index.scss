@@ -1,0 +1,91 @@
+@import '../utils';
+
+@function getColor($key) {
+   $result: map-get($colors, $key);
+   @debug 'Color: ' + $result; // Console Output
+   @return $result;
+}
+
+* {
+   margin: $default;
+   padding: $default;
+}
+
+html, body {
+   font-family: -apple-system, system-ui, BlinkMacSystemFont,
+   "Segoe UI", Roboto,
+   "Helvetica Neue",
+   "Fira Sans",
+   Ubuntu,Oxygen,
+   "Oxygen Sans",
+   Cantarell,
+   "Droid Sans",
+   "Apple Color Emoji",
+   "Segoe UI Emoji",
+   "Segoe UI Emoji",
+   "Segoe UI Symbol",
+   "Lucida Grande",
+   Helvetica,
+   Arial,
+   sans-serif
+   !important;
+   font-size: $fs !important;
+   background: transparent;
+}
+
+#card {
+   border-radius: ($pad * 2);
+   box-shadow: $default $pad ($pad * 3) rgb(0 0 0 / 15%) !important;
+   background-color: getColor("white");
+}
+
+.primaryBG {
+   background-color: #0073B1 !important;
+   color: #FFFFFF !important;
+}
+
+.primaryTXT {
+   color: #0073B1;
+   display: inline-block;
+}
+
+.primaryTXT:hover {
+   background-color: #B9DDEF;
+   padding: $default $pad !important;
+   border-radius: ($pad * 7) !important;
+}
+
+#passwordDimenticata {
+   font-size: $fs;
+}
+
+#accediBTN {
+   border-radius: ($pad * 7) !important;
+   font-size: ($fs + 4);
+}
+
+#accediBTN:hover{
+   background-color: #004182 !important;
+}
+
+#header {
+   position: relative;
+   top: -16px;
+}
+
+#footer {
+   font-size: 16px;
+}
+
+.inputTXT {
+   border-radius: ($pad * 2);
+   color: #000000 !important;
+}
+
+.inputTXT:focus {
+   box-shadow: 0 0 0 1px #0a66c2 !important;
+}
+
+.p-5 {
+   padding: 2.5rem !important;
+}
