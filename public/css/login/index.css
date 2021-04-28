@@ -38,6 +38,8 @@ html, body {
 #accediBTN {
   border-radius: 28px !important;
   font-size: 104%;
+  position: relative;
+  bottom: -8px;
 }
 
 #accediBTN:hover {
@@ -49,21 +51,17 @@ html, body {
   top: -16px;
 }
 
-#footer {
-  font-size: 16px;
-}
-
 .inputTXT {
   border-radius: 8px;
   color: #000000 !important;
 }
 
 .inputTXT:focus {
-  box-shadow: 0 0 0 1px #0a66c2 !important;
+  box-shadow: 0 0 0 1px #0A66C2 !important;
 }
 
 .p-5 {
-  padding: 2.5rem !important;
+  padding: 2.8rem !important;
 }
 
 /*# sourceMappingURL=index.css.map */

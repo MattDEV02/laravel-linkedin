@@ -36,21 +36,21 @@ html, body {
 #card {
    border-radius: ($pad * 2);
    box-shadow: $default $pad ($pad * 3) rgb(0 0 0 / 15%) !important;
-   background-color: getColor("white");
+   background-color: getColor('white');
 }
 
 .primaryBG {
-   background-color: #0073B1 !important;
-   color: #FFFFFF !important;
+   background-color: getColor('primary') !important;
+   color: getColor('white') !important;
 }
 
 .primaryTXT {
-   color: #0073B1;
+   color: getColor('primary');
    display: inline-block;
 }
 
 .primaryTXT:hover {
-   background-color: #B9DDEF;
+   background-color: getColor('lightBlue');
    padding: $default $pad !important;
    border-radius: ($pad * 7) !important;
 }
@@ -62,30 +62,28 @@ html, body {
 #accediBTN {
    border-radius: ($pad * 7) !important;
    font-size: ($fs + 4);
+   position: relative;
+   bottom: ($pad * 2) * -1;
 }
 
 #accediBTN:hover{
-   background-color: #004182 !important;
+   background-color: getColor('darkBlue') !important;
 }
 
 #header {
    position: relative;
-   top: -16px;
-}
-
-#footer {
-   font-size: 16px;
+   top: ($pad * 4) * -1;
 }
 
 .inputTXT {
    border-radius: ($pad * 2);
-   color: #000000 !important;
+   color: getColor('black') !important;
 }
 
 .inputTXT:focus {
-   box-shadow: 0 0 0 1px #0a66c2 !important;
+   box-shadow: 0 0 0 1px getColor('blue') !important;
 }
 
-.p-5 {
-   padding: 2.5rem !important;
+.p-5 {  // overwrite a bootstrap class
+   padding: 2.8rem !important;
 }
