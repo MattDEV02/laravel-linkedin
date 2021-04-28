@@ -1,0 +1,76 @@
+body {
+   font-family:
+           -apple-system,
+           system-ui,
+           BlinkMacSystemFont,
+           "Segoe UI",Roboto,
+           "Helvetica Neue",
+           "Fira Sans",
+           Ubuntu,Oxygen,
+           "Oxygen Sans",
+           Cantarell,
+           "Droid Sans",
+           "Apple Color Emoji",
+           "Segoe UI Emoji",
+           "Segoe UI Emoji",
+           "Segoe UI Symbol",
+           "Lucida Grande",
+           Helvetica,
+           Arial,
+           sans-serif
+   !important;
+   font-size: 100% !important;
+}
+
+#card {
+   border-radius: 9px;
+   border: 2px solid #dee2e6 !important;
+}
+
+.primaryBG {
+   background-color: #0073B1 !important;
+   color: #FFFFFF !important;
+}
+
+.primaryTXT {
+   color: #0073B1;
+   display: inline-block;
+}
+
+.primaryTXT:hover {
+   background-color: rgb(185, 221, 238);
+   padding: 0 4px !important;
+   border-radius: 28px !important;
+}
+
+#passwordDimenticata {
+   font-size: 103%;
+}
+
+#accediBTN {
+   border-radius: 28px !important;
+   font-size: 103%;
+}
+
+#accediBTN:hover{
+   background-color: #004182 !important;
+}
+
+#header {
+   position: relative;
+   top: -17px;
+}
+
+#footer {
+   font-size: 17px;
+}
+
+.inputTXT {
+   border-radius: 7px;
+   color: #000000 !important;
+}
+
+.inputTXT:focus {
+   border: 2px solid #0073B1 !important;
+}
+

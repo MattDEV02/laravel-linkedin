@@ -12,6 +12,7 @@
         "kirschbaum-development/eloquent-power-joins": "^2.4",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.2",
         "livewire/livewire": "^2.4"
     },
     "require-dev": {

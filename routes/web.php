@@ -1,10 +1,7 @@
 <?php
 
-use App\Models\UtenteLavoro;
 use Illuminate\Support\Facades\Route;
-use App\Models\Nazione;
-use App\Models\Citta;
-use App\Models\Utente;
+use App\Http\Controllers\UtenteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +15,6 @@ use App\Models\Utente;
 */
 
 
-Route::get('/', function () {
-   return Utente::joinRelationship('UtenteLavoro')
-      ->toSql();
-});
+Route::get('/', [UtenteController::class, 'index']);
 
 
