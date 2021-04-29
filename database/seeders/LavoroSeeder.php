@@ -15,6 +15,7 @@ class LavoroSeeder extends Seeder
    public function run()
    {
       $jobs =  [
+         ['nome' => 'Disoccupato'],
          ['nome' => 'Cuoco'],
          ['nome' => 'Dipendente'],
          ['nome' => 'Freelancer'],

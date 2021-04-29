@@ -20,12 +20,14 @@
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row'] }}">
             <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
-                <div class="{{ $selectors['row'] }} justify-content-xl-start">
-                    <a class="text-decoration-none" href="/">
-                        <h2 class="primaryTXT {{ $selectors['fw'] }} ml-xl-3">
-                            Linked<i class="fab fa-linkedin ml-1"></i>
-                        </h2>
-                    </a>
+                <div class="{{ $selectors['col'] }}">
+                    <div class="{{ $selectors['row'] }} justify-content-xl-start">
+                        <a class="text-decoration-none" href="https://www.linkedin.com/">
+                            <h2 class="primaryTXT {{ $selectors['fw'] }}">
+                                Linked<i class="fab fa-linkedin ml-1"></i>
+                            </h2>
+                        </a>
+                    </div>
                 </div>
                 <div class="{{ $selectors['row'] }} mt-3">
                     <div id="card" class="p-5">
@@ -37,14 +39,15 @@
                                 <p>Resta al passo con il tuo mondo professionale.</p>
                             </div>
                         </div>
-                        <form method="POST" class="" action="/">
+                        <form method="POST" action="login">
+                            @csrf
                             <div class="col-12">
                                 <div class="row">
                                     <input
                                             name="{{ $selectors['email'] }}"
-                                            type="text"
+                                            type="{{ $selectors['email'] }}"
                                             class="{{ $selectors['input'] }}"
-                                            autocomplete='off'
+                                            autocomplete="{{ $selectors['autocomplete'] }}"
                                             placeholder="{{ ucfirst($selectors['email']) }}"
                                             required
                                     />
@@ -58,8 +61,10 @@
                                             id="{{ $selectors['pass'] }}"
                                             name="{{ $selectors['pass'] }}"
                                             class="{{ $selectors['input'] }}"
+                                            minlength="{{ $selectors['passLen'] }} }}"
+                                            maxlength="{{ $selectors['passLen'] }}"
                                             placeholder="{{ ucfirst($selectors['pass']) }}"
-                                            title="Clicca per Mostrare / Nascondere la Password"
+                                            title="{{ $selectors['title'] }}"
                                             required
                                     />
                                     <!-- <label for="password" class="form__label--floating" aria-hidden="true">Password</label>-->
@@ -68,7 +73,7 @@
                             </div>
                             <div class="{{ $selectors['col'] }}3 ml-2">
                                 <div class="row">
-                                    <a href="/">
+                                    <a href="/passwordDimenticata">
                                         <h6 id="passwordDimenticata" class="primaryTXT">
                                             Hai dimenticato la password?
                                         </h6>
@@ -91,7 +96,7 @@
                         <div class="{{ $selectors['row'] }}">
                             <span id="footer">
                                 Nuovo utente di LinkedIn?
-                                <a href="/">
+                                <a href="/registrazione">
                                     <b class="primaryTXT">
                                         Iscriviti ora
                                     </b>
@@ -104,7 +109,7 @@
         </div>
     </div>
 </div>
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/login/index.js"></script>
 </body>
 </html>

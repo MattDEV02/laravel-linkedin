@@ -1,0 +1,43 @@
+@import '../utils';
+@import '../login/index';
+
+
+$black: #000009;
+
+* {
+   margin: $default;
+   padding: $default;
+}
+
+body {
+   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Fira Sans",Ubuntu,Oxygen,"Oxygen Sans",Cantarell,"Droid Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Emoji","Segoe UI Symbol","Lucida Grande",Helvetica,Arial,sans-serif;
+   background-color: #F3F2EF;
+}
+
+#subtitle {
+   color: $black;
+   font-weight: 400;
+   font-size: 2.0rem;
+   line-height: 1.25;
+}
+
+label {
+   color: $black;
+   font-size: 0.9rem;
+}
+
+#card {
+   padding-bottom: 5vh !important;
+}
+
+#accediBTN {
+   font-size: 18px;
+}
+
+select:hover {
+   cursor: pointer;
+}
+
+select:focus{
+   font-weight: bold;
+}

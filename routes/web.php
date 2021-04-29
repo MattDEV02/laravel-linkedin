@@ -15,6 +15,11 @@ use App\Http\Controllers\UtenteController;
 */
 
 
-Route::get('/', [UtenteController::class, 'index']);
+Route::any('/', [UtenteController::class, 'index']);
 
+Route::post('/login', [UtenteController::class, 'login']);
+
+Route::get('/registrazione', [UtenteController::class, 'registrazione']);
+
+Route::post('/ricezione-dati', [UtenteController::class, 'insert']);
 
