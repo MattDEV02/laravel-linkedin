@@ -45,6 +45,7 @@
                                             class="{{ $selectors['input'] }}"
                                             type="{{ $selectors['email'] }}"
                                             autocomplete="{{ $selectors['autocomplete'] }}"
+                                            maxlength="{{ $selectors['emailLen'] }}"
                                             name="{{ $selectors['email'] }}"
                                             placeholder="{{ ucfirst($selectors['email']) }}"
                                             required
@@ -79,15 +80,30 @@
                             </div>
                             <div class="{{ $selectors['col'] }}3">
                                 <div class="row">
-                                    <label class="" for="{{ $selectors['select'] }}">{{ ucfirst($selectors['select']) }}</label>
+                                    <label class="" for="{{ $selectors['select1'] }}">{{ ucfirst($selectors['select1']) }}</label>
                                     <select
                                             class="{{ $selectors['input'] }}"
-                                            name="{{ $selectors['select'] }}">
+                                            name="{{ $selectors['select1'] }}">
                                         @foreach($lavori as $lavoro)
-                                            <option
-                                                    value="{{ $lavoro->id }}">
-                                                {{ ucfirst($lavoro->nome) }}
-                                            </option>
+                                            <x-option
+                                                    nome="{{ $lavoro->nome }}"
+                                                    id="{{ $lavoro->id }}"
+                                            />
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="{{ $selectors['col'] }}3">
+                                <div class="row">
+                                    <label for="{{ $selectors['select2'] }}">{{ ucfirst($selectors['select2']) }}</label>
+                                    <select
+                                            class="{{ $selectors['input'] }}"
+                                            name="{{ $selectors['select2'] }}">
+                                        @foreach($citta as $city)
+                                            <x-option
+                                                    nome="{{ $city->nome }}"
+                                                    id="{{ $city->id }}"
+                                            />
                                         @endforeach
                                     </select>
                                 </div>

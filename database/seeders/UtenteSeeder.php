@@ -18,7 +18,8 @@ class UtenteSeeder extends Seeder
          [
             'email' => 'matteolambertucci3@gmail.com',
             'password' => 'mivallus',
-            'dataInizioLavoro' => '2021-08-10'
+            'dataInizioLavoro' => '2021-08-10',
+            'citta' => 18
          ]
       ];
       foreach($utenti as $utente)

@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
          // NazioneSeeder::class,
          //CittaSeeder::class,
          //LavoroSeeder::class,
-         //UtenteSeeder::class
+         UtenteSeeder::class
       ]);
    }
 }
