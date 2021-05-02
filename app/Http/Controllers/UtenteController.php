@@ -5,47 +5,53 @@ namespace App\Http\Controllers;
 use App\Models\Citta;
 use App\Models\Lavoro;
 use App\Models\UtenteLavoro;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Utente;
 
 
 class UtenteController extends Controller
 {
-   public function index(): object {
-      return view('login');
-   }
-
-   public function login(Request $req): mixed {
-      $logged = isLogged($req->email, $req->password);
-      return $logged ? redirect('/') : 'no Loggato'; //
-   }
-   public function registrazione() :object {
-      $lavori = Lavoro::all()
-         ->sortBy('id');
-      $citta = Citta::all();
-      return view('registrazione', [
-         'lavori' => $lavori,
-         'citta' => $citta
+   public function login(Request $req): object {
+      return view('login.index',[
+         'msg' => $req->msg
       ]);
    }
-   public function insert(Request $req) {
+
+   public function registrazione(Request $req): object {
+      return view('registrazione.index',[
+         'citta' => Citta::all(),
+         'msg' => $req->msg
+      ]);
+   }
+
+   public function logResult(Request $req): int | RedirectResponse{
+      $logged = isLogged($req->email, $req->password);
+      return $logged ? redirect('/feed') :
+         redirect()
+            ->route('registrazione', [
+               'msg' => 'Utente non Registrato, provvedere farlo.'
+            ]);
+   }
+
+   public function insert(Request $req): RedirectResponse {
       $email = $req->email;
       $password = $req->password;
       if(isLogged($email, $password))
-         return redirect('/');
+         return redirect()
+            ->route('login', [
+               'msg' => 'Utente già Registrato, è possibile effettuare il Login.'
+            ]);
       else {
          $utente = new Utente();
-         $utente->email = $email;
+         $utente->email = $email; // Conferma Email
          $utente->password = $password;
-         $utente->dataInizioLavoro = $req->dataInizioLavoro;
          $utente->citta = $req->citta;
          $utente->save();
-         $utenteLavoro = new UtenteLavoro();
-         $utenteLavoro->lavoro = $req->lavoro;
-         $utenteLavoro->utente = $utente->id;
-         $utenteLavoro->save();
-         return 'OK';
+         return redirect()
+            ->route('login', [
+               'msg' => 'Utente Registrato, è possibile effettuare il Login.'
+            ]);
       }
    }
 }

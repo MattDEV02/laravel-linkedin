@@ -11,18 +11,28 @@ if(
    !function_exists('consoleLog') and
    !function_exists('sendMail') and
    !function_exists('handleError') and
-   !function_exists('isEloquentAttr')
+   !function_exists('isEloquentAttr') and
+   !function_exists('postRedirect')
 ) {
    function selectors(): array {
+      $imgFolder = 'img';
       return [
          'lang' =>  str_replace('_', '-', app()->getLocale()),
          'dir' => 'ltr',
          'charset' => 'UTF-8',
+         'app' => config('app.name'),
          'author' => 'Matteo Lambertucci <matteolambertucci3@gmail.com>',
+         'icons' => [
+            'ico' => "$imgFolder/favicon.ico",
+            'png' => "$imgFolder/logo.png",
+            'svg' => "$imgFolder/logo.svg",
+         ],
+         'theme-color' => '#000000',
          'container' => 'container-fluid',
          'col' => 'col-12 mt-',
          'row' => 'row justify-content-center',
          'fw' => 'font-weight-bold',
+         'action' => 'ricezione-dati',
          'input' => 'form-control form-control-lg border border-dark inputTXT',
          'btn' => 'btn btn-lg',
          'email' => 'email',
@@ -31,7 +41,7 @@ if(
          'select1' => 'lavoro',
          'select2' => 'citta',
          'emailLen' => 35,
-         'passLen' => 8,
+         'passLen' => 6,
          'autocomplete' => 'off',
          'title' => 'Clicca per Mostrare / Nascondere la Password'
       ];
@@ -79,6 +89,8 @@ if(
       return Utente::where('email', $email)
          ->where('password', $password)
          ->count() ;
+   }
+   function postRedirect(string $url) {
    }
 }
 

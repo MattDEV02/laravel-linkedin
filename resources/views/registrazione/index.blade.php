@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+@php
+    $selectors = selectors();
+@endphp
+
+<html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
+<head>
+    <x-head title="Iscriviti | LinkedIn" />
+    <link rel="stylesheet" type="text/css" href="/css/registrazione/index.css" />
+</head>
+<body>
+<div class="{{ $selectors['container'] }}">
+    <div class="{{ $selectors['col'] }}4">
+        <div class="{{ $selectors['row'] }}">
+            <div class="{{ $selectors['col'] }}">
+                <x-title row="" />
+                <div class="{{ $selectors['row'] }} mt-3">
+                    <h5 id="subtitle">
+                        Ottieni il massimo dalla tua vita professionale
+                    </h5>
+                </div>
+            </div>
+            <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                <div class="{{ $selectors['row'] }} mt-4">
+                    <div id="card" class="{{ $selectors['col'] }} p-4">
+                        <form method="POST" action="{{ $selectors['action'] }}/registrazione" id="registrazione">
+                            @csrf
+                            <div class="{{ $selectors['col'] }}">
+                                <div class="row">
+                                    <label for="{{ $selectors['email'] }}">
+                                        {{ ucfirst($selectors['email']) }}
+                                    </label>
+                                    <x-email />
+                                </div>
+                            </div>
+                            <div class="{{ $selectors['col'] }}3">
+                                <div class="row">
+                                    <label for="{{ $selectors['pass'] }}">
+                                        {{ ucfirst($selectors['pass']) }}
+                                        (almeno {{ $selectors['passLen'] }} caratteri)
+                                    </label>
+                                    <x-password />
+                                </div>
+                            </div>
+                            <div class="{{ $selectors['col'] }}3">
+                                <div class="row">
+                                    <label for="{{ $selectors['select2'] }}">
+                                        {{ ucfirst($selectors['select2']) }}
+                                    </label>
+                                    <select
+                                            class="{{ $selectors['input'] }}"
+                                            name="{{ $selectors['select2'] }}">
+                                        @foreach($citta as $city)
+                                            <x-option
+                                                    nome="{{ $city->nome }}"
+                                                    id="{{ $city->id }}"
+                                            />
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <x-submit text="Iscriviti" mt="{{ 4 }}" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <x-footer login="{{ false }}"/>
+    </div>
+</div>
+<script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript" src="js/login/index.js"></script>
+<x-alert msg="{{ $msg }}" />
+</body>
+</html>

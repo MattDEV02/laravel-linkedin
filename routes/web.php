@@ -14,12 +14,24 @@ use App\Http\Controllers\UtenteController;
 |
 */
 
+$UC = UtenteController::class;
 
-Route::any('/', [UtenteController::class, 'index']);
+Route::view('/', 'home');
 
-Route::post('/login', [UtenteController::class, 'login']);
+Route::get('/login', [$UC, 'login'])
+   ->name('login');
 
-Route::get('/registrazione', [UtenteController::class, 'registrazione']);
+Route::get('/registrazione', [$UC, 'registrazione'])
+   ->name('registrazione');
 
-Route::post('/ricezione-dati', [UtenteController::class, 'insert']);
+Route::prefix('ricezione-dati')
+   ->group(function () {
+      Route::post('/login', [UtenteController::class, 'logResult']);
+      Route::post('/registrazione', [UtenteController::class, 'insert']);
+      Route::post('/passwordDimenticata', [UtenteController::class, 'passwordDimenticata']);
+   });
+
+Route::get('/feed', [$UC, 'feed']);
+
+Route::get('/passwordDimenticata', [$UC, 'passwordDimenticata']);
 
