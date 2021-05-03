@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UtenteController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Controllers\UtenteController;
 */
 
 $UC = UtenteController::class;
+$PC = PostController::class;
 
 Route::view('/', 'home');
 
@@ -27,14 +29,16 @@ Route::get('/registrazione', [$UC, 'registrazione'])
 Route::prefix('ricezione-dati')
    ->group(function () {
       $UC = UtenteController::class;
-      Route::post('/login', [$UC, 'logResult']);
+      $PC = PostController::class;
+      Route::post('/feed', [$PC, 'insert']);
       Route::post('/registrazione', [$UC, 'insert']);
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
    });
 
-Route::get('/feed', [$UC, 'feed']);
+Route::post('/feed', [$UC, 'logResult']);
 
 Route::get('/profile', [$UC, 'profile']);
 
-Route::get('/passwordDimenticata', [$UC, 'passwordDimenticata']);
+Route::get('/test', [$PC, 'displayImage']);
 
+Route::get('/img', [$UC, 'passwordDimenticata']);

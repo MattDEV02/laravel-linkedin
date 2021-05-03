@@ -11,9 +11,11 @@
 <body>
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}">
-        <div class="{{ $selectors['row']}}">
+        <div class="{{ $selectors['row']}} mt-5">
+            @include('feed.form', ['utente_id' => $utente_id])
             @foreach($posts as $post)
-                <h1>{{ $post->testo }}</h1>
+                @component('components.post', ['post' => $post])
+                @endcomponent
             @endforeach
         </div>
     </div>

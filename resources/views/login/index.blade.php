@@ -15,7 +15,7 @@
         <div class="{{ $selectors['row'] }}">
             <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
                 <div class="{{ $selectors['col'] }}">
-                    <x-title row="justify-content-xl-start"/>
+                    <x-title row="justify-content-xl-start" />
                 </div>
                 <div class="{{ $selectors['row'] }} mt-3">
                     <div id="card" class="p-5">
@@ -27,11 +27,11 @@
                                 <p>Resta al passo con il tuo mondo professionale.</p>
                             </div>
                         </div>
-                        <form method="POST" action="{{ $selectors['action'] }}/login">
+                        <form method="POST" action="/feed">
                             @csrf
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
-                                    <x-email label=""/>
+                                    <x-email label="" />
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}4">
@@ -48,11 +48,10 @@
                                     </a>
                                 </div>
                             </div>
-                            <x-submit text="Accedi" mt="{{ 3 }}"
-                            />
+                            <x-submit text="Accedi" mt="{{ 3 }}" />
                         </form>
                     </div>
-                    <x-footer login="{{ true }}"/>
+                    <x-footer login="{{ true }}" />
                 </div>
             </div>
         </div>

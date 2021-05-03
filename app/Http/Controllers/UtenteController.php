@@ -10,30 +10,33 @@ use App\Models\UtenteLavoro;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Utente;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 
 class UtenteController extends Controller
 {
-   public function login(Request $req): object {
+   public function login(Request $req): View {
       return view('login.index',[
          'msg' => $req->msg
       ]);
    }
 
-   public function registrazione(Request $req): object {
+   public function registrazione(Request $req): View {
       return view('registrazione.index',[
          'citta' => Citta::all(),
          'msg' => $req->msg
       ]);
    }
 
-   public function logResult(Request $req): int | RedirectResponse {
+   public function logResult(Request $req): View | RedirectResponse {
       $email = $req->email;
       $logged = isLogged($email);
       $utente = Utente::all(['id', 'email'])
          ->where('email', $email)
          ->first();
-      return $logged ? redirect("/feed/".$utente->id) :
+      return $logged ? $this->feed($utente->id) :
          redirect()
             ->route('registrazione', ['msg' => 'not-reg']);
    }
@@ -55,16 +58,19 @@ class UtenteController extends Controller
       }
    }
 
-   public function feed(Request $req) {
-      $posts = Post::all();
-      $req->headers->set('utente_id', '2');
-      return $req->headers->get('utente_id');
-      //return view('feed.index',['posts' => $posts, 'utente_id' => $req->utente_id ]);
+   public function feed(int $id) {
+      $posts = Post::all(); // JOIN
+      return view('feed.index', [
+         'posts' => $posts,
+         'utente_id' => $id
+      ]);
    }
 
-   public function profile(Request $req): object {
+   public function profile(Request $req): View {
       $utente_id = $req->utente_id;
       // DescrizioneUtente  JOIN E FIND BY ID
-      return view('profile.index',['utente_id' => $utente_id]);
+      return view('profile.index',[
+         'utente_id' => $utente_id
+      ]);
    }
 }

@@ -4,6 +4,7 @@ use App\Models\Utente;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 
 if(
@@ -12,7 +13,8 @@ if(
    !function_exists('sendMail') and
    !function_exists('handleError') and
    !function_exists('isEloquentAttr') and
-   !function_exists('postRedirect')
+   !function_exists('postRedirect') and
+   !function_exists('store')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -88,6 +90,13 @@ if(
    function isLogged(string $email): int {
       return Utente::where('email', $email)
          ->count() ;
+   }
+   function store($img, string $folder,  int $utente_id): string  {
+      $extension = $img->extension();
+      $now = date('Y_m_d_H_i_s');
+      $fileName = "$utente_id/$now.$extension";
+      Storage::putFileAs("public/$folder", $img, $fileName);
+      return $fileName;
    }
 }
 

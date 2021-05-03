@@ -1,11 +1,12 @@
 @php
-    $col = 'col-12';
+    $selectors = selectors();
 @endphp
-<div class="{{ $col }} mt-{{ $mt }}">
+<div class="{{ $selectors['col'] }} mt-{{ $mt }}">
     <div class="row">
         <button
                 id="accediBTN"
-                class="btn btn-lg {{ $col }} font-weight-bold primaryBG p-2"
+                class=" {{$selectors['btn'] }} {{ $selectors['col'] }} {{ $selectors['fw'] }} primaryBG p-2"
+                name="submit"
                 type="submit">
             {{ $text }}
         </button>

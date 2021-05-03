@@ -8,10 +8,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/alert.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/alert.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/submit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/submit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feed/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/login/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/registrazione/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registrazione/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,10 +181,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Laravel\linkedin\storage\app\public" />
+      <recent name="C:\xampp\htdocs\Laravel\linkedin\resources" />
       <recent name="C:\xampp\htdocs\Laravel\linkedin\resources\views\registrazione" />
       <recent name="C:\xampp\htdocs\Laravel\linkedin\resources\views\login" />
       <recent name="C:\xampp\htdocs\Laravel\linkedin\public\js" />
-      <recent name="C:\xampp\htdocs\Laravel\linkedin\public\css\login" />
     </key>
   </component>
   <component name="RunManager">
@@ -223,6 +229,8 @@
       <workItem from="1619985264857" duration="217000" />
       <workItem from="1619985570250" duration="4043000" />
       <workItem from="1620029373206" duration="9556000" />
+      <workItem from="1620055212299" duration="2166000" />
+      <workItem from="1620059497595" duration="10029000" />
     </task>
     <servers />
   </component>
