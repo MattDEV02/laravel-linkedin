@@ -41,7 +41,7 @@ if(
          'select1' => 'lavoro',
          'select2' => 'citta',
          'emailLen' => 35,
-         'passLen' => 6,
+         'passLen' => 8,
          'autocomplete' => 'off',
          'title' => 'Clicca per Mostrare / Nascondere la Password'
       ];
@@ -89,8 +89,6 @@ if(
       return Utente::where('email', $email)
          ->where('password', $password)
          ->count() ;
-   }
-   function postRedirect(string $url) {
    }
 }
 

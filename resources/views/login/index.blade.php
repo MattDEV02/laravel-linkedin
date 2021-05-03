@@ -31,12 +31,12 @@
                             @csrf
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
-                                    <x-email />
+                                    <x-email label=""/>
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}4">
                                 <div class="row">
-                                    <x-password />
+                                    <x-password label=""/>
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}3 ml-2">

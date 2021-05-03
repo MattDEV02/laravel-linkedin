@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Citta;
 use App\Models\Lavoro;
+use App\Models\Post;
 use App\Models\UtenteLavoro;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -53,5 +54,15 @@ class UtenteController extends Controller
                'msg' => 'Utente Registrato, è possibile effettuare il Login.'
             ]);
       }
+   }
+
+   public function feed(): object {
+      $posts = Post::all();
+      return view('feed.index',['posts' => $posts]);
+   }
+
+   public function profile(Request $req): object {
+      $utente_id = $utente->id;
+      return view('profile.index',['utente_id' => $req->id]);
    }
 }

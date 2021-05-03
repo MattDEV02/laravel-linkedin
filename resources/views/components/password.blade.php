@@ -1,7 +1,9 @@
 @php
 $selectors = selectors();
 @endphp
-
+<label for="{{ $selectors['pass'] }}">
+    {{ $label }}
+</label>
 <input
         class="{{ $selectors['input'] }}"
         id="{{ $selectors['pass'] }}"

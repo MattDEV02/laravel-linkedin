@@ -28,19 +28,12 @@
                             @csrf
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
-                                    <label for="{{ $selectors['email'] }}">
-                                        {{ ucfirst($selectors['email']) }}
-                                    </label>
-                                    <x-email />
+                                    <x-email label="{{ ucfirst($selectors['email']) }}"/>
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}3">
                                 <div class="row">
-                                    <label for="{{ $selectors['pass'] }}">
-                                        {{ ucfirst($selectors['pass']) }}
-                                        (almeno {{ $selectors['passLen'] }} caratteri)
-                                    </label>
-                                    <x-password />
+                                    <x-password label="Almeno {{ $selectors['passLen'] }} caratteri"/>
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}3">
@@ -51,12 +44,8 @@
                                     <select
                                             class="{{ $selectors['input'] }}"
                                             name="{{ $selectors['select2'] }}">
-                                        @foreach($citta as $city)
-                                            <x-option
-                                                    nome="{{ $city->nome }}"
-                                                    id="{{ $city->id }}"
-                                            />
-                                        @endforeach
+                                        @component('components.option', ['data' => $citta])
+                                        @endcomponent
                                     </select>
                                 </div>
                             </div>

@@ -1,4 +1,5 @@
-<option
-        value="{{ $id }}">
-    {{ ucfirst($nome) }}
-</option>
+@foreach($data as $row)
+    <option value="{{ $row->id }}">
+        {{ ucfirst($row->nome) }}
+    </option>
+@endforeach
