@@ -85,9 +85,8 @@ if(
          $attr === 'updated_at'
       );
    }
-   function isLogged(string $email, string $password): int {
+   function isLogged(string $email): int {
       return Utente::where('email', $email)
-         ->where('password', $password)
          ->count() ;
    }
 }

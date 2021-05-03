@@ -7,13 +7,11 @@
     <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/Components/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/Email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/Components/Password.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/Password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/option.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/option.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/alert.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/alert.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/login/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/registrazione/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registrazione/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +222,7 @@
       <workItem from="1619948331082" duration="4275000" />
       <workItem from="1619985264857" duration="217000" />
       <workItem from="1619985570250" duration="4043000" />
-      <workItem from="1620029373206" duration="1738000" />
+      <workItem from="1620029373206" duration="9556000" />
     </task>
     <servers />
   </component>

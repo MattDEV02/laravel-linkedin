@@ -48,7 +48,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <x-submit text="Iscriviti" mt="{{ 3 }}"
+                            <x-submit text="Accedi" mt="{{ 3 }}"
                             />
                         </form>
                     </div>

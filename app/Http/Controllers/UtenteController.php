@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Citta;
+use App\Models\DescrizioneUtente;
 use App\Models\Lavoro;
 use App\Models\Post;
 use App\Models\UtenteLavoro;
@@ -26,23 +27,23 @@ class UtenteController extends Controller
       ]);
    }
 
-   public function logResult(Request $req): int | RedirectResponse{
-      $logged = isLogged($req->email, $req->password);
-      return $logged ? redirect('/feed') :
+   public function logResult(Request $req): int | RedirectResponse {
+      $email = $req->email;
+      $logged = isLogged($email);
+      $utente = Utente::all(['id', 'email'])
+         ->where('email', $email)
+         ->first();
+      return $logged ? redirect("/feed/".$utente->id) :
          redirect()
-            ->route('registrazione', [
-               'msg' => 'Utente non Registrato, provvedere farlo.'
-            ]);
+            ->route('registrazione', ['msg' => 'not-reg']);
    }
 
    public function insert(Request $req): RedirectResponse {
       $email = $req->email;
       $password = $req->password;
-      if(isLogged($email, $password))
+      if(isLogged($email))
          return redirect()
-            ->route('login', [
-               'msg' => 'Utente già Registrato, è possibile effettuare il Login.'
-            ]);
+            ->route('login', ['msg' => 'log']);
       else {
          $utente = new Utente();
          $utente->email = $email; // Conferma Email
@@ -50,19 +51,20 @@ class UtenteController extends Controller
          $utente->citta = $req->citta;
          $utente->save();
          return redirect()
-            ->route('login', [
-               'msg' => 'Utente Registrato, è possibile effettuare il Login.'
-            ]);
+            ->route('login', ['msg' => 'reg']);
       }
    }
 
-   public function feed(): object {
+   public function feed(Request $req) {
       $posts = Post::all();
-      return view('feed.index',['posts' => $posts]);
+      $req->headers->set('utente_id', '2');
+      return $req->headers->get('utente_id');
+      //return view('feed.index',['posts' => $posts, 'utente_id' => $req->utente_id ]);
    }
 
    public function profile(Request $req): object {
-      $utente_id = $utente->id;
-      return view('profile.index',['utente_id' => $req->id]);
+      $utente_id = $req->utente_id;
+      // DescrizioneUtente  JOIN E FIND BY ID
+      return view('profile.index',['utente_id' => $utente_id]);
    }
 }

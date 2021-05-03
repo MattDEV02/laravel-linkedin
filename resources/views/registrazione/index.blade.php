@@ -24,7 +24,7 @@
             <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                 <div class="{{ $selectors['row'] }} mt-4">
                     <div id="card" class="{{ $selectors['col'] }} p-4">
-                        <form method="POST" action="{{ $selectors['action'] }}/registrazione" id="registrazione">
+                        <form method="POST" action="{{ $selectors['action'] }}/registrazione">
                             @csrf
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">

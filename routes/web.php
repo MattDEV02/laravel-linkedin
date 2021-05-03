@@ -26,12 +26,15 @@ Route::get('/registrazione', [$UC, 'registrazione'])
 
 Route::prefix('ricezione-dati')
    ->group(function () {
-      Route::post('/login', [UtenteController::class, 'logResult']);
-      Route::post('/registrazione', [UtenteController::class, 'insert']);
-      Route::post('/passwordDimenticata', [UtenteController::class, 'passwordDimenticata']);
+      $UC = UtenteController::class;
+      Route::post('/login', [$UC, 'logResult']);
+      Route::post('/registrazione', [$UC, 'insert']);
+      Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
    });
 
 Route::get('/feed', [$UC, 'feed']);
+
+Route::get('/profile', [$UC, 'profile']);
 
 Route::get('/passwordDimenticata', [$UC, 'passwordDimenticata']);
 
