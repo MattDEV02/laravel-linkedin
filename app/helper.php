@@ -34,6 +34,7 @@ if(
          'col' => 'col-12 mt-',
          'row' => 'row justify-content-center',
          'fw' => 'font-weight-bold',
+         'border' => 'border border-dark',
          'action' => 'ricezione-dati',
          'input' => 'form-control form-control-lg border border-dark inputTXT',
          'btn' => 'btn btn-lg',
@@ -93,9 +94,9 @@ if(
    }
    function store($img, string $folder,  int $utente_id): string  {
       $extension = $img->extension();
-      $now = date('Y_m_d_H_i_s');
-      $fileName = "$utente_id/$now.$extension";
-      Storage::putFileAs("public/$folder", $img, $fileName);
+      $fileName = date('Y_m_d_H_i_s').$extension;
+      $filePath = "$utente_id/$fileName";
+      Storage::putFileAs("public/$folder", $img, $filePath);
       return $fileName;
    }
 }

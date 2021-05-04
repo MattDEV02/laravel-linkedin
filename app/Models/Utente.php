@@ -18,13 +18,13 @@ class Utente extends Model
    protected $table = 'Utente';
    public $timestamps = true;
 
-   private $fk = 'utente';
+   private string $fk = 'utente';
 
    public function Post(): object {
-      return $this->hasMany(Post::class, $this->fk);
+      return $this->hasMany(Post::class,  $this->fk);
    }
    public function Lavoro(): object {
-      return $this->hasMany(Lavoro::class, 'utente');
+      return $this->hasMany(Lavoro::class,  $this->fk);
    }
    public function DescrizioneUtente(): object {
       return $this->hasOne(DescrizioneUtente::class, $this->fk);

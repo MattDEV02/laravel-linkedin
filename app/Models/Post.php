@@ -15,7 +15,7 @@ class Post extends Model
    protected $table = 'Post';
    public $timestamps = true;
 
-   public function utente(): object
+   public function Utente(): object
    {
       return $this->hasOne(Utente::class);
    }

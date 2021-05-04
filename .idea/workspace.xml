@@ -7,16 +7,13 @@
     <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Utente.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Utente.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/_utils.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/_utils.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/submit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/submit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feed/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/feed/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/login/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -230,7 +227,8 @@
       <workItem from="1619985570250" duration="4043000" />
       <workItem from="1620029373206" duration="9556000" />
       <workItem from="1620055212299" duration="2166000" />
-      <workItem from="1620059497595" duration="10029000" />
+      <workItem from="1620059497595" duration="10869000" />
+      <workItem from="1620139579364" duration="12036000" />
     </task>
     <servers />
   </component>

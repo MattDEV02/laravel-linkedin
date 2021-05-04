@@ -1,0 +1,42 @@
+@import '../_utils.scss';
+
+
+$b: 2px solid #000000;
+
+body {
+   background-color: #E7E6E6BA;
+}
+
+.form-group {
+   border-radius: 0.8rem !important;
+   background-color: #FFFFFF !important;
+}
+
+#card {
+   border: $b;
+}
+
+img {
+   height: 13rem;
+   border-bottom: $b;
+}
+
+[type=text] {
+   border-radius: 35px!important;
+}
+
+[type=file] {
+   position: absolute;
+   top: 0;
+   right: 0;
+   min-width: 100%;
+   min-height: 100%;
+   font-size: 100px;
+   text-align: right;
+   filter: alpha(opacity=0);
+   opacity: 0;
+   outline: none;
+   background: white;
+   cursor: inherit;
+   display: block;
+}

@@ -13,6 +13,7 @@ use App\Models\Utente;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
 
 
 class UtenteController extends Controller
@@ -30,7 +31,7 @@ class UtenteController extends Controller
       ]);
    }
 
-   public function logResult(Request $req): View | RedirectResponse {
+   public function logResult(Request $req){
       $email = $req->email;
       $logged = isLogged($email);
       $utente = Utente::all(['id', 'email'])
@@ -59,8 +60,15 @@ class UtenteController extends Controller
    }
 
    public function feed(int $id) {
-      $posts = Post::all(); // JOIN
-      return view('feed.index', [
+      $posts = DB::table('Post')
+         ->join('Utente', 'Post.utente', 'Utente.id');
+      $posts = Utente::select(
+         'Post.*',
+         'Utente.email AS utenteMail'
+      )
+         ->joinRelationship('Post')
+      ->get();
+       return view('feed.index', [
          'posts' => $posts,
          'utente_id' => $id
       ]);

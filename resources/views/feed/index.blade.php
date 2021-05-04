@@ -7,6 +7,7 @@
 <html>
 <head>
     <x-head title="Feed | Linkedin"/>
+    <link rel="stylesheet" type="text/css" href="css/feed/index.css" />
 </head>
 <body>
 <div class="{{ $selectors['container'] }}">
