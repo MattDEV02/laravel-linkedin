@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kirschbaum\PowerJoins\PowerJoins;
+use App\Models\Utente;
 
 
 class UtenteLavoro extends Model
@@ -18,6 +19,7 @@ class UtenteLavoro extends Model
    public function Utente(): object {
       return $this->hasOne(Utente::class);
    }
+
    public function Lavoro(): object {
       return $this->hasOne(Lavoro::class);
    }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Kirschbaum\PowerJoins\PowerJoins;
 use App\Models\Utente;
 
+
 class Post extends Model
 {
    use HasFactory;
@@ -19,4 +20,5 @@ class Post extends Model
    {
       return $this->hasOne(Utente::class);
    }
+
 }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Contracts\Foundation\Application;
 use App\Models\Citta;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,7 +19,7 @@ class UtenteController extends Controller
       ]);
    }
 
-   public function registrazione(Request $req) {
+   public function registrazione(Request $req): object {
       return view('registrazione.index',[
          'citta' => Citta::all(),
          'msg' => $req->msg
@@ -29,7 +32,8 @@ class UtenteController extends Controller
       $utente = Utente::all(['id', 'email'])
          ->where('email', $email)
          ->first();
-      return $logged ? $this->feed($utente->id) :
+      return $logged ?
+         $this->feed($utente->id) :
          redirect()
             ->route('registrazione', ['msg' => 'not-reg']);
    }
@@ -51,8 +55,12 @@ class UtenteController extends Controller
       }
    }
 
-   public function feed(int $utente_id) {
-      return view('feed.index');
+   public function feed(int $utente_id): Factory | View | Application
+   {
+      return view('feed.index',[
+         'utente_id' => $utente_id,
+         'posts' => getAllPosts()
+      ]);
    }
 
    public function profile(Request $req) {

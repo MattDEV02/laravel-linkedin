@@ -5,6 +5,7 @@ use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 
 if(
@@ -93,7 +94,7 @@ if(
    }
    function isLogged(string $email): int {
       return Utente::where('email', $email)
-         ->count() ;
+         ->count();
    }
    function store($img, string $folder,  int $utente_id): string  {
       $extension = $img->extension();
@@ -104,12 +105,15 @@ if(
       return $fileName;
    }
    function getAllPosts()  {
-      return Utente::select(
+      return [];
+      /*
+       Utente::select(
          'Post.*',
          'Utente.email AS utenteMail'
       )
          ->orderByPowerJoins('Post.created_at', 'DESC')
          ->get();
+      */
    }
 }
 

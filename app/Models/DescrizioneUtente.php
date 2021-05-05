@@ -17,6 +17,6 @@ class DescrizioneUtente extends Model
 
    public function utente(): object
    {
-      return $this->hasOne(Utente::class);
+      return $this->hasOne('');
    }
 }
