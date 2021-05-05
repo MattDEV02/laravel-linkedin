@@ -39,6 +39,3 @@ Route::post('/feed', [$UC, 'logResult']);
 
 Route::get('/profile', [$UC, 'profile']);
 
-Route::get('/test', [$PC, 'displayImage']);
-
-Route::get('/img', [$UC, 'passwordDimenticata']);

@@ -12,14 +12,13 @@
 <body>
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}">
-        <div class="{{ $selectors['row']}} mt-5">
-            @include('feed.form', ['utente_id' => $utente_id])
-            @foreach($posts as $post)
-                @component('components.post', ['post' => $post])
-                @endcomponent
-            @endforeach
+        <div class="{{ $selectors['row']}}">
+            @include('feed.utils.form', ['utente_id' => $utente_id])
+            @include('feed.utils.posts', ['posts' => $posts])
         </div>
     </div>
 </div>
+<script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript" src="js/feed/index.js"></script>
 </body>
 </html>

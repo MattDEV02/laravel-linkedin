@@ -30,6 +30,6 @@ class Utente extends Model
       return $this->hasOne(DescrizioneUtente::class, $this->fk);
    }
    public function UtenteLavoro(): object {
-      return $this->hasOne(UtenteLavoro::class, 'utente');
+      return $this->hasOne(UtenteLavoro::class, $this->fk);
    }
 }

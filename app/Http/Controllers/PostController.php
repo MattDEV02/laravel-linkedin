@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller
@@ -18,6 +16,6 @@ class PostController extends Controller
       $post->foto = $fileName;
       $post->utente = $utente_id;
       $post->save();
-      return 'ok';
+      return 'Post Published.';
    }
 }

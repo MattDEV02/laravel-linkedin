@@ -3,28 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Citta;
-use App\Models\DescrizioneUtente;
-use App\Models\Lavoro;
-use App\Models\Post;
-use App\Models\UtenteLavoro;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Utente;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
 
 
 class UtenteController extends Controller
 {
-   public function login(Request $req): View {
+   public function login(Request $req) {
       return view('login.index',[
          'msg' => $req->msg
       ]);
    }
 
-   public function registrazione(Request $req): View {
+   public function registrazione(Request $req) {
       return view('registrazione.index',[
          'citta' => Citta::all(),
          'msg' => $req->msg
@@ -59,22 +51,11 @@ class UtenteController extends Controller
       }
    }
 
-   public function feed(int $id) {
-      $posts = DB::table('Post')
-         ->join('Utente', 'Post.utente', 'Utente.id');
-      $posts = Utente::select(
-         'Post.*',
-         'Utente.email AS utenteMail'
-      )
-         ->joinRelationship('Post')
-      ->get();
-       return view('feed.index', [
-         'posts' => $posts,
-         'utente_id' => $id
-      ]);
+   public function feed(int $utente_id) {
+      return view('feed.index');
    }
 
-   public function profile(Request $req): View {
+   public function profile(Request $req) {
       $utente_id = $req->utente_id;
       // DescrizioneUtente  JOIN E FIND BY ID
       return view('profile.index',[

@@ -14,7 +14,8 @@ if(
    !function_exists('handleError') and
    !function_exists('isEloquentAttr') and
    !function_exists('postRedirect') and
-   !function_exists('store')
+   !function_exists('store') and
+   !function_exists('getAllPosts')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -41,6 +42,8 @@ if(
          'email' => 'email',
          'pass' => 'password',
          'date' => 'dataInizioLavoro',
+         'img' => 'image',
+         'txt' => 'testo',
          'select1' => 'lavoro',
          'select2' => 'citta',
          'emailLen' => 35,
@@ -94,10 +97,19 @@ if(
    }
    function store($img, string $folder,  int $utente_id): string  {
       $extension = $img->extension();
-      $fileName = date('Y_m_d_H_i_s').$extension;
+      $now = date('Y_m_d_H_i_s');
+      $fileName = "$now.$extension";
       $filePath = "$utente_id/$fileName";
       Storage::putFileAs("public/$folder", $img, $filePath);
       return $fileName;
+   }
+   function getAllPosts()  {
+      return Utente::select(
+         'Post.*',
+         'Utente.email AS utenteMail'
+      )
+         ->orderByPowerJoins('Post.created_at', 'DESC')
+         ->get();
    }
 }
 

@@ -2,6 +2,7 @@
 
 
 $b: 2px solid #000000;
+$max: 100%;
 
 body {
    background-color: #E7E6E6BA;
@@ -17,26 +18,27 @@ body {
 }
 
 img {
-   height: 13rem;
+   height: 16.5rem !important;
    border-bottom: $b;
 }
 
+input:hover, button:hover {
+   cursor: pointer;
+}
+
 [type=text] {
-   border-radius: 35px!important;
+   border-radius: 35px !important;
 }
 
 [type=file] {
    position: absolute;
-   top: 0;
-   right: 0;
-   min-width: 100%;
-   min-height: 100%;
-   font-size: 100px;
-   text-align: right;
-   filter: alpha(opacity=0);
-   opacity: 0;
+   top: $default;
+   right: $default;
+   font-size: $max;
+   width: $max;
+   height: $max;
+   opacity: $default;
    outline: none;
-   background: white;
-   cursor: inherit;
    display: block;
 }
+
