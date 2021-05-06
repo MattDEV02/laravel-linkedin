@@ -92,9 +92,13 @@ if(
          $attr === 'updated_at'
       );
    }
-   function isLogged(string $email): int {
-      return Utente::where('email', $email)
-         ->count();
+   function isLogged(string $email, ?string $password = null): int {
+      $attr = ['email', 'password'];
+      $res = $password ?
+         Utente::where($attr[0], $email)
+            ->where($attr[1], $password) :
+         Utente::where($attr[0], $email);
+      return $res->count();
    }
    function store($img, string $folder,  int $utente_id): string  {
       $extension = $img->extension();
@@ -105,15 +109,12 @@ if(
       return $fileName;
    }
    function getAllPosts()  {
-      return [];
-      /*
-       Utente::select(
+      return Utente::select(
          'Post.*',
          'Utente.email AS utenteMail'
       )
          ->orderByPowerJoins('Post.created_at', 'DESC')
          ->get();
-      */
    }
 }
 

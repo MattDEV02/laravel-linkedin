@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-   public function insert(Request $req): string {
+   public function insert(Request $req) {
       $utente_id = $req->id;
       $fileName = store($req->image, 'posts', $utente_id);
       $post = new Post();
@@ -16,6 +16,8 @@ class PostController extends Controller
       $post->foto = $fileName;
       $post->utente = $utente_id;
       $post->save();
-      return 'Post Published.';
+      return view('feed.utils.posts', [
+         'posts' => getAllPosts()
+      ]);
    }
 }

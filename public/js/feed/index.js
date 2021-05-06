@@ -14,25 +14,32 @@ image.on({
    }
 );
 
-$('#postForm').submit(function (e) {
+const reset = e => {
    e.preventDefault();
-   const form = $(this)[0];
-   const data = new FormData(form);
-   const
-      images = image[0].files,
-      text = testo.val();
-   data.append('image', images[0]);
-   data.append('testo',  text);
-   console.log(data.get('image'), data.get('testo'));
-   $.ajax({
-      url: form.action,
-      type: form.method,
-      data: data,
-      contentType: false,
-      processData: false,
-      success: res => {
-         if(res === 'Post Published')
-            window.location.reload();
-      }
+   e.target.reset();
+   btn.css(prop, colors[0]);
+};
+
+$('#postForm').submit(
+   async function (e) {
+      e.preventDefault();
+      const form = $(this)[0];
+      const data = new FormData(form);
+      const
+         images = image[0].files,
+         text = testo.val();
+      data.append('image', images[0]);
+      data.append('testo',  text);
+      console.log(data.get('image'), data.get('testo'));
+      const res = await axios.post(form.action, data,{
+         headers: {
+            "Content-Type": form.enctype
+         }
+      })
+         .catch(e => console.error(e));
+      console.log(res);
+      res ?
+         $('#posts-container').html(res.data) :
+         window.alert('Errore nella Pubblicazione del Post.')
+      reset(e);
    });
-});

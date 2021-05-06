@@ -1,5 +1,13 @@
 body {
-  background-color: #E7E6E6BA;
+  background-color: #f5f5f5;
+}
+
+nav {
+  background-color: #FFFFFF;
+}
+
+#search {
+  background-color: #EEF3F8;
 }
 
 .form-group {

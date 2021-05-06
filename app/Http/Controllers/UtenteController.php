@@ -28,7 +28,8 @@ class UtenteController extends Controller
 
    public function logResult(Request $req){
       $email = $req->email;
-      $logged = isLogged($email);
+      $password = $req->password;
+      $logged = isLogged($email, $password);
       $utente = Utente::all(['id', 'email'])
          ->where('email', $email)
          ->first();

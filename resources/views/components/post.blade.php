@@ -9,7 +9,7 @@
                     class="card-img-top"
                     src="storage/posts/{{ $post->utente }}/{{ $post->foto }}"
                     alt="{{ $post->testo }}"
-                    style="width: 21.7rem;"
+                    style="width: 22rem;"
             />
             <div class="card-body">
                 <h5 class="card-title">{{ $post->utenteMail }}</h5>

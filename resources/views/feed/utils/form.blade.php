@@ -4,25 +4,15 @@
 
 <form method="POST" enctype="multipart/form-data" action="{{ $selectors['action'] }}/feed" id="postForm">
     @csrf
-    <div class="form-group {{ $selectors['border'] }} p-4 mt-5">
+    <div class="form-group {{ $selectors['border'] }} p-4 mt-4">
         <div class="{{ $selectors['col'] }}">
             <div class="{{ $selectors['row'] }}">
                 <h2>Nuovo Post</h2>
             </div>
         </div>
-        <div class="{{ $selectors['col'] }}3">
+        <div class="{{ $selectors['col'] }}4">
             <div class="{{ $selectors['row'] }}">
-                <input
-                        type="text"
-                        name="testo"
-                        id="testo"
-                        class="{{ $selectors['input'] }}"
-                        placeholder="Di cosa vorresti parlare?"
-                        autocomplete="{{ $selectors['autocomplete'] }}"
-                        minlength="{{ 2 }}"
-                        maxlength="{{ 255 }}"
-                        required
-                />
+                <x-text />
             </div>
         </div>
         <div class="{{ $selectors['col']}}4">
@@ -30,14 +20,7 @@
                 <button class="btn btn-primary {{ $selectors['border'] }} col-8" id="fileBTN">
                     <b>
                         <i class="fas fa-image">
-                            <input
-                                    type="file"
-                                    class="{{ $selectors['col'] }}"
-                                    accept="image/*"
-                                    name="image"
-                                    id="image"
-                                    required
-                            />
+                            <x-image />
                         </i>
                     </b>
                 </button>

@@ -1,9 +1,9 @@
 const
-   password = $('#password'),
    defaultType = 'password',
    attr = 'type';
 
-
-password.on({
-   click: () => password.attr(attr, password.attr(attr) === defaultType ? 'text' : defaultType)
+$('#password').click(function(e) {
+   const type = e.target.type === defaultType ? 'text' : defaultType;
+   $(this).prop(attr, type);
 });
+
