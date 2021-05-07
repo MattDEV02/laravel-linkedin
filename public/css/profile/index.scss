@@ -1,0 +1,17 @@
+$b: 1px solid #000000;
+
+body {
+   background-color: #f5f5f5;
+}
+
+#card {
+   border: $b;
+}
+
+img {
+   height: 15rem !important;
+}
+
+#bb {
+   border-bottom: $b;
+}

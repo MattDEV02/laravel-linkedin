@@ -4,17 +4,21 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Menu extends Component
+class Item extends Component
 {
-   public $a;
+   public string $txt;
+   public string $class;
+   public $id;
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct($a)
+   public function __construct(string $txt, string $class = '', $id = null)
    {
-      $this->a = $a;
+      $this->txt = $txt;
+      $this->class = $class;
+      $this->id = $id;
    }
 
    /**
@@ -24,6 +28,6 @@ class Menu extends Component
     */
    public function render()
    {
-      return view('components.menu');
+      return view('components.item');
    }
 }

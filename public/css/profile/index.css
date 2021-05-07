@@ -1,0 +1,17 @@
+body {
+  background-color: #f5f5f5;
+}
+
+#card {
+  border: 1px solid #000000;
+}
+
+img {
+  height: 15rem !important;
+}
+
+#bb {
+  border-bottom: 1px solid #000000;
+}
+
+/*# sourceMappingURL=index.css.map */

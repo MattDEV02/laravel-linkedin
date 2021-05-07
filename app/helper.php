@@ -2,6 +2,7 @@
 
 use App\Models\Utente;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +17,8 @@ if(
    !function_exists('isEloquentAttr') and
    !function_exists('postRedirect') and
    !function_exists('store') and
-   !function_exists('getAllPosts')
+   !function_exists('getAllPosts') and
+   !function_exists('checkRef')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -115,6 +117,9 @@ if(
       )
          ->orderByPowerJoins('Post.created_at', 'DESC')
          ->get();
+   }
+   function checkRef(Request $req, string $path): bool {
+      return str_contains($req->header('referer'), $path);
    }
 }
 

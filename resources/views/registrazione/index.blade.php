@@ -6,7 +6,7 @@
 
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
-    <x-head title="Iscriviti | LinkedIn" />
+    <x-head title="Iscriviti" />
     <link rel="stylesheet" type="text/css" href="/css/registrazione/index.css" />
 </head>
 <body>
@@ -14,7 +14,7 @@
     <div class="{{ $selectors['col'] }}4">
         <div class="{{ $selectors['row'] }}">
             <div class="{{ $selectors['col'] }}">
-                <x-title row="" />
+                <x-title />
                 <div class="{{ $selectors['row'] }} mt-3">
                     <h5 id="subtitle">
                         Ottieni il massimo dalla tua vita professionale
@@ -55,11 +55,14 @@
                 </div>
             </div>
         </div>
-        <x-footer login="{{ false }}"/>
+        <x-footer />
     </div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/login/index.js"></script>
-<x-alert msg="{{ $msg }}" />
+<x-alert
+        msg="{{ $msg }}"
+        ref="{{ $ref }}"
+/>
 </body>
 </html>

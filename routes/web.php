@@ -32,10 +32,14 @@ Route::prefix('ricezione-dati')
       $PC = PostController::class;
       Route::post('/feed', [$PC, 'insert']);
       Route::post('/registrazione', [$UC, 'insert']);
+      Route::post('/edit-profile', [$UC, 'updateProfile']);
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
    });
 
 Route::post('/feed', [$UC, 'logResult']);
 
+Route::get('/edit-profile', [$UC, 'editProfile']);
+
 Route::get('/profile', [$UC, 'profile']);
 
+Route::view('counter', 'counter');

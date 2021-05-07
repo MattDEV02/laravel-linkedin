@@ -12,7 +12,7 @@ class Footer extends Component
     *
     * @return void
     */
-   public function __construct(bool $login)
+   public function __construct(bool $login = false)
    {
       $this->login = $login;
    }

@@ -7,14 +7,16 @@ use Illuminate\View\Component;
 class Alert extends Component
 {
    public string $msg;
+   public string $ref;
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct(string $msg )
+   public function __construct(string $msg, string $ref)
    {
       $this->msg = $msg;
+      $this->ref = $ref;
    }
 
    /**

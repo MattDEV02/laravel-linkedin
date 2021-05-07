@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lavoro;
+use App\Models\UtenteLavoro;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,20 +11,23 @@ use App\Models\Citta;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Utente;
+use Illuminate\Support\Facades\DB;
 
 
 class UtenteController extends Controller
 {
    public function login(Request $req) {
       return view('login.index',[
-         'msg' => $req->msg
+         'msg' => $req->msg,
+         'ref' => checkRef($req, 'registrazione')
       ]);
    }
 
    public function registrazione(Request $req): object {
       return view('registrazione.index',[
          'citta' => Citta::all(),
-         'msg' => $req->msg
+         'msg' => $req->msg,
+         'ref' => checkRef($req, 'login')
       ]);
    }
 
@@ -65,10 +70,29 @@ class UtenteController extends Controller
    }
 
    public function profile(Request $req) {
-      $utente_id = $req->utente_id;
-      // DescrizioneUtente  JOIN E FIND BY ID
-      return view('profile.index',[
-         'utente_id' => $utente_id
+      $profile = DB::table('Utente AS u')
+         ->select([
+            'du.testo',
+            'du.foto',
+            'du.updated_at',
+            'u.email AS utente',
+            'u.id AS utente_id',
+            'l.nome AS lavoro',
+            'c.nome AS citta',
+            'n.nome AS nazione'
+         ])
+         ->join('DescrizioneUtente AS du', 'du.utente', 'u.id')
+         ->join('UtenteLavoro AS ul', 'ul.utente', 'u.id')
+         ->join('Lavoro AS l', 'ul.lavoro', 'l.id')
+         ->join('Citta AS c', 'u.citta', 'c.id')
+         ->join('Nazione AS n', 'c.nazione', 'n.id' )
+         ->where('u.id', $req->utente_id)
+         ->get();
+      return view('profile.index', [
+         'profile' => $profile[0]
       ]);
+   }
+   public function editProfile() {
+      return view('profile.utils.form');
    }
 }

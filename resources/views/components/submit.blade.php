@@ -1,6 +1,7 @@
 @php
     $selectors = selectors();
 @endphp
+
 <div class="{{ $selectors['col'] }} mt-{{ $mt }}">
     <div class="row">
         <button

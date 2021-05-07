@@ -12,7 +12,7 @@ class Title extends Component
     *
     * @return void
     */
-   public function __construct(string $row)
+   public function __construct(string $row = '')
    {
       $this->row = $row;
    }

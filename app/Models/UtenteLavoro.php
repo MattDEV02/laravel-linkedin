@@ -17,7 +17,7 @@ class UtenteLavoro extends Model
    public $timestamps = false;
 
    public function Utente(): object {
-      return $this->hasOne(Utente::class);
+      return $this->hasOne(Utente::class, 'id');
    }
 
    public function Lavoro(): object {

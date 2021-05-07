@@ -1,6 +1,8 @@
 @php
-$selectors = selectors();
-$texts = $login ? ['Nuovo utente di LinkedIn?','/registrazione' , 'Iscriviti ora'] : ['Sei già iscritto a LinkedIn?', '/login', 'Accedi'];
+    $selectors = selectors();
+    $texts = $login ?
+      ['Nuovo utente di LinkedIn?','/registrazione' , 'Iscriviti ora'  ] :
+      ['Sei già iscritto a LinkedIn?', '/login', 'Accedi'];
 @endphp
 
 <div class="{{ $selectors['col'] }}5">

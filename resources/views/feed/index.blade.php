@@ -6,20 +6,20 @@
 
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
-    <x-head title="Feed | Linkedin" />
+    <x-head title="Feed" />
     @livewireStyles
     <link rel="stylesheet" type="text/css" href="css/feed/index.css" />
 </head>
 
 <body>
-@include('feed.utils.navbar')
+@include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row']}}">
-            @include('feed.utils.form', ['utente_id' => $utente_id])
+            @include('feed.utils.form')
             <div class="{{ $selectors['col'] }}">
                 <div class="{{ $selectors['row'] }}" id="posts-container">
-                    @include('feed.utils.posts', ['posts' => $posts])
+                    @include('feed.utils.posts')
                 </div>
             </div>
         </div>

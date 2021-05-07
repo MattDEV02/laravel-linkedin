@@ -2,7 +2,7 @@
 $selectors = selectors();
 @endphp
 
-<title>{{ $title }}</title>
+<title>{{ $title }} | {{ $selectors['app'] }}</title>
 <meta charset="{{ $selectors['charset'] }}" />
 <meta http-equiv="content-type" content="text/html; charset={{ $selectors['charset'] }}" />
 <meta name="author" content="Matteo Lambertucci matteolambertucci3@gmail.com" />

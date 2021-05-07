@@ -1,6 +1,7 @@
 @php
 $selectors = selectors();
 @endphp
+
 <label for="{{ $selectors['pass'] }}">
     {{ $label }}
 </label>

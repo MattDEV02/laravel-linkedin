@@ -8,6 +8,7 @@ use Database\Seeders\NazioneSeeder;
 use Database\Seeders\LavoroSeeder;
 use Database\Seeders\UtenteSeeder;
 use Database\Seeders\PostSeeder;
+use Database\Seeders\DescrizioneUtenteSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,8 +23,9 @@ class DatabaseSeeder extends Seeder
          // NazioneSeeder::class,
          //CittaSeeder::class,
          //LavoroSeeder::class,
-        // UtenteSeeder::class,
-         PostSeeder::class
+         // UtenteSeeder::class,
+         //PostSeeder::class,
+         DescrizioneUtenteSeeder::class
       ]);
    }
 }

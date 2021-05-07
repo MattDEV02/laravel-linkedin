@@ -6,7 +6,7 @@
 
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
-    <x-head title="Accesso a LinkedIn, Accesso | LinkedIn" />
+    <x-head title="Accesso a LinkedIn" />
     <link rel="stylesheet" type="text/css" href="/css/login/index.css" />
 </head>
 <body>
@@ -59,6 +59,9 @@
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/login/index.js"></script>
-<x-alert msg="{{ $msg }}" />
+<x-alert
+        msg="{{ $msg }}"
+        ref="{{ $ref }}"
+/>
 </body>
 </html>
