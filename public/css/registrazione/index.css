@@ -10,7 +10,7 @@ html, body {
 }
 
 #card {
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   background-color: #FFFFFF;
 }
@@ -60,17 +60,17 @@ html, body {
   box-shadow: 0 0 0 1px #0A66C2 !important;
 }
 
+#show {
+  position: absolute;
+  right: 21px;
+  bottom: 1px;
+}
+
 .p-5 {
   padding: 2.8rem !important;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #F3F2EF;
 }
 

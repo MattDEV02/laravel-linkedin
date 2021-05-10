@@ -15,3 +15,6 @@ $selectors = selectors();
         placeholder="{{ ucfirst($selectors['pass']) }}"
         required
 />
+<h6 class="primaryTXT" id="show">
+    mostra
+</h6>

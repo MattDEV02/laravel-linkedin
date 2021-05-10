@@ -1,5 +1,7 @@
 @php
     $selectors = selectors();
+    $base = 'storage/profiles/';
+    $path = isset($profile->foto) ? $profile->utente_id. '/'.$profile->foto : 'default.jpg';
 @endphp
 
 <div class="{{ $selectors['col'] }}5">
@@ -8,7 +10,7 @@
             <div id="bb">
                 <img
                         class="card-img-top"
-                        src="storage/profiles/{{ $profile->utente_id }}/{{ $profile->foto }}"
+                        src="{{ $base }}{{ $path }}"
                         alt="{{ $profile->testo }}"
                 />
             </div>

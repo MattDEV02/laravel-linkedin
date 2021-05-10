@@ -37,9 +37,6 @@
                             <div class="{{ $selectors['col'] }}4">
                                 <div class="row">
                                     <x-password />
-                                    <h6 class="primaryTXT" id="show">
-                                        mostra
-                                    </h6>
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}3 ml-2">

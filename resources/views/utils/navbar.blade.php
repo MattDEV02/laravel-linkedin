@@ -1,4 +1,4 @@
-
+@livewireStyles
 
 <nav class="navbar navbar-expand navbar-light p-1">
     <span class="navbar-brand ml-4 mt-1">
@@ -23,3 +23,4 @@
 </nav>
 
 @livewireScripts
+

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DescrizioneUtente;
 use App\Models\Lavoro;
 use App\Models\UtenteLavoro;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
 use App\Models\Citta;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Utente;
@@ -54,13 +56,16 @@ class UtenteController extends Controller
          $utente = new Utente();
          $utente->email = $email; // Conferma Email
          $utente->password = $password;
-         $utente->nome = $req->nome;
-         $utente->cognome = $req->cognome;
+         $utente->nome = ucfirst($req->nome);
+         $utente->cognome = ucfirst($req->cognome);
          $utente->citta = $req->citta;
          $utente->save();
          $utenteLavoro = new UtenteLavoro();
          $utenteLavoro->utente = $utente->id;
-         $utenteLavoro->lavoro = 1;
+         $utenteLavoro->save();
+         $descrizioneUtente = new DescrizioneUtente();
+         $descrizioneUtente->utente = $utente->id;
+         $descrizioneUtente->save();
          return redirect()
             ->route('login', ['msg' => 'reg']);
       }
@@ -99,6 +104,7 @@ class UtenteController extends Controller
          'profile' => $profile[0]
       ]);
    }
+
    public function editProfile(Request $req) {
       $lavori = Lavoro::all()
          ->sortBy('id');

@@ -7,7 +7,6 @@
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Feed" />
-    @livewireStyles
     <link rel="stylesheet" type="text/css" href="css/login/index.css" />
     <link rel="stylesheet" type="text/css" href="css/feed/index.css" />
 </head>
@@ -28,6 +27,5 @@
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/feed/index.js"></script>
-@livewireScripts
 </body>
 </html>

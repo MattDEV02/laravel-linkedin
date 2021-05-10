@@ -14,6 +14,8 @@ class UtenteLavoro extends Model
    use PowerJoins;
 
    protected $table = 'UtenteLavoro';
+   protected $primaryKey = ['utente', 'Lavoro'];
+   public $incrementing = false;
    public $timestamps = false;
 
    public function Utente(): object {
