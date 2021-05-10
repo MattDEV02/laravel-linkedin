@@ -4,15 +4,21 @@
 
 <div class="{{ $selectors['col'] }}5">
     <div class="{{ $selectors['row'] }}">
-        <div class="card mt-5" id="card">
+        <div class="card" id="card" style="width: 23rem;">
             <img
                     class="card-img-top"
                     src="storage/posts/{{ $post->utente }}/{{ $post->foto }}"
                     alt="{{ $post->testo }}"
-                    style="width: 22rem;"
             />
             <div class="card-body">
-                <h5 class="card-title">{{ $post->utenteMail }}</h5>
+                <h4 class="card-title">
+                    {{ ucfirst($post->utenteName) }}
+                    {{ ucfirst($post->utenteSurname) }}
+                </h4>
+                <h6 class="card-subtitle text-muted mb-3">
+                    {{ $post->lavoro }} presso
+                    {{ $post->citta }}, {{ $post->nazione }}.
+                </h6>
                 <p class="card-text">{{ $post->testo }}</p>
                 <div class="{{ $selectors['col'] }}">
                     <div class="row">
@@ -21,9 +27,13 @@
                             <i class="fas fa-heart"></i>
                         </button>
                         <h3 class="card-text ml-3 mt-1">0</h3>
-                        <p class="card-text ml-5 mt-1">{{ $post->created_at }}</p>
                     </div>
                 </div>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">
+                    Post Creato il {{ $post->created_at }}
+                </small>
             </div>
         </div>
     </div>

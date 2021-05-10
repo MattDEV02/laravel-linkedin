@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kirschbaum\PowerJoins\PowerJoins;
+use App\Models\Utente;
+
 
 class Citta extends Model
 {
@@ -14,8 +16,11 @@ class Citta extends Model
    protected $table = 'Citta';
    public $timestamps = false;
 
-   public function Nazione(): object
-   {
+   public function Nazione(): object {
       return $this->hasOne(Nazione::class);
+   }
+   public function Utente(): object
+   {
+      return $this->hasOne(Utente::class);
    }
 }

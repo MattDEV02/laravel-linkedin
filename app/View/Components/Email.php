@@ -6,13 +6,13 @@ use Illuminate\View\Component;
 
 class Email extends Component
 {
-   public string $label;
+   public ?string $label;
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct(string $label)
+   public function __construct(?string $label = null)
    {
       $this->label = $label;
    }
@@ -22,8 +22,7 @@ class Email extends Component
     *
     * @return \Illuminate\Contracts\View\View|\Closure|string
     */
-   public function render()
-   {
+   public function render() {
       return view('components.email');
    }
 }

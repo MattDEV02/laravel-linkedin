@@ -11,7 +11,6 @@ $selectors = selectors();
         type="{{ $selectors['pass'] }}"
         minlength="{{ $selectors['passLen'] }}"
         maxlength="{{ $selectors['passLen'] }}"
-        title="{{ $selectors['title'] }}"
         name="{{ $selectors['pass'] }}"
         placeholder="{{ ucfirst($selectors['pass']) }}"
         required

@@ -3,6 +3,8 @@
 use App\Models\Utente;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -110,12 +112,23 @@ if(
       Storage::putFileAs("public/$folder", $img, $filePath);
       return $fileName;
    }
-   function getAllPosts()  {
-      return Utente::select(
-         'Post.*',
-         'Utente.email AS utenteMail'
-      )
-         ->orderByPowerJoins('Post.created_at', 'DESC')
+   function getAllPosts(): Collection
+   {
+      return DB::table('Utente AS u')
+         ->select(
+            'p.*',
+            'u.nome AS utenteName',
+            'u.cognome AS utenteSurname',
+            'c.nome AS citta',
+            'n.nome AS nazione',
+            'l.nome AS lavoro'
+         )
+         ->join('Post AS p', 'p.utente', 'u.id')
+         ->join('Citta AS c', 'u.citta', 'c.id')
+         ->join('Nazione AS n', 'c.nazione', 'n.id')
+         ->join('UtenteLavoro AS ul', 'ul.utente', 'u.id')
+         ->join('Lavoro AS l', 'ul.lavoro', 'l.id')
+         ->orderBy('p.created_at', 'DESC')
          ->get();
    }
    function checkRef(Request $req, string $path): bool {

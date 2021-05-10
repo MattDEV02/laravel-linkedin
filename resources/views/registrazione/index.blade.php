@@ -9,6 +9,7 @@
     <x-head title="Iscriviti" />
     <link rel="stylesheet" type="text/css" href="/css/registrazione/index.css" />
 </head>
+
 <body>
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}4">
@@ -34,6 +35,22 @@
                             <div class="{{ $selectors['col'] }}3">
                                 <div class="row">
                                     <x-password label="Almeno {{ $selectors['passLen'] }} caratteri"/>
+                                </div>
+                            </div>
+                            <div class="{{ $selectors['col'] }}3">
+                                <div class="row">
+                                    <x-text
+                                            label="Nome"
+                                            name="nome"
+                                    />
+                                </div>
+                            </div>
+                            <div class="{{ $selectors['col'] }}3">
+                                <div class="row">
+                                    <x-text
+                                            label="Cognome"
+                                            name="cognome"
+                                    />
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}3">

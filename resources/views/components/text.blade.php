@@ -1,13 +1,15 @@
 @php
 $selectors = selectors();
 @endphp
-
+<label for="{{ $selectors['txt'] }}">
+    {{ $label }}
+</label>
 <input
         type="text"
-        name="{{ $selectors['txt'] }}"
+        name="{{ $name }}"
         id="{{ $selectors['txt'] }}"
         class="{{ $selectors['input'] }}"
-        placeholder="Di cosa vorresti parlare?"
+        placeholder="{{ $label }}"
         autocomplete="{{ $selectors['autocomplete'] }}"
         minlength="{{ 2 }}"
         maxlength="{{ 255 }}"

@@ -8,6 +8,7 @@
 <head>
     <x-head title="Profile" />
     <link rel="stylesheet" type="text/css" href="css/profile/index.css" />
+    <link rel="stylesheet" type="text/css" href="/css/registrazione/index.css" />
 </head>
 
 <body>

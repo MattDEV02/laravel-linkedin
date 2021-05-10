@@ -8,16 +8,17 @@ use App\Models\Utente;
 
 class UsersSearch extends Component
 {
+   public $utenti = [];
 
-   public string $search = '';
+   public function search(string $s)
+   {
+      $this->utenti = Utente::where(
+         'email', 'like', "$s%"
+      )->get();
+   }
 
    public function render()
    {
-      return view('livewire.users-search', [
-         'utenti' => Utente::where(
-            'email', 'like', "%$this->search%"
-         )
-            ->get(),
-      ]);
+      return view('livewire.counter');
    }
 }

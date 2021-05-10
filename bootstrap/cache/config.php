@@ -4,7 +4,7 @@
     'name' => 'Linkedin',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://127.0.0.1:8080',
+    'url' => 'http://127.0.0.1:8000',
     'asset_url' => NULL,
     'timezone' => 'Europe/Rome',
     'locale' => 'it-IT',
@@ -356,7 +356,7 @@
       array (
         'driver' => 'local',
         'root' => 'C:\\xampp\\htdocs\\Laravel\\linkedin\\storage\\app/public',
-        'url' => 'http://127.0.0.1:8080/storage',
+        'url' => 'http://127.0.0.1:8000/storage',
         'visibility' => 'public',
       ),
       's3' => 

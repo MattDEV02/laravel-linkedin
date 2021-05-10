@@ -8,7 +8,16 @@
         </div>
         <div class="{{ $selectors['col'] }}4">
             <div class="{{ $selectors['row'] }}">
-                <x-text />
+                <input
+                        type="text"
+                        name="testo"
+                        id="testo"
+                        class="form-control form-control-lg border border-dark inputTXT"
+                        placeholder="Di cosa vorresti parlare?"
+                        autocomplete="off"
+                        minlength="{{ 2 }}"
+                        maxlength="{{ 255 }}"
+                        required>
             </div>
         </div>
         <div class="{{ $selectors['col']}}4">
@@ -20,7 +29,7 @@
                         </i>
                     </b>
                 </button>
-                <input type="hidden" name="id" value="{{ $utente_id }}"/>
+                <input type="hidden" name="id" value="{{ $utente_id }}" />
                 <button
                         type="submit"
                         class="btn btn-success {{ $selectors['border'] }} {{ $selectors['fw'] }} ml-3 col-2">

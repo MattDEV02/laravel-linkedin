@@ -2,8 +2,21 @@ const
    defaultType = 'password',
    attr = 'type';
 
-$('#password').click(function(e) {
-   const type = e.target.type === defaultType ? 'text' : defaultType;
-   $(this).prop(attr, type);
+let
+   type = null,
+   text = null;
+
+$('#show').click(function(e) {
+   const password = $('#password');
+   const cond = password.prop(attr) === defaultType;
+   if(cond) {
+      type =  'text' ;
+      text  = 'nascondi';
+   } else {
+      type =  defaultType ;
+      text  = 'mostra';
+   }
+   password.prop(attr, type);
+   $(this).text(text);
 });
 

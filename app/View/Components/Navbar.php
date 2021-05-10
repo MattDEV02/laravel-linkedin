@@ -4,19 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class text extends Component
+class Navbar extends Component
 {
-   public ?string $label;
-   public ?string $name;
+   public int $utente_id;
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct(?string $label = '', ?string $name = 'testo')
+   public function __construct(int $utente_id)
    {
-      $this->label = $label;
-      $this->name = $name;
+      $this->utente_id = $utente_id;
    }
 
    /**
@@ -26,6 +24,6 @@ class text extends Component
     */
    public function render()
    {
-      return view('components.text');
+      return view('components.navbar');
    }
 }

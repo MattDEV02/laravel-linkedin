@@ -34,7 +34,7 @@ html, body {
 }
 
 #card {
-   border-radius: ($pad * 2);
+   border-radius: ($pad * 3);
    box-shadow: $default $pad ($pad * 3) rgb(0 0 0 / 15%) !important;
    background-color: getColor('white');
 }
@@ -82,6 +82,12 @@ html, body {
 
 .inputTXT:focus {
    box-shadow: 0 0 0 1px getColor('blue') !important;
+}
+
+#show {
+   position: absolute;
+   right: 21px;
+   bottom: 1px;
 }
 
 .p-5 {  // overwrite a bootstrap class

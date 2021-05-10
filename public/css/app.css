@@ -16141,7 +16141,15 @@ nav {
    background-color: #EEF3F8 !important;
 }
 
-@media(max-width: 720px) {
+#search-div {
+   position: relative !important;
+}
+#search-icon {
+   position: absolute !important;
+   left: 12px;
+}
+
+@media(max-width: 735px) {
    li.nav-item {
       display: none;
    }

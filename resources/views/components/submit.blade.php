@@ -6,7 +6,7 @@
     <div class="row">
         <button
                 id="accediBTN"
-                class=" {{$selectors['btn'] }} {{ $selectors['col'] }} {{ $selectors['fw'] }} primaryBG p-2"
+                class="{{$selectors['btn'] }} {{ $selectors['col'] }} {{$selectors['border'] }} {{ $selectors['fw'] }} primaryBG p-2"
                 name="submit"
                 type="submit">
             {{ $text }}

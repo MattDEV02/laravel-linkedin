@@ -8,6 +8,7 @@
 <head>
     <x-head title="Feed" />
     @livewireStyles
+    <link rel="stylesheet" type="text/css" href="css/login/index.css" />
     <link rel="stylesheet" type="text/css" href="css/feed/index.css" />
 </head>
 

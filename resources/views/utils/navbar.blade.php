@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand navbar-light p-1">
     <span class="navbar-brand ml-4 mt-1">
         <x-title />
@@ -13,26 +15,11 @@
                     id="{{ $utente_id }}"
             />
         </ul>
-        <form class="form-inline">
-            <input
-                    class="form-control"
-                    type="search"
-                    id="search"
-                    wire:model="search"
-                    placeholder="Search Users"
-                    autocomplete="{{ $selectors['autocomplete'] }}"
-                    aria-label="Search Users"
-                    minlength="{{ 1 }}"
-                    maxlength="{{ 35 }}"
-            />
-            <!--
-             <button
-
-                     type="submit"
-                     style="display: none;">
-                 <i class="fas fa-search"></i>
-             </button>
-             -->
-        </form>
+        <div id="search-div" class="ml-3">
+            @livewire('users-search')
+            </form>
+        </div>
     </div>
 </nav>
+
+@livewireScripts

@@ -32,4 +32,7 @@ class Utente extends Model
    public function UtenteLavoro(): object {
       return $this->hasOne(UtenteLavoro::class, $this->fk);
    }
+   public function Citta(): object {
+      return $this->hasOne(Citta::class, $this->fk);
+   }
 }

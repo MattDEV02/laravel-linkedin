@@ -6,7 +6,7 @@
 
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
-    <x-head title="Accesso a LinkedIn" />
+    <x-head title="Accesso" />
     <link rel="stylesheet" type="text/css" href="/css/login/index.css" />
 </head>
 <body>
@@ -31,12 +31,15 @@
                             @csrf
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
-                                    <x-email label="" />
+                                    <x-email />
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}4">
                                 <div class="row">
-                                    <x-password label=""/>
+                                    <x-password />
+                                    <h6 class="primaryTXT" id="show">
+                                        mostra
+                                    </h6>
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}3 ml-2">

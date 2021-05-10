@@ -54,8 +54,13 @@ class UtenteController extends Controller
          $utente = new Utente();
          $utente->email = $email; // Conferma Email
          $utente->password = $password;
+         $utente->nome = $req->nome;
+         $utente->cognome = $req->cognome;
          $utente->citta = $req->citta;
          $utente->save();
+         $utenteLavoro = new UtenteLavoro();
+         $utenteLavoro->utente = $utente->id;
+         $utenteLavoro->lavoro = 1;
          return redirect()
             ->route('login', ['msg' => 'reg']);
       }
@@ -75,7 +80,9 @@ class UtenteController extends Controller
             'du.testo',
             'du.foto',
             'du.updated_at',
-            'u.email AS utente',
+            'u.email AS utenteMail',
+            'u.nome AS utenteName',
+            'u.cognome AS utenteSurname',
             'u.id AS utente_id',
             'l.nome AS lavoro',
             'c.nome AS citta',
@@ -92,7 +99,15 @@ class UtenteController extends Controller
          'profile' => $profile[0]
       ]);
    }
-   public function editProfile() {
-      return view('profile.utils.form');
+   public function editProfile(Request $req) {
+      $lavori = Lavoro::all()
+         ->sortBy('id');
+      return view('profile.utils.form', [
+         'utente_id' => $req->utente_id,
+         'lavori' => $lavori
+      ]);
+   }
+   public function updateProfile(Request $req) {
+      return $req->all();
    }
 }
