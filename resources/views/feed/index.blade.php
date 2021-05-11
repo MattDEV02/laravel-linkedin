@@ -12,7 +12,7 @@
 </head>
 
 <body>
-@include('utils.navbar')
+@include('utils.navbar', ['utente_id' => $utente_id])
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row']}}">

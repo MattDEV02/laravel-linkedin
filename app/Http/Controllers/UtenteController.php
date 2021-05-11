@@ -40,7 +40,7 @@ class UtenteController extends Controller
       $utente = Utente::all(['id', 'email'])
          ->where('email', $email)
          ->first();
-      return $logged ?
+      return $logged && checkRef($req, 'login') ?
          $this->feed($utente->id) :
          redirect()
             ->route('registrazione', ['msg' => 'not-reg']);
@@ -48,24 +48,11 @@ class UtenteController extends Controller
 
    public function insert(Request $req): RedirectResponse {
       $email = $req->email;
-      $password = $req->password;
       if(isLogged($email))
          return redirect()
             ->route('login', ['msg' => 'log']);
       else {
-         $utente = new Utente();
-         $utente->email = $email; // Conferma Email
-         $utente->password = $password;
-         $utente->nome = ucfirst($req->nome);
-         $utente->cognome = ucfirst($req->cognome);
-         $utente->citta = $req->citta;
-         $utente->save();
-         $utenteLavoro = new UtenteLavoro();
-         $utenteLavoro->utente = $utente->id;
-         $utenteLavoro->save();
-         $descrizioneUtente = new DescrizioneUtente();
-         $descrizioneUtente->utente = $utente->id;
-         $descrizioneUtente->save();
+         insertUtente($email, $req->password, $req->nome, $req->cognome, $req->citta);
          return redirect()
             ->route('login', ['msg' => 'reg']);
       }
@@ -80,40 +67,52 @@ class UtenteController extends Controller
    }
 
    public function profile(Request $req) {
-      $profile = DB::table('Utente AS u')
-         ->select([
-            'du.testo',
-            'du.foto',
-            'du.updated_at',
-            'u.email AS utenteMail',
-            'u.nome AS utenteName',
-            'u.cognome AS utenteSurname',
-            'u.id AS utente_id',
-            'l.nome AS lavoro',
-            'c.nome AS citta',
-            'n.nome AS nazione'
-         ])
-         ->join('DescrizioneUtente AS du', 'du.utente', 'u.id')
-         ->join('UtenteLavoro AS ul', 'ul.utente', 'u.id')
-         ->join('Lavoro AS l', 'ul.lavoro', 'l.id')
-         ->join('Citta AS c', 'u.citta', 'c.id')
-         ->join('Nazione AS n', 'c.nazione', 'n.id' )
-         ->where('u.id', $req->utente_id)
-         ->get();
+      $id = $req->utente_id;
+      $profile = getProfile($id);
       return view('profile.index', [
-         'profile' => $profile[0]
+         'profile' => $profile[0],
+         'utente_id' => $profile[0]->utente_id,
+         'posts' => getAllPosts($id)
       ]);
    }
 
    public function editProfile(Request $req) {
       $lavori = Lavoro::all()
          ->sortBy('id');
+      $profile = getProfile($req->utente_id);
       return view('profile.utils.form', [
          'utente_id' => $req->utente_id,
-         'lavori' => $lavori
+         'lavori' => $lavori,
+         'profile' => $profile[0]
       ]);
    }
    public function updateProfile(Request $req) {
-      return $req->all();
+      $id = $req->utente_id;
+      $descrizioneUtente = DescrizioneUtente::where(
+         'utente', $id
+      )->update([
+            'testo' => $req->testo,
+            'foto' => $req->image
+         ]
+      );
+      $utenteLavoro = UtenteLavoro::where(
+         'utente', $id
+      )->update([
+         'lavoro' => $req->lavoro,
+         'dataInizioLavoro' => $req->dataInizioLavoro
+      ]);
+      return redirect("/profile?utente_id=$id");
+   }
+   public function showProfile(Request $req) {
+      $utente = Utente::where(
+         'email', $req->search
+      )->get();
+      $id = $utente[0]->id;
+      $profile = getProfile($id);
+      return view('profile.index', [
+         'profile' => $profile[0],
+         'posts' => getAllPosts($id),
+         'showProfile' => true
+      ]);
    }
 }

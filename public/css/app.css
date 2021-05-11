@@ -16149,6 +16149,10 @@ nav {
    left: 12px;
 }
 
+body {
+   background-color: #F5F5F5 !important;
+}
+
 @media(max-width: 735px) {
    li.nav-item {
       display: none;

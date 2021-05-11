@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\DescrizioneUtente;
 use App\Models\Utente;
+use App\Models\UtenteLavoro;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -20,7 +23,9 @@ if(
    !function_exists('postRedirect') and
    !function_exists('store') and
    !function_exists('getAllPosts') and
-   !function_exists('checkRef')
+   !function_exists('checkRef') and
+   !function_exists('insertUtente') and
+   !function_exists('getProfile')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -112,9 +117,9 @@ if(
       Storage::putFileAs("public/$folder", $img, $filePath);
       return $fileName;
    }
-   function getAllPosts(): Collection
+   function getAllPosts(?int $utente_id = null): Collection
    {
-      return DB::table('Utente AS u')
+      $q =  DB::table('Utente AS u')
          ->select(
             'p.*',
             'u.nome AS utenteName',
@@ -128,11 +133,52 @@ if(
          ->join('Nazione AS n', 'c.nazione', 'n.id')
          ->join('UtenteLavoro AS ul', 'ul.utente', 'u.id')
          ->join('Lavoro AS l', 'ul.lavoro', 'l.id')
-         ->orderBy('p.created_at', 'DESC')
-         ->get();
+         ->orderBy('p.created_at', 'DESC');
+      $posts = isset($utente_id) ? $q->where(
+         'u.id' ,$utente_id
+      ) : $q;
+      return $posts->get();
    }
    function checkRef(Request $req, string $path): bool {
       return str_contains($req->header('referer'), $path);
+   }
+   function insertUtente(string $email, string $password, string $nome, string $cognome, int $citta): void {
+      $utente = new Utente();
+      $utente->email = $email; // Conferma Email
+      $utente->password = $password;
+      $utente->nome = ucfirst($nome);
+      $utente->cognome = ucfirst($cognome);
+      $utente->citta = $citta;
+      $utente->save();
+      $utenteLavoro = new UtenteLavoro();
+      $utenteLavoro->utente = $utente->id;
+      $utenteLavoro->save();
+      $descrizioneUtente = new DescrizioneUtente();
+      $descrizioneUtente->utente = $utente->id;
+      $descrizioneUtente->save();
+   }
+   function getProfile(int $utente_id): Collection {
+      return DB::table('Utente AS u')
+         ->select([
+            'du.testo',
+            'du.foto',
+            'du.updated_at',
+            'u.email AS utenteMail',
+            'u.nome AS utenteName',
+            'u.cognome AS utenteSurname',
+            'u.id AS utente_id',
+            'l.nome AS lavoro',
+            'ul.dataInizioLavoro',
+            'c.nome AS citta',
+            'n.nome AS nazione'
+         ])
+         ->join('DescrizioneUtente AS du', 'du.utente', 'u.id')
+         ->join('UtenteLavoro AS ul', 'ul.utente', 'u.id')
+         ->join('Lavoro AS l', 'ul.lavoro', 'l.id')
+         ->join('Citta AS c', 'u.citta', 'c.id')
+         ->join('Nazione AS n', 'c.nazione', 'n.id' )
+         ->where('u.id', $utente_id)
+         ->get();
    }
 }
 

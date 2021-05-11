@@ -16,8 +16,9 @@ class UsersSearch extends Component
       $this->utenti = strlen($s) > 0 ?
          $this->utenti = Utente::select(
             DB::raw(
-               "CONCAT(Utente.nome, ' ', Utente.cognome) AS nomeCognome"
-            )
+               "CONCAT(nome, ' ', cognome) AS nomeCognome"
+            ),
+            'email'
          )
             ->where(
                'nome', 'like', "$s%"

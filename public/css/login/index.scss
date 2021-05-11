@@ -33,7 +33,7 @@ html, body {
    background: transparent;
 }
 
-#card {
+#form-card {
    border-radius: ($pad * 3);
    box-shadow: $default $pad ($pad * 3) rgb(0 0 0 / 15%) !important;
    background-color: getColor('white');

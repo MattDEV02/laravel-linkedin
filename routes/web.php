@@ -42,7 +42,7 @@ Route::get('/edit-profile', [$UC, 'editProfile']);
 
 Route::get('/profile', [$UC, 'profile']);
 
-//Route::view('counter', 'counter');
+Route::get('show-profile', [$UC, 'showProfile']);
 
 Route::get('counter', function(){
    return view('test');

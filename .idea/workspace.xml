@@ -7,20 +7,34 @@
     <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Counter.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/UsersSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/UsersSearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UtenteLavoro.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UtenteLavoro.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/feed/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/feed/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/feed/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/feed/index.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/feed/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/feed/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/login/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/login/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile/index.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/registrazione/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/registrazione/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/registrazione/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/registrazione/index.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/registrazione/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/registrazione/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/option.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/option.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/submit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/submit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/feed/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feed/utils/posts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/utils/posts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/counter.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/users-search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/users-search.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/login/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/utils/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/utils/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/utils/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/utils/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/registrazione/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registrazione/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +195,7 @@
     <property name="com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable" value="ALL" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -250,6 +264,8 @@
       <workItem from="1620558433780" duration="4886000" />
       <workItem from="1620634414388" duration="8773000" />
       <workItem from="1620658504870" duration="2004000" />
+      <workItem from="1620720498544" duration="10103000" />
+      <workItem from="1620731306063" duration="7625000" />
     </task>
     <servers />
   </component>

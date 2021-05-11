@@ -9,6 +9,7 @@
     <x-head title="Accesso" />
     <link rel="stylesheet" type="text/css" href="/css/login/index.css" />
 </head>
+
 <body>
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}5">
@@ -18,7 +19,7 @@
                     <x-title row="justify-content-xl-start" />
                 </div>
                 <div class="{{ $selectors['row'] }} mt-3">
-                    <div id="card" class="p-5">
+                    <div id="form-card" class="p-5">
                         <div class="{{ $selectors['col'] }}" id="header">
                             <div class="row">
                                 <h2 class="">Accedi</h2>
@@ -58,7 +59,7 @@
     </div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
-<script type="text/javascript" src="js/login/index.js"></script>
+<script type="text/javascript" src="{{ asset('js/login/index.js') }}"></script>
 <x-alert
         msg="{{ $msg }}"
         ref="{{ $ref }}"

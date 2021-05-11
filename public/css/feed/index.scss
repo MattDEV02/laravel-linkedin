@@ -2,15 +2,12 @@
 
 
 $b: 1px solid #000000;
-
+$br: 0.8rem;
 $max: 100%;
 
-body {
-   background-color: #f5f5f5;
-}
 
 .form-group {
-   border-radius: 0.8rem !important;
+   border-radius: $br !important;
    background-color: #FFFFFF !important;
 }
 
@@ -18,9 +15,10 @@ body {
    border: $b;
 }
 
-img {
+#post_img {
    height: 16.5rem !important;
    border-bottom: $b;
+   border-radius: $br $br $default $default !important;
 }
 
 button:hover {

@@ -9,15 +9,20 @@
     <x-head title="Profile" />
     <link rel="stylesheet" type="text/css" href="css/profile/index.css" />
     <link rel="stylesheet" type="text/css" href="/css/registrazione/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/feed/index.css" />
 </head>
 
 <body>
 @include('utils.navbar', ['utente_id' => $profile->utente_id])
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['row'] }}">
-        @component('components.profile', ['profile' => $profile])
+        @component('components.profile', [
+         'profile' => $profile,
+         'showProfile' => isset($showProfile)
+         ])
         @endcomponent
     </div>
+    @include('feed.utils.posts')
 </div>
 </div>
 </body>

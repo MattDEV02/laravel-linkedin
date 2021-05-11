@@ -19,12 +19,14 @@
             maxlength="{{ 35 }}"
             wire:input="search($event.target.value)"
     />
-    <div class="mt-4" style="position: fixed; !important;">
+    <div class="mt-4" style="position: fixed !important;">
         @foreach($utenti as $utente)
             <div class="my-3 border border-dark p-2 text-center">
-                <b class="text-primary">
-                    {{ $utente->nomeCognome }}
-                </b>
+                <a href="show-profile?search={{ $utente->email }}">
+                    <b class="text-primary">
+                        {{ $utente->nomeCognome }}
+                    </b>
+                </a>
             </div>
         @endforeach
     </div>

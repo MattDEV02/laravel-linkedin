@@ -26,14 +26,27 @@
                 <div id="card" class="col-4 p-4">
                     <form method="POST" action="{{ $selectors['action'] }}/edit-profile">
                         @csrf
-                        <div class="{{ $selectors['col'] }}">
+                        <input
+                                type="hidden"
+                                name="utente_id"
+                                value="{{ $utente_id }}"
+                        />
+                        <div class="{{ $selectors['col'] }}1">
                             <div class="row">
-                                <x-email label="{{ ucfirst($selectors['email']) }}"/>
-                            </div>
-                        </div>
-                        <div class="{{ $selectors['col'] }}3">
-                            <div class="row">
-                                <x-password label="Almeno {{ $selectors['passLen'] }} caratteri"/>
+                                <div class="custom-file border border-dark">
+                                    <label
+                                            for="{{ $selectors['select1'] }}"
+                                            class="custom-file-label border-0"
+                                    >
+                                        Immagine di Profilo
+                                    </label>
+                                    <input
+                                            type="file"
+                                            accept="image/*"
+                                            name="image"
+                                            class="custom-file-input"
+                                    />
+                                </div>
                             </div>
                         </div>
                         <div class="{{ $selectors['col'] }}3">
@@ -44,7 +57,10 @@
                                 <select
                                         class="{{ $selectors['input'] }}"
                                         name="{{ $selectors['select1'] }}">
-                                    @component('components.option', ['data' => $lavori])
+                                    @component('components.option', [
+                                       'data' => $lavori,
+                                       'selected' => $profile->lavoro
+                                       ])
                                     @endcomponent
                                 </select>
                             </div>
@@ -58,10 +74,24 @@
                                         type="date"
                                         class="{{ $selectors['input'] }}"
                                         name="{{ $selectors['date'] }}"
+                                        value="{{ $profile->dataInizioLavoro }}"
                                 />
                             </div>
                         </div>
-                        <x-submit text="Salva" mt="5" />
+                        <div class="{{ $selectors['col'] }}3">
+                            <div class="row">
+                                <label for="testo">
+                                    Testo del Profilo
+                                </label>
+                                <textarea
+                                        class="{{ $selectors['input'] }}"
+                                        name="testo"
+                                >
+                                    {{ $profile->testo }}
+                                </textarea>
+                            </div>
+                        </div>
+                        <x-submit text="Salva" mt="4" />
                     </form>
                 </div>
             </div>

@@ -6,6 +6,7 @@
     <div class="{{ $selectors['row'] }}">
         <div class="card" id="card" style="width: 23rem;">
             <img
+                    id="post_img"
                     class="card-img-top"
                     src="storage/posts/{{ $post->utente }}/{{ $post->foto }}"
                     alt="{{ $post->testo }}"
