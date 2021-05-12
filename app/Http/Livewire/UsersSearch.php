@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use App\Models\Utente;
@@ -9,7 +10,8 @@ use App\Models\Utente;
 
 class UsersSearch extends Component
 {
-   public $utenti = [];
+   public Collection | array $utenti = [];
+   public int $utente_id ;
 
    public function search(string $s)
    {

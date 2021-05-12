@@ -3,7 +3,6 @@
 @endphp
 
 <!DOCTYPE html>
-
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Profile" />
@@ -13,17 +12,16 @@
 </head>
 
 <body>
-@include('utils.navbar', ['utente_id' => $profile->utente_id])
-<div class="{{ $selectors['container'] }}">
-    <div class="{{ $selectors['row'] }}">
-        @component('components.profile', [
-         'profile' => $profile,
-         'showProfile' => isset($showProfile)
-         ])
-        @endcomponent
+    @include('utils.navbar')
+    <div class="{{ $selectors['container'] }}">
+        <div class="row justify-content-center justify-content-md-start">
+            @component('components.profile', [
+             'profile' => $profile,
+             'showProfile' => isset($showProfile)
+             ])
+            @endcomponent
+        </div>
+        @include('feed.utils.posts')
     </div>
-    @include('feed.utils.posts')
-</div>
-</div>
 </body>
 </html>

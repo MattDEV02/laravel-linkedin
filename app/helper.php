@@ -3,7 +3,6 @@
 use App\Models\DescrizioneUtente;
 use App\Models\Utente;
 use App\Models\UtenteLavoro;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -25,7 +24,8 @@ if(
    !function_exists('getAllPosts') and
    !function_exists('checkRef') and
    !function_exists('insertUtente') and
-   !function_exists('getProfile')
+   !function_exists('getProfile') and
+   !function_exists('updateProfile')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -142,16 +142,18 @@ if(
    function checkRef(Request $req, string $path): bool {
       return str_contains($req->header('referer'), $path);
    }
-   function insertUtente(string $email, string $password, string $nome, string $cognome, int $citta): void {
+   function insertUtente(string $email, Request $req): void {
       $utente = new Utente();
-      $utente->email = $email; // Conferma Email
-      $utente->password = $password;
-      $utente->nome = ucfirst($nome);
-      $utente->cognome = ucfirst($cognome);
-      $utente->citta = $citta;
+      $utente->email = $req->email; // Conferma Email
+      $utente->password = $req->password;
+      $utente->nome = ucfirst($req->nome);
+      $utente->cognome = ucfirst($req->cognome);
+      $utente->citta = $req->citta;
       $utente->save();
       $utenteLavoro = new UtenteLavoro();
       $utenteLavoro->utente = $utente->id;
+      $utenteLavoro->lavoro = $req->lavoro;
+      $utenteLavoro->dataInizioLavoro = $req->dataInizioLavoro;
       $utenteLavoro->save();
       $descrizioneUtente = new DescrizioneUtente();
       $descrizioneUtente->utente = $utente->id;
@@ -179,6 +181,29 @@ if(
          ->join('Nazione AS n', 'c.nazione', 'n.id' )
          ->where('u.id', $utente_id)
          ->get();
+   }
+   function updateProfile(Request $req): int {
+      $id = $req->utente_id;
+      $toUpdate = [
+         'testo' => $req->testo
+      ];
+      if(isset($req->image))
+         $toUpdate['foto'] = $req->image;
+      DescrizioneUtente::where(
+         'utente', $id
+      )->update($toUpdate);
+      UtenteLavoro::where(
+         'utente', $id
+      )->update([
+         'lavoro' => $req->lavoro,
+         'dataInizioLavoro' => $req->dataInizioLavoro
+      ]);
+      $utente = Utente::find($id);
+      $utente->nome = $req->nome;
+      $utente->cognome = $req->cognome;
+      $utente->citta = $req->citta;
+      $utente->save();
+      return $id;
    }
 }
 

@@ -3,12 +3,13 @@
     $base = 'storage/profiles/';
     $path = isset($profile->foto) ? $profile->utente_id. '/'.$profile->foto : 'default.jpg';
     $ml = 'ml-4';
+    $mt = 3;
 @endphp
 
 
-<div class="{{ $selectors['col'] }}5">
+<div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt-5 ml-md-4" id="mll">
     <div class="row">
-        <div class="col-7 border border-dark" id="profile_card">
+        <div class="{{ $selectors['col'] }} border border-dark" id="profile_card">
             <div class="row">
                 <div class="{{ $selectors['col'] }} bg-secondary" id="profile_bg">
                     <div class="row">
@@ -43,7 +44,7 @@
                         <div class="{{ $selectors['col'] }}1">
                             <div class="row">
                                 <h6 class="{{ $ml }}">
-                                    Data inizio Lavoro:
+                                    Data di inizio Lavoro:
                                 </h6>
                                 <h6 class="ml-2">
                                     {{ $profile->dataInizioLavoro ?? 'no'}}
@@ -61,7 +62,7 @@
                                 </div>
                             </div>
                         @endif
-                        <div class="{{ $selectors['col'] }}2 mb-2">
+                        <div class="{{ $selectors['col'] }}{{ $mt }} mb-2">
                             <div class="{{ $selectors['row'] }}">
                                 <p class="text-dark">
                                     {{ $profile->testo }}

@@ -1,19 +1,34 @@
 @import '../utils';
 
 
-$bd: 0.8rem;
+@function getColor($key) {
+   $result: map-get($colors, $key);
+   @debug 'Color: ' + $result; // Console Output
+   @return $result;
+}
 
 #profile_img {
    height: 15rem !important;
-   border: 4px solid #FFFFFF;
+   border: $pad solid getColor('white');
 }
 
 #profile_bg {
    height: 30vh;
-   border-radius: $bd $bd $default $default;
+   border-radius: $br $br $default $default;
 }
 
 #profile_card {
-   margin-left: 10rem !important;
-   border-radius: $bd;
+   border-radius: $br;
+}
+
+@media(min-width: 992px) {
+   #mll {
+      margin-left: 9.5rem !important;
+   }
+}
+
+@media (max-width: 769px) {
+   #search {
+      display: none;
+   }
 }

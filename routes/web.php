@@ -40,7 +40,8 @@ Route::post('/feed', [$UC, 'logResult']);
 
 Route::get('/edit-profile', [$UC, 'editProfile']);
 
-Route::get('/profile', [$UC, 'profile']);
+Route::get('/profile', [$UC, 'profile'])
+   ->name('profile');
 
 Route::get('show-profile', [$UC, 'showProfile']);
 

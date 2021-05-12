@@ -9,11 +9,9 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
 use App\Models\Citta;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Utente;
-use Illuminate\Support\Facades\DB;
 
 
 class UtenteController extends Controller
@@ -21,29 +19,17 @@ class UtenteController extends Controller
    public function login(Request $req) {
       return view('login.index',[
          'msg' => $req->msg,
-         'ref' => checkRef($req, 'registrazione')
+         'ref' => checkRef($req, 'login') || checkRef($req, 'registrazione')
       ]);
    }
 
    public function registrazione(Request $req): object {
       return view('registrazione.index',[
          'citta' => Citta::all(),
+         'lavori' => Lavoro::all(),
          'msg' => $req->msg,
          'ref' => checkRef($req, 'login')
       ]);
-   }
-
-   public function logResult(Request $req){
-      $email = $req->email;
-      $password = $req->password;
-      $logged = isLogged($email, $password);
-      $utente = Utente::all(['id', 'email'])
-         ->where('email', $email)
-         ->first();
-      return $logged && checkRef($req, 'login') ?
-         $this->feed($utente->id) :
-         redirect()
-            ->route('registrazione', ['msg' => 'not-reg']);
    }
 
    public function insert(Request $req): RedirectResponse {
@@ -52,67 +38,76 @@ class UtenteController extends Controller
          return redirect()
             ->route('login', ['msg' => 'log']);
       else {
-         insertUtente($email, $req->password, $req->nome, $req->cognome, $req->citta);
+         insertUtente($email, $req);
          return redirect()
             ->route('login', ['msg' => 'reg']);
       }
    }
 
-   public function feed(int $utente_id): Factory | View | Application
+   public function logResult(Request $req){
+      $email = $req->email;
+      $password = $req->password;
+      $logged = isLogged($email, $password);
+      $utente = Utente::all([
+         'id',
+         'email',
+         'password'
+      ])
+         ->where('email', $email)
+         ->first();
+      return $logged ?
+         $this->feed($utente) :
+         redirect()
+            ->route('login', ['msg' => 'not-reg']);
+   }
+
+   public function feed(Utente $utente): Factory | View | Application
    {
       return view('feed.index',[
-         'utente_id' => $utente_id,
+         'utente' => $utente,
          'posts' => getAllPosts()
       ]);
    }
 
    public function profile(Request $req) {
       $id = $req->utente_id;
+      $utente = Utente::find($id);
       $profile = getProfile($id);
       return view('profile.index', [
          'profile' => $profile[0],
-         'utente_id' => $profile[0]->utente_id,
+         'utente' => $utente,
          'posts' => getAllPosts($id)
       ]);
    }
 
    public function editProfile(Request $req) {
-      $lavori = Lavoro::all()
-         ->sortBy('id');
-      $profile = getProfile($req->utente_id);
+      $id = $req->utente_id;
+      $profile = getProfile($id);
+      $utente = Utente::find($id);
       return view('profile.utils.form', [
-         'utente_id' => $req->utente_id,
-         'lavori' => $lavori,
+         'utente' => $utente,
+         'lavori' => Lavoro::all(),
+         'citta' => Citta::all(),
          'profile' => $profile[0]
       ]);
    }
    public function updateProfile(Request $req) {
-      $id = $req->utente_id;
-      $descrizioneUtente = DescrizioneUtente::where(
-         'utente', $id
-      )->update([
-            'testo' => $req->testo,
-            'foto' => $req->image
-         ]
-      );
-      $utenteLavoro = UtenteLavoro::where(
-         'utente', $id
-      )->update([
-         'lavoro' => $req->lavoro,
-         'dataInizioLavoro' => $req->dataInizioLavoro
-      ]);
-      return redirect("/profile?utente_id=$id");
+      $utente_id = updateProfile($req);
+      return  redirect()
+         ->route('profile', ['utente_id' => $utente_id]);
    }
    public function showProfile(Request $req) {
-      $utente = Utente::where(
+      $utente = Utente::find($req->utente_id);
+      $utenteSearched = Utente::where(
          'email', $req->search
       )->get();
-      $id = $utente[0]->id;
+      $id = $utenteSearched[0]->id;
       $profile = getProfile($id);
       return view('profile.index', [
          'profile' => $profile[0],
          'posts' => getAllPosts($id),
-         'showProfile' => true
+         'showProfile' => true,
+         'utente' => $utente
       ]);
    }
 }

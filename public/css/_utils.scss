@@ -1,6 +1,7 @@
 $default: 0;
 $fs: 100%;
 $pad: 4px;
+$br: 0.8rem;
 $colors: (
         'white': #FFFFFF,
         'grey': #E7E6E6BA,
@@ -11,9 +12,4 @@ $colors: (
         'primary': #0073B1,
 );
 
-@function getColor($key) {
-   $result: map-get($colors, $key);
-   @debug 'Color: ' + $result; // Console Output
-   @return $result;
-}
 

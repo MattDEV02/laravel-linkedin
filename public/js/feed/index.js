@@ -6,7 +6,7 @@ const
    colors = ['#3490DC', '#EF7E05F2'];
 
 image.on({
-      input:() => btn.css(prop, colors[1]),
+      input: () => btn.css(prop, colors[1]),
       change: () => {
          if(!image.val())
             btn.css(prop, colors[0])

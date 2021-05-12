@@ -3,17 +3,15 @@ const isDisoccupato = input => input
    .text()
    .includes('Disoccupato');
 
+const
+   dataInizioLavoro = $('#dataInizioLavoro'),
+   lavoro = $('#lavoro');
 
-$('#registrazione').on({
-   submit: e => {
-      const
-         dataInizioLavoro = $('#dataInizioLavoro'),
-         lavoro = $('#lavoro');
-      if(dataInizioLavoro.val() && isDisoccupato(lavoro))
-         dataInizioLavoro.val(null);
-      else if(!isDisoccupato(lavoro) && !dataInizioLavoro.val()) {
-         e.preventDefault();
-         window.alert('Inserire Data Inizio Lavoro');
-      }
+$('#profile-form').submit(function(e) {
+   if(dataInizioLavoro.val() && isDisoccupato(lavoro))
+      dataInizioLavoro.val(null);
+   else if(!isDisoccupato(lavoro) && !dataInizioLavoro.val()) {
+      e.preventDefault();
+      window.alert('Inserire Data Inizio Lavoro');
    }
 });

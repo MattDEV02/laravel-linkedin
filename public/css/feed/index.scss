@@ -2,9 +2,8 @@
 
 
 $b: 1px solid #000000;
-$br: 0.8rem;
+$br2: ($br / 3);
 $max: 100%;
-
 
 .form-group {
    border-radius: $br !important;
@@ -18,7 +17,7 @@ $max: 100%;
 #post_img {
    height: 16.5rem !important;
    border-bottom: $b;
-   border-radius: $br $br $default $default !important;
+   border-radius: $br2 $br2 $default $default;
 }
 
 button:hover {
@@ -26,7 +25,7 @@ button:hover {
 }
 
 [type=text] {
-   border-radius: 35px !important;
+   border-radius: ($pad * 9) !important;
 }
 
 [type=file] {

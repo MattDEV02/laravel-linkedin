@@ -8,13 +8,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/UsersSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/UsersSearch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/View/Components/Navbar.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/View/Components/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/text.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/_utils.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/_utils.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/feed/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/feed/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/feed/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/feed/index.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/feed/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/feed/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/login/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/login/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login/index.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/login/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/profile/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/profile/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile/index.css.map" afterDir="false" />
@@ -22,19 +26,21 @@
       <change beforePath="$PROJECT_DIR$/public/css/registrazione/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/registrazione/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/registrazione/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/registrazione/index.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/registrazione/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/registrazione/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/option.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/option.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/feed/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/feed/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/registrazione/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/registrazione/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/submit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/submit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/text.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/feed/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feed/utils/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/utils/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/feed/utils/posts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/utils/posts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/counter.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/users-search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/users-search.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/login/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/profile/utils/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/utils/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/registrazione/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/registrazione/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/utils/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/utils/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +55,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="SCSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -265,7 +271,10 @@
       <workItem from="1620634414388" duration="8773000" />
       <workItem from="1620658504870" duration="2004000" />
       <workItem from="1620720498544" duration="10103000" />
-      <workItem from="1620731306063" duration="7625000" />
+      <workItem from="1620731306063" duration="7870000" />
+      <workItem from="1620753258587" duration="8683000" />
+      <workItem from="1620810545449" duration="923000" />
+      <workItem from="1620811826328" duration="13898000" />
     </task>
     <servers />
   </component>

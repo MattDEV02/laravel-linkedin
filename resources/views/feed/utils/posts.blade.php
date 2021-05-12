@@ -1,6 +1,11 @@
+@php
+$selectors = selectors();
+@endphp
+
+
 <div class="{{ $selectors['col'] }}5">
     <div class="{{ $selectors['row'] }}">
-        <h1 class="">
+        <h1>
             Posts
         </h1>
     </div>

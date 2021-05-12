@@ -12,9 +12,9 @@
 </head>
 
 <body>
-@include('utils.navbar', ['utente_id' => $utente_id])
+@include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
-    <div class="{{ $selectors['col'] }}5">
+    <div class="col-12 col-lg-9 col-md-9 col-sm-9 col-xl-9 mt-5 ml-xl-5 ml-lg-4 ml-md-2">
         <div class="{{ $selectors['row']}}">
             @include('feed.utils.form')
             <div class="{{ $selectors['col'] }}">
@@ -24,6 +24,7 @@
             </div>
         </div>
     </div>
+    <div class="col-2"></div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/feed/index.js"></script>

@@ -16149,12 +16149,38 @@ nav {
    left: 12px;
 }
 
-body {
+html, body {
+   font-family: -apple-system, system-ui, BlinkMacSystemFont,
+   "Segoe UI", Roboto,
+   "Helvetica Neue",
+   "Fira Sans",
+   Ubuntu,Oxygen,
+   "Oxygen Sans",
+   Cantarell,
+   "Droid Sans",
+   "Apple Color Emoji",
+   "Segoe UI Emoji",
+   "Segoe UI Emoji",
+   "Segoe UI Symbol",
+   "Lucida Grande",
+   Helvetica,
+   Arial,
+   sans-serif
+   !important;
    background-color: #F5F5F5 !important;
 }
 
-@media(max-width: 735px) {
-   li.nav-item {
+@media(max-width: 820px) {
+   li.nav-item:nth-last-child(n + 3) {
+      display: none;
+   }
+   li.nav-item:nth-last-child(2) {
+      margin-left: 1.5rem !important;
+   }
+}
+
+@media(max-width: 576px) {
+   #search {
       display: none;
    }
 }

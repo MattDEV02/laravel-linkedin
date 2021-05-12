@@ -1,21 +1,6 @@
+
 const
-   icon = $('#search-icon'),
-   input = $('#search');
+   form = document.querySelector('#feed-form'),
+   feed = document.querySelector('#feed');
 
-const handleIcon = () => {
-   console.log(input.val().length );
-   const display = input.val().length > 0 ? 'none' : 'block';
-   icon.css('display', 'none');
-}
-
-$(document).ready(function(){
-   handleIcon();
-})
-
-   input.on({
-      click: () => handleIcon(),
-      focus: () => handleIcon(),
-      blur: () => handleIcon(),
-      keyup: () => handleIcon(),
-      keydown: () => handleIcon()
-   });
+feed.onclick = e => form.submit();

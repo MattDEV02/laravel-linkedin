@@ -2,16 +2,17 @@
 $selectors = selectors();
 @endphp
 <label for="{{ $selectors['txt'] }}">
-    {{ $label }}
+    {{ ucfirst($label) }}
 </label>
 <input
         type="text"
-        name="{{ $name }}"
-        id="{{ $selectors['txt'] }}"
+        name="{{ $label }}"
+        id="{{ $label ?? $selectors['txt'] }}"
         class="{{ $selectors['input'] }}"
-        placeholder="{{ $label }}"
+        value="{{ $val }}"
+        placeholder="{{ ucfirst($label) }}"
         autocomplete="{{ $selectors['autocomplete'] }}"
-        minlength="{{ 2 }}"
-        maxlength="{{ 255 }}"
+        minlength="{{ 3 }}"
+        maxlength="{{ 45 }}"
         required
 />

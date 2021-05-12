@@ -6,31 +6,8 @@
    @return $result;
 }
 
-* {
-   margin: $default;
-   padding: $default;
-}
-
 html, body {
-   font-family: -apple-system, system-ui, BlinkMacSystemFont,
-   "Segoe UI", Roboto,
-   "Helvetica Neue",
-   "Fira Sans",
-   Ubuntu,Oxygen,
-   "Oxygen Sans",
-   Cantarell,
-   "Droid Sans",
-   "Apple Color Emoji",
-   "Segoe UI Emoji",
-   "Segoe UI Emoji",
-   "Segoe UI Symbol",
-   "Lucida Grande",
-   Helvetica,
-   Arial,
-   sans-serif
-   !important;
    font-size: $fs !important;
-   background: transparent;
 }
 
 #form-card {
@@ -81,7 +58,7 @@ html, body {
 }
 
 .inputTXT:focus {
-   box-shadow: 0 0 0 1px getColor('blue') !important;
+   box-shadow: $default $default $default 1px getColor('blue') !important;
 }
 
 #show {
@@ -90,7 +67,7 @@ html, body {
    bottom: 1px;
 }
 
-.p-5 {  // overwrite a bootstrap class
+.p-5 {  // overwrite a Bootstrap class
    padding: 2.8rem !important;
 }
 

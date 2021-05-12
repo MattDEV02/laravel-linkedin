@@ -25,7 +25,7 @@
             <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                 <div class="{{ $selectors['row'] }} mt-4">
                     <div id="form-card" class="{{ $selectors['col'] }} p-4">
-                        <form method="POST" action="{{ $selectors['action'] }}/registrazione">
+                        <form method="POST" action="{{ $selectors['action'] }}/registrazione" id="profile-form">
                             @csrf
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
@@ -39,18 +39,12 @@
                             </div>
                             <div class="{{ $selectors['col'] }}3">
                                 <div class="row">
-                                    <x-text
-                                            label="Nome"
-                                            name="nome"
-                                    />
+                                    <x-text label="nome" />
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}3">
                                 <div class="row">
-                                    <x-text
-                                            label="Cognome"
-                                            name="cognome"
-                                    />
+                                    <x-text label="cognome" />
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}3">
@@ -66,6 +60,28 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="{{ $selectors['col'] }}3">
+                                <div class="row">
+                                    <label for="{{ $selectors['select1'] }}">
+                                        {{ ucfirst($selectors['select1']) }}
+                                    </label>
+                                    <select
+                                            class="{{ $selectors['input'] }}"
+                                            id="{{ $selectors['select1']}}"
+                                            name="{{ $selectors['select1'] }}">
+                                        @component('components.option', [
+                                           'data' => $lavori,
+                                           'selected' => 'Disoccupato'
+                                           ])
+                                        @endcomponent
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="{{ $selectors['col'] }}3">
+                                <div class="row">
+                                    <x-date />
+                                </div>
+                            </div>
                             <x-submit text="Iscriviti" mt="{{ 4 }}" />
                         </form>
                     </div>
@@ -77,6 +93,7 @@
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/login/index.js"></script>
+<script type="text/javascript" src="js/registrazione/index.js"></script>
 <x-alert
         msg="{{ $msg }}"
         ref="{{ $ref }}"

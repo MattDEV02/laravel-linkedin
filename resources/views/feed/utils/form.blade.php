@@ -29,9 +29,11 @@
                         </i>
                     </b>
                 </button>
-                <input type="hidden" name="id" value="{{ $utente_id }}" />
+                <input type="hidden" name="id" value="{{ $utente->id }}" />
                 <button
                         type="submit"
+                        name="submit"
+                        value="submit"
                         class="btn btn-success {{ $selectors['border'] }} {{ $selectors['fw'] }} ml-3 col-2">
                     <i class="fas fa-share-square"></i>
                 </button>
