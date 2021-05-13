@@ -25,8 +25,8 @@
                 </div>
                 <div class="{{ $selectors['col'] }}5">
                     <div class="{{ $selectors['row'] }}">
-                        <div class="col-4 p-4" id="form-card">
-                            <form method="POST" action="{{ $selectors['action'] }}/edit-profile" id="profile-form">
+                        <div class="col-xl-4 col-lg-6 col-md-7 col-sm-9 col-xs-9 p-4" id="form-card">
+                            <form method="POST" action="{{ $selectors['action'] }}/edit-profile" id="profile-form" enctype="multipart/form-data">
                                 @csrf
                                 <input
                                         type="hidden"
@@ -39,13 +39,15 @@
                                             <label
                                                     for="{{ $selectors['select1'] }}"
                                                     class="custom-file-label border-0"
+                                                    id="fileLabel"
                                             >
-                                                Immagine di Profilo
+                                                Seleziona Immagine di Profilo
                                             </label>
                                             <input
                                                     type="file"
-                                                    accept="image/*"
-                                                    name="image"
+                                                    accept="{{ $selectors['img'] }}/*"
+                                                    name="{{ $selectors['img'] }}"
+                                                    id="{{ $selectors['img'] }}"
                                                     class="custom-file-input"
                                             />
                                         </div>
@@ -86,7 +88,7 @@
                                 </div>
                                 <div class="{{ $selectors['col'] }}3">
                                     <div class="row">
-                                        <x-date />
+                                        <x-date val="{{ $profile->dataInizioLavoro }}"/>
                                     </div>
                                 </div>
                                 <div class="{{ $selectors['col'] }}3">
@@ -141,5 +143,6 @@
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/registrazione/index.js"></script>
+<script type="text/javascript" src="js/profile/index.js"></script>
 </body>
 </html>

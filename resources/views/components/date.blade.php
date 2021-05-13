@@ -11,5 +11,6 @@ $selectors = selectors();
         class="{{ $selectors['input'] }}"
         name="{{ $selectors['date'] }}"
         id="{{ $selectors['date'] }}"
+        value="{{ $val }}"
         max="{{ date('Y-m-d') }}"
 />

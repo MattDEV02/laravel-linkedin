@@ -17,7 +17,7 @@
         <div class="row justify-content-center justify-content-md-start">
             @component('components.profile', [
              'profile' => $profile,
-             'showProfile' => isset($showProfile)
+             'own' => $own
              ])
             @endcomponent
         </div>

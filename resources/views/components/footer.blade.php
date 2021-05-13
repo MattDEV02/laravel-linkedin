@@ -5,7 +5,7 @@
       ['Sei già iscritto a LinkedIn?', '/login', 'Accedi'];
 @endphp
 
-<div class="{{ $selectors['col'] }}5">
+<div class="{{ $selectors['col'] }}5 mb-4">
     <div class="{{ $selectors['row'] }}">
         <p id="footer">
             {{ $texts[0] }}

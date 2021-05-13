@@ -20,4 +20,7 @@ class PostController extends Controller
          'posts' => getAllPosts()
       ]);
    }
+   public function like(Request $req) {
+      return '';
+   }
 }

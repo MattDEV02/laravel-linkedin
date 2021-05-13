@@ -68,46 +68,4 @@ class UtenteController extends Controller
          'posts' => getAllPosts()
       ]);
    }
-
-   public function profile(Request $req) {
-      $id = $req->utente_id;
-      $utente = Utente::find($id);
-      $profile = getProfile($id);
-      return view('profile.index', [
-         'profile' => $profile[0],
-         'utente' => $utente,
-         'posts' => getAllPosts($id)
-      ]);
-   }
-
-   public function editProfile(Request $req) {
-      $id = $req->utente_id;
-      $profile = getProfile($id);
-      $utente = Utente::find($id);
-      return view('profile.utils.form', [
-         'utente' => $utente,
-         'lavori' => Lavoro::all(),
-         'citta' => Citta::all(),
-         'profile' => $profile[0]
-      ]);
-   }
-   public function updateProfile(Request $req) {
-      $utente_id = updateProfile($req);
-      return  redirect()
-         ->route('profile', ['utente_id' => $utente_id]);
-   }
-   public function showProfile(Request $req) {
-      $utente = Utente::find($req->utente_id);
-      $utenteSearched = Utente::where(
-         'email', $req->search
-      )->get();
-      $id = $utenteSearched[0]->id;
-      $profile = getProfile($id);
-      return view('profile.index', [
-         'profile' => $profile[0],
-         'posts' => getAllPosts($id),
-         'showProfile' => true,
-         'utente' => $utente
-      ]);
-   }
 }

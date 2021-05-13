@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UtenteController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,7 @@ use App\Http\Controllers\PostController;
 
 $UC = UtenteController::class;
 $PC = PostController::class;
+$PRC = ProfileController::class;
 
 Route::view('/', 'home');
 
@@ -30,21 +33,19 @@ Route::prefix('ricezione-dati')
    ->group(function () {
       $UC = UtenteController::class;
       $PC = PostController::class;
+      $PRC = ProfileController::class;
       Route::post('/feed', [$PC, 'insert']);
       Route::post('/registrazione', [$UC, 'insert']);
-      Route::post('/edit-profile', [$UC, 'updateProfile']);
+      Route::post('/edit-profile', [$PRC, 'updateProfile']);
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
    });
 
 Route::post('/feed', [$UC, 'logResult']);
 
-Route::get('/edit-profile', [$UC, 'editProfile']);
+Route::get('/edit-profile', [$PRC, 'editProfile']);
 
-Route::get('/profile', [$UC, 'profile'])
+Route::get('/profile', [$PRC, 'profile'])
    ->name('profile');
 
-Route::get('show-profile', [$UC, 'showProfile']);
+Route::get('show-profile', [$PRC, 'showProfile']);
 
-Route::get('counter', function(){
-   return view('test');
-});

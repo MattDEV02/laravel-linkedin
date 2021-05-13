@@ -8,7 +8,8 @@
 }
 
 #profile_img {
-   height: 15rem !important;
+   height: 14.5rem !important;
+   background-color: #ACABAB;
    border: $pad solid getColor('white');
 }
 
@@ -19,6 +20,11 @@
 
 #profile_card {
    border-radius: $br;
+}
+
+#collegamenti {
+   position: relative;
+   bottom: ($pad + 1) * -1;
 }
 
 @media(min-width: 992px) {

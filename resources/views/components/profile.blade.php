@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="{{ $selectors['col'] }}5">
                             <div class="row">
-                                <h1 class="{{ $ml }}">
+                                <h1 class="{{ $ml }} mt-1">
                                     {{ $profile->utenteName }}
                                     {{ $profile->utenteSurname }}
                                 </h1>
@@ -51,17 +51,22 @@
                                 </h6>
                             </div>
                         </div>
-                        @if(!$showProfile)
-                            <div class="{{ $selectors['col'] }}2">
-                                <div class="row">
+                        <div class="{{ $selectors['col'] }}2">
+                            <div class="row">
+                                @if($own)
                                     <a href="/edit-profile?utente_id={{ $profile->utente_id }}">
                                         <button class="btn btn-primary border border-dark {{ $ml }}">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </a>
-                                </div>
+                                @else
+                                    <button class="btn btn-primary border border-dark {{ $ml }}">
+                                        <b>Collegati</b>
+                                    </button>
+                                @endif
+                                    <b class="text-primary ml-3" id="collegamenti">0 Collegamenti.</b>
                             </div>
-                        @endif
+                        </div>
                         <div class="{{ $selectors['col'] }}{{ $mt }} mb-2">
                             <div class="{{ $selectors['row'] }}">
                                 <p class="text-dark">

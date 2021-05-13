@@ -8,17 +8,15 @@
             <img
                     id="post_img"
                     class="card-img-top"
-                    src="storage/posts/{{ $post->utente }}/{{ $post->foto }}"
+                    src="storage/posts/{{ $post->utente_id }}/{{ $post->foto }}"
                     alt="{{ $post->testo }}"
             />
             <div class="card-body">
                 <h4 class="card-title">
-                    {{ ucfirst($post->utenteName) }}
-                    {{ ucfirst($post->utenteSurname) }}
+                    {{ ucfirst($post->utente) }}
                 </h4>
                 <h6 class="card-subtitle text-muted mb-3">
-                    {{ $post->lavoro }} presso
-                    {{ $post->citta }}, {{ $post->nazione }}.
+                    {{ $post->lavoroPresso }}
                 </h6>
                 <p class="card-text">{{ $post->testo }}</p>
                 <div class="{{ $selectors['col'] }}">
@@ -27,7 +25,9 @@
                                 class="btn btn-primary {{ $selectors['fw'] }} {{ $selectors['border'] }}">
                             <i class="fas fa-heart"></i>
                         </button>
-                        <h3 class="card-text ml-3 mt-1">0</h3>
+                        <h3 class="card-text ml-3 mt-1">
+                            {{ $post->miPiace }}
+                        </h3>
                     </div>
                 </div>
             </div>

@@ -59,7 +59,8 @@ if(
          'emailLen' => 35,
          'passLen' => 8,
          'autocomplete' => 'off',
-         'title' => 'Clicca per Mostrare / Nascondere la Password'
+         'title' => 'Clicca per Mostrare / Nascondere la Password',
+         'fd' => 'public'
       ];
    }
    function consoleLog($s): void
@@ -117,27 +118,40 @@ if(
       Storage::putFileAs("public/$folder", $img, $filePath);
       return $fileName;
    }
-   function getAllPosts(?int $utente_id = null): Collection
+   function getAllPosts(?int $utente_id = null)
    {
-      $q =  DB::table('Utente AS u')
-         ->select(
-            'p.*',
-            'u.nome AS utenteName',
-            'u.cognome AS utenteSurname',
-            'c.nome AS citta',
-            'n.nome AS nazione',
-            'l.nome AS lavoro'
-         )
-         ->join('Post AS p', 'p.utente', 'u.id')
-         ->join('Citta AS c', 'u.citta', 'c.id')
-         ->join('Nazione AS n', 'c.nazione', 'n.id')
-         ->join('UtenteLavoro AS ul', 'ul.utente', 'u.id')
-         ->join('Lavoro AS l', 'ul.lavoro', 'l.id')
-         ->orderBy('p.created_at', 'DESC');
-      $posts = isset($utente_id) ? $q->where(
-         'u.id' ,$utente_id
-      ) : $q;
-      return $posts->get();
+      $sql = ("
+         SELECT 
+            p.utente AS utente_id,
+	         p.foto,
+            p.testo,
+            p.created_at,
+            CONCAT(u.nome, ' ', u.cognome) AS utente,
+            CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
+            COUNT(mp.id) AS miPiace
+        FROM 
+	         Post p
+            LEFT JOIN MiPiace mp ON p.id = mp.post
+            JOIN Utente u ON p.utente = u.id
+            JOIN UtenteLavoro ul ON ul.utente = u.id
+            JOIN Lavoro l ON ul.lavoro = l.id
+            JOIN Citta c ON u.citta = c.id
+            JOIN Nazione n ON c.nazione = n.id
+         Where
+            True
+        GROUP BY 
+            p.foto,
+            p.created_at,
+            p.testo,
+            p.utente,
+            utente,
+            lavoroPresso
+        ORDER BY 
+            p.created_at
+      ");
+      if(isset($utente_id))
+         $sql = str_replace("True", "p.utente = $utente_id", $sql);
+      return DB::select($sql);
    }
    function checkRef(Request $req, string $path): bool {
       return str_contains($req->header('referer'), $path);
@@ -159,7 +173,7 @@ if(
       $descrizioneUtente->utente = $utente->id;
       $descrizioneUtente->save();
    }
-   function getProfile(int $utente_id): Collection {
+   function getProfile(int $utente_id): ?object {
       return DB::table('Utente AS u')
          ->select([
             'du.testo',
@@ -180,15 +194,20 @@ if(
          ->join('Citta AS c', 'u.citta', 'c.id')
          ->join('Nazione AS n', 'c.nazione', 'n.id' )
          ->where('u.id', $utente_id)
-         ->get();
+         ->first();
    }
    function updateProfile(Request $req): int {
       $id = $req->utente_id;
+      $img = $req->image;
       $toUpdate = [
          'testo' => $req->testo
       ];
-      if(isset($req->image))
-         $toUpdate['foto'] = $req->image;
+      if(isset($img)) {
+         $dir = 'profiles';
+         $files =  Storage::allFiles("public/$dir/$id/");
+         Storage::delete($files);
+         $toUpdate['foto'] = store($img , $dir, $id);
+      }
       DescrizioneUtente::where(
          'utente', $id
       )->update($toUpdate);
