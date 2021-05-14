@@ -2,6 +2,7 @@
 
 @php
     $selectors = selectors();
+    $utente = session()->get('utente');
 @endphp
 
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">

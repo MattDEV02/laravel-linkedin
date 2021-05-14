@@ -196,8 +196,10 @@ if(
          ->where('u.id', $utente_id)
          ->first();
    }
-   function updateProfile(Request $req): int {
-      $id = $req->utente_id;
+   function updateProfile(Request $req): void {
+      $id = $req
+         ->session()
+         ->get('utente')->id;
       $img = $req->image;
       $toUpdate = ['testo' => $req->testo];
       if(isset($img)) {
@@ -219,8 +221,10 @@ if(
       $utente->nome = $req->nome;
       $utente->cognome = $req->cognome;
       $utente->citta = $req->citta;
+      $req
+         ->session()
+         ->put('utente', $utente);
       $utente->save();
-      return $id;
    }
    function isLiked (int $post, int $utente): int {
       $res = DB::table('MiPiace AS mp')

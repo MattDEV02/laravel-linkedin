@@ -24,6 +24,7 @@ $selectors = selectors();
 <link rel="icon" sizes="64x64" type="image/x-icon" href="{{ $selectors['icons']['ico'] }}" />
 <!--
 <link rel="apple-touch-icon" sizes="192x192" href="" />
-<link rel="mask-icon" href="" color="" />
-<link rel="manifest" href="manifest.json" /> -->
+<link rel="mask-icon" href="" color="" />-->
+<link rel="manifest" href="mix-manifest.json" />
+@livewireStyles
 <link rel="stylesheet" type='text/css' href="{{ asset("css/app.css") }}" />

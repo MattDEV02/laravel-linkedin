@@ -9,7 +9,6 @@
 
 <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt-5 ml-md-4" id="mll">
     <div class="row">
-        <h1>{{ $profile->foto }}</h1>
         <div class="{{ $selectors['col'] }} border border-dark" id="profile_card">
             <div class="row">
                 <div class="{{ $selectors['col'] }} bg-secondary" id="profile_bg">
@@ -55,7 +54,7 @@
                         <div class="{{ $selectors['col'] }}2">
                             <div class="row">
                                 @if($own)
-                                    <a href="/edit-profile?utente_id={{ $profile->utente_id }}">
+                                    <a href="/edit-profile">
                                         <button class="btn btn-primary border border-dark {{ $ml }}">
                                             <i class="fas fa-edit"></i>
                                         </button>

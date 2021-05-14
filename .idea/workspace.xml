@@ -6,12 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/LogClear.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/LogClear.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MiPiaceClick.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MiPiaceClick.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/View/Components/Item.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/Components/Item.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/item.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/navbar.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/mi-piace-click.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/mi-piace-click.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feed/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feed/utils/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/utils/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/users-search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/users-search.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/utils/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/utils/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/utils/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/utils/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +264,7 @@
       <workItem from="1620852086748" duration="1757000" />
       <workItem from="1620893710067" duration="7964000" />
       <workItem from="1620926321333" duration="8136000" />
-      <workItem from="1620980135458" duration="18814000" />
+      <workItem from="1620980135458" duration="24100000" />
     </task>
     <servers />
   </component>

@@ -12,13 +12,23 @@ use Illuminate\Http\Request;
 use App\Models\Utente;
 
 
-class UtenteController extends Controller
-{
+class UtenteController extends Controller {
+
+   //private Utente $utente;
+
    public function login(Request $req) {
       return view('login.index',[
          'msg' => $req->msg,
          'ref' => (checkRef($req, 'login') || checkRef($req, 'registrazione'))
       ]);
+   }
+
+   public function logout(Request $req) {
+      $req
+         ->session()
+         ->forget('utente');
+      return redirect()
+         ->route('login');
    }
 
    public function registrazione(Request $req): object {
@@ -46,23 +56,28 @@ class UtenteController extends Controller
       $email = $req->email;
       $password = $req->password;
       $logged = isLogged($email, $password);
-      $utente = Utente::all([
-         'id',
-         'email',
-         'password'
-      ])
-         ->where('email', $email)
-         ->first();
-      return $logged ?
-         $this->feed($utente) :
-         redirect()
+      if($logged) {
+         $utente = Utente::all([
+            'id',
+            'email',
+            'password',
+            'nome',
+            'cognome',
+         ])
+            ->where('email', $email)
+            ->first();
+         $req
+            ->session()
+            ->put('utente', $utente);
+         return $this->feed();
+      } else
+         return redirect()
             ->route('login', ['msg' => 'not-reg']);
    }
 
-   public function feed(Utente $utente): Factory | View | Application
+   public function feed(): Factory | View | Application
    {
-      return view('feed.index',[
-         'utente' => $utente,
+      return view('feed.index', [
          'posts' => getAllPosts()
       ]);
    }

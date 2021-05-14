@@ -6,51 +6,58 @@ use App\Models\Citta;
 use App\Models\Lavoro;
 use App\Models\Utente;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-class ProfileController extends Controller
-{
+
+class ProfileController extends Controller {
+
+   private Utente $utente;
 
    public function profile(Request $req) {
-      $id = $req->utente_id;
-      $utente = Utente::find($id);
-      $profile = getProfile($id);
+      $this->utente = $req
+         ->session()
+         ->get('utente');
+      $utente_id = $this->utente->id;
+      $profile = getProfile($utente_id);
       return view('profile.index', [
          'profile' => $profile,
-         'utente' => $utente,
-         'posts' => getAllPosts($id),
-         'own' => $profile->utente_id === $utente->id,
+         'posts' => getAllPosts($utente_id),
+         'own' => $profile->utente_id === $utente_id,
       ]);
    }
 
    public function editProfile(Request $req) {
-      $id = $req->utente_id;
-      $profile = getProfile($id);
-      $utente = Utente::find($id);
+      $this->utente = $req
+         ->session()
+         ->get('utente');
+      $profile = getProfile($this->utente->id);
       return view('profile.utils.form', [
-         'utente' => $utente,
          'lavori' => Lavoro::all(),
          'citta' => Citta::all(),
          'profile' => $profile
       ]);
    }
    public function updateProfile(Request $req) {
-      $utente_id = updateProfile($req);
+      updateProfile($req);
       return  redirect()
-         ->route('profile', ['utente_id' => $utente_id]);
+         ->route('profile');
    }
    public function showProfile(Request $req) {
-      $utente = Utente::find($req->utente_id);
+      $this->utente = $req
+         ->session()
+         ->get('utente');
       $utenteSearched = Utente::where(
          'email', $req->search
-      )->get();
-      $id = $utenteSearched[0]->id;
-      $profile = getProfile($id);
-      return view('profile.index', [
-         'profile' => $profile,
-         'posts' => getAllPosts($id),
-         'own' => $profile->utente_id === $utente->id,
-         'utente' => $utente
-      ]);
+      )->first();
+      if(isset($utenteSearched)) {
+         $utente_id = $this->utente->id;
+         $utenteSearched_id = $utenteSearched->id;
+         $profile = getProfile($utenteSearched_id);
+         return view('profile.index', [
+            'profile' => $profile,
+            'posts' => getAllPosts($utenteSearched_id),
+            'own' => $profile->utente_id === $utente_id,
+         ]);
+      } else
+         return view('utils.user-not-found');
    }
 }

@@ -9,8 +9,14 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+   private Utente $utente;
+
    public function insert(Request $req) {
-      $utente_id = $req->id;
+      $this->utente =
+         $req
+            ->session()
+            ->get('utente');
+      $utente_id = $this->utente->id;
       $fileName = store($req->image, 'posts', $utente_id);
       $post = new Post();
       $post->testo= $req->testo;
@@ -18,8 +24,11 @@ class PostController extends Controller
       $post->utente = $utente_id;
       $post->save();
       return view('feed.utils.posts', [
-         'posts' => getAllPosts(),
-         'utente' => Utente::find($utente_id),
+         'posts' => getAllPosts()
       ]);
+   }
+
+   public function like(Request $req) {
+      return 'like';
    }
 }

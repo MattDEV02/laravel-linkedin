@@ -26,6 +26,8 @@ Route::view('/', 'home');
 Route::get('/login', [$UC, 'login'])
    ->name('login');
 
+Route::get('/logout', [$UC, 'logout']);
+
 Route::get('/registrazione', [$UC, 'registrazione'])
    ->name('registrazione');
 

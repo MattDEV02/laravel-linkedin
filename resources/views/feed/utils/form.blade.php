@@ -1,3 +1,5 @@
+
+
 <form method="POST" enctype="multipart/form-data" action="{{ $selectors['action'] }}/feed" id="postForm">
     @csrf
     <div class="form-group {{ $selectors['border'] }} p-4 mt-4">

@@ -3,12 +3,6 @@
 @endphp
 
 <div class="mr-2">
-    <!--
-      <i
-              class="fas fa-search fa-sm mt-2"
-              id="search-icon">
-      </i>
-    -->
     <input
             class="form-control inputTXT"
             type="search"
@@ -22,7 +16,7 @@
     <div class="mt-4 ml-3" style="position: fixed !important;">
         @foreach($utenti as $utente)
             <div class="my-3 border border-dark p-2 text-center">
-                <a href="show-profile?search={{ $utente->email }}&utente_id={{ $utente_id }}">
+                <a href="show-profile?search={{ $utente->email }}">
                     <b class="text-primary" title="{{ $utente->email }}">
                         {{ $utente->nomeCognome }}
                     </b>

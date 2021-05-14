@@ -1,8 +1,9 @@
 @php
     $selectors = selectors();
+    $utente = session()->get('utente');
 @endphp
 
-        <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>

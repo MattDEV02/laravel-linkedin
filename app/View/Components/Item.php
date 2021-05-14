@@ -7,18 +7,16 @@ use Illuminate\View\Component;
 class Item extends Component
 {
    public string $txt;
-   public string $class;
-   public $id;
+   public ?string $class;
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct(string $txt, string $class = '', $id = null)
+   public function __construct(string $txt, ?string $class = null)
    {
       $this->txt = $txt;
       $this->class = $class;
-      $this->id = $id;
    }
 
    /**
