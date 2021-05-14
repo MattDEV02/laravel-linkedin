@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/linkedin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/linkedin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/UsersSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/UsersSearch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/MiPiaceClick.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/MiPiaceClick.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/livewire-components.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/livewire-components.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/feed/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/feed/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/feed/utils/posts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/utils/posts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/mi-piace-click.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/mi-piace-click.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +251,7 @@
       <workItem from="1620852086748" duration="1757000" />
       <workItem from="1620893710067" duration="7964000" />
       <workItem from="1620926321333" duration="8136000" />
-      <workItem from="1620980135458" duration="13339000" />
+      <workItem from="1620980135458" duration="18814000" />
     </task>
     <servers />
   </component>

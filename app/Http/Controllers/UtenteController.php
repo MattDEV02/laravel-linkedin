@@ -17,7 +17,7 @@ class UtenteController extends Controller
    public function login(Request $req) {
       return view('login.index',[
          'msg' => $req->msg,
-         'ref' => checkRef($req, 'login') || checkRef($req, 'registrazione')
+         'ref' => (checkRef($req, 'login') || checkRef($req, 'registrazione'))
       ]);
    }
 
@@ -36,7 +36,7 @@ class UtenteController extends Controller
          return redirect()
             ->route('login', ['msg' => 'log']);
       else {
-         insertUtente($email, $req);
+         insertUtente($req);
          return redirect()
             ->route('login', ['msg' => 'reg']);
       }

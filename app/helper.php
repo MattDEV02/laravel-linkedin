@@ -26,10 +26,12 @@ if(
    !function_exists('checkRef') and
    !function_exists('insertUtente') and
    !function_exists('getProfile') and
-   !function_exists('updateProfile')
+   !function_exists('updateProfile') and
+   !function_exists('isLiked')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
+      $fd = 'public';
       return [
          'lang' =>  str_replace('_', '-', app()->getLocale()),
          'dir' => 'ltr',
@@ -61,7 +63,8 @@ if(
          'passLen' => 8,
          'autocomplete' => 'off',
          'title' => 'Clicca per Mostrare / Nascondere la Password',
-         'fd' => 'public'
+         'fd' => $fd,
+         'storage' => "$fd/storage/"
       ];
    }
    function consoleLog(mixed $s): void
@@ -105,10 +108,9 @@ if(
    }
    function isLogged(string $email, ?string $password = null): int {
       $attr = ['email', 'password'];
-      $res = $password ?
-         Utente::where($attr[0], $email)
-            ->where($attr[1], $password) :
-         Utente::where($attr[0], $email);
+      $q = Utente::where($attr[0], $email);
+      $res = isset($password) ?
+         $q->where($attr[1], $password) : $q;
       return $res->count();
    }
    function store($img, string $folder,  int $utente_id): string  {
@@ -116,10 +118,11 @@ if(
       $now = date('Y_m_d_H_i_s');
       $fileName = "$now.$extension";
       $filePath = "$utente_id/$fileName";
-      Storage::putFileAs("public/$folder", $img, $filePath);
+      $fd = selectors()['fd'];
+      Storage::putFileAs("$fd/$folder", $img, $filePath);
       return $fileName;
    }
-   function getAllPosts(?int $utente_id = null): array
+   function getAllPosts(?int $utente_id = null): array  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB
    {
       $sql = ("
          SELECT 
@@ -153,7 +156,7 @@ if(
    function checkRef(Request $req, string $path): bool {
       return str_contains($req->header('referer'), $path);
    }
-   function insertUtente(string $email, Request $req): void {
+   function insertUtente(Request $req): void {
       $utente = new Utente();
       $utente->email = $req->email; // Conferma Email
       $utente->password = $req->password;

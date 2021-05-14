@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use App\Models\MiPiace;
 
 
 class MiPiaceClick extends Component
@@ -14,11 +14,10 @@ class MiPiaceClick extends Component
    public bool $isDisabled = false;
 
    public function liked(int $post, int $utente) {
-      DB::table('MiPiace')
-         ->insert([
-            'post' => $post,
-            'utente' => $utente
-         ]);
+      $miPiace = new MiPiace();
+      $miPiace->post = $post;
+      $miPiace->utente = $utente;
+      $miPiace->save();
       $this->like++;
       $this->isDisabled = true;
    }
