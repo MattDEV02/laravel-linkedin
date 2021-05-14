@@ -9,6 +9,7 @@
 
 <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt-5 ml-md-4" id="mll">
     <div class="row">
+        <h1>{{ $profile->foto }}</h1>
         <div class="{{ $selectors['col'] }} border border-dark" id="profile_card">
             <div class="row">
                 <div class="{{ $selectors['col'] }} bg-secondary" id="profile_bg">
@@ -64,7 +65,7 @@
                                         <b>Collegati</b>
                                     </button>
                                 @endif
-                                    <b class="text-primary ml-3" id="collegamenti">0 Collegamenti.</b>
+                                <b class="text-info ml-3" id="collegamenti">{{ 0 }} Collegamenti.</b>
                             </div>
                         </div>
                         <div class="{{ $selectors['col'] }}{{ $mt }} mb-2">

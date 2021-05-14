@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Utente;
 use Illuminate\Http\Request;
 
 
@@ -17,10 +18,8 @@ class PostController extends Controller
       $post->utente = $utente_id;
       $post->save();
       return view('feed.utils.posts', [
-         'posts' => getAllPosts()
+         'posts' => getAllPosts(),
+         'utente' => Utente::find($utente_id),
       ]);
-   }
-   public function like(Request $req) {
-      return '';
    }
 }

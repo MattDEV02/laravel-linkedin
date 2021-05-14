@@ -20,15 +20,11 @@
                 </h6>
                 <p class="card-text">{{ $post->testo }}</p>
                 <div class="{{ $selectors['col'] }}">
-                    <div class="row">
-                        <button
-                                class="btn btn-primary {{ $selectors['fw'] }} {{ $selectors['border'] }}">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                        <h3 class="card-text ml-3 mt-1">
-                            {{ $post->miPiace }}
-                        </h3>
-                    </div>
+                    @livewire('mi-piace-click', [
+                        'like' => $post->miPiace,
+                        'post' => $post->id,
+                        'utente' => $utente_id
+                    ])
                 </div>
             </div>
             <div class="card-footer">

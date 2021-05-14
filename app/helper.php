@@ -3,6 +3,7 @@
 use App\Models\DescrizioneUtente;
 use App\Models\Utente;
 use App\Models\UtenteLavoro;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -63,7 +64,7 @@ if(
          'fd' => 'public'
       ];
    }
-   function consoleLog($s): void
+   function consoleLog(mixed $s): void
    {
       $out = new ConsoleOutput();
       $s = strval($s);
@@ -118,10 +119,11 @@ if(
       Storage::putFileAs("public/$folder", $img, $filePath);
       return $fileName;
    }
-   function getAllPosts(?int $utente_id = null)
+   function getAllPosts(?int $utente_id = null): array
    {
       $sql = ("
          SELECT 
+            p.id,
             p.utente AS utente_id,
 	         p.foto,
             p.testo,
@@ -140,14 +142,9 @@ if(
          Where
             True
         GROUP BY 
-            p.foto,
-            p.created_at,
-            p.testo,
-            p.utente,
-            utente,
-            lavoroPresso
+            p.id
         ORDER BY 
-            p.created_at
+            p.created_at DESC 
       ");
       if(isset($utente_id))
          $sql = str_replace("True", "p.utente = $utente_id", $sql);
@@ -199,9 +196,7 @@ if(
    function updateProfile(Request $req): int {
       $id = $req->utente_id;
       $img = $req->image;
-      $toUpdate = [
-         'testo' => $req->testo
-      ];
+      $toUpdate = ['testo' => $req->testo];
       if(isset($img)) {
          $dir = 'profiles';
          $files =  Storage::allFiles("public/$dir/$id/");
@@ -223,6 +218,16 @@ if(
       $utente->citta = $req->citta;
       $utente->save();
       return $id;
+   }
+   function isLiked (int $post, int $utente): int {
+      $res = DB::table('MiPiace AS mp')
+         ->select(DB::raw(' COUNT(u.id) AS liked'))
+         ->join('Post AS p', 'mp.post', 'p.id')
+         ->join('Utente AS u', 'mp.utente', 'u.id')
+         ->where('p.id', $post)
+         ->where('u.id', $utente)
+         ->first();
+      return $res->liked;
    }
 }
 

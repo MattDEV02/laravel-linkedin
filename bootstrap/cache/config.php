@@ -280,7 +280,7 @@
         'collation' => 'utf8_general_ci',
         'prefix' => '',
         'prefix_indexes' => true,
-        'strict' => true,
+        'strict' => false,
         'engine' => NULL,
         'options' => 
         array (

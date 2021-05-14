@@ -22,12 +22,9 @@ class UsersSearch extends Component
             ),
             'email'
          )
-            ->where(
-               'nome', 'like', "$s%"
-            )
-            ->orWhere(
-               'cognome', 'like', "$s%"
-            )->get() : [];
+            ->where('nome', 'like', "$s%")
+            ->orWhere('cognome', 'like', "$s%")
+            ->get() : [];
    }
 
    public function render()

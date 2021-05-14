@@ -2,6 +2,7 @@ const
    image = $('#image'),
    testo = $('#testo'),
    btn = $('#fileBTN'),
+   like = $('button.liked'),
    prop = 'backgroundColor',
    colors = ['#3490DC', '#EF7E05F2'];
 
@@ -38,8 +39,14 @@ $('#postForm').submit(
       })
          .catch(e => console.error(e));
       console.log(res);
-      res ?
+      res.status === 200 ?
          $('#posts-container').html(res.data) :
          window.alert('Errore nella Pubblicazione del Post.')
       reset(e);
    });
+
+const disable = el => el.attr('disabled', true);
+
+disable(like);
+
+

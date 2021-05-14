@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DescrizioneUtente;
 use App\Models\Lavoro;
-use App\Models\UtenteLavoro;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;

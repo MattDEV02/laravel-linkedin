@@ -2,7 +2,7 @@
     $selectors = selectors();
 @endphp
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Profile" />
@@ -12,16 +12,16 @@
 </head>
 
 <body>
-    @include('utils.navbar')
-    <div class="{{ $selectors['container'] }}">
-        <div class="row justify-content-center justify-content-md-start">
-            @component('components.profile', [
-             'profile' => $profile,
-             'own' => $own
-             ])
-            @endcomponent
-        </div>
-        @include('feed.utils.posts')
+@include('utils.navbar')
+<div class="{{ $selectors['container'] }}">
+    <div class="row justify-content-center justify-content-md-start">
+        @component('components.profile', [
+         'profile' => $profile,
+         'own' => $own
+         ])
+        @endcomponent
     </div>
+    @include('feed.utils.posts')
+</div>
 </body>
 </html>
