@@ -8,7 +8,6 @@
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Feed" />
-    <link rel="stylesheet" type="text/css" href="css/login/index.css" />
     <link rel="stylesheet" type="text/css" href="css/feed/index.css" />
 </head>
 
@@ -17,6 +16,11 @@
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row']}}">
+            <noscript>
+                <b>
+                    JavaScript non abilitato !!!
+                </b>
+            </noscript>
             @include('feed.utils.form')
             <div class="{{ $selectors['col'] }}">
                 <div class="{{ $selectors['row'] }}" id="posts-container">

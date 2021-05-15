@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Utente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 
 class PostController extends Controller
@@ -23,6 +24,7 @@ class PostController extends Controller
       $post->foto = $fileName;
       $post->utente = $utente_id;
       $post->save();
+      Log::debug('New Post Inserted.');
       return view('feed.utils.posts', [
          'posts' => getAllPosts()
       ]);

@@ -9,13 +9,17 @@
     <x-head title="Profile" />
     <link rel="stylesheet" type="text/css" href="css/profile/index.css" />
     <link rel="stylesheet" type="text/css" href="/css/registrazione/index.css" />
-    <link rel="stylesheet" type="text/css" href="css/feed/index.css" />
 </head>
 
 <body>
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
     <div class="row justify-content-center justify-content-md-start">
+        <noscript>
+            <b>
+                JavaScript non abilitato !!!
+            </b>
+        </noscript>
         @component('components.profile', [
          'profile' => $profile,
          'own' => $own

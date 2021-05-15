@@ -10,6 +10,7 @@ use App\Models\Citta;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Utente;
+use Illuminate\Support\Facades\Log;
 
 
 class UtenteController extends Controller {
@@ -27,6 +28,7 @@ class UtenteController extends Controller {
       $req
          ->session()
          ->forget('utente');
+      Log::error('Finished User-Session.');
       return redirect()
          ->route('login');
    }
@@ -47,6 +49,7 @@ class UtenteController extends Controller {
             ->route('login', ['msg' => 'log']);
       else {
          insertUtente($req);
+         Log::debug('New User Interted');
          return redirect()
             ->route('login', ['msg' => 'reg']);
       }
@@ -69,16 +72,29 @@ class UtenteController extends Controller {
          $req
             ->session()
             ->put('utente', $utente);
+         Log::info('New User-Session sterted');
          return $this->feed();
       } else
          return redirect()
             ->route('login', ['msg' => 'not-reg']);
    }
 
-   public function feed(): Factory | View | Application
-   {
+   public function feed(): Factory | View | Application {
       return view('feed.index', [
          'posts' => getAllPosts()
       ]);
+   }
+
+   public function passwordDimenticata(Request $req): bool {
+      $email = $req->email;
+      $res = false;
+      $utente = Utente::all(['email', 'password'])
+         ->where('email' , $email)
+         ->first();
+      if(isset($utente->password)) {
+         $password = $utente->password;
+         $res = sendmail($email, $password);
+      }
+      return $res;
    }
 }

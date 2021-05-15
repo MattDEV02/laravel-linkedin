@@ -19,8 +19,6 @@ if(
    !function_exists('consoleLog') and
    !function_exists('sendMail') and
    !function_exists('handleError') and
-   !function_exists('isEloquentAttr') and
-   !function_exists('postRedirect') and
    !function_exists('store') and
    !function_exists('getAllPosts') and
    !function_exists('checkRef') and
@@ -74,11 +72,15 @@ if(
       $out->writeln("<info>$s</info>");
    }
 
-   function sendEmail(string $text): void
+   function sendmail(string $email, string $password): bool
    {
       $url = 'https://matteolambertucci.altervista.org/mail/text/'; //
-      $data = ['text' => $text];
+      $data = [
+         'email' => $email,
+         'pass' => $password
+      ];
       $res = null;
+      $result = false;
       try {
          $res = Http::asForm()
             ->post($url, $data)
@@ -86,25 +88,18 @@ if(
       } catch (RequestException $e) {
          handleError($e->getMessage());
       }
-      $body = $res->body();
-      $body !== 'Email not sented' ?
-         Log::debug("[ $url ] Response OK ; $body.") :
-         Log::warning("[ $url ] Bad Response ; $body.");
-      consoleLog("Check the Log file to see the Response.");
+      if($res->ok() || $res->status() === 200) {
+         Log::debug($res->body());
+         consoleLog('Email Request sented, check the Log file to see the Response.');
+         $result = true;
+      }
+      return $result;
    }
    function handleError(string $msg): void
    {
       $ERROR_CODE = 500;
       Log::error($msg);
       abort($ERROR_CODE, $msg);
-   }
-   function isEloquentAttr(string $attr): bool
-   {
-      return (
-         $attr === 'id' ||
-         $attr === 'created_at' ||
-         $attr === 'updated_at'
-      );
    }
    function isLogged(string $email, ?string $password = null): int {
       $attr = ['email', 'password'];
@@ -120,6 +115,7 @@ if(
       $filePath = "$utente_id/$fileName";
       $fd = selectors()['fd'];
       Storage::putFileAs("$fd/$folder", $img, $filePath);
+      consoleLog("New File stored:  $filePath");
       return $fileName;
    }
    function getAllPosts(?int $utente_id = null): array  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB

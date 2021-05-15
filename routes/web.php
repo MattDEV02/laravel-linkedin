@@ -23,24 +23,16 @@ $PRC = ProfileController::class;
 
 Route::view('/', 'home');
 
+Route::any('home', fn() => redirect('/'));
+
 Route::get('/login', [$UC, 'login'])
    ->name('login');
 
-Route::get('/logout', [$UC, 'logout']);
+Route::get('/logout', [$UC, 'logout'])
+   ->name('logout');
 
 Route::get('/registrazione', [$UC, 'registrazione'])
    ->name('registrazione');
-
-Route::prefix('ricezione-dati')
-   ->group(function () {
-      $UC = UtenteController::class;
-      $PC = PostController::class;
-      $PRC = ProfileController::class;
-      Route::post('/feed', [$PC, 'insert']);
-      Route::post('/registrazione', [$UC, 'insert']);
-      Route::post('/edit-profile', [$PRC, 'updateProfile']);
-      Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
-   });
 
 Route::post('/feed', [$UC, 'logResult']);
 
@@ -50,4 +42,16 @@ Route::get('/profile', [$PRC, 'profile'])
    ->name('profile');
 
 Route::get('show-profile', [$PRC, 'showProfile']);
+
+Route::prefix('ricezione-dati')
+   ->group(function () {
+      $UC = UtenteController::class;
+      $PC = PostController::class;
+      $PRC = ProfileController::class;
+      Route::post('/registrazione', [$UC, 'insert']);
+      Route::post('/feed', [$PC, 'insert']);
+      Route::post('/edit-profile', [$PRC, 'updateProfile']);
+      Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
+   });
+
 

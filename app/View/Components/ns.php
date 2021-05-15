@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class NoScript extends Component
+class ns extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class NoScript extends Component
      */
     public function render()
     {
-        return view('components.no-script');
+        return view('components.ns');
     }
 }

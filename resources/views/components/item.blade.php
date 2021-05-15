@@ -1,5 +1,5 @@
 @php
-$cond = $txt === 'registrazione';
+$cond = $txt === 'home';
 $ml = $cond ? 4 : 2;
 @endphp
 

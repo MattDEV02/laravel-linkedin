@@ -43,7 +43,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::cCTwTCC9T26xPwCX',
+            '_route' => 'generated::LwAk7iihW0XVS9w7',
           ),
           1 => NULL,
           2 => 
@@ -63,7 +63,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::1Tu9k7ptv67ztDV3',
+            '_route' => 'generated::XrSIf0Uh2tXhZG7B',
           ),
           1 => NULL,
           2 => 
@@ -83,7 +83,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::CI6qLAa6EIjj5nZi',
+            '_route' => 'generated::Re2D0leoHLaERKvV',
           ),
           1 => NULL,
           2 => 
@@ -103,13 +103,38 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::YkOgMRfo1aGzhqBM',
+            '_route' => 'generated::oALeSTQ0mzp9vyPz',
           ),
           1 => NULL,
           2 => 
           array (
             'GET' => 0,
             'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/home' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::QKJnxAXM7gixl7R4',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+            'POST' => 2,
+            'PUT' => 3,
+            'PATCH' => 4,
+            'DELETE' => 5,
+            'OPTIONS' => 6,
           ),
           3 => NULL,
           4 => false,
@@ -143,7 +168,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::QUQuMhg4kci15M6w',
+            '_route' => 'logout',
           ),
           1 => NULL,
           2 => 
@@ -177,89 +202,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/ricezione-dati/feed' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::ZSKmE1SDzlfkhnBO',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/ricezione-dati/registrazione' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::BQnqKJZwrxmvMGha',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/ricezione-dati/edit-profile' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::UukjF57m0FaMswXI',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/ricezione-dati/passwordDimenticata' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::n6AjPUE06fH20sgM',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
       '/feed' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::KaXiHx582Dbvmvsi',
+            '_route' => 'generated::NbQFONOOfYB5KWdh',
           ),
           1 => NULL,
           2 => 
@@ -278,7 +227,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::3yLOgVn2TRqJmQM6',
+            '_route' => 'generated::XJ8aE5xtUF9PTVSx',
           ),
           1 => NULL,
           2 => 
@@ -318,13 +267,89 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::tXJl9ej4seWg0eFa',
+            '_route' => 'generated::h9ZB3QmdGGcsbDuR',
           ),
           1 => NULL,
           2 => 
           array (
             'GET' => 0,
             'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/ricezione-dati/registrazione' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::hRiI8jQLcUV9WTSR',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/ricezione-dati/feed' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::ThuFJdv9Tz3UYadv',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/ricezione-dati/edit-profile' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::XWACC3yYllN3BVoX',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/ricezione-dati/passwordDimenticata' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::4DFjEg1ANOVja9k6',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -490,7 +515,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::cCTwTCC9T26xPwCX' => 
+    'generated::LwAk7iihW0XVS9w7' => 
     array (
       'methods' => 
       array (
@@ -502,7 +527,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@source',
-        'as' => 'generated::cCTwTCC9T26xPwCX',
+        'as' => 'generated::LwAk7iihW0XVS9w7',
       ),
       'fallback' => false,
       'defaults' => 
@@ -517,7 +542,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::1Tu9k7ptv67ztDV3' => 
+    'generated::XrSIf0Uh2tXhZG7B' => 
     array (
       'methods' => 
       array (
@@ -529,7 +554,7 @@ app('router')->setCompiledRoutes(
       array (
         'uses' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
         'controller' => 'Livewire\\Controllers\\LivewireJavaScriptAssets@maps',
-        'as' => 'generated::1Tu9k7ptv67ztDV3',
+        'as' => 'generated::XrSIf0Uh2tXhZG7B',
       ),
       'fallback' => false,
       'defaults' => 
@@ -544,7 +569,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::CI6qLAa6EIjj5nZi' => 
+    'generated::Re2D0leoHLaERKvV' => 
     array (
       'methods' => 
       array (
@@ -559,15 +584,15 @@ app('router')->setCompiledRoutes(
           0 => 'api',
           1 => 'auth:api',
         ),
-        'uses' => 'C:32:"Opis\\Closure\\SerializableClosure":289:{@QjUA6NCZGqod39UkFSiIxdYYW1aNs3iN4L8ue3VkpxU=.a:5:{s:3:"use";a:0:{}s:8:"function";s:77:"function (\\Illuminate\\Http\\Request $request) {
+        'uses' => 'C:32:"Opis\\Closure\\SerializableClosure":289:{@X0fULAgwEv6jcdEz480qLbDy3bMG9uYRZ5Zq8V214SQ=.a:5:{s:3:"use";a:0:{}s:8:"function";s:77:"function (\\Illuminate\\Http\\Request $request) {
     return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000fe096650000000061dec2ea";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000001bec8cda0000000054fbcf30";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::CI6qLAa6EIjj5nZi',
+        'as' => 'generated::Re2D0leoHLaERKvV',
       ),
       'fallback' => false,
       'defaults' => 
@@ -582,7 +607,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::YkOgMRfo1aGzhqBM' => 
+    'generated::oALeSTQ0mzp9vyPz' => 
     array (
       'methods' => 
       array (
@@ -603,7 +628,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::YkOgMRfo1aGzhqBM',
+        'as' => 'generated::oALeSTQ0mzp9vyPz',
       ),
       'fallback' => false,
       'defaults' => 
@@ -616,6 +641,46 @@ app('router')->setCompiledRoutes(
         'headers' => 
         array (
         ),
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'generated::QKJnxAXM7gixl7R4' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+        2 => 'POST',
+        3 => 'PUT',
+        4 => 'PATCH',
+        5 => 'DELETE',
+        6 => 'OPTIONS',
+      ),
+      'uri' => 'home',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'C:32:"Opis\\Closure\\SerializableClosure":234:{@0w1HlTYfxrE+yMdHIV82gl+EPBAFCDLj3qNZfxGaKL4=.a:5:{s:3:"use";a:0:{}s:8:"function";s:22:"fn() => \\redirect(\'/\')";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000001bec8cd90000000054fbcf30";}}',
+        'namespace' => NULL,
+        'prefix' => NULL,
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::QKJnxAXM7gixl7R4',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
       ),
       'wheres' => 
       array (
@@ -662,7 +727,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::QUQuMhg4kci15M6w' => 
+    'logout' => 
     array (
       'methods' => 
       array (
@@ -683,7 +748,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::QUQuMhg4kci15M6w',
+        'as' => 'logout',
       ),
       'fallback' => false,
       'defaults' => 
@@ -734,147 +799,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::ZSKmE1SDzlfkhnBO' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'ricezione-dati/feed',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'uses' => 'App\\Http\\Controllers\\PostController@insert',
-        'controller' => 'App\\Http\\Controllers\\PostController@insert',
-        'namespace' => NULL,
-        'prefix' => '/ricezione-dati',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::ZSKmE1SDzlfkhnBO',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-    ),
-    'generated::BQnqKJZwrxmvMGha' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'ricezione-dati/registrazione',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'uses' => 'App\\Http\\Controllers\\UtenteController@insert',
-        'controller' => 'App\\Http\\Controllers\\UtenteController@insert',
-        'namespace' => NULL,
-        'prefix' => '/ricezione-dati',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::BQnqKJZwrxmvMGha',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-    ),
-    'generated::UukjF57m0FaMswXI' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'ricezione-dati/edit-profile',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ProfileController@updateProfile',
-        'controller' => 'App\\Http\\Controllers\\ProfileController@updateProfile',
-        'namespace' => NULL,
-        'prefix' => '/ricezione-dati',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::UukjF57m0FaMswXI',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-    ),
-    'generated::n6AjPUE06fH20sgM' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'ricezione-dati/passwordDimenticata',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'uses' => 'App\\Http\\Controllers\\UtenteController@passwordDimenticata',
-        'controller' => 'App\\Http\\Controllers\\UtenteController@passwordDimenticata',
-        'namespace' => NULL,
-        'prefix' => '/ricezione-dati',
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::n6AjPUE06fH20sgM',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-    ),
-    'generated::KaXiHx582Dbvmvsi' => 
+    'generated::NbQFONOOfYB5KWdh' => 
     array (
       'methods' => 
       array (
@@ -894,7 +819,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::KaXiHx582Dbvmvsi',
+        'as' => 'generated::NbQFONOOfYB5KWdh',
       ),
       'fallback' => false,
       'defaults' => 
@@ -909,7 +834,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::3yLOgVn2TRqJmQM6' => 
+    'generated::XJ8aE5xtUF9PTVSx' => 
     array (
       'methods' => 
       array (
@@ -930,7 +855,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::3yLOgVn2TRqJmQM6',
+        'as' => 'generated::XJ8aE5xtUF9PTVSx',
       ),
       'fallback' => false,
       'defaults' => 
@@ -981,7 +906,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::tXJl9ej4seWg0eFa' => 
+    'generated::h9ZB3QmdGGcsbDuR' => 
     array (
       'methods' => 
       array (
@@ -1002,7 +927,147 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::tXJl9ej4seWg0eFa',
+        'as' => 'generated::h9ZB3QmdGGcsbDuR',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'generated::hRiI8jQLcUV9WTSR' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'ricezione-dati/registrazione',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\UtenteController@insert',
+        'controller' => 'App\\Http\\Controllers\\UtenteController@insert',
+        'namespace' => NULL,
+        'prefix' => '/ricezione-dati',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::hRiI8jQLcUV9WTSR',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'generated::ThuFJdv9Tz3UYadv' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'ricezione-dati/feed',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\PostController@insert',
+        'controller' => 'App\\Http\\Controllers\\PostController@insert',
+        'namespace' => NULL,
+        'prefix' => '/ricezione-dati',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::ThuFJdv9Tz3UYadv',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'generated::XWACC3yYllN3BVoX' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'ricezione-dati/edit-profile',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\ProfileController@updateProfile',
+        'controller' => 'App\\Http\\Controllers\\ProfileController@updateProfile',
+        'namespace' => NULL,
+        'prefix' => '/ricezione-dati',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::XWACC3yYllN3BVoX',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'generated::4DFjEg1ANOVja9k6' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'ricezione-dati/passwordDimenticata',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\UtenteController@passwordDimenticata',
+        'controller' => 'App\\Http\\Controllers\\UtenteController@passwordDimenticata',
+        'namespace' => NULL,
+        'prefix' => '/ricezione-dati',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::4DFjEg1ANOVja9k6',
       ),
       'fallback' => false,
       'defaults' => 

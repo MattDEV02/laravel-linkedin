@@ -5,7 +5,7 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
 
-            <x-item txt="registrazione" class="text-dark"/>
+            <x-item txt="home" class="text-dark"/>
             <x-item
                     txt="logout"
                     class="text-danger"

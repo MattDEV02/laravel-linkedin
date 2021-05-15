@@ -1,4 +1,5 @@
-@import '../utils';
+@import '../variables';
+
 
 @function getColor($key) {
    $result: map-get($colors, $key);

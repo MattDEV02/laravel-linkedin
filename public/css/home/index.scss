@@ -1,0 +1,34 @@
+@import '../variables';
+
+
+@function getColor($key) {
+   $result: map-get($colors, $key);
+   @debug 'Color: ' + $result; // Console Output
+   @return $result;
+}
+
+$blue: getColor('blue');
+
+.link {
+   font-family: inherit !important;
+   font-size: 1.01rem !important;
+}
+
+#accedi {
+   border: 2px solid $blue !important;
+   color: $blue !important;
+   border-radius: ($pad * 6);
+}
+
+#iscriviti {
+   font-weight: 500;
+}
+
+#accedi:hover {
+   background-color: #D4E8F1;
+}
+
+#iscriviti:hover {
+   color: getColor('black') !important;
+   background-color: #E8E6E6;
+}

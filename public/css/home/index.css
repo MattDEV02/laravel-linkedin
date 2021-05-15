@@ -1,0 +1,25 @@
+.link {
+  font-family: inherit !important;
+  font-size: 1.01rem !important;
+}
+
+#accedi {
+  border: 2px solid #0A66C2 !important;
+  color: #0A66C2 !important;
+  border-radius: 24px;
+}
+
+#iscriviti {
+  font-weight: 500;
+}
+
+#accedi:hover {
+  background-color: #D4E8F1;
+}
+
+#iscriviti:hover {
+  color: #000000 !important;
+  background-color: #E8E6E6;
+}
+
+/*# sourceMappingURL=index.css.map */

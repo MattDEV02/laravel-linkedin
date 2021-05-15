@@ -17,6 +17,11 @@
     <div class="{{ $selectors['row'] }}">
         <div class="{{ $selectors['col'] }}">
             <div class="row">
+                <noscript>
+                    <b>
+                        JavaScript non abilitato !!!
+                    </b>
+                </noscript>
                 <div class="{{ $selectors['col'] }}">
                     <div class="{{ $selectors['row'] }} mt-5">
                         <h5 id="subtitle">

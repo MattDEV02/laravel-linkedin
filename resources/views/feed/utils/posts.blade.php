@@ -1,5 +1,6 @@
 @php
 $selectors = selectors();
+$utente = session()->get('utente');
 @endphp
 
 <div class="{{ $selectors['col'] }}5">
