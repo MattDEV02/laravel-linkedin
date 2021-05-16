@@ -9,7 +9,7 @@
 
 <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt-5 ml-md-4" id="mll">
     <div class="row">
-        <div class="{{ $selectors['col'] }} border border-dark" id="profile_card">
+        <div class="{{ $selectors['col'] }} border border-dark" id="profile_card" title="{{ $profile->utenteEmail }}">
             <div class="row">
                 <div class="{{ $selectors['col'] }} bg-secondary" id="profile_bg">
                     <div class="row">

@@ -20,7 +20,7 @@ class CreatePostTable extends Migration
          $table->unsignedInteger('utente')->comment('Riferimento alla Chiava Primaria di Utente');
          $table->timestamp('created_at')->useCurrent()->comment('Data Creazione del Record (consente di ottenere anche la di Pubblicazione del Post)');
          $table->timestamp('updated_at')->useCurrent()->comment('Data Aggiornamento del Record');
-         $table->unique(['utente', 'created_at'], 'utenteCreatedAt_UtentePost_UNIQUE');
+         $table->unique(['utente', 'created_at', 'testo'], 'utenteTestoCreatedAt_UtentePost_UNIQUE');
          $table->engine = 'InnoDB';
          $table->charset = 'utf8mb4';
          $table->collation = 'utf8mb4_unicode_ci';

@@ -8,21 +8,66 @@ use Illuminate\Support\Facades\DB;
 class LavoroSeeder extends Seeder
 {
    private array $lavori =  [
-      ['nome' => 'Disoccupato'],
-      ['nome' => 'Cuoco'],
-      ['nome' => 'Dipendente'],
-      ['nome' => 'Freelancer'],
-      ['nome' => 'Calciatore'],
-      ['nome' => 'Avvocato'],
-      ['nome' => 'Cassiere'],
-      ['nome' => 'Giudice'],
-      ['nome' => 'Coltivatore'],
-      ['nome' => 'Barista'],
-      ['nome' => 'Imprenditore'],
-      ['nome' => 'Segretario'],
-      ['nome' => 'Stilista'],
-      ['nome' => 'Carabiniere'],
-      ['nome' => 'Poliziotto'],
+      [
+         'id' => 1,
+         'nome' => 'Disoccupato'
+      ],
+      [
+         'id' => 2,
+         'nome' => 'Cuoco'
+      ],
+      [
+         'id' => 3,
+         'nome' => 'Dipendente'
+      ],
+      [
+         'id' => 4,
+         'nome' => 'Freelancer'
+      ],
+      [
+         'id' => 5,
+         'nome' => 'Calciatore'
+      ],
+      [
+         'id' => 6,
+         'nome' => 'Avvocato'
+      ],
+      [
+         'id' => 7,
+         'nome' => 'Cassiere'
+      ],
+      [
+         'id' => 8,
+         'nome' => 'Giudice'
+      ],
+      [
+         'id' => 9,
+         'nome' => 'Coltivatore'
+      ],
+      [
+         'id' => 10,
+         'nome' => 'Barista'
+      ],
+      [
+         'id' => 11,
+         'nome' => 'Imprenditore'
+      ],
+      [
+         'id' => 12,
+         'nome' => 'Segretario'
+      ],
+      [
+         'id' => 13,
+         'nome' => 'Stilista'
+      ],
+      [
+         'id' => 14,
+         'nome' => 'Carabiniere'
+      ],
+      [
+         'id' => 15,
+         'nome' => 'Poliziotto'
+      ],
    ];
    /**
     * Run the database seeds.
@@ -30,7 +75,7 @@ class LavoroSeeder extends Seeder
     * @return void
     */
    public function run() {
-      foreach($this->$lavori as $lavoro)
+      foreach($this->lavori as $lavoro)
          DB::table('Lavoro')
             ->insert($lavoro);
    }

@@ -10,56 +10,64 @@ class CittaSeeder extends Seeder
 {
    private array $citta = [
       [
+         'id' => 1,
          'nome' => 'Roma',
-         'nazione' => 12
+         'nazione' => 1
       ],
       [
+         'id' => 2,
          'nome' => 'Milano',
-         'nazione' => 12
+         'nazione' => 1
       ],
       [
+         'id' => 3,
          'nome' => 'Londra',
-         'nazione' => 16
+         'nazione' => 4
       ],
       [
+         'id' => 4,
          'nome' => 'Pechino',
-         'nazione' => 20
+         'nazione' => 8
       ],
       [
-         'nome' => 'Helsinki',
-         'nazione' => 13
-      ],
-      [
+         'id' => 6,
          'nome' => 'Los Angeles',
-         'nazione' => 15
+         'nazione' => 3
       ],
       [
+         'id' => 7,
          'nome' => 'New York',
-         'nazione' => 15
+         'nazione' => 3
       ],
       [
+         'id' => 8,
          'nome' => 'Boston',
-         'nazione' => 15
+         'nazione' => 3
       ],
       [
+         'id' => 9,
          'nome' => 'Parigi',
-         'nazione' => 18
+         'nazione' => 6
       ],
       [
+         'id' => 10,
          'nome' => 'Marsiglia',
-         'nazione' => 18
+         'nazione' => 6
       ],
       [
+         'id' => 11,
          'nome' => 'Sydney',
-         'nazione' => 21
+         'nazione' => 9
       ],
       [
+         'id' => 12,
          'nome' => 'Francoforte',
-         'nazione' => 19
+         'nazione' => 7
       ],
       [
+         'id' => 13,
          'nome' => 'Tokyo',
-         'nazione' => 14
+         'nazione' => 2
       ],
    ];
    /**

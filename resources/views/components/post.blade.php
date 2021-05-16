@@ -4,7 +4,7 @@
 
 <div class="{{ $selectors['col'] }}5">
     <div class="{{ $selectors['row'] }}">
-        <div class="card" id="card" style="width: 23rem;">
+        <div class="card" id="card" style="width: 23rem;" title="{{ $post->utenteEmail }}">
             <img
                     id="post_img"
                     class="card-img-top"

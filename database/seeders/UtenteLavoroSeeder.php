@@ -9,10 +9,30 @@ class UtenteLavoroSeeder extends Seeder
 {
    private array $utentiLavori = [
       [
-         'utente' => 12,
+         'utente' => 1,
          'lavoro' => 1,
          'dataInizioLavoro' => null
-      ]
+      ],
+      [
+         'utente' => 2,
+         'lavoro' => 2,
+         'dataInizioLavoro' => '2020-12-12'
+      ],
+      [
+         'utente' => 3,
+         'lavoro' => 15,
+         'dataInizioLavoro' => '2021-04-10'
+      ],
+      [
+         'utente' => 4,
+         'lavoro' => 7,
+         'dataInizioLavoro' => '2019-11-14'
+      ],
+      [
+         'utente' => 5,
+         'lavoro' => 9,
+         'dataInizioLavoro' => '2021-01-02'
+      ],
    ];
    /**
     * Run the database seeds.

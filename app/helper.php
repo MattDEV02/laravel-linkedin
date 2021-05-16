@@ -133,6 +133,7 @@ if(
             p.created_at,
             CONCAT(u.nome, ' ', u.cognome) AS utente,
             CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
+            u.email AS utenteEmail,
             COUNT(mp.id) AS miPiace
         FROM 
 	         Post p
@@ -181,7 +182,7 @@ if(
             'du.testo',
             'du.foto',
             'du.updated_at',
-            'u.email AS utenteMail',
+            'u.email AS utenteEmail',
             'u.nome AS utenteName',
             'u.cognome AS utenteSurname',
             'u.id AS utente_id',

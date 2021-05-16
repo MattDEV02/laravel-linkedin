@@ -6,12 +6,37 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class DescrizioneUtenteSeeder extends Seeder {
-   private array $descrizioneUtenti = [
+   private array $descrizioniUtenti = [
       [
-         'utente' => 12,
-         'testo' => 'Ciao a tutti sono Matteo Lambertucci!!',
+         'id' => 1,
+         'utente' => 1,
+         'testo' => 'Ciao a tutti mi chiamo Matteo Lambertucci e sono in cerca di Lavoro !!',
          'foto' => '2021_05_07_19_25_21.jpg'
-      ]
+      ],
+      [
+         'id' => 2,
+         'utente' => 2,
+         'testo' => 'Ciao a tutti mi chiamo Oprea e sono un Cuoco Cinese.',
+         'foto' => '2021_05_13_11_14_14.jpg'
+      ],
+      [
+         'id' => 3,
+         'utente' => 3,
+         'testo' => 'Ciao a tutti mi chiamo Michele Mammucari e sono un Poliziotto Inglese.',
+         'foto' => '2021_05_13_11_05_08.jpg'
+      ],
+      [
+         'id' => 4,
+         'utente' => 4,
+         'testo' => null,
+         'foto' => null
+      ],
+      [
+         'id' => 5,
+         'utente' => 5,
+         'testo' => 'Bella regaaa io so er Devakk',
+         'foto' => '2021_05_13_11_12_22.jpg'
+      ],
    ];
    /**
     * Run the database seeds.
@@ -20,7 +45,7 @@ class DescrizioneUtenteSeeder extends Seeder {
     */
    public function run()
    {
-      foreach($this->descrizioneUtenti as $descrizioneUtente)
+      foreach($this->descrizioniUtenti as $descrizioneUtente)
          DB::table('DescrizioneUtente')
             ->insert($descrizioneUtente);
    }

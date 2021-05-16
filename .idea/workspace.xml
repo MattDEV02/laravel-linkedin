@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/linkedin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/linkedin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/packages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_16_192210_create_utente_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_16_201732_create_post_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_16_201732_create_post_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/CittaSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CittaSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DescrizioneUtenteSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DescrizioneUtenteSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/LavoroSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/LavoroSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/NazioneSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/NazioneSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/PostSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/PostSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UtenteLavoroSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UtenteLavoroSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UtenteSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UtenteSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/profile.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,6 +278,7 @@
       <workItem from="1621111206268" duration="3747000" />
       <workItem from="1621165920553" duration="600000" />
       <workItem from="1621179008425" duration="6704000" />
+      <workItem from="1621197873251" duration="3460000" />
     </task>
     <servers />
   </component>
