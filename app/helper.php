@@ -7,7 +7,9 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -101,12 +103,14 @@ if(
       Log::error($msg);
       abort($ERROR_CODE, $msg);
    }
-   function isLogged(string $email, ?string $password = null): int {
+   function isLogged(string $email, ?string $password = null): bool {
       $attr = ['email', 'password'];
-      $q = Utente::where($attr[0], $email);
-      $res = isset($password) ?
-         $q->where($attr[1], $password) : $q;
-      return $res->count();
+      $utente = Utente::all($attr)
+         ->where($attr[0], $email)
+         ->first();
+      $cond = isset($utente);
+      return isset($password) ?
+         $cond && Hash::check($password, $utente->password) : $cond;
    }
    function store($img, string $folder,  int $utente_id): string  {
       $extension = $img->extension();
@@ -154,8 +158,10 @@ if(
    }
    function insertUtente(Request $req): void {
       $utente = new Utente();
-      $utente->email = $req->email; // Conferma Email
-      $utente->password = $req->password;
+      $utente->email = $req->email;
+      $password = $req->password;
+      Cookie::queue('password', $password, 10);
+      $utente->password = Hash::make($password);
       $utente->nome = ucfirst($req->nome);
       $utente->cognome = ucfirst($req->cognome);
       $utente->citta = $req->citta;

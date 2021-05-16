@@ -14,11 +14,7 @@
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row'] }}">
-            <noscript>
-                <b>
-                    JavaScript non abilitato !!!
-                </b>
-            </noscript>
+            <x-noscript />
             <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
                 <div class="{{ $selectors['col'] }}">
                     <x-title row="justify-content-xl-start" />

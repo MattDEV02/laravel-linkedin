@@ -4,7 +4,6 @@
     </span>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-
             <x-item txt="home" class="text-dark"/>
             <x-item
                     txt="logout"
@@ -24,6 +23,11 @@
                             name="password"
                             value="{{ $utente->password }}"
                     />
+                    <input
+                            type="hidden"
+                            name="navbar"
+                            value="{{ true }}"
+                    />
                     <a type="submit" class="nav-link" id="feed" >
                         <h4 class="text-primary">
                             Feed
@@ -32,8 +36,8 @@
                 </form>
             </li>
         </ul>
-        <div id="search-div" class="ml-3">
-            @livewire('users-search', ['utente_id' => $utente->id])
+        <div class="ml-3">
+            @livewire('users-search')
             </form>
         </div>
     </div>

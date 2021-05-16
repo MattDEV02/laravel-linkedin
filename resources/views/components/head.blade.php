@@ -22,9 +22,6 @@ $selectors = selectors();
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="shortcut icon" type="image/x-icon" href="{{ $selectors['icons']['ico'] }}" />
 <link rel="icon" sizes="64x64" type="image/x-icon" href="{{ $selectors['icons']['ico'] }}" />
-<!--
-<link rel="apple-touch-icon" sizes="192x192" href="" />
-<link rel="mask-icon" href="" color="" />-->
-<link rel="manifest" href="mix-manifest.json" />
+<link rel="manifest" href="manifest.json" />
 @livewireStyles
 <link rel="stylesheet" type='text/css' href="{{ asset("css/app.css") }}" />

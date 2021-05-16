@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class UtenteSeeder extends Seeder
 {
+   private array $utenti = [
+      [
+         'email' => 'matteolambertucci3@gmail.com',
+         'password' => 'mivallus',
+         'nome' => 'Matteo',
+         'cognome' => 'Lambertucci',
+         'citta' => 18
+      ]
+   ];
    /**
     * Run the database seeds.
     *
@@ -14,15 +23,7 @@ class UtenteSeeder extends Seeder
     */
    public function run()
    {
-      $utenti = [
-         [
-            'email' => 'matteolambertucci3@gmail.com',
-            'password' => 'mivallus',
-            'dataInizioLavoro' => '2021-08-10',
-            'citta' => 18
-         ]
-      ];
-      foreach($utenti as $utente)
+      foreach($this->utenti as $utente)
          DB::table('Utente')
             ->insert($utente);
    }

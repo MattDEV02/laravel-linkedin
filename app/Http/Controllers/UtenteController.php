@@ -60,19 +60,22 @@ class UtenteController extends Controller {
       $password = $req->password;
       $logged = isLogged($email, $password);
       if($logged) {
-         $utente = Utente::all([
-            'id',
-            'email',
-            'password',
-            'nome',
-            'cognome',
-         ])
-            ->where('email', $email)
-            ->first();
-         $req
-            ->session()
-            ->put('utente', $utente);
-         Log::info('New User-Session sterted');
+         if(!$req->navbar) {
+            $utente = Utente::all([
+               'id',
+               'email',
+               'password',
+               'nome',
+               'cognome',
+            ])
+               ->where('email', $email)
+               ->first();
+            $utente->password = $password;
+            $req
+               ->session()
+               ->put('utente', $utente);
+            Log::info('New User-Session started');
+         }
          return $this->feed();
       } else
          return redirect()

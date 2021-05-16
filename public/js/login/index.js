@@ -27,10 +27,10 @@ String.prototype.isValidEmail = function() {
 }
 
 passwordDimenticata.click(async function(e) {
-   const email = window.prompt('Inserisci Email: ');
+   const email = window.prompt('Inserisci Email: ') || '';
    if(email.isValidEmail()) {
       const url = 'ricezione-dati/passwordDimenticata';
-      const res = await axios.post(url,{ email })
+      const res = await axios.post(url, { email })
          .catch(e => console.error(e.message));
       console.log(res);
       if(

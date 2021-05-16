@@ -15,11 +15,7 @@
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
     <div class="row justify-content-center justify-content-md-start">
-        <noscript>
-            <b>
-                JavaScript non abilitato !!!
-            </b>
-        </noscript>
+        <x-noscript />
         @component('components.profile', [
          'profile' => $profile,
          'own' => $own

@@ -16,11 +16,7 @@
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row']}}">
-            <noscript>
-                <b>
-                    JavaScript non abilitato !!!
-                </b>
-            </noscript>
+            <x-noscript />
             @include('feed.utils.form')
             <div class="{{ $selectors['col'] }}">
                 <div class="{{ $selectors['row'] }}" id="posts-container">

@@ -14,11 +14,7 @@
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}4">
         <div class="{{ $selectors['row'] }}">
-            <noscript>
-                <b>
-                    JavaScript non abilitato !!!
-                </b>
-            </noscript>
+            <x-noscript />
             <div class="{{ $selectors['col'] }}">
                 <x-title />
                 <div class="{{ $selectors['row'] }} mt-3">

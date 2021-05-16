@@ -5,12 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PostSeeder extends Seeder
+class MiPiaceSeeder extends Seeder
 {
-   private array $posts = [
+   private array $likes = [
       [
-         'testo' => 'Primo Post',
-         'foto' => '2021_05_05_16_43_53.svg',
+         'post' => 8,
          'utente' => 12
       ],
    ];
@@ -21,8 +20,8 @@ class PostSeeder extends Seeder
     */
    public function run()
    {
-      foreach($this->posts as $post)
-         DB::table('Post')
-            ->insert($post);
+      foreach($this->likes as $like)
+         DB::table('MiPiace')
+            ->insert($like);
    }
 }
