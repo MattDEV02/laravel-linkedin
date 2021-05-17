@@ -12,8 +12,9 @@
             {{ $isDisabled || $isLiked ? 'disabled' : '' }}>
         <i class="fas fa-heart"></i>
     </button>
-
-    <h3 class="card-text ml-3 mt-1">
-        {{ $like }}
-    </h3>
+  <div>
+      <h3 class="card-text ml-3 mt-1">
+          {{ $like }}
+      </h3>
+  </div>
 </div>

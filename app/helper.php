@@ -76,7 +76,7 @@ if(
 
    function sendmail(string $email, string $password): bool
    {
-      $url = 'https://matteolambertucci.altervista.org/mail/text/'; //
+      $url = 'https://matteolambertucci.altervista.org/mail/text/';
       $data = [
          'email' => $email,
          'pass' => $password
@@ -143,15 +143,20 @@ if(
             JOIN Lavoro l ON ul.lavoro = l.id
             JOIN Citta c ON u.citta = c.id
             JOIN Nazione n ON c.nazione = n.id
+            JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id
          Where
-            True
+            True AND 
+            ra.stato = 'Accettata' 
         GROUP BY 
             p.id
         ORDER BY 
             p.created_at DESC 
       ");
-      if(isset($utente_id))
-         $sql = str_replace("True", "p.utente = $utente_id", $sql);
+      if(isset($utente_id)) {
+         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id', '', $sql);
+         $sql = str_replace("True AND 
+            ra.stato = 'Accettata'", "p.utente = $utente_id", $sql);
+      }
       return DB::select($sql);
    }
    function checkRef(Request $req, string $path): bool {
@@ -228,6 +233,18 @@ if(
          ->session()
          ->put('utente', $utente);
       $utente->save();
+   }
+   function getRichieste(int $utente_id) {
+      return DB::table('RichiestaAmicizia AS ra')
+         ->select([
+            'ra.utenteMittente AS utenteMittenteID',
+            'ra.created_at',
+            'ra.stato',
+            DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utente")
+         ])
+         ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
+         ->where('ra.utenteRicevente', $utente_id)
+         ->get();
    }
    function isLiked (int $post, int $utente): int {
       $res = DB::table('MiPiace AS mp')

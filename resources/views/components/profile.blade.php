@@ -60,9 +60,10 @@
                                         </button>
                                     </a>
                                 @else
-                                    <button class="btn btn-primary border border-dark {{ $ml }}">
-                                        <b>Collegati</b>
-                                    </button>
+                                   @livewire('collegati', [
+                                        'utenteMittente' => session()->get('utente')->id,
+                                        'utenteRicevente' =>  $profile->utente_id
+                                    ])
                                 @endif
                                 <b class="text-info ml-3" id="collegamenti">{{ 0 }} Collegamenti.</b>
                             </div>

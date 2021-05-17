@@ -27,6 +27,16 @@
    bottom: ($pad + 1) * -1;
 }
 
+table.richieste {
+   border-color: getColor('black') !important;
+}
+
+thead.richieste {
+   color: getColor('white');
+   background-color: #343A40;
+   border-color: #454D55;
+}
+
 @media(min-width: 992px) {
    #mll {
       margin-left: 9.5rem !important;

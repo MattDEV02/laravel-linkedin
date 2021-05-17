@@ -21,6 +21,7 @@ class ProfileController extends Controller {
       $profile = getProfile($utente_id);
       return view('profile.index', [
          'profile' => $profile,
+         'richieste' => getRichieste($utente_id),
          'posts' => getAllPosts($utente_id),
          'own' => $profile->utente_id === $utente_id,
       ]);
@@ -62,6 +63,7 @@ class ProfileController extends Controller {
          $profile = getProfile($utenteSearched_id);
          return view('profile.index', [
             'profile' => $profile,
+            'richieste' => getRichieste($utente_id),
             'posts' => getAllPosts($utenteSearched_id),
             'own' => $profile->utente_id === $utente_id,
          ]);

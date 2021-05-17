@@ -116,7 +116,7 @@
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <schema id="8" parent="1" name="mysql">
-      <Collation>utf8mb4_general_ci</Collation>
+      <Collation>latin1_swedish_ci</Collation>
     </schema>
     <schema id="9" parent="1" name="performance_schema">
       <Collation>utf8_general_ci</Collation>
@@ -1146,502 +1146,500 @@
       <Host>localhost</Host>
     </user>
     <table id="338" parent="6" name="citta">
-      <Comment>Tabella contenente Citta</Comment>
-      <Collation>utf8_general_ci</Collation>
+      <Collation>utf8mb4_unicode_ci</Collation>
     </table>
     <table id="339" parent="6" name="descrizioneutente">
-      <Comment>Tabella contenente le Descrizioni degli Utenti</Comment>
-      <Collation>utf8_general_ci</Collation>
+      <Collation>utf8mb4_unicode_ci</Collation>
     </table>
     <table id="340" parent="6" name="lavoro">
-      <Comment>Tabella contenente Lavori</Comment>
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <table id="341" parent="6" name="migrations">
       <Collation>utf8_general_ci</Collation>
     </table>
-    <table id="341" parent="6" name="mipiace">
-      <Comment>Tabella contenente i Like degli Utenti ai Post</Comment>
-      <Collation>utf8_general_ci</Collation>
+    <table id="342" parent="6" name="mipiace">
+      <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="342" parent="6" name="nazione">
-      <Comment>Tabella contenente Nazioni</Comment>
-      <Collation>utf8_general_ci</Collation>
+    <table id="343" parent="6" name="nazione">
+      <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="343" parent="6" name="post">
-      <Comment>Tabella contenente i Post degli Utenti</Comment>
-      <Collation>utf8_general_ci</Collation>
+    <table id="344" parent="6" name="post">
+      <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="344" parent="6" name="richiestaamicizia">
-      <Comment>Tabella contenente le Richiesta di Amicizia degli Utenti</Comment>
-      <Collation>utf8_general_ci</Collation>
+    <table id="345" parent="6" name="richiestaamicizia">
+      <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="345" parent="6" name="utente">
-      <Comment>Tabella contenente gli Utenti</Comment>
-      <Collation>utf8_general_ci</Collation>
+    <table id="346" parent="6" name="utente">
+      <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="346" parent="6" name="utentelavoro">
-      <Comment>Tabella contenente le Chiavi Primarie di Utente e Lavoro.</Comment>
-      <Collation>utf8_general_ci</Collation>
+    <table id="347" parent="6" name="utentelavoro">
+      <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <column id="347" parent="338" name="id">
+    <column id="348" parent="338" name="id">
       <Position>1</Position>
       <Comment>Identificativo Intero della Citta</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="348" parent="338" name="nome">
+    <column id="349" parent="338" name="nome">
       <Position>2</Position>
       <Comment>Nome in formato stringa della Citta</Comment>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>varchar(35)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="349" parent="338" name="nazione">
+    <column id="350" parent="338" name="nazione">
       <Position>3</Position>
       <Comment>Riferimento alla Chiava Primaria di Nazione</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="350" parent="338" name="NazioneCittaFK">
+    <index id="351" parent="338" name="NazioneCittaFK">
       <ColNames>nazione</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="351" parent="338" name="PRIMARY">
+    <key id="352" parent="338" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="352" parent="338" name="NazioneCittaFK">
+    <foreign-key id="353" parent="338" name="NazioneCittaFK">
       <ColNames>nazione</ColNames>
       <RefTableName>nazione</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="353" parent="339" name="id">
+    <column id="354" parent="339" name="id">
       <Position>1</Position>
       <Comment>Identificativo Intero della Descrizione dell&apos; Utente</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="354" parent="339" name="testo">
+    <column id="355" parent="339" name="testo">
       <Position>2</Position>
       <Comment>Testo della Descrizione dell&apos; Utente</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="355" parent="339" name="foto">
+    <column id="356" parent="339" name="foto">
       <Position>3</Position>
       <Comment>Foto della Descrizione dell&apos; Utente (relative path del file)</Comment>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>char(23)|0s</DataType>
     </column>
-    <column id="356" parent="339" name="utente">
+    <column id="357" parent="339" name="utente">
       <Position>4</Position>
       <Comment>Riferimento alla Chiava Primaria di Utente</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="357" parent="339" name="created_at">
+    <column id="358" parent="339" name="created_at">
       <Position>5</Position>
-      <Comment>Data Creazione del Record</Comment>
       <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>current_timestamp()</DefaultExpression>
     </column>
-    <column id="358" parent="339" name="updated_at">
+    <column id="359" parent="339" name="updated_at">
       <Position>6</Position>
-      <Comment>Data Aggiornamento del Record</Comment>
       <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>current_timestamp()</DefaultExpression>
-      <OnUpdate>current_timestamp()</OnUpdate>
     </column>
-    <index id="359" parent="339" name="utente_Utente_UNIQUE">
+    <index id="360" parent="339" name="utente_Utente_UNIQUE">
       <ColNames>utente</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="360" parent="339" name="PRIMARY">
+    <key id="361" parent="339" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="361" parent="339" name="utente_Utente_UNIQUE">
+    <key id="362" parent="339" name="utente_Utente_UNIQUE">
       <ColNames>utente</ColNames>
       <UnderlyingIndexName>utente_Utente_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="362" parent="339" name="UtenteDescrizioneFK">
+    <foreign-key id="363" parent="339" name="UtenteDescrizioneFK">
       <ColNames>utente</ColNames>
       <RefTableName>utente</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="363" parent="340" name="id">
+    <column id="364" parent="340" name="id">
       <Position>1</Position>
       <Comment>Identificativo Intero del Lavoro</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="364" parent="340" name="nome">
+    <column id="365" parent="340" name="nome">
       <Position>2</Position>
       <Comment>Nome in formato stringa del Lavoro dell&apos;Utente</Comment>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>varchar(35)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="365" parent="340" name="nome_Lavoro_UNIQUE">
+    <index id="366" parent="340" name="nome_Lavoro_UNIQUE">
       <ColNames>nome</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="366" parent="340" name="PRIMARY">
+    <key id="367" parent="340" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="367" parent="340" name="nome_Lavoro_UNIQUE">
+    <key id="368" parent="340" name="nome_Lavoro_UNIQUE">
       <ColNames>nome</ColNames>
       <UnderlyingIndexName>nome_Lavoro_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="368" parent="341" name="id">
+    <column id="369" parent="341" name="id">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="370" parent="341" name="migration">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="371" parent="341" name="batch">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="372" parent="341" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="373" parent="342" name="id">
       <Position>1</Position>
       <Comment>Chiave Primaria della Tabella MiPiace</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="369" parent="341" name="post">
+    <column id="374" parent="342" name="post">
       <Position>2</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="370" parent="341" name="utente">
+    <column id="375" parent="342" name="utente">
       <Position>3</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="371" parent="341" name="created_at">
-      <Position>4</Position>
-      <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>current_timestamp()</DefaultExpression>
-    </column>
-    <column id="372" parent="341" name="updated_at">
-      <Position>5</Position>
-      <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>current_timestamp()</DefaultExpression>
-      <OnUpdate>current_timestamp()</OnUpdate>
-    </column>
-    <index id="373" parent="341" name="PostMiPiaceFK">
+    <index id="376" parent="342" name="PostUtenteMiPiace_UNIQUE">
+      <ColNames>post
+utente</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="377" parent="342" name="PostMiPiaceFK">
       <ColNames>post</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="374" parent="341" name="UtenteMiPiaceFK">
+    <index id="378" parent="342" name="UtenteMiPiaceFK">
       <ColNames>utente</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="375" parent="341" name="PRIMARY">
+    <key id="379" parent="342" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="376" parent="341" name="PostMiPiaceFK">
+    <key id="380" parent="342" name="PostUtenteMiPiace_UNIQUE">
+      <ColNames>post
+utente</ColNames>
+      <UnderlyingIndexName>PostUtenteMiPiace_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="381" parent="342" name="PostMiPiaceFK">
       <ColNames>post</ColNames>
       <RefTableName>post</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="377" parent="341" name="UtenteMiPiaceFK">
+    <foreign-key id="382" parent="342" name="UtenteMiPiaceFK">
       <ColNames>utente</ColNames>
       <RefTableName>utente</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="378" parent="342" name="id">
+    <column id="383" parent="343" name="id">
       <Position>1</Position>
       <Comment>Identificativo Intero della Nazione</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="379" parent="342" name="nome">
+    <column id="384" parent="343" name="nome">
       <Position>2</Position>
       <Comment>Nome in formato stringa della Nazione (identificativo)</Comment>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>varchar(35)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="380" parent="342" name="nome_Nazione_UNIQUE">
+    <index id="385" parent="343" name="nome_Nazione_UNIQUE">
       <ColNames>nome</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="381" parent="342" name="PRIMARY">
+    <key id="386" parent="343" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="382" parent="342" name="nome_Nazione_UNIQUE">
+    <key id="387" parent="343" name="nome_Nazione_UNIQUE">
       <ColNames>nome</ColNames>
       <UnderlyingIndexName>nome_Nazione_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="383" parent="343" name="id">
+    <column id="388" parent="344" name="id">
       <Position>1</Position>
       <Comment>Identificativo Intero del Post dell&apos; Utente</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="384" parent="343" name="testo">
+    <column id="389" parent="344" name="testo">
       <Position>2</Position>
       <Comment>Testo del Post dell&apos; Utente</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="385" parent="343" name="foto">
+    <column id="390" parent="344" name="foto">
       <Position>3</Position>
-      <Comment>Foto del Post dell&apos; Utente (relative path del file)</Comment>
-      <DataType>varchar(100)|0s</DataType>
+      <Comment>Foto del Post dell&apos; Utente (relativa path del file)</Comment>
+      <DataType>char(23)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="386" parent="343" name="utente">
+    <column id="391" parent="344" name="utente">
       <Position>4</Position>
       <Comment>Riferimento alla Chiava Primaria di Utente</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="387" parent="343" name="created_at">
+    <column id="392" parent="344" name="created_at">
       <Position>5</Position>
       <Comment>Data Creazione del Record (consente di ottenere anche la di Pubblicazione del Post)</Comment>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>current_timestamp()</DefaultExpression>
     </column>
-    <column id="388" parent="343" name="updated_at">
+    <column id="393" parent="344" name="updated_at">
       <Position>6</Position>
       <Comment>Data Aggiornamento del Record</Comment>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>current_timestamp()</DefaultExpression>
-      <OnUpdate>current_timestamp()</OnUpdate>
     </column>
-    <index id="389" parent="343" name="utenteCreatedAt_UtentePost_UNIQUE">
+    <index id="394" parent="344" name="utenteTestoCreatedAt_UtentePost_UNIQUE">
       <ColNames>utente
-created_at</ColNames>
+created_at
+testo</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="390" parent="343" name="PRIMARY">
+    <key id="395" parent="344" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="391" parent="343" name="utenteCreatedAt_UtentePost_UNIQUE">
+    <key id="396" parent="344" name="utenteTestoCreatedAt_UtentePost_UNIQUE">
       <ColNames>utente
-created_at</ColNames>
-      <UnderlyingIndexName>utenteCreatedAt_UtentePost_UNIQUE</UnderlyingIndexName>
+created_at
+testo</ColNames>
+      <UnderlyingIndexName>utenteTestoCreatedAt_UtentePost_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="392" parent="343" name="UtentePostFK">
+    <foreign-key id="397" parent="344" name="UtentePostFK">
       <ColNames>utente</ColNames>
       <RefTableName>utente</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="393" parent="344" name="id">
+    <column id="398" parent="345" name="id">
       <Position>1</Position>
       <Comment>Identificativo Intero della Richiesta di Amicizia degli Utenti</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="394" parent="344" name="dataInvio">
+    <column id="399" parent="345" name="utenteMittente">
       <Position>2</Position>
-      <Comment>Data di Invio della Richiesta di Amicizia</Comment>
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="395" parent="344" name="utenteMittente">
-      <Position>3</Position>
       <Comment>Riferimento alla Chiava Primaria dell&apos; Utente (mittente della richiesta di amicizia)</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="396" parent="344" name="utenteRicevente">
-      <Position>4</Position>
+    <column id="400" parent="345" name="utenteRicevente">
+      <Position>3</Position>
       <Comment>Riferimento alla Chiava Primaria dell&apos; Utente (ricevente della richiesta di amicizia)</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="397" parent="344" name="accettata">
-      <Position>5</Position>
-      <DataType>tinyint(1)|0s</DataType>
+    <column id="401" parent="345" name="stato">
+      <Position>4</Position>
+      <Comment>Stato della Richiesta di Amicizia (in sospeso, rifiutata, Accettata)</Comment>
+      <DataType>enum(&apos;Sospesa&apos;, &apos;Rifiutata&apos;, &apos;Accettata&apos;)|0e</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>0</DefaultExpression>
+      <DefaultExpression>&apos;Sospesa&apos;</DefaultExpression>
     </column>
-    <column id="398" parent="344" name="created_at">
-      <Position>6</Position>
+    <column id="402" parent="345" name="created_at">
+      <Position>5</Position>
       <Comment>Data Creazione del Record (consente di ottenere anche la data di Pubblicazione del Post)</Comment>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>current_timestamp()</DefaultExpression>
     </column>
-    <column id="399" parent="344" name="updated_at">
-      <Position>7</Position>
+    <column id="403" parent="345" name="updated_at">
+      <Position>6</Position>
       <Comment>Data Aggiornamento del Record</Comment>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>current_timestamp()</DefaultExpression>
-      <OnUpdate>current_timestamp()</OnUpdate>
     </column>
-    <index id="400" parent="344" name="utenteMittenteRicevente_Utente_UNIQUE">
+    <index id="404" parent="345" name="utenteMittenteRicevente_Utente_UNIQUE">
       <ColNames>utenteMittente
 utenteRicevente</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="401" parent="344" name="UtenteRiceventeRichiestaAmiciziaFK">
+    <index id="405" parent="345" name="UtenteMittenteRichiestaAmiciziaFK">
+      <ColNames>utenteMittente</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="406" parent="345" name="UtenteRiceventeRichiestaAmiciziaFK">
       <ColNames>utenteRicevente</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="402" parent="344" name="PRIMARY">
+    <key id="407" parent="345" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="403" parent="344" name="utenteMittenteRicevente_Utente_UNIQUE">
+    <key id="408" parent="345" name="utenteMittenteRicevente_Utente_UNIQUE">
       <ColNames>utenteMittente
 utenteRicevente</ColNames>
       <UnderlyingIndexName>utenteMittenteRicevente_Utente_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="404" parent="344" name="UtenteMittenteRichiestaAmiciziaFK">
+    <foreign-key id="409" parent="345" name="UtenteMittenteRichiestaAmiciziaFK">
       <ColNames>utenteMittente</ColNames>
       <RefTableName>utente</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="405" parent="344" name="UtenteRiceventeRichiestaAmiciziaFK">
+    <foreign-key id="410" parent="345" name="UtenteRiceventeRichiestaAmiciziaFK">
       <ColNames>utenteRicevente</ColNames>
       <RefTableName>utente</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="406" parent="345" name="id">
+    <column id="411" parent="346" name="id">
       <Position>1</Position>
       <Comment>Identificativo Intero dell&apos; Utente</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="407" parent="345" name="email">
+    <column id="412" parent="346" name="email">
       <Position>2</Position>
       <Comment>Email dell&apos; Utente</Comment>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="408" parent="345" name="password">
+    <column id="413" parent="346" name="password">
       <Position>3</Position>
       <Comment>Password dell&apos; Utente</Comment>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>char(60)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="409" parent="345" name="nome">
+    <column id="414" parent="346" name="nome">
       <Position>4</Position>
-      <Comment>Nome dell&apos;Utente</Comment>
-      <DataType>varchar(50)|0s</DataType>
+      <Comment>Nome anagrafico dell&apos;Utente</Comment>
+      <DataType>varchar(35)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="410" parent="345" name="cognome">
+    <column id="415" parent="346" name="cognome">
       <Position>5</Position>
-      <Comment>Cognome dell&apos;Utente</Comment>
-      <DataType>varchar(50)|0s</DataType>
+      <Comment>Cognome anagrafico dell&apos;Utente</Comment>
+      <DataType>varchar(35)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="411" parent="345" name="citta">
+    <column id="416" parent="346" name="citta">
       <Position>6</Position>
       <Comment>Riferimento alla Chiave Primaria di Citta</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="412" parent="345" name="created_at">
+    <column id="417" parent="346" name="created_at">
       <Position>7</Position>
-      <Comment>Data Creazione del Record</Comment>
       <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>current_timestamp()</DefaultExpression>
     </column>
-    <column id="413" parent="345" name="updated_at">
+    <column id="418" parent="346" name="updated_at">
       <Position>8</Position>
-      <Comment>Data Aggiornamento del Record</Comment>
       <DataType>timestamp|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>current_timestamp()</DefaultExpression>
-      <OnUpdate>current_timestamp()</OnUpdate>
     </column>
-    <index id="414" parent="345" name="Email_Utente_UNIQUE">
+    <index id="419" parent="346" name="Email_Utente_UNIQUE">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="415" parent="345" name="UtenteCittaFK">
+    <index id="420" parent="346" name="UtenteCittaFK">
       <ColNames>citta</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="416" parent="345" name="PRIMARY">
+    <key id="421" parent="346" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="417" parent="345" name="Email_Utente_UNIQUE">
+    <key id="422" parent="346" name="Email_Utente_UNIQUE">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>Email_Utente_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="418" parent="345" name="UtenteCittaFK">
+    <foreign-key id="423" parent="346" name="UtenteCittaFK">
       <ColNames>citta</ColNames>
       <RefTableName>citta</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="419" parent="346" name="utente">
+    <column id="424" parent="347" name="utente">
       <Position>1</Position>
       <Comment>Riferimento alla Chiave Primaria di Utente</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="420" parent="346" name="lavoro">
+    <column id="425" parent="347" name="lavoro">
       <Position>2</Position>
       <Comment>Riferimento alla Chiave Primaria di Lavoro</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="421" parent="346" name="dataInizioLavoro">
+    <column id="426" parent="347" name="dataInizioLavoro">
       <Position>3</Position>
       <Comment>Data inizio Lavoro dell&apos; Utente</Comment>
       <DataType>date|0s</DataType>
     </column>
-    <index id="422" parent="346" name="LavoroUtenteFK">
+    <index id="427" parent="347" name="LavoroUtenteFK">
       <ColNames>lavoro</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="423" parent="346" name="PRIMARY">
+    <key id="428" parent="347" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>utente
 lavoro</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="424" parent="346" name="UtenteLavoroFK">
+    <foreign-key id="429" parent="347" name="UtenteLavoroFK">
       <ColNames>utente</ColNames>
       <RefTableName>utente</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="425" parent="346" name="LavoroUtenteFK">
+    <foreign-key id="430" parent="347" name="LavoroUtenteFK">
       <ColNames>lavoro</ColNames>
       <RefTableName>lavoro</RefTableName>
       <RefColNames>id</RefColNames>

@@ -5,19 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/55e8ae93-d0ce-4e7a-8407-6f988f3b8fcd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/55e8ae93-d0ce-4e7a-8407-6f988f3b8fcd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_16_201732_create_post_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_16_201732_create_post_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CittaSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CittaSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/livewire-components.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/livewire-components.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_16_201732_create_richiestaamicizia_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_16_201732_create_richiestaamicizia_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DescrizioneUtenteSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DescrizioneUtenteSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/LavoroSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/LavoroSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/NazioneSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/NazioneSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/PostSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/PostSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UtenteLavoroSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UtenteLavoroSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UtenteSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UtenteSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile/index.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/mi-piace-click.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/mi-piace-click.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +50,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/routes/web.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+  </component>
+  <component name="PhpTemplates">
+    <option name="NEW_PHP_FILE_LAST_EXTENSION" value="ctp" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.0">
     <include_path>
@@ -278,7 +284,9 @@
       <workItem from="1621111206268" duration="3747000" />
       <workItem from="1621165920553" duration="600000" />
       <workItem from="1621179008425" duration="6704000" />
-      <workItem from="1621197873251" duration="3460000" />
+      <workItem from="1621197873251" duration="3626000" />
+      <workItem from="1621239050126" duration="6031000" />
+      <workItem from="1621279276509" duration="5246000" />
     </task>
     <servers />
   </component>

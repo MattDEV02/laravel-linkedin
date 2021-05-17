@@ -22,6 +22,9 @@
          ])
         @endcomponent
     </div>
+    @if($own)
+        @include('profile.utils.richieste')
+    @endif
     @include('feed.utils.posts')
 </div>
 </body>

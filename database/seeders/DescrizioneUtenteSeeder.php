@@ -22,7 +22,7 @@ class DescrizioneUtenteSeeder extends Seeder {
       [
          'id' => 3,
          'utente' => 3,
-         'testo' => 'Ciao a tutti mi chiamo Michele Mammucari e sono un Poliziotto Inglese.',
+         'testo' => 'Ciao a tutti mi chiamo Michele Mammucari e sono un Poliziotto Cinese.',
          'foto' => '2021_05_13_11_05_08.jpg'
       ],
       [

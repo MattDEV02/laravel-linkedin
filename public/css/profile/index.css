@@ -118,6 +118,16 @@ button:hover {
   bottom: -5px;
 }
 
+table.richieste {
+  border-color: #000000 !important;
+}
+
+thead.richieste {
+  color: #FFFFFF;
+  background-color: #343A40;
+  border-color: #454D55;
+}
+
 @media (min-width: 992px) {
   #mll {
     margin-left: 9.5rem !important;
