@@ -3,7 +3,7 @@
     $utente = session()->get('utente');
 @endphp
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Profile" />
@@ -23,7 +23,9 @@
         @endcomponent
     </div>
     @if($own)
-        @include('profile.utils.richieste')
+        @livewire('richieste-handler', [
+            'richieste' => $richieste
+        ])
     @endif
     @include('feed.utils.posts')
 </div>

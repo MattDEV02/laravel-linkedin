@@ -128,6 +128,10 @@ thead.richieste {
   border-color: #454D55;
 }
 
+tr.linked {
+  display: none;
+}
+
 @media (min-width: 992px) {
   #mll {
     margin-left: 9.5rem !important;

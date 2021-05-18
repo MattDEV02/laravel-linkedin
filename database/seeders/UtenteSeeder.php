@@ -20,10 +20,10 @@ class UtenteSeeder extends Seeder
       [
          'id' => 2,
          'email' => 'opr@gmail.com',
-         'password' => 'oprrrrr',
+         'password' => 'oprrrrrr',
          'nome' => 'Alessandro',
          'cognome' => 'Oprea',
-         'citta' => 8
+         'citta' => 4
       ],
       [
          'id' => 3,
@@ -48,6 +48,14 @@ class UtenteSeeder extends Seeder
          'nome' => 'Devak',
          'cognome' => 'Ballins',
          'citta' => 1
+      ],
+      [
+         'id' => 6,
+         'email' => 'jitaru@alice.it',
+         'password' => 'jitaruuu',
+         'nome' => 'Gabriel',
+         'cognome' => 'Jitaru',
+         'citta' => 9
       ]
    ];
    /**

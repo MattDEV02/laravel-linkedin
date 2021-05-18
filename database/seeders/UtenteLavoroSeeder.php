@@ -33,6 +33,11 @@ class UtenteLavoroSeeder extends Seeder
          'lavoro' => 9,
          'dataInizioLavoro' => '2021-01-02'
       ],
+      [
+         'utente' => 6,
+         'lavoro' => 11,
+         'dataInizioLavoro' => '2021-05-17'
+      ],
    ];
    /**
     * Run the database seeds.

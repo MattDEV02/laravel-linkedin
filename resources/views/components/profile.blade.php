@@ -2,6 +2,7 @@
     $selectors = selectors();
     $base = 'storage/profiles/';
     $path = isset($profile->foto) ? $profile->utente_id. '/'.$profile->foto : 'default.jpg';
+    $utente = session()->get('utente');
     $ml = 'ml-4';
     $mt = 3;
 @endphp
@@ -61,11 +62,15 @@
                                     </a>
                                 @else
                                    @livewire('collegati', [
-                                        'utenteMittente' => session()->get('utente')->id,
+                                        'utenteMittente' => $utente->id,
                                         'utenteRicevente' =>  $profile->utente_id
                                     ])
                                 @endif
-                                <b class="text-info ml-3" id="collegamenti">{{ 0 }} Collegamenti.</b>
+                                <b
+                                        class="text-info ml-3"
+                                        id="collegamenti">
+                                    {{ getNumCollegamenti($profile->utente_id) }} Collegamenti.
+                                </b>
                             </div>
                         </div>
                         <div class="{{ $selectors['col'] }}{{ $mt }} mb-2">

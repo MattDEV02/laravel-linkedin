@@ -27,7 +27,9 @@ if(
    !function_exists('insertUtente') and
    !function_exists('getProfile') and
    !function_exists('updateProfile') and
-   !function_exists('isLiked')
+   !function_exists('isLiked') and
+   !function_exists('isLinked') and
+   !function_exists('getNumCollegamenti')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -143,7 +145,7 @@ if(
             JOIN Lavoro l ON ul.lavoro = l.id
             JOIN Citta c ON u.citta = c.id
             JOIN Nazione n ON c.nazione = n.id
-            JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id
+            JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR  ra.utenteRicevente = u.id
          Where
             True AND 
             ra.stato = 'Accettata' 
@@ -153,7 +155,7 @@ if(
             p.created_at DESC 
       ");
       if(isset($utente_id)) {
-         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id', '', $sql);
+         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR ra.utenteRicevente = u.id', '', $sql);
          $sql = str_replace("True AND 
             ra.stato = 'Accettata'", "p.utente = $utente_id", $sql);
       }
@@ -234,13 +236,15 @@ if(
          ->put('utente', $utente);
       $utente->save();
    }
-   function getRichieste(int $utente_id) {
+   function getRichieste(int $utente_id): Collection {
       return DB::table('RichiestaAmicizia AS ra')
          ->select([
-            'ra.utenteMittente AS utenteMittenteID',
+            'ra.utenteMittente AS utenteMittente',
+            'ra.utenteRicevente AS utenteRicevente',
             'ra.created_at',
             'ra.stato',
-            DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utente")
+            'u.email',
+            DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome")
          ])
          ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
          ->where('ra.utenteRicevente', $utente_id)
@@ -255,6 +259,23 @@ if(
          ->where('u.id', $utente)
          ->first();
       return $res->liked;
+   }
+   function isLinked (int $utenteMittente, int $utenteRicevente): int {
+      $res = DB::table('RichiestaAmicizia AS ra')
+         ->select(DB::raw('COUNT(ra.id) AS linked'))
+         ->join('Utente AS u', 'ra.utenteRicevente', 'u.id')
+         ->where('ra.utenteMittente', $utenteMittente)
+         ->where('ra.utenteRicevente', $utenteRicevente)
+         ->where('ra.stato', '<>', 'Sospesa')
+         ->first();
+      return $res->linked;
+   }
+   function getNumCollegamenti(int $utenteRicevente): int {
+      return DB::table('RichiestaAmicizia AS ra')
+         ->where('ra.stato', 'Accettata')
+         ->where('ra.utenteRicevente', $utenteRicevente)
+         ->orWhere('ra.utenteMittente', $utenteRicevente)
+         ->count();
    }
 }
 

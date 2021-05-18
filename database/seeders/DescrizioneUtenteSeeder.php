@@ -37,6 +37,12 @@ class DescrizioneUtenteSeeder extends Seeder {
          'testo' => 'Bella regaaa io so er Devakk',
          'foto' => '2021_05_13_11_12_22.jpg'
       ],
+      [
+         'id' => 6,
+         'utente' => 6,
+         'testo' => 'Mi chiamo JIT e sono un Imprenditore Parigino',
+         'foto' => null
+      ],
    ];
    /**
     * Run the database seeds.

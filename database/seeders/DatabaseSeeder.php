@@ -10,6 +10,8 @@ use Database\Seeders\LavoroSeeder;
 use Database\Seeders\UtenteSeeder;
 use Database\Seeders\PostSeeder;
 use Database\Seeders\DescrizioneUtenteSeeder;
+use Database\Seeders\MiPiaceSeeder;
+use Database\Seeders\RichiestaAmiciziaSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -28,7 +30,9 @@ class DatabaseSeeder extends Seeder
          UtenteSeeder::class,
          UtenteLavoroSeeder::class,
          PostSeeder::class,
-         DescrizioneUtenteSeeder::class
+         DescrizioneUtenteSeeder::class,
+         RichiestaAmiciziaSeeder::class,
+        // MiPiaceSeeder::class,
       ]);
    }
 }

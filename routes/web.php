@@ -55,4 +55,4 @@ Route::prefix('ricezione-dati')
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
    });
 
-Route::get('/test', fn () => getAllPosts(1));
+Route::get('/test', fn () => isLinked(3, 1));

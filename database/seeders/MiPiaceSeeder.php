@@ -9,8 +9,9 @@ class MiPiaceSeeder extends Seeder
 {
    private array $likes = [
       [
-         'post' => 8,
-         'utente' => 12
+         'id' => 1,
+         'post' => 1,
+         'utente' => 3
       ],
    ];
    /**
