@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Log;
 
 class UtenteController extends Controller {
 
-   //private Utente $utente;
+   private Utente $utente;
 
    public function login(Request $req) {
       return view('login.index',[
@@ -76,15 +76,15 @@ class UtenteController extends Controller {
                ->put('utente', $utente);
             Log::info('New User-Session started');
          }
-         return $this->feed();
+         return $this->feed($req->session()->get('utente')->id);
       } else
          return redirect()
             ->route('login', ['msg' => 'not-reg']);
    }
 
-   public function feed(): Factory | View | Application {
+   public function feed(int $utente_id): Factory | View | Application {
       return view('feed.index', [
-         'posts' => getAllPosts()
+         'posts' => getAllPosts($utente_id)
       ]);
    }
 

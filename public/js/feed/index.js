@@ -2,16 +2,15 @@ const
    image = $('#image'),
    testo = $('#testo'),
    btn = $('#fileBTN'),
-   like = $('button.liked'),
+   container = $('#posts-container'),
    prop = 'backgroundColor',
    colors = ['#3490DC', '#EF7E05F2'];
 
 image.on({
-      input: () => btn.css(prop, colors[1]),
-      change: () => {
-         if(!image.val())
-            btn.css(prop, colors[0])
-      }
+   input: () => btn.css(prop, colors[1]),
+   change: () => {
+      if(!image.val()) btn.css(prop, colors[0])
+   }
    }
 );
 
@@ -40,13 +39,9 @@ $('#postForm').submit(
          .catch(e => console.error(e));
       console.log(res);
       res.status === 200 ?
-         $('#posts-container').html(res.data) :
-         window.alert('Errore nella Pubblicazione del Post.')
+         container.html(res.data) :
+         window.alert('Errore nella Pubblicazione del Post.');
       reset(e);
    });
-
-const disable = el => el.attr('disabled', true);
-
-disable(like);
 
 

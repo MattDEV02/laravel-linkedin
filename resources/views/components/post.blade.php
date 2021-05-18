@@ -20,13 +20,12 @@
                 </h6>
                 <p class="card-text">{{ $post->testo }}</p>
                 <div class="{{ $selectors['col'] }}">
-                    @livewire('mi-piace-click', [
-                        'like' => $post->miPiace,
-                        'post' => $post->id,
-                        'utente' => $utente_id
-                        ],
-                        key($post->id)
-                    )
+                    <x-mi-piace-button
+                            post="{{ $post->id }}"
+                            utente="{{ $utente_id }}"
+                            like="{{ $post->miPiace }}"
+                            profile="{{ $profile }}"
+                    />
                 </div>
             </div>
             <div class="card-footer">

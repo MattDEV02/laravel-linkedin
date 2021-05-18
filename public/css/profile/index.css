@@ -113,7 +113,7 @@ button:hover {
   border-radius: 0.8rem;
 }
 
-#collegamenti {
+b.c {
   position: relative;
   bottom: -5px;
 }

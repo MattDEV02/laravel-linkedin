@@ -51,8 +51,9 @@ Route::prefix('ricezione-dati')
       $PRC = ProfileController::class;
       Route::post('/registrazione', [$UC, 'insert']);
       Route::post('/feed', [$PC, 'insert']);
+      Route::post('/like', [$PC, 'like']);
       Route::post('/edit-profile', [$PRC, 'updateProfile']);
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
    });
 
-Route::get('/test', fn () => isLinked(3, 1));
+Route::get('/test', fn () => getAllPosts(4, true));

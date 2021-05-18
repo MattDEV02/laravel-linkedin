@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\DescrizioneUtente;
+use App\Models\RichiestaAmicizia;
 use App\Models\Utente;
 use App\Models\UtenteLavoro;
 use Illuminate\Database\Query\Builder;
@@ -124,7 +125,7 @@ if(
       consoleLog("New File stored:  $filePath");
       return $fileName;
    }
-   function getAllPosts(?int $utente_id = null): array  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB
+   function getAllPosts(int $utente_id, bool $profile = false): array  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB
    {
       $sql = ("
          SELECT 
@@ -148,14 +149,14 @@ if(
             JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR  ra.utenteRicevente = u.id
          Where
             True AND 
-            ra.stato = 'Accettata' 
+            ra.stato = 'Accettata'
         GROUP BY 
             p.id
         ORDER BY 
             p.created_at DESC 
       ");
-      if(isset($utente_id)) {
-         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR ra.utenteRicevente = u.id', '', $sql);
+      if($profile) {
+         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR  ra.utenteRicevente = u.id', '', $sql);
          $sql = str_replace("True AND 
             ra.stato = 'Accettata'", "p.utente = $utente_id", $sql);
       }
@@ -182,10 +183,17 @@ if(
       $descrizioneUtente = new DescrizioneUtente();
       $descrizioneUtente->utente = $utente->id;
       $descrizioneUtente->save();
+      $richiestaAmicizia = new RichiestaAmicizia();
+      $id = $utente->id;
+      $richiestaAmicizia->utenteMittente = $id;
+      $richiestaAmicizia->utenteRicevente = $id;
+      $richiestaAmicizia->stato = 'Accettata';
+      $richiestaAmicizia->save();
    }
    function getProfile(int $utente_id): ?object {
       return DB::table('Utente AS u')
          ->select([
+            'du.id',
             'du.testo',
             'du.foto',
             'du.updated_at',
@@ -275,7 +283,7 @@ if(
          ->where('ra.stato', 'Accettata')
          ->where('ra.utenteRicevente', $utenteRicevente)
          ->orWhere('ra.utenteMittente', $utenteRicevente)
-         ->count();
+         ->count() - 1;
    }
 }
 

@@ -20,7 +20,7 @@
             @include('feed.utils.form')
             <div class="{{ $selectors['col'] }}">
                 <div class="{{ $selectors['row'] }}" id="posts-container">
-                    @include('feed.utils.posts')
+                    @include('feed.utils.posts', ['profile' => false])
                 </div>
             </div>
         </div>

@@ -6,8 +6,10 @@ $txt = $cond ? 'accetta' : 'rifiuta';
 
 <button
         class="btn {{ $class }} {{ $selectors['border'] }}"
-        wire:click="{{ $txt }} ({{ $utenteMittente }}, {{ $utenteRicevente }})">
+        id="{{ $txt }}"
+        wire:click="{{ $txt }}({{ $utenteMittente }}, {{ $utenteRicevente }})">
     <b>
         {{ ucfirst($txt) }}
     </b>
 </button>
+

@@ -67,9 +67,12 @@
                                     ])
                                 @endif
                                 <b
-                                        class="text-info ml-3"
+                                        class="text-primary ml-3 c"
                                         id="collegamenti">
-                                    {{ getNumCollegamenti($profile->utente_id) }} Collegamenti.
+                                    {{ getNumCollegamenti($profile->utente_id) }}
+                                </b>
+                                <b class="text-primary ml-1 c">
+                                    Collegamenti
                                 </b>
                             </div>
                         </div>

@@ -27,7 +27,11 @@
             'richieste' => $richieste
         ])
     @endif
-    @include('feed.utils.posts')
+    <div id="posts-container">
+        @include('feed.utils.posts', ['profile' => true ])
+    </div>
 </div>
+<script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript" src="js/feed/index.js"></script>
 </body>
 </html>
