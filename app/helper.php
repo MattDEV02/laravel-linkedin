@@ -6,6 +6,7 @@ use App\Models\Utente;
 use App\Models\UtenteLavoro;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cookie;
@@ -30,7 +31,8 @@ if(
    !function_exists('updateProfile') and
    !function_exists('isLiked') and
    !function_exists('isLinked') and
-   !function_exists('getNumCollegamenti')
+   !function_exists('getNumCollegamenti') and
+   !function_exists('isSessionLogged')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -280,10 +282,10 @@ if(
    }
    function getNumCollegamenti(int $utenteRicevente): int {
       return DB::table('RichiestaAmicizia AS ra')
-         ->where('ra.stato', 'Accettata')
-         ->where('ra.utenteRicevente', $utenteRicevente)
-         ->orWhere('ra.utenteMittente', $utenteRicevente)
-         ->count() - 1;
+            ->where('ra.stato', 'Accettata')
+            ->where('ra.utenteRicevente', $utenteRicevente)
+            ->orWhere('ra.utenteMittente', $utenteRicevente)
+            ->count() - 1;
    }
 }
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller {
 
-   private Utente $utente;
+   private ?Utente $utente;
 
    public function profile(Request $req) {
       $this->utente = $req
@@ -22,7 +22,7 @@ class ProfileController extends Controller {
       return view('profile.index', [
          'profile' => $profile,
          'richieste' => getRichieste($utente_id),
-         'posts' => getAllPosts($utente_id),
+         'posts' => getAllPosts($utente_id, true),
          'own' => $profile->utente_id === $utente_id,
       ]);
    }
@@ -45,8 +45,7 @@ class ProfileController extends Controller {
    public function updateProfile(Request $req) {
       Log::debug('A profile is Updated');
       updateProfile($req);
-      return redirect()
-         ->route('profile');
+      return redirect('/profile');
    }
    public function showProfile(Request $req) {
       $emailSearched = $req->search;

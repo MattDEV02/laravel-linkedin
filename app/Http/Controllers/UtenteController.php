@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Log;
 
 class UtenteController extends Controller {
 
-   private Utente $utente;
-
    public function login(Request $req) {
       return view('login.index',[
          'msg' => $req->msg,
@@ -76,7 +74,8 @@ class UtenteController extends Controller {
                ->put('utente', $utente);
             Log::info('New User-Session started');
          }
-         return $this->feed($req->session()->get('utente')->id);
+         $utente_id = $req->session()->get('utente')->id;
+         return $this->feed($utente_id);
       } else
          return redirect()
             ->route('login', ['msg' => 'not-reg']);

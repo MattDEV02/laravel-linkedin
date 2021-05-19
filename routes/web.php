@@ -22,6 +22,7 @@ $UC = UtenteController::class;
 $PC = PostController::class;
 $PRC = ProfileController::class;
 
+
 Route::view('/', 'home');
 
 Route::any('home', fn() => redirect('/'));
@@ -37,12 +38,15 @@ Route::get('/registrazione', [$UC, 'registrazione'])
 
 Route::post('/feed', [$UC, 'logResult']);
 
-Route::get('/edit-profile', [$PRC, 'editProfile']);
-
-Route::get('/profile', [$PRC, 'profile'])
-   ->name('profile');
-
-Route::get('show-profile', [$PRC, 'showProfile']);
+Route::middleware('isSessionLogged')
+   ->group(function () {
+      $UC = UtenteController::class;
+      $PC = PostController::class;
+      $PRC = ProfileController::class;
+      Route::get('/edit-profile', [$PRC, 'editProfile']);
+      Route::get('/profile', [$PRC, 'profile']);
+      Route::get('/show-profile', [$PRC, 'showProfile']);
+   });
 
 Route::prefix('ricezione-dati')
    ->group(function () {
@@ -50,10 +54,14 @@ Route::prefix('ricezione-dati')
       $PC = PostController::class;
       $PRC = ProfileController::class;
       Route::post('/registrazione', [$UC, 'insert']);
-      Route::post('/feed', [$PC, 'insert']);
-      Route::post('/like', [$PC, 'like']);
-      Route::post('/edit-profile', [$PRC, 'updateProfile']);
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
+      Route::post('/feed', [$PC, 'insert'])
+         ->middleware('isSessionLogged');
+      Route::post('/like', [$PC, 'like'])
+         ->middleware('isSessionLogged');
+      Route::post('/edit-profile', [$PRC, 'updateProfile'])
+         ->middleware('isSessionLogged');
    });
+
 
 Route::get('/test', fn () => getAllPosts(4, true));
