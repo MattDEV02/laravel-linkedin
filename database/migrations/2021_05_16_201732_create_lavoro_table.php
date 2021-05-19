@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateLavoroTable extends Migration
@@ -13,13 +14,15 @@ class CreateLavoroTable extends Migration
     */
    public function up()
    {
-      Schema::create('lavoro', function (Blueprint $table) {
+      Schema::create('Lavoro', function (Blueprint $table) {
          $table->increments('id')->comment('Identificativo Intero del Lavoro');
          $table->string('nome', 35)->unique('nome_Lavoro_UNIQUE')->comment('Nome in formato stringa del Lavoro dell\'Utente');
          $table->engine = 'InnoDB';
          $table->charset = 'utf8mb4';
          $table->collation = 'utf8mb4_unicode_ci';
       });
+
+      DB::statement('ALTER TABLE Lavoro ADD CONSTRAINT NomeLavoroCheck CHECK (CHAR_LENGTH(nome) > 2 );');
    }
 
    /**

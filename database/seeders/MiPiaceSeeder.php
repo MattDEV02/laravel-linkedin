@@ -11,8 +11,13 @@ class MiPiaceSeeder extends Seeder
       [
          'id' => 1,
          'post' => 1,
-         'utente' => 3
+         'utente' => 1
       ],
+      [
+         'id' => 3,
+         'post' => 3,
+         'utente' => 2
+      ]
    ];
    /**
     * Run the database seeds.

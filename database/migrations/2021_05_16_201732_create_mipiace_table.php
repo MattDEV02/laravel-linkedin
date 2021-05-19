@@ -13,7 +13,7 @@ class CreateMipiaceTable extends Migration
     */
    public function up()
    {
-      Schema::create('mipiace', function (Blueprint $table) {
+      Schema::create('MiPiace', function (Blueprint $table) {
          $table->increments('id')->comment('Chiave Primaria della Tabella MiPiace');
          $table->unsignedInteger('post')->index('PostMiPiaceFK');;
          $table->unsignedInteger('utente')->index('UtenteMiPiaceFK');

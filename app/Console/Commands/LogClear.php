@@ -4,8 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class LogClear extends Command
-{
+class LogClear extends Command {
    /**
     * The name and signature of the console command.
     *

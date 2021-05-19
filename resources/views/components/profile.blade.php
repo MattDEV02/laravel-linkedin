@@ -3,6 +3,8 @@
     $base = 'storage/profiles/';
     $path = isset($profile->foto) ? $profile->utente_id. '/'.$profile->foto : 'default.jpg';
     $utente = session()->get('utente');
+    $collegamenti = getNumCollegamenti($profile->utente_id);
+    $collegamenti = $collegamenti < 0 ? 0 : $collegamenti;
     $ml = 'ml-4';
     $mt = 3;
 @endphp
@@ -61,15 +63,15 @@
                                         </button>
                                     </a>
                                 @else
-                                   @livewire('collegati', [
-                                        'utenteMittente' => $utente->id,
-                                        'utenteRicevente' =>  $profile->utente_id
+                                    @livewire('collegati', [
+                                    'utenteMittente' => $utente->id,
+                                    'utenteRicevente' =>  $profile->utente_id
                                     ])
                                 @endif
                                 <b
                                         class="text-primary ml-3 c"
                                         id="collegamenti">
-                                    {{ getNumCollegamenti($profile->utente_id) }}
+                                    {{ $collegamenti }}
                                 </b>
                                 <b class="text-primary ml-1 c">
                                     Collegamenti

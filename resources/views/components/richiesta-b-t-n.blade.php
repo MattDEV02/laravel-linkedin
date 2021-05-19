@@ -1,7 +1,7 @@
 @php
-$selectors = selectors();
-$class = $cond ? 'btn-primary' : 'btn-danger';
-$txt = $cond ? 'accetta' : 'rifiuta';
+    $selectors = selectors();
+    $class = $cond ? 'btn-primary' : 'btn-danger';
+    $txt = $cond ? 'accetta' : 'rifiuta';
 @endphp
 
 <button
@@ -12,4 +12,6 @@ $txt = $cond ? 'accetta' : 'rifiuta';
         {{ ucfirst($txt) }}
     </b>
 </button>
+
+
 

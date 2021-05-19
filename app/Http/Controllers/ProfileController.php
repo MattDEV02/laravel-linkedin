@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Citta;
 use App\Models\Lavoro;
 use App\Models\Utente;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -13,7 +17,7 @@ class ProfileController extends Controller {
 
    private ?Utente $utente;
 
-   public function profile(Request $req) {
+   public function profile(Request $req): Factory | View | Application {
       $this->utente = $req
          ->session()
          ->get('utente');
@@ -27,7 +31,7 @@ class ProfileController extends Controller {
       ]);
    }
 
-   public function editProfile(Request $req) {
+   public function editProfile(Request $req): Factory | View | Application | RedirectResponse {
       if(checkRef($req, 'profile') || checkRef($req, 'show-profile')) {
          $this->utente = $req
             ->session()
@@ -42,12 +46,13 @@ class ProfileController extends Controller {
          return redirect()
             ->route('logout');
    }
-   public function updateProfile(Request $req) {
+   public function updateProfile(Request $req): RedirectResponse
+   {
       Log::debug('A profile is Updated');
       updateProfile($req);
       return redirect('/profile');
    }
-   public function showProfile(Request $req) {
+   public function showProfile(Request $req): Factory | View | Application {
       $emailSearched = $req->search;
       consoleLog("Profile searched: $emailSearched");
       $this->utente = $req
@@ -63,7 +68,7 @@ class ProfileController extends Controller {
          return view('profile.index', [
             'profile' => $profile,
             'richieste' => getRichieste($utente_id),
-            'posts' => getAllPosts($utenteSearched_id),
+            'posts' => getAllPosts($utenteSearched_id, true),
             'own' => $profile->utente_id === $utente_id,
          ]);
       } else {

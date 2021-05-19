@@ -8,13 +8,13 @@
     <button
             class="btn btn-primary {{ $selectors['fw'] }} {{ $selectors['border'] }} {{ $class }}"
             id="like"
-            onclick="like({{ $post }}, {{ $utente }}, {{ $profile ? $profile : '0' }})"
+            onclick="like({{ $post }}, {{ $utente }}, {{ $profile ? $profile : '0' }}, {{ $profile_id  }})"
             {{  $isLiked ? 'disabled' : '' }}>
         <i class="fas fa-heart"></i>
     </button>
     <div>
         <h3 class="card-text ml-3 mt-1" id="likeNum">
-            {{ $like }}
+            {{ ($like ) }}
         </h3>
     </div>
 </div>

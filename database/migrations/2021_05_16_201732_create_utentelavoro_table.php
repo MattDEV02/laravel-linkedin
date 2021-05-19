@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateUtentelavoroTable extends Migration
 {
    /**
@@ -13,7 +14,7 @@ class CreateUtentelavoroTable extends Migration
     */
    public function up()
    {
-      Schema::create('utentelavoro', function (Blueprint $table) {
+      Schema::create('UtenteLavoro', function (Blueprint $table) {
          $table->unsignedInteger('utente')->comment('Riferimento alla Chiave Primaria di Utente');
          $table->unsignedInteger('lavoro')->default(1)->index('LavoroUtenteFK')->comment('Riferimento alla Chiave Primaria di Lavoro');
          $table->date('dataInizioLavoro')->nullable()->comment('Data inizio Lavoro dell\' Utente');

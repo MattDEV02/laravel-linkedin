@@ -41,7 +41,7 @@
                                     <x-password />
                                 </div>
                             </div>
-                            <div class="{{ $selectors['col'] }}3 ml-2">
+                            <div class="{{ $selectors['col'] }}4 ml-2">
                                 <div class="row">
                                     <h6 id="passwordDimenticata" class="primaryTXT">
                                         Hai dimenticato la password?

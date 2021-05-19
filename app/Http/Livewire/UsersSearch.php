@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -13,13 +16,11 @@ class UsersSearch extends Component
    public Collection | array $utenti = [];
    public int $utente_id ;
 
-   public function search(string $s)
+   public function search(string $s): void
    {
       $this->utenti = strlen($s) > 0 ?
          $this->utenti = Utente::select(
-            DB::raw(
-               "CONCAT(nome, ' ', cognome) AS nomeCognome"
-            ),
+            DB::raw("CONCAT(nome, ' ', cognome) AS nomeCognome"),
             'email'
          )
             ->where('nome', 'like', "$s%")
@@ -27,7 +28,7 @@ class UsersSearch extends Component
             ->get() : [];
    }
 
-   public function render()
+   public function render(): Factory | View | Application
    {
       return view('livewire.users-search');
    }

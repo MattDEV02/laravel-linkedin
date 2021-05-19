@@ -12,9 +12,3 @@ $("#image").change(function() {
       .addClass("selected")
       .html(txt);
 });
-
-$('#accetta').click(function(e) {
-   let num = parseInt(collegamenti.text()) + 1;
-   console.log(num);
-   collegamenti.text(num);
-});

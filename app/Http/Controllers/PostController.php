@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\MiPiace;
 use App\Models\Post;
 use App\Models\Utente;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 
 class PostController extends Controller
 {
-   private Utente $utente;
+   private ?Utente $utente;
 
-   public function insert(Request $req) {
+   public function insert(Request $req): Factory | View | Application {
       $this->utente =
          $req
             ->session()
@@ -33,7 +36,7 @@ class PostController extends Controller
       ]);
    }
 
-   public function like(Request $req) {
+   public function like(Request $req): Factory | View | Application {
       $this->utente =
          $req
             ->session()
@@ -44,10 +47,12 @@ class PostController extends Controller
       $miPiace->utente = $req->utente;
       $miPiace->save();
       $profile = $req->profile;
-      $posts = $profile ? getAllPosts($utente_id, true) : getAllPosts($utente_id);
+      $profile_id = $req->profile_id;
+      $posts = $profile && $profile_id ? getAllPosts($utente_id, true) : getAllPosts($profile_id);
       return view('feed.utils.posts', [
          'posts' => $posts,
-         'profile' => $profile
+         'profile' => $profile,
+         'profile_id' => $profile_id
       ]);
    }
 }

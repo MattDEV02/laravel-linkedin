@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
          PostSeeder::class,
          DescrizioneUtenteSeeder::class,
          RichiestaAmiciziaSeeder::class,
-        // MiPiaceSeeder::class,
+         MiPiaceSeeder::class
       ]);
    }
 }

@@ -20,12 +20,14 @@
                 </h6>
                 <p class="card-text">{{ $post->testo }}</p>
                 <div class="{{ $selectors['col'] }}">
-                    <x-mi-piace-button
-                            post="{{ $post->id }}"
-                            utente="{{ $utente_id }}"
-                            like="{{ $post->miPiace }}"
-                            profile="{{ $profile }}"
-                    />
+                    @component('components.mi-piace-button', [
+                          'post' => $post->id,
+                          'utente' => $utente_id,
+                          'like' => $post->miPiace,
+                          'profile' => $profile,
+                          'profile_id' => $profile_id
+                    ])
+                    @endcomponent
                 </div>
             </div>
             <div class="card-footer">

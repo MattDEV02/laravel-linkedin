@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UtenteController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Utente;
 
 
 /*
@@ -39,20 +40,14 @@ Route::get('/registrazione', [$UC, 'registrazione'])
 Route::post('/feed', [$UC, 'logResult']);
 
 Route::middleware('isSessionLogged')
-   ->group(function () {
-      $UC = UtenteController::class;
-      $PC = PostController::class;
-      $PRC = ProfileController::class;
+   ->group(function () use($UC, $PC, $PRC){
       Route::get('/edit-profile', [$PRC, 'editProfile']);
       Route::get('/profile', [$PRC, 'profile']);
       Route::get('/show-profile', [$PRC, 'showProfile']);
    });
 
 Route::prefix('ricezione-dati')
-   ->group(function () {
-      $UC = UtenteController::class;
-      $PC = PostController::class;
-      $PRC = ProfileController::class;
+   ->group(function () use($UC, $PC, $PRC) {
       Route::post('/registrazione', [$UC, 'insert']);
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
       Route::post('/feed', [$PC, 'insert'])
@@ -64,4 +59,6 @@ Route::prefix('ricezione-dati')
    });
 
 
-Route::get('/test', fn () => getAllPosts(4, true));
+Route::get('/test', function () {
+   return isLinked(1, 2);
+});

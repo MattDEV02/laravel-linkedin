@@ -15,7 +15,7 @@ class Collegati extends Component
    public int $utenteRicevente;
    public bool $clicked;
 
-   public function link(int $utenteMittente, int $utenteRicevente) {
+   public function link(int $utenteMittente, int $utenteRicevente): void {
       $this->utenteMittente = $utenteMittente;
       $this->utenteRicevente = $utenteRicevente;
       $richiestaAmicizia = new RichiestaAmicizia();

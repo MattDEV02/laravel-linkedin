@@ -15,6 +15,7 @@ class FunctionsTest extends TestCase
     */
    public function test_example()
    {
-      $this->assertContains(1, [1, 2]);
+      $value = consoleLog("test");
+      $this->assertEquals("test", $value);
    }
 }

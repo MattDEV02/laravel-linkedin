@@ -6,29 +6,29 @@ use Illuminate\Support\Facades\Schema;
 
 class AddForeignKeysToMipiaceTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::table('mipiace', function (Blueprint $table) {
-            $table->foreign('post', 'PostMiPiaceFK')->references('id')->on('post')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('utente', 'UtenteMiPiaceFK')->references('id')->on('utente')->onUpdate('CASCADE')->onDelete('CASCADE');
-        });
-    }
+   /**
+    * Run the migrations.
+    *
+    * @return void
+    */
+   public function up()
+   {
+      Schema::table('MiPiace', function (Blueprint $table) {
+         $table->foreign('post', 'PostMiPiaceFK')->references('id')->on('post')->onUpdate('CASCADE')->onDelete('CASCADE');
+         $table->foreign('utente', 'UtenteMiPiaceFK')->references('id')->on('utente')->onUpdate('CASCADE')->onDelete('CASCADE');
+      });
+   }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('mipiace', function (Blueprint $table) {
-            $table->dropForeign('PostMiPiaceFK');
-            $table->dropForeign('UtenteMiPiaceFK');
-        });
-    }
+   /**
+    * Reverse the migrations.
+    *
+    * @return void
+    */
+   public function down()
+   {
+      Schema::table('mipiace', function (Blueprint $table) {
+         $table->dropForeign('PostMiPiaceFK');
+         $table->dropForeign('UtenteMiPiaceFK');
+      });
+   }
 }

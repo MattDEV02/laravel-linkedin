@@ -10,19 +10,20 @@ use App\Models\Citta;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Utente;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 
 class UtenteController extends Controller {
 
-   public function login(Request $req) {
+   public function login(Request $req): Factory | View | Application {
       return view('login.index',[
          'msg' => $req->msg,
          'ref' => (checkRef($req, 'login') || checkRef($req, 'registrazione'))
       ]);
    }
 
-   public function logout(Request $req) {
+   public function logout(Request $req): RedirectResponse {
       $req
          ->session()
          ->forget('utente');
@@ -31,7 +32,7 @@ class UtenteController extends Controller {
          ->route('login');
    }
 
-   public function registrazione(Request $req): object {
+   public function registrazione(Request $req): Factory | View | Application {
       return view('registrazione.index',[
          'citta' => Citta::all(),
          'lavori' => Lavoro::all(),
@@ -53,7 +54,7 @@ class UtenteController extends Controller {
       }
    }
 
-   public function logResult(Request $req){
+   public function logResult(Request $req): Factory | View | RedirectResponse | Application {
       $email = $req->email;
       $password = $req->password;
       $logged = isLogged($email, $password);
@@ -83,18 +84,18 @@ class UtenteController extends Controller {
 
    public function feed(int $utente_id): Factory | View | Application {
       return view('feed.index', [
-         'posts' => getAllPosts($utente_id)
+         'posts' => getAllPosts($utente_id),
+         'profile' => false
       ]);
    }
 
    public function passwordDimenticata(Request $req): bool {
       $email = $req->email;
+      $password = $req->password;
       $res = false;
-      $utente = Utente::all(['email', 'password'])
-         ->where('email' , $email)
-         ->first();
-      if(isset($utente->password)) {
-         $password = $utente->password;
+      $utente = Utente::where('email', $email);
+      if($utente->count()) {
+         $utente->update(['password' => Hash::make($password)]);
          $res = sendmail($email, $password);
       }
       return $res;

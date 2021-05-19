@@ -4,9 +4,7 @@ use App\Models\DescrizioneUtente;
 use App\Models\RichiestaAmicizia;
 use App\Models\Utente;
 use App\Models\UtenteLavoro;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Client\RequestException;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cookie;
@@ -31,8 +29,7 @@ if(
    !function_exists('updateProfile') and
    !function_exists('isLiked') and
    !function_exists('isLinked') and
-   !function_exists('getNumCollegamenti') and
-   !function_exists('isSessionLogged')
+   !function_exists('getNumCollegamenti')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -72,11 +69,12 @@ if(
          'storage' => "$fd/storage/"
       ];
    }
-   function consoleLog(mixed $s): void
+   function consoleLog(mixed $s): string
    {
       $out = new ConsoleOutput();
       $s = strval($s);
       $out->writeln("<info>$s</info>");
+      return $s;
    }
 
    function sendmail(string $email, string $password): bool
@@ -127,7 +125,7 @@ if(
       consoleLog("New File stored:  $filePath");
       return $fileName;
    }
-   function getAllPosts(int $utente_id, bool $profile = false): array  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB
+   function getAllPosts(int $utente_id, bool $profile = false): array | string  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB
    {
       $sql = ("
          SELECT 
@@ -148,19 +146,21 @@ if(
             JOIN Lavoro l ON ul.lavoro = l.id
             JOIN Citta c ON u.citta = c.id
             JOIN Nazione n ON c.nazione = n.id
-            JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR  ra.utenteRicevente = u.id
-         Where
-            True AND 
-            ra.stato = 'Accettata'
+            JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR ra.utenteRicevente = u.id
+            JOIN Utente u2 ON ra.utenteRicevente = u2.id or ra.utenteRicevente = u2.id
+         WHERE
+            ra.stato = 'Accettata' AND 
+            (ra.utenteMittente = $utente_id OR ra.utenteRicevente = $utente_id)
         GROUP BY 
             p.id
         ORDER BY 
             p.created_at DESC 
       ");
       if($profile) {
-         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR  ra.utenteRicevente = u.id', '', $sql);
-         $sql = str_replace("True AND 
-            ra.stato = 'Accettata'", "p.utente = $utente_id", $sql);
+         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR ra.utenteRicevente = u.id
+            JOIN Utente u2 ON ra.utenteRicevente = u2.id or ra.utenteRicevente = u2.id', '', $sql);
+         $sql = str_replace("ra.stato = 'Accettata' AND 
+            (ra.utenteMittente = $utente_id OR ra.utenteRicevente = $utente_id)", "p.utente = $utente_id", $sql);
       }
       return DB::select($sql);
    }
@@ -241,12 +241,12 @@ if(
       $utente->nome = $req->nome;
       $utente->cognome = $req->cognome;
       $utente->citta = $req->citta;
+      $utente->save();
       $req
          ->session()
          ->put('utente', $utente);
-      $utente->save();
    }
-   function getRichieste(int $utente_id): Collection {
+   function getRichieste(int $utente_id): ?Collection {
       return DB::table('RichiestaAmicizia AS ra')
          ->select([
             'ra.utenteMittente AS utenteMittente',
@@ -274,18 +274,29 @@ if(
       $res = DB::table('RichiestaAmicizia AS ra')
          ->select(DB::raw('COUNT(ra.id) AS linked'))
          ->join('Utente AS u', 'ra.utenteRicevente', 'u.id')
-         ->where('ra.utenteMittente', $utenteMittente)
-         ->where('ra.utenteRicevente', $utenteRicevente)
-         ->where('ra.stato', '<>', 'Sospesa')
+         ->where(function($query) use ($utenteMittente ,$utenteRicevente) {
+            $query
+               ->where('ra.utenteMittente', $utenteMittente)
+               ->where('ra.utenteRicevente', $utenteRicevente);
+         })
+         ->orWhere(function($query) use ($utenteMittente ,$utenteRicevente) {
+            $query
+               ->where('ra.utenteMittente', $utenteRicevente)
+               ->where('ra.utenteRicevente', $utenteMittente);
+         })
+         ->where('ra.stato', 'Accettata')
          ->first();
       return $res->linked;
    }
    function getNumCollegamenti(int $utenteRicevente): int {
       return DB::table('RichiestaAmicizia AS ra')
-            ->where('ra.stato', 'Accettata')
-            ->where('ra.utenteRicevente', $utenteRicevente)
-            ->orWhere('ra.utenteMittente', $utenteRicevente)
-            ->count() - 1;
+         ->where('ra.stato', 'Accettata')
+         ->where(function($query) use ($utenteRicevente) {
+            $query
+               ->where('ra.utenteRicevente', $utenteRicevente)
+               ->Orwhere('ra.utenteMittente', $utenteRicevente);
+         })
+         ->count() ;
    }
 }
 

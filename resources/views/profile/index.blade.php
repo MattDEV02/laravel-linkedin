@@ -28,7 +28,10 @@
         ])
     @endif
     <div id="posts-container">
-        @include('feed.utils.posts', ['profile' => true ])
+        @include('feed.utils.posts', [
+            'profile' => true,
+            'profile_id' => 1
+        ])
     </div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>

@@ -14,7 +14,8 @@ $utente_id = session()->get('utente')->id;
     @component('components.post', [
       'post' => $post,
       'utente_id' => $utente_id,
-      'profile' => $profile
+      'profile' => $profile,
+      'profile_id' => $profile_id
       ])
     @endcomponent
 @endforeach
