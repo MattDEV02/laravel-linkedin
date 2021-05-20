@@ -9,9 +9,10 @@
 
 ## Run this Commands:
 
-- git clone
+- git clone https://github.com/MattDEV02/laravel-linkedin.git
 - npm install
 - composer install
+- php artisan storage:link
 - php artisan migrate:refresh --seed
 - php artisan serve
 
