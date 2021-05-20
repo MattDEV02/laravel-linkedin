@@ -3,7 +3,7 @@
   array (
     'name' => 'Linkedin',
     'env' => 'local',
-    'debug' => true,
+    'debug' => false,
     'url' => 'http://127.0.0.1:8000',
     'asset_url' => NULL,
     'timezone' => 'Europe/Rome',

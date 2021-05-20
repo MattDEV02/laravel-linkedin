@@ -5,23 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dd7e220-b469-49b4-9be8-cf52ee3a22ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UtenteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/routes-v7.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/PostSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/PostSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/RichiestaAmiciziaSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RichiestaAmiciziaSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/mi-piace-button.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/mi-piace-button.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/post.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/feed/utils/posts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feed/utils/posts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/collegati.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/collegati.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/mi-piace-click.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/richieste-handler.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/richieste-handler.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +276,7 @@
       <workItem from="1621279276509" duration="5507000" />
       <workItem from="1621325503021" duration="8553000" />
       <workItem from="1621348294700" duration="12241000" />
-      <workItem from="1621498185839" duration="6936000" />
+      <workItem from="1621498185839" duration="7532000" />
     </task>
     <servers />
   </component>
