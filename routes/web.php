@@ -60,5 +60,5 @@ Route::prefix('ricezione-dati')
 
 
 Route::get('/test', function () {
-   return isLinked(1, 2);
+   return isLinked(10, 2);
 });

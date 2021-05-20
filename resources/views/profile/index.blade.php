@@ -18,19 +18,18 @@
         <x-noscript />
         @component('components.profile', [
          'profile' => $profile,
-         'own' => $own
+         'own_profile' => $own_profile
          ])
         @endcomponent
     </div>
-    @if($own)
+    @if($own_profile)
         @livewire('richieste-handler', [
-            'richieste' => $richieste
+        'richieste' => $richieste
         ])
     @endif
     <div id="posts-container">
         @include('feed.utils.posts', [
-            'profile' => true,
-            'profile_id' => 1
+            'profile_id' => $profile->id
         ])
     </div>
 </div>

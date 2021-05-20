@@ -24,8 +24,7 @@
                           'post' => $post->id,
                           'utente' => $utente_id,
                           'like' => $post->miPiace,
-                          'profile' => $profile,
-                          'profile_id' => $profile_id
+                          'profile_id' => $profile_id,
                     ])
                     @endcomponent
                 </div>

@@ -125,7 +125,7 @@ if(
       consoleLog("New File stored:  $filePath");
       return $fileName;
    }
-   function getAllPosts(int $utente_id, bool $profile = false): array | string  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB
+   function getAllPosts(int $utente_id, bool $profile = false): array  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB
    {
       $sql = ("
          SELECT 
@@ -273,16 +273,17 @@ if(
    function isLinked (int $utenteMittente, int $utenteRicevente): int {
       $res = DB::table('RichiestaAmicizia AS ra')
          ->select(DB::raw('COUNT(ra.id) AS linked'))
-         ->join('Utente AS u', 'ra.utenteRicevente', 'u.id')
+         ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
+         ->join('Utente AS u2', 'ra.utenteRicevente', 'u2.id')
          ->where(function($query) use ($utenteMittente ,$utenteRicevente) {
             $query
-               ->where('ra.utenteMittente', $utenteMittente)
-               ->where('ra.utenteRicevente', $utenteRicevente);
+               ->where('u.id', $utenteMittente)
+               ->Orwhere('u.id', $utenteRicevente);
          })
-         ->orWhere(function($query) use ($utenteMittente ,$utenteRicevente) {
+         ->where(function($query) use ($utenteMittente ,$utenteRicevente) {
             $query
-               ->where('ra.utenteMittente', $utenteRicevente)
-               ->where('ra.utenteRicevente', $utenteMittente);
+               ->where('u2.id', $utenteMittente)
+               ->Orwhere('u2.id', $utenteRicevente);
          })
          ->where('ra.stato', 'Accettata')
          ->first();

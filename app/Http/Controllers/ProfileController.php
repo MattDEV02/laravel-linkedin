@@ -27,7 +27,7 @@ class ProfileController extends Controller {
          'profile' => $profile,
          'richieste' => getRichieste($utente_id),
          'posts' => getAllPosts($utente_id, true),
-         'own' => $profile->utente_id === $utente_id,
+         'own_profile' => true
       ]);
    }
 
@@ -69,7 +69,7 @@ class ProfileController extends Controller {
             'profile' => $profile,
             'richieste' => getRichieste($utente_id),
             'posts' => getAllPosts($utenteSearched_id, true),
-            'own' => $profile->utente_id === $utente_id,
+            'own_profile' => $profile->utente_id === $utente_id,
          ]);
       } else {
          Log::error("User $emailSearched NOT FOUND.");

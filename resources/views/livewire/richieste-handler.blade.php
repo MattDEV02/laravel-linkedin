@@ -12,13 +12,11 @@ $selectors = selectors();
             </tr>
             </thead>
             <tbody>
-
             @foreach($richieste as $richiesta)
                 @php
                 $mittente = $richiesta->utenteMittente;
                 $ricevente = $richiesta->utenteRicevente;
                 @endphp
-
                 <tr class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
                     <td title="{{ $richiesta->email }}">
                         {{ $richiesta->utenteNomeCognome }}

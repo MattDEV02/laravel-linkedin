@@ -29,10 +29,9 @@ class PostController extends Controller
       $post->utente = $utente_id;
       $post->save();
       Log::debug('New Post Inserted.');
-      $profile = false;
       return view('feed.utils.posts', [
-         'posts' => getAllPosts($utente_id, $profile),
-         'profile' => $profile
+         'posts' => getAllPosts($utente_id, false),
+         'profile_id' => null
       ]);
    }
 
@@ -46,12 +45,12 @@ class PostController extends Controller
       $miPiace->post = $req->post;
       $miPiace->utente = $req->utente;
       $miPiace->save();
-      $profile = $req->profile;
       $profile_id = $req->profile_id;
-      $posts = $profile && $profile_id ? getAllPosts($utente_id, true) : getAllPosts($profile_id);
+      $cond =  $profile_id > 0;
+      $id = $cond ? $profile_id : $utente_id;
+      $posts = getAllPosts($id, $cond);
       return view('feed.utils.posts', [
          'posts' => $posts,
-         'profile' => $profile,
          'profile_id' => $profile_id
       ]);
    }

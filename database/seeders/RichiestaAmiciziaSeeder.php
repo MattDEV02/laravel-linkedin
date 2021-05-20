@@ -12,7 +12,7 @@ class RichiestaAmiciziaSeeder extends Seeder
          'id' => 1,
          'utenteMittente' => 3,
          'utenteRicevente' => 1,
-         'stato' => 'Sospesa',
+         'stato' => 'Accettata',
       ],
       [
          'id' => 2,
@@ -49,7 +49,31 @@ class RichiestaAmiciziaSeeder extends Seeder
          'utenteMittente' => 3,
          'utenteRicevente' => 5,
          'stato' => 'Sospesa',
-      ]
+      ],
+      [
+         'id' => 8,
+         'utenteMittente' => 4,
+         'utenteRicevente' => 1,
+         'stato' => 'Sospesa',
+      ],
+      [
+         'id' => 9,
+         'utenteMittente' => 2,
+         'utenteRicevente' => 5,
+         'stato' => 'Accettata',
+      ],
+      [
+         'id' => 10,
+         'utenteMittente' => 4,
+         'utenteRicevente' => 6,
+         'stato' => 'Accettata',
+      ],
+      [
+         'id' => 11,
+         'utenteMittente' => 5,
+         'utenteRicevente' => 2,
+         'stato' => 'Accettata',
+      ],
    ];
    /**
     * Run the database seeds.

@@ -8,7 +8,7 @@
     <button
             class="btn btn-primary {{ $selectors['fw'] }} {{ $selectors['border'] }} {{ $class }}"
             id="like"
-            onclick="like({{ $post }}, {{ $utente }}, {{ $profile ? $profile : '0' }}, {{ $profile_id  }})"
+            onclick="like({{ $post }}, {{ $utente }}, {{ $profile_id ? $profile_id : '0' }})"
             {{  $isLiked ? 'disabled' : '' }}>
         <i class="fas fa-heart"></i>
     </button>

@@ -85,7 +85,7 @@ class UtenteController extends Controller {
    public function feed(int $utente_id): Factory | View | Application {
       return view('feed.index', [
          'posts' => getAllPosts($utente_id),
-         'profile' => false
+         'profile_id' => null
       ]);
    }
 

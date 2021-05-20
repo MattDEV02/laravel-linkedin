@@ -14,15 +14,14 @@ $utente_id = session()->get('utente')->id;
     @component('components.post', [
       'post' => $post,
       'utente_id' => $utente_id,
-      'profile' => $profile,
       'profile_id' => $profile_id
       ])
     @endcomponent
 @endforeach
 
 <script type="text/javascript" defer>
-   const like = async (post, utente, profile) => {
-      const res = await axios.post('ricezione-dati/like', { post, utente, profile })
+   let like = async (post, utente, profile_id) => {
+      const res = await axios.post('ricezione-dati/like', { post, utente, profile_id })
          .catch(e => console.error(e.message));
       console.log(res);
       res.status === 200 ?

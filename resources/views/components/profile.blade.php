@@ -56,7 +56,7 @@
                         </div>
                         <div class="{{ $selectors['col'] }}2">
                             <div class="row">
-                                @if($own)
+                                @if($own_profile)
                                     <a href="/edit-profile">
                                         <button class="btn btn-primary border border-dark {{ $ml }}">
                                             <i class="fas fa-edit"></i>
@@ -65,7 +65,7 @@
                                 @else
                                     @livewire('collegati', [
                                     'utenteMittente' => $utente->id,
-                                    'utenteRicevente' =>  $profile->utente_id
+                                    'utenteRicevente' => $profile->utente_id
                                     ])
                                 @endif
                                 <b
