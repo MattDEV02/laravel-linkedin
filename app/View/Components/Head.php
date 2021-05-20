@@ -2,6 +2,9 @@
 
 namespace App\View\Components;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 
@@ -23,7 +26,7 @@ class Head extends Component
     *
     * @return \Illuminate\Contracts\View\View|\Closure|string
     */
-   public function render()
+   public function render(): Factory | View | Application
    {
       return view('components.head');
    }

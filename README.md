@@ -18,7 +18,7 @@
 
 # About this Application
 
-## Tecnology used:
+## Technologies used:
 
 - Laravel
 - PHP
@@ -27,8 +27,13 @@
 - Eloquent
 - Livewire
 - Bootstrap
-- Jquery
+- JavaScript (ES6), Jquery
 - SASS
 - GIT, GITHUB
 - Markdown
+- Windows
+- Artisan
+- JSON, XML
+- PHPUnit
+- PHPStorm, Visual-studio Code.
 

@@ -1,6 +1,6 @@
 @php
-$selectors = selectors();
-$utente_id = session()->get('utente')->id;
+    $selectors = selectors();
+    $utente_id = session()->get('utente')->id;
 @endphp
 
 <div class="{{ $selectors['col'] }}5">
@@ -10,14 +10,19 @@ $utente_id = session()->get('utente')->id;
         </h1>
     </div>
 </div>
-@foreach($posts as $post)
-    @component('components.post', [
-      'post' => $post,
-      'utente_id' => $utente_id,
-      'profile_id' => $profile_id
-      ])
-    @endcomponent
-@endforeach
+@if(empty($posts) || count($posts) <= 0 || !isset($posts))
+   <x-no-posts />
+@else
+    @foreach($posts as $post)
+        @component('components.post', [
+          'post' => $post,
+          'utente_id' => $utente_id,
+          'profile_id' => $profile_id
+          ])
+        @endcomponent
+    @endforeach
+@endif
+
 
 <script type="text/javascript" defer>
    let like = async (post, utente, profile_id) => {
@@ -26,6 +31,6 @@ $utente_id = session()->get('utente')->id;
       console.log(res);
       res.status === 200 ?
          document.querySelector('#posts-container').innerHTML = res.data :
-         window.alert('Errore nella Click del Like.');
+         window.alert('Errore nel Click del Like.');
    }
 </script>

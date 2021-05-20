@@ -16,6 +16,7 @@ class AddForeignKeysToCittaTable extends Migration
       Schema::table('Citta', function (Blueprint $table) {
          $table->foreign('nazione', 'NazioneCittaFK')->references('id')->on('nazione')->onUpdate('CASCADE')->onDelete('CASCADE');
          DB::statement('ALTER TABLE Citta ADD CONSTRAINT NomeCittaCheck CHECK (CHAR_LENGTH(nome) > 2 );');
+         DB::statement("ALTER TABLE Citta COMMENT = 'Citta dove risiede l\'Utente';");
       });
    }
 

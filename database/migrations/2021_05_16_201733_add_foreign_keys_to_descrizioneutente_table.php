@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class AddForeignKeysToDescrizioneutenteTable extends Migration
@@ -15,6 +16,7 @@ class AddForeignKeysToDescrizioneutenteTable extends Migration
    {
       Schema::table('DescrizioneUtente', function (Blueprint $table) {
          $table->foreign('utente', 'UtenteDescrizioneFK')->references('id')->on('utente')->onUpdate('CASCADE')->onDelete('CASCADE');
+         DB::statement("ALTER TABLE DescrizioneUtente COMMENT = 'Profilo personale dell\'Utente';");
       });
    }
 

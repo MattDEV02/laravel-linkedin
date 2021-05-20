@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateMipiaceTable extends Migration
 {
    /**
@@ -13,15 +14,17 @@ class CreateMipiaceTable extends Migration
     */
    public function up()
    {
-      Schema::create('MiPiace', function (Blueprint $table) {
-         $table->increments('id')->comment('Chiave Primaria della Tabella MiPiace');
-         $table->unsignedInteger('post')->index('PostMiPiaceFK');;
-         $table->unsignedInteger('utente')->index('UtenteMiPiaceFK');
-         $table->unique(['post', 'utente'], 'PostUtenteMiPiace_UNIQUE');
-         $table->engine = 'InnoDB';
-         $table->charset = 'utf8mb4';
-         $table->collation = 'utf8mb4_unicode_ci';
-      });
+      if(!Schema::hasTable('MiPiace')) {
+         Schema::create('MiPiace', function (Blueprint $table) {
+            $table->increments('id')->comment('Chiave Primaria della Tabella MiPiace');
+            $table->unsignedInteger('post')->index('PostMiPiaceFK');;
+            $table->unsignedInteger('utente')->index('UtenteMiPiaceFK');
+            $table->unique(['post', 'utente'], 'PostUtenteMiPiace_UNIQUE');
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+         });
+      }
    }
 
    /**
@@ -31,6 +34,7 @@ class CreateMipiaceTable extends Migration
     */
    public function down()
    {
-      Schema::dropIfExists('mipiace');
+      if(Schema::hasTable('MiPiace'))
+         Schema::dropIfExists('MiPiace');
    }
 }

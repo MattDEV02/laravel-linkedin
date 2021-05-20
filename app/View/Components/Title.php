@@ -2,17 +2,20 @@
 
 namespace App\View\Components;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Title extends Component
 {
-   public string $row;
+   public ?string $row;
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct(string $row = '')
+   public function __construct(?string $row = null)
    {
       $this->row = $row;
    }
@@ -22,7 +25,7 @@ class Title extends Component
     *
     * @return \Illuminate\Contracts\View\View|\Closure|string
     */
-   public function render()
+   public function render(): Factory | View | Application
    {
       return view('components.title');
    }

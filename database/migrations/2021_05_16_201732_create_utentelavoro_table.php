@@ -14,15 +14,17 @@ class CreateUtentelavoroTable extends Migration
     */
    public function up()
    {
-      Schema::create('UtenteLavoro', function (Blueprint $table) {
-         $table->unsignedInteger('utente')->comment('Riferimento alla Chiave Primaria di Utente');
-         $table->unsignedInteger('lavoro')->default(1)->index('LavoroUtenteFK')->comment('Riferimento alla Chiave Primaria di Lavoro');
-         $table->date('dataInizioLavoro')->nullable()->comment('Data inizio Lavoro dell\' Utente');
-         $table->primary(['utente', 'lavoro']);
-         $table->engine = 'InnoDB';
-         $table->charset = 'utf8mb4';
-         $table->collation = 'utf8mb4_unicode_ci';
-      });
+      if(!Schema::hasTable('UtenteLavoro')) {
+         Schema::create('UtenteLavoro', function (Blueprint $table) {
+            $table->unsignedInteger('utente')->comment('Riferimento alla Chiave Primaria di Utente');
+            $table->unsignedInteger('lavoro')->default(1)->index('LavoroUtenteFK')->comment('Riferimento alla Chiave Primaria di Lavoro');
+            $table->date('dataInizioLavoro')->nullable()->comment('Data inizio Lavoro dell\' Utente');
+            $table->primary(['utente', 'lavoro']);
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+         });
+      }
    }
 
    /**
@@ -32,6 +34,7 @@ class CreateUtentelavoroTable extends Migration
     */
    public function down()
    {
-      Schema::dropIfExists('utentelavoro');
+      if(Schema::hasTable('UtenteLavoro'))
+         Schema::dropIfExists('UtenteLavoro');
    }
 }

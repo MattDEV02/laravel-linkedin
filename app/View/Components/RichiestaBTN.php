@@ -2,11 +2,14 @@
 
 namespace App\View\Components;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class RichiestaBTN extends Component
 {
-   public ?bool $cond = false;
+   public bool $cond = false;
    public int $utenteMittente;
    public int $utenteRicevente;
    /**
@@ -14,7 +17,7 @@ class RichiestaBTN extends Component
     *
     * @return void
     */
-   public function __construct(int $utenteMittente, int $utenteRicevente, ?bool $cond = false)
+   public function __construct(int $utenteMittente, int $utenteRicevente, bool $cond = false)
    {
       $this->cond = $cond;
       $this->utenteMittente = $utenteMittente;
@@ -26,7 +29,7 @@ class RichiestaBTN extends Component
     *
     * @return \Illuminate\Contracts\View\View|\Closure|string
     */
-   public function render()
+   public function render(): Factory | View | Application
    {
       return view('components.richiesta-b-t-n');
    }

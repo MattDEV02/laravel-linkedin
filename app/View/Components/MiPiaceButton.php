@@ -2,6 +2,9 @@
 
 namespace App\View\Components;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 
@@ -10,7 +13,6 @@ class MiPiaceButton extends Component
    public int $post;
    public int $utente;
    public int $like;
-   public bool $profile;
    public int $profile_id;
 
    /**
@@ -18,11 +20,10 @@ class MiPiaceButton extends Component
     *
     * @return void
     */
-   public function __construct(int $post, int $utente, int $like, bool $profile, int $profile_id = null) {
+   public function __construct(int $post, int $utente, int $like, int $profile_id) {
       $this->post = $post;
       $this->utente = $utente;
       $this->like = $like;
-      $this->profile = $profile;
       $this->profile_id = $profile_id;
    }
 
@@ -31,7 +32,7 @@ class MiPiaceButton extends Component
     *
     * @return \Illuminate\Contracts\View\View|\Closure|string
     */
-   public function render()
+   public function render(): Factory | View | Application
    {
       return view('components.mi-piace-button');
    }

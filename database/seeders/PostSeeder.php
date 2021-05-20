@@ -51,6 +51,12 @@ class PostSeeder extends Seeder
          'foto' => '2021_05_17_21_23_34.png',
          'utente' => 3
       ],
+      [
+         'id' => 8,
+         'testo' => 'La mia Bici.',
+         'foto' => '2021_05_11_18_19_59.webp',
+         'utente' => 6
+      ]
    ];
    /**
     * Run the database seeds.

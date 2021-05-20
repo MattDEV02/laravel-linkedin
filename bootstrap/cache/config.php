@@ -238,7 +238,6 @@
     ),
     'allowed_origins' => 
     array (
-      0 => '*',
     ),
     'allowed_origins_patterns' => 
     array (
@@ -262,7 +261,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'linkedin',
+        'database' => 'Linkedin',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -272,16 +271,16 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'linkedin',
+        'database' => 'Linkedin',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
-        'charset' => 'utf8',
-        'collation' => 'utf8_general_ci',
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
         'prefix' => '',
         'prefix_indexes' => true,
         'strict' => false,
-        'engine' => NULL,
+        'engine' => 'InnoDB',
         'options' => 
         array (
         ),
@@ -292,7 +291,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'linkedin',
+        'database' => 'Linkedin',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -307,7 +306,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'linkedin',
+        'database' => 'Linkedin',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',

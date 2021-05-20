@@ -67,13 +67,7 @@ class RichiestaAmiciziaSeeder extends Seeder
          'utenteMittente' => 4,
          'utenteRicevente' => 6,
          'stato' => 'Accettata',
-      ],
-      [
-         'id' => 11,
-         'utenteMittente' => 5,
-         'utenteRicevente' => 2,
-         'stato' => 'Accettata',
-      ],
+      ]
    ];
    /**
     * Run the database seeds.

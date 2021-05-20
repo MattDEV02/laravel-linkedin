@@ -149,8 +149,8 @@ if(
             JOIN Lavoro l ON ul.lavoro = l.id
             JOIN Citta c ON u.citta = c.id
             JOIN Nazione n ON c.nazione = n.id
-            JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR ra.utenteRicevente = u.id
-            RIGHT JOIN Utente u2 ON ra.utenteRicevente = u2.id OR ra.utenteRicevente = u.id
+            JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id 
+            JOIN Utente u2 ON ra.utenteRicevente = u2.id 
          WHERE
             ra.stato = 'Accettata' AND 
             (u.id = $utente_id OR u2.id = $utente_id)
@@ -174,7 +174,7 @@ if(
       $utente = new Utente();
       $utente->email = $req->email;
       $password = $req->password;
-      Cookie::queue('password', $password, 10);
+      Cookie::queue('password', $password, 10800);
       $utente->password = Hash::make($password);
       $utente->nome = ucfirst($req->nome);
       $utente->cognome = ucfirst($req->cognome);

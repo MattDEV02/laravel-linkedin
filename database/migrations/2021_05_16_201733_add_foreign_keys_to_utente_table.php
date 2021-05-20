@@ -19,6 +19,7 @@ class AddForeignKeysToUtenteTable extends Migration
          DB::statement('ALTER TABLE Utente ADD CONSTRAINT CHECK_EmailUtente CHECK (char_length(email) > 2);');
          DB::statement('ALTER TABLE Utente ADD CONSTRAINT CHECK_NomeUtente CHECK (char_length(nome) > 2);');
          DB::statement('ALTER TABLE Utente ADD CONSTRAINT CHECK_CognomeUtente CHECK (char_length(cognome) > 2);');
+         DB::statement("ALTER TABLE Utente COMMENT = 'Utente del sito WEB';");
       });
    }
 

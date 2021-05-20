@@ -7,17 +7,16 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Footer extends Component
+class NoPosts extends Component
 {
-   public bool $login;
    /**
     * Create a new component instance.
     *
     * @return void
     */
-   public function __construct(bool $login = false)
+   public function __construct()
    {
-      $this->login = $login;
+      //
    }
 
    /**
@@ -27,6 +26,6 @@ class Footer extends Component
     */
    public function render(): Factory | View | Application
    {
-      return view('components.footer');
+      return view('components.no-posts');
    }
 }

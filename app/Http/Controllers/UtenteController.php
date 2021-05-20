@@ -27,7 +27,7 @@ class UtenteController extends Controller {
       $req
          ->session()
          ->forget('utente');
-      Log::error('Finished User-Session.');
+      Log::warning('Finished User-Session.');
       return redirect()
          ->route('login');
    }
@@ -48,7 +48,7 @@ class UtenteController extends Controller {
             ->route('login', ['msg' => 'log']);
       else {
          insertUtente($req);
-         Log::debug('New User Interted');
+         Log::debug('New User Interted.');
          return redirect()
             ->route('login', ['msg' => 'reg']);
       }
@@ -73,7 +73,7 @@ class UtenteController extends Controller {
             $req
                ->session()
                ->put('utente', $utente);
-            Log::info('New User-Session started');
+            Log::info("New User-Session started ($email)");
          }
          $utente_id = $req->session()->get('utente')->id;
          return $this->feed($utente_id);
@@ -84,7 +84,7 @@ class UtenteController extends Controller {
 
    public function feed(int $utente_id): Factory | View | Application {
       return view('feed.index', [
-         'posts' => getAllPosts($utente_id),
+         'posts' => null,
          'profile_id' => null
       ]);
    }
