@@ -9,22 +9,25 @@
 
 ## Run this Commands:
 
-- ###git clone
-- ###npm install
-- ###composer install
-- ###php artisan migrate:refresh --seed
-- ###php artisan serve
+- git clone
+- npm install
+- composer install
+- php artisan migrate:refresh --seed
+- php artisan serve
 
+# About this Application
 
-#About this Application
+## Tecnology used:
 
-##Tecnology used:
+- Laravel
+- PHP
+- Blade
+- MySQL
+- Eloquent
+- Livewire
+- Bootstrap
+- Jquery
+- SASS
+- GIT, GITHUB
+- Markdown
 
-- ###Laravel
-- ###PHP
-- ###Blade
-- ###Eloquent
-- ###Livewire
-- ###Bootstrap
-- ###Jquery
-- ###SASS
