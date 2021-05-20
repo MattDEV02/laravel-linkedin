@@ -113,7 +113,10 @@ if(
          ->first();
       $cond = isset($utente);
       return isset($password) ?
-         $cond && Hash::check($password, $utente->password) : $cond;
+         $cond && (
+            Hash::check($password, $utente->password) ||
+            $password === $utente->password
+         ) : $cond;
    }
    function store($img, string $folder,  int $utente_id): string  {
       $extension = $img->extension();
@@ -147,20 +150,20 @@ if(
             JOIN Citta c ON u.citta = c.id
             JOIN Nazione n ON c.nazione = n.id
             JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR ra.utenteRicevente = u.id
-            JOIN Utente u2 ON ra.utenteRicevente = u2.id or ra.utenteRicevente = u2.id
+            RIGHT JOIN Utente u2 ON ra.utenteRicevente = u2.id OR ra.utenteRicevente = u.id
          WHERE
             ra.stato = 'Accettata' AND 
-            (ra.utenteMittente = $utente_id OR ra.utenteRicevente = $utente_id)
+            (u.id = $utente_id OR u2.id = $utente_id)
         GROUP BY 
             p.id
         ORDER BY 
             p.created_at DESC 
       ");
       if($profile) {
-         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id OR ra.utenteRicevente = u.id
-            JOIN Utente u2 ON ra.utenteRicevente = u2.id or ra.utenteRicevente = u2.id', '', $sql);
+         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id 
+            JOIN Utente u2 ON ra.utenteRicevente = u2.id', '', $sql);
          $sql = str_replace("ra.stato = 'Accettata' AND 
-            (ra.utenteMittente = $utente_id OR ra.utenteRicevente = $utente_id)", "p.utente = $utente_id", $sql);
+            (u.id = $utente_id OR u2.id = $utente_id)", "p.utente = $utente_id", $sql);
       }
       return DB::select($sql);
    }

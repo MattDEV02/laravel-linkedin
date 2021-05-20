@@ -16171,6 +16171,11 @@ a.nav-link:hover {
    text-decoration: underline;
 }
 
+#risultato_ricerca {
+   position: fixed !important;
+   z-index: 1 !important;
+}
+
 @media(max-width: 820px) {
    li.nav-item:nth-last-child(n + 3) {
       display: none;
