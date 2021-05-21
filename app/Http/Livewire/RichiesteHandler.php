@@ -47,7 +47,10 @@ class RichiesteHandler extends Component {
 
    public function accetta(int $utenteMittente, int $utenteRicevente): void {
       $this->get($utenteMittente, $utenteRicevente);
-      $this->update($this->stato[1]);
+      if(!isLinked($utenteMittente, $utenteRicevente))
+         $this->update($this->stato[1]);
+      else
+         $this->delete();
    }
 
    public function rifiuta(int $utenteMittente, int $utenteRicevente): void {

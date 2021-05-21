@@ -8,6 +8,7 @@ $selectors = selectors();
             <thead class="richieste">
             <tr>
                 <th scope="col">Utente</th>
+                <th scope="col">Data</th>
                 <th scope="col">Azioni</th>
             </tr>
             </thead>
@@ -20,6 +21,9 @@ $selectors = selectors();
                 <tr class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
                     <td title="{{ $richiesta->email }}">
                         {{ $richiesta->utenteNomeCognome }}
+                    </td>
+                    <td>
+                        {{ $richiesta->dataInvio }}
                     </td>
                     <td>
                         <x-richiesta-b-t-n

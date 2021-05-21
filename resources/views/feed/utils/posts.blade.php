@@ -1,6 +1,8 @@
 @php
     $selectors = selectors();
     $utente_id = session()->get('utente')->id;
+    $i = 0;
+    $noPosts = false;
 @endphp
 
 <div class="{{ $selectors['col'] }}5">
@@ -11,7 +13,9 @@
     </div>
 </div>
 @if(empty($posts) || count($posts) <= 0 || !isset($posts))
-    <x-no-posts />
+    @php
+        $noPosts = true;
+    @endphp
 @else
     @foreach($posts as $post)
         @if(isset($profile_id) && $profile_id > 0)
@@ -21,6 +25,9 @@
               'profile_id' => $profile_id
           ])
             @endcomponent
+            @php
+                $i++;
+            @endphp
         @else
             @if(isLinked($utente_id, $post->utente_id))
                 @component('components.post', [
@@ -29,9 +36,16 @@
                   'profile_id' => $profile_id
               ])
                 @endcomponent
+                @php
+                    $i++;
+                @endphp
             @endif
         @endif
     @endforeach
+@endif
+
+@if($noPosts || $i === 0)
+    <x-no-posts />
 @endif
 
 <script type="text/javascript" defer>

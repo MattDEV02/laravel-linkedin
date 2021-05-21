@@ -242,13 +242,14 @@ if(
          ->select([
             'ra.utenteMittente AS utenteMittente',
             'ra.utenteRicevente AS utenteRicevente',
-            'ra.created_at',
+            DB::raw('DATE(ra.created_at) AS dataInvio'),
             'ra.stato',
             'u.email',
             DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome")
          ])
          ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
          ->where('ra.utenteRicevente', $utente_id)
+         ->orderBy('dataInvio', 'DESC')
          ->get();
    }
    function isLiked (int $post, int $utente): int {

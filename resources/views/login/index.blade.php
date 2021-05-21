@@ -19,7 +19,7 @@
                 <div class="{{ $selectors['col'] }}">
                     <x-title row="justify-content-xl-start" />
                 </div>
-                <div class="{{ $selectors['row'] }} mt-2">
+                <div class="{{ $selectors['row'] }} mt-4">
                     <div id="form-card" class="p-5">
                         <div class="{{ $selectors['col'] }}" id="header">
                             <div class="row">
