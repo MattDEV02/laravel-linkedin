@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Citta;
-use App\Models\Lavoro;
-use App\Models\Utente;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Models\Citta;
+use App\Models\Lavoro;
+use App\Models\Utente;
 
 
 class ProfileController extends Controller {
@@ -47,7 +47,7 @@ class ProfileController extends Controller {
             ->route('logout');
    }
    public function updateProfile(Request $req): RedirectResponse {
-      Log::debug('A profile is Updated ');
+      Log::debug('A profile is Updated.');
       updateProfile($req);
       return redirect('/profile');
    }

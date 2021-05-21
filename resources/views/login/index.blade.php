@@ -12,18 +12,18 @@
 
 <body>
 <div class="{{ $selectors['container'] }}">
-    <div class="{{ $selectors['col'] }}5">
+    <div class="{{ $selectors['col'] }}4">
         <div class="{{ $selectors['row'] }}">
             <x-noscript />
             <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
                 <div class="{{ $selectors['col'] }}">
                     <x-title row="justify-content-xl-start" />
                 </div>
-                <div class="{{ $selectors['row'] }} mt-3">
+                <div class="{{ $selectors['row'] }} mt-2">
                     <div id="form-card" class="p-5">
                         <div class="{{ $selectors['col'] }}" id="header">
                             <div class="row">
-                                <h2 class="">Accedi</h2>
+                                <h2>Accedi</h2>
                             </div>
                             <div class="row">
                                 <p>Resta al passo con il tuo mondo professionale.</p>

@@ -18,6 +18,10 @@ SET time_zone = "+00:00";
 -- Database: `Linkedin`
 --
 
+SELECT CURRENT_TIMESTAMP();
+
+SHOW SCHEMAS;
+
 CREATE SCHEMA IF NOT EXISTS Linkedin;
 
 -- --------------------------------------------------------
@@ -33,6 +37,11 @@ CREATE TABLE IF NOT EXISTS Citta (
     CONSTRAINT NazioneCittaFK FOREIGN KEY(nazione) REFERENCES Nazione(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Citta dove risiede l\'Utente';
 
+OPTIMIZE TABLE Citta;
+
+SHOW CREATE TABLE Citta;
+
+DESCRIBE Citta;
 
 -- --------------------------------------------------------
 
@@ -457,6 +466,8 @@ ALTER TABLE `utentelavoro`
     ADD CONSTRAINT `LavoroUtenteFK` FOREIGN KEY (`lavoro`) REFERENCES `lavoro` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
     ADD CONSTRAINT `UtenteLavoroFK` FOREIGN KEY (`utente`) REFERENCES `utente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
+
+SHOW TABLES;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

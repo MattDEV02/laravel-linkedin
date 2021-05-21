@@ -6,12 +6,13 @@ use App\Models\Lavoro;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
-use App\Models\Citta;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Models\Utente;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cookie;
+use App\Models\Utente;
+use App\Models\Citta;
 
 
 class UtenteController extends Controller {
@@ -84,7 +85,7 @@ class UtenteController extends Controller {
 
    public function feed(int $utente_id): Factory | View | Application {
       return view('feed.index', [
-         'posts' => null,
+         'posts' => getAllPosts($utente_id),
          'profile_id' => null
       ]);
    }
@@ -96,6 +97,7 @@ class UtenteController extends Controller {
       $utente = Utente::where('email', $email);
       if($utente->count()) {
          $utente->update(['password' => Hash::make($password)]);
+         Cookie::queue('password', $password, (60 * 24));
          $res = sendmail($email, $password);
       }
       return $res;

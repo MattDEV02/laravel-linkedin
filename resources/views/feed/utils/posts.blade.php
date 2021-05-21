@@ -11,18 +11,28 @@
     </div>
 </div>
 @if(empty($posts) || count($posts) <= 0 || !isset($posts))
-   <x-no-posts />
+    <x-no-posts />
 @else
     @foreach($posts as $post)
-        @component('components.post', [
-          'post' => $post,
-          'utente_id' => $utente_id,
-          'profile_id' => $profile_id
+        @if(isset($profile_id) && $profile_id > 0)
+            @component('components.post', [
+              'post' => $post,
+              'utente_id' => $utente_id,
+              'profile_id' => $profile_id
           ])
-        @endcomponent
+            @endcomponent
+        @else
+            @if(isLinked($utente_id, $post->utente_id))
+                @component('components.post', [
+                  'post' => $post,
+                  'utente_id' => $utente_id,
+                  'profile_id' => $profile_id
+              ])
+                @endcomponent
+            @endif
+        @endif
     @endforeach
 @endif
-
 
 <script type="text/javascript" defer>
    let like = async (post, utente, profile_id) => {

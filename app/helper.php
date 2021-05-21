@@ -1,9 +1,5 @@
 <?php
 
-use App\Models\DescrizioneUtente;
-use App\Models\RichiestaAmicizia;
-use App\Models\Utente;
-use App\Models\UtenteLavoro;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -14,6 +10,10 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Console\Output\ConsoleOutput;
+use App\Models\DescrizioneUtente;
+use App\Models\RichiestaAmicizia;
+use App\Models\Utente;
+use App\Models\UtenteLavoro;
 
 
 if(
@@ -149,22 +149,15 @@ if(
             JOIN Lavoro l ON ul.lavoro = l.id
             JOIN Citta c ON u.citta = c.id
             JOIN Nazione n ON c.nazione = n.id
-            JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id 
-            JOIN Utente u2 ON ra.utenteRicevente = u2.id 
          WHERE
-            ra.stato = 'Accettata' AND 
-            (u.id = $utente_id OR u2.id = $utente_id)
+            True
         GROUP BY 
             p.id
         ORDER BY 
             p.created_at DESC 
       ");
-      if($profile) {
-         $sql = str_replace('JOIN RichiestaAmicizia ra ON ra.utenteMittente = u.id 
-            JOIN Utente u2 ON ra.utenteRicevente = u2.id', '', $sql);
-         $sql = str_replace("ra.stato = 'Accettata' AND 
-            (u.id = $utente_id OR u2.id = $utente_id)", "p.utente = $utente_id", $sql);
-      }
+      if($profile)
+         $sql = str_replace('True', "p.utente = $utente_id", $sql);
       return DB::select($sql);
    }
    function checkRef(Request $req, string $path): bool {
@@ -174,26 +167,21 @@ if(
       $utente = new Utente();
       $utente->email = $req->email;
       $password = $req->password;
-      Cookie::queue('password', $password, 10800);
+      Cookie::queue('password', $password, (60 * 24));
       $utente->password = Hash::make($password);
       $utente->nome = ucfirst($req->nome);
       $utente->cognome = ucfirst($req->cognome);
       $utente->citta = $req->citta;
       $utente->save();
+      $id = $utente->id;
       $utenteLavoro = new UtenteLavoro();
-      $utenteLavoro->utente = $utente->id;
+      $utenteLavoro->utente = $id;
       $utenteLavoro->lavoro = $req->lavoro;
       $utenteLavoro->dataInizioLavoro = $req->dataInizioLavoro;
       $utenteLavoro->save();
       $descrizioneUtente = new DescrizioneUtente();
-      $descrizioneUtente->utente = $utente->id;
+      $descrizioneUtente->utente = $id;
       $descrizioneUtente->save();
-      $richiestaAmicizia = new RichiestaAmicizia();
-      $id = $utente->id;
-      $richiestaAmicizia->utenteMittente = $id;
-      $richiestaAmicizia->utenteRicevente = $id;
-      $richiestaAmicizia->stato = 'Accettata';
-      $richiestaAmicizia->save();
    }
    function getProfile(int $utente_id): ?object {
       return DB::table('Utente AS u')
@@ -278,15 +266,15 @@ if(
          ->select(DB::raw('COUNT(ra.id) AS linked'))
          ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
          ->join('Utente AS u2', 'ra.utenteRicevente', 'u2.id')
-         ->where(function($query) use ($utenteMittente ,$utenteRicevente) {
+         ->where(function($query) use ($utenteMittente) {
             $query
-               ->where('u.id', $utenteMittente)
-               ->Orwhere('u.id', $utenteRicevente);
+               ->where('ra.utenteMittente', $utenteMittente)
+               ->Orwhere('ra.utenteRicevente', $utenteMittente);
          })
-         ->where(function($query) use ($utenteMittente ,$utenteRicevente) {
+         ->where(function($query) use ($utenteRicevente) {
             $query
-               ->where('u2.id', $utenteMittente)
-               ->Orwhere('u2.id', $utenteRicevente);
+               ->where('ra.utenteMittente', $utenteRicevente)
+               ->Orwhere('ra.utenteRicevente', $utenteRicevente);
          })
          ->where('ra.stato', 'Accettata')
          ->first();

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+
 class DescrizioneUtenteSeeder extends Seeder {  // Profilo personale dell'Utente
    private array $descrizioniUtenti = [
       [
@@ -35,7 +36,7 @@ class DescrizioneUtenteSeeder extends Seeder {  // Profilo personale dell'Utente
          'id' => 5,
          'utente' => 5,
          'testo' => 'Bella regaaa io so er Devakk',
-         'foto' => '2021_05_13_11_12_22.jpeg'
+         'foto' => '2021_05_13_11_12_22.jpg'
       ],
       [
          'id' => 6,
