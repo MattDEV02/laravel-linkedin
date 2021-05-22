@@ -44,10 +44,10 @@ class UtenteController extends Controller {
 
    public function insert(Request $req): RedirectResponse {
       $req->validate([
-         'email' => ['required', 'unique:utente','min:2', 'max:35'],
+         'email' => ['email', 'required', 'unique:utente','min:2', 'max:35'],
          'password' => ['required', 'min:8', 'max:8'],
-         'nome' => ['required', 'min:3', 'max:45'],
-         'cognome' => ['required', 'min:3', 'max:45'],
+         'nome' => ['text', 'required', 'min:3', 'max:45'],
+         'cognome' => ['text', 'required', 'min:3', 'max:45'],
          'lavoro' => ['required'],
          'citta' => ['required'],
       ], [
@@ -78,9 +78,10 @@ class UtenteController extends Controller {
 
    public function logResult(Request $req): Factory | View | RedirectResponse | Application {
       $req->validate([
-         'email' => ['required', 'min:2', 'max:35'],
+         'email' => ['email', 'required', 'min:2', 'max:35'],
          'password' => ['required', 'min:8', 'max:8'],
       ], [
+         'email.email' => 'Inserisci Email valida',
          'email.required' => 'Email is Required.',
          'email.min' => 'Email almeno 2 caratteri.',
          'email.max' => 'Email massimo 35 caratteri.',

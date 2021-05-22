@@ -31,7 +31,6 @@
                         </i>
                     </b>
                 </button>
-                <input type="hidden" name="id" value="{{ $utente->id }}" />
                 <button
                         type="submit"
                         name="submit"

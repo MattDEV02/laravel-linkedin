@@ -28,7 +28,7 @@ class PostController extends Controller
       $post->foto = $fileName;
       $post->utente = $utente_id;
       $post->save();
-      Log::debug('New Post Inserted.');
+      Log::debug("New Post Inserted  ($fileName).");
       return view('feed.utils.posts', [
          'posts' => getAllPosts($utente_id, false),
          'profile_id' => null

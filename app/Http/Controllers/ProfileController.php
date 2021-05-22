@@ -47,7 +47,6 @@ class ProfileController extends Controller {
             ->route('logout');
    }
    public function updateProfile(Request $req): RedirectResponse {
-      Log::debug('A profile is Updated.');
       updateProfile($req);
       return redirect('/profile');
    }
