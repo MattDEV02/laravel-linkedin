@@ -29,7 +29,8 @@ if(
    !function_exists('updateProfile') and
    !function_exists('isLiked') and
    !function_exists('isLinked') and
-   !function_exists('getNumCollegamenti')
+   !function_exists('getNumCollegamenti') and
+   !function_exists('getNumRichiesteSospese')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -242,7 +243,7 @@ if(
          ->select([
             'ra.utenteMittente AS utenteMittente',
             'ra.utenteRicevente AS utenteRicevente',
-            DB::raw('DATE(ra.created_at) AS dataInvio'),
+            DB::raw("DATE_FORMAT(ra.created_at, '%Y-%m-%d %H:%m') AS dataInvio"),
             'ra.stato',
             'u.email',
             DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome")
@@ -254,7 +255,7 @@ if(
    }
    function isLiked (int $post, int $utente): int {
       $res = DB::table('MiPiace AS mp')
-         ->select(DB::raw(' COUNT(u.id) AS liked'))
+         ->select(DB::raw('COUNT(u.id) AS liked'))
          ->join('Post AS p', 'mp.post', 'p.id')
          ->join('Utente AS u', 'mp.utente', 'u.id')
          ->where('p.id', $post)
@@ -289,6 +290,12 @@ if(
                ->where('ra.utenteRicevente', $utenteRicevente)
                ->Orwhere('ra.utenteMittente', $utenteRicevente);
          })
+         ->count() ;
+   }
+   function getNumRichiesteSospese(int $utenteRicevente): int {
+      return DB::table('RichiestaAmicizia AS ra')
+         ->where('ra.stato', 'Sospesa')
+         ->where('ra.utenteRicevente', $utenteRicevente)
          ->count() ;
    }
 }

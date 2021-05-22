@@ -8,6 +8,7 @@ $selectors = selectors();
         class="{{ $selectors['input'] }}"
         type="{{ $selectors['email'] }}"
         autocomplete="{{ $selectors['autocomplete'] }}"
+        minlength="2"
         maxlength="{{ $selectors['emailLen'] }}"
         name="{{ $selectors['email'] }}"
         placeholder="{{ ucfirst($selectors['email']) }}"

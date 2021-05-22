@@ -21,7 +21,7 @@
                 <div class="{{ $selectors['col'] }}">
                     <div class="{{ $selectors['row'] }} mt-5">
                         <h5 id="subtitle">
-                            In questa sezione puoi modificare il tuo Profilo.
+                          Modifica del Profilo
                         </h5>
                     </div>
                 </div>
@@ -140,7 +140,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-lg-2 col-md-1"></div>
     </div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>

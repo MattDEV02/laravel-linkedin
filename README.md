@@ -7,33 +7,39 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Run this Commands:
+# Laravel-Linkedin
 
-- git clone https://github.com/MattDEV02/laravel-linkedin.git
-- npm install
-- composer install
-- php artisan storage:link
-- php artisan migrate:refresh --seed
-- php artisan serve
+## Run this Commands to replicate the Application:
+
+- #### git clone https://github.com/MattDEV02/laravel-linkedin.git
+- #### npm install
+- #### composer install
+- #### php artisan storage:link
+- #### php artisan db:create
+- #### php artisan migrate:refresh --seed
+- #### php artisan serve
 
 # About this Application
 
 ## Technologies used:
 
-- Laravel
-- PHP
-- Blade
-- MySQL
-- Eloquent
-- Livewire
-- Bootstrap
-- JavaScript (ES6), Jquery
-- SASS
-- GIT, GITHUB
-- Markdown
-- Windows
-- Artisan
-- JSON, XML
-- PHPUnit
-- PHPStorm, Visual-studio Code.
+- ### Laravel 8
+- ### PHP 8
+- ### Blade
+- ### MySQL
+- ### Eloquent
+- ### Livewire
+- ### Bootstrap
+- ### JavaScript (ES6), Jquery
+- ### SASS
+- ### GIT, GITHUB
+- ### Markdown
+- ### Windows
+- ### Artisan
+- ### JSON, XML
+- ### PHPUnit
+- ### PHPStorm, Visual-studio Code.
+- ### Modello ER
+- ### Modello Relazionale
 
+## Description:

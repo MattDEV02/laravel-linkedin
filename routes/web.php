@@ -60,5 +60,5 @@ Route::prefix('ricezione-dati')
 
 
 Route::get('/test', function () {
-   return getAllPosts(4);
+   return getNumRichiesteSospese();
 });

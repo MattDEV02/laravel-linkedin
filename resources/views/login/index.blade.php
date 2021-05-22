@@ -31,6 +31,7 @@
                         </div>
                         <form method="POST" action="/feed">
                             @csrf
+                            <x-errors />
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
                                     <x-email />

@@ -28,6 +28,7 @@
                     <div id="form-card" class="{{ $selectors['col'] }} p-4">
                         <form method="POST" action="{{ $selectors['action'] }}/registrazione" id="profile-form">
                             @csrf
+                            <x-errors />
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
                                     <x-email label="{{ ucfirst($selectors['email']) }}"/>

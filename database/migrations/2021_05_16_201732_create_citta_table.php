@@ -32,7 +32,8 @@ class CreateCittaTable extends Migration
     */
    public function down()
    {
+      //DB::statement('DROP SCHEMA IF EXISTS Linkedin');
       if(Schema::hasTable('Citta'))
-        Schema::dropIfExists('Citta');
+         Schema::dropIfExists('Citta');
    }
 }
