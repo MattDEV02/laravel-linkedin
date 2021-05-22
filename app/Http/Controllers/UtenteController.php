@@ -49,7 +49,7 @@ class UtenteController extends Controller {
          'nome' => ['required', 'min:3', 'max:45'],
          'cognome' => ['required', 'min:3', 'max:45'],
          'lavoro' => ['required'],
-         'citta' => ['required']
+         'citta' => ['required'],
       ], [
          'email.required' => 'Email is Required.',
          'email.min' => 'Email almeno 2 caratteri.',
