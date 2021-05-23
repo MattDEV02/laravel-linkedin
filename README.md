@@ -6,7 +6,7 @@
 
 - #### git clone https://github.com/MattDEV02/laravel-linkedin.git
 - #### npm install
-- #### composer install
+- #### composer install (if you use Linux add the --ignore-platform-reqs flag)
 - #### php artisan storage:link
 - #### php artisan db:create
 - #### php artisan migrate:refresh --seed
