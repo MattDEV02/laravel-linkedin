@@ -138,11 +138,11 @@ CREATE TABLE IF NOT EXISTS Post (
                                     CONSTRAINT UtentePostFK FOREIGN KEY (Utente) REFERENCES Utente(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Post pubblicati dagli Utenti';
 
-OPTIMIZE TABLE Descrizioneutente;
+OPTIMIZE TABLE Post;
 
-SHOW CREATE TABLE Descrizioneutente;
+SHOW CREATE TABLE Post;
 
-DESCRIBE Descrizioneutente;
+DESCRIBE Post;
 
 
 --

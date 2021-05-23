@@ -58,7 +58,3 @@ Route::prefix('ricezione-dati')
          ->middleware('isSessionLogged');
    });
 
-
-Route::get('/test', function () {
-   return getNumRichiesteSospese();
-});
