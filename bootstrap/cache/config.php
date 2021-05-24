@@ -666,14 +666,6 @@
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
   ),
-  'generators' => 
-  array (
-    'config' => 
-    array (
-      'migration_template_path' => 'C:\\xampp\\htdocs\\Laravel\\linkedin\\vendor/kitloong/laravel-migrations-generator/src/Way/Generators/templates/migration.txt',
-      'migration_target_path' => 'C:\\xampp\\htdocs\\Laravel\\linkedin\\database/migrations',
-    ),
-  ),
   'livewire' => 
   array (
     'class_namespace' => 'App\\Http\\Livewire',
