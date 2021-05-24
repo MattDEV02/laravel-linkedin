@@ -125,11 +125,11 @@ CREATE TABLE IF NOT EXISTS DescrizioneUtente (  -- Profilo personale Utente --
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Profilo personale dell''Utente';
 
 
-OPTIMIZE TABLE Descrizioneutente;
+OPTIMIZE TABLE DescrizioneUtente;
 
-SHOW CREATE TABLE Descrizioneutente;
+SHOW CREATE TABLE DescrizioneUtente;
 
-DESCRIBE Descrizioneutente;
+DESCRIBE DescrizioneUtente;
 
 -- --------------------------------------------------------
 
@@ -325,7 +325,7 @@ INSERT INTO DescrizioneUtente (id, testo, foto, utente, created_at, updated_at) 
 -- Dump dei dati per la tabella `post`
 --
 
-INSERT INTO `post` (`id`, `testo`, `foto`, `utente`, `created_at`, `updated_at`) VALUES
+INSERT INTO Post (`id`, `testo`, `foto`, `utente`, `created_at`, `updated_at`) VALUES
     (1, 'Ecco il mio Primo Post.', '2021_05_05_16_43_53.svg', 1, '2021-05-20 17:59:11', '2021-05-20 17:59:11'),
     (2, 'Forza Romaaa', '2021_05_15_15_07_34.png', 1, '2021-05-20 17:59:12', '2021-05-20 17:59:11'),
     (3, 'Buongiorno a tutti.', '2021_05_06_08_40_54.jpg', 2, '2021-05-20 17:59:13', '2021-05-20 17:59:11'),
@@ -339,7 +339,7 @@ INSERT INTO `post` (`id`, `testo`, `foto`, `utente`, `created_at`, `updated_at`)
 -- Dump dei dati per la tabella `Richiestaamicizia`
 --
 
-INSERT INTO Richiestaamicizia (`id`, `utenteMittente`, `utenteRicevente`, `stato`, `created_at`, `updated_at`) VALUES
+INSERT INTO RichiestaAmicizia (`id`, `utenteMittente`, `utenteRicevente`, `stato`, `created_at`, `updated_at`) VALUES
 (1, 3, 1, 'Accettata', '2021-05-20 17:59:11', '2021-05-20 17:59:11'),
 (2, 2, 1, 'Sospesa', '2021-05-20 17:59:11', '2021-05-20 17:59:11'),
 (3, 4, 2, 'Sospesa', '2021-05-20 17:59:11', '2021-05-20 17:59:11'),

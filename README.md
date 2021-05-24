@@ -6,7 +6,7 @@
 ## Run this Commands to replicate the Application:
 
 - #### git clone https://github.com/MattDEV02/laravel-linkedin.git
-- #### npm install (this command is optional)
+- #### npm install
 - #### composer install (if you use Linux add the --ignore-platform-reqs flag)
 - #### php artisan storage:link
 - #### php artisan db:create
