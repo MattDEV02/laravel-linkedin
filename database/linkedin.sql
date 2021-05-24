@@ -13,6 +13,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+
 --
 -- Database: `Linkedin`
 --
@@ -34,8 +35,9 @@ USE Linkedin;
 --
 
 CREATE TABLE IF NOT EXISTS Nazione (
-                                       id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero della Nazione',
-                                       nome VARCHAR(35) NOT NULL UNIQUE COMMENT 'Nome in formato stringa della Nazione (identificativo)'
+   id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero della Nazione',
+   nome VARCHAR(35) NOT NULL UNIQUE COMMENT 'Nome in formato stringa della Nazione (identificativo)',
+   CONSTRAINT NomeNazioneCheck CHECK(CHAR_LENGTH(nome) > 2)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Nazionalità dell\'Utente';
 
 OPTIMIZE TABLE Nazione;
@@ -51,11 +53,13 @@ DESCRIBE Nazione;
 --
 
 CREATE TABLE IF NOT EXISTS Citta (
-                                     id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero della Citta',
-                                     nome VARCHAR(35) NOT NULL COMMENT 'Nome in formato stringa della Citta', -- Il Nome di una Citta' non è univoco. --
-                                     nazione INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiava Primaria di Nazione',
-                                     CONSTRAINT NazioneCittaFK FOREIGN KEY(nazione) REFERENCES Nazione(id) ON UPDATE CASCADE ON DELETE CASCADE
+	id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero della Citta',
+	nome VARCHAR(35) NOT NULL COMMENT 'Nome in formato stringa della Citta', -- Il Nome di una Citta' non è univoco. --
+	nazione INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiava Primaria di Nazione',
+	CONSTRAINT NomeCittaCheck CHECK(CHAR_LENGTH(nome) > 2),
+	CONSTRAINT NazioneCittaFK FOREIGN KEY(nazione) REFERENCES Nazione(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Citta dove risiede l\'Utente';
+
 
 OPTIMIZE TABLE Citta;
 
@@ -70,8 +74,9 @@ DESCRIBE Citta;
 --
 
 CREATE TABLE IF NOT EXISTS Lavoro (
-                                      id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero del Lavoro',
-                                      nome VARCHAR(35) NOT NULL UNIQUE COMMENT 'Nome in formato stringa del Lavoro dell''Utente'
+   id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero del Lavoro',
+   nome VARCHAR(35) NOT NULL UNIQUE COMMENT 'Nome in formato stringa del Lavoro dell''Utente',
+   CONSTRAINT NomeLavoroCheck CHECK(CHAR_LENGTH(nome) > 2)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Lavoro svolto dall''Utente';
 
 
@@ -82,15 +87,19 @@ CREATE TABLE IF NOT EXISTS Lavoro (
 --
 
 CREATE TABLE IF NOT EXISTS Utente (  -- Relazione Principale --
-                                      id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero dell'' Utente',
-                                      email VARCHAR(45) NOT NULL COMMENT 'Email dell'' Utente',
-                                      password CHAR(60) NOT NULL UNIQUE COMMENT 'Password dell'' Utente', -- BCRYPT HASHING (10 round)--
-                                      nome VARCHAR(35) NOT NULL COMMENT 'Nome anagrafico dell''Utente',
-                                      cognome VARCHAR(35) NOT NULL COMMENT 'Cognome anagrafico dell''Utente',
-                                      citta INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiave Primaria di Citta',
-                                      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Data Creazione del Record',
-                                      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT 'Data Aggiornamento del Record',
-                                      CONSTRAINT UtenteCittaFK FOREIGN KEY(citta) REFERENCES Citta(id) ON DELETE CASCADE ON UPDATE CASCADE
+    id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero dell'' Utente',
+    email VARCHAR(45) NOT NULL COMMENT 'Email dell'' Utente',
+    password CHAR(60) NOT NULL UNIQUE COMMENT 'Password dell'' Utente', -- BCRYPT HASHING (10 round)--
+    nome VARCHAR(35) NOT NULL COMMENT 'Nome anagrafico dell''Utente',
+    cognome VARCHAR(35) NOT NULL COMMENT 'Cognome anagrafico dell''Utente',
+    citta INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiave Primaria di Citta',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Data Creazione del Record',
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT 'Data Aggiornamento del Record',
+	CONSTRAINT EmailUtenteCheck CHECK(CHAR_LENGTH(email) > 2),
+	CONSTRAINT PasswordUtenteCheck CHECK(CHAR_LENGTH(password) > 2),
+	CONSTRAINT NomeUtenteCheck CHECK(CHAR_LENGTH(nome) > 2),
+    CONSTRAINT CognomeUtenteCheck CHECK(CHAR_LENGTH(cognome) > 2),
+    CONSTRAINT UtenteCittaFK FOREIGN KEY(citta) REFERENCES Citta(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Profilo personale dell''Utente';
 
 OPTIMIZE TABLE Utente;
@@ -106,14 +115,15 @@ DESCRIBE Utente;
 --
 
 CREATE TABLE IF NOT EXISTS DescrizioneUtente (  -- Profilo personale Utente --
-                                                 id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero della Descrizione dell'' Utente',
-                                                 testo VARCHAR(255) DEFAULT NULL COMMENT 'Testo della Descrizione dell'' Utente',
-                                                 foto VARCHAR(25) DEFAULT NULL COMMENT 'Foto della Descrizione dell'' Utente (relative path del file)',
-                                                 utente INT(10) UNSIGNED NOT NULL UNIQUE COMMENT 'Riferimento alla Chiava Primaria di Utente',
-                                                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Data Creazione del Record',
-                                                 updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT 'Data Aggiornamento del Record',
-                                                 CONSTRAINT UtenteDescrizioneFK FOREIGN KEY (utente) REFERENCES Utente(id) ON DELETE CASCADE ON UPDATE CASCADE
+	id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero della Descrizione dell'' Utente',
+	testo VARCHAR(255) DEFAULT NULL COMMENT 'Testo della Descrizione dell'' Utente',
+	foto VARCHAR(25) DEFAULT NULL COMMENT 'Foto della Descrizione dell'' Utente (relative path del file)',
+	utente INT(10) UNSIGNED NOT NULL UNIQUE COMMENT 'Riferimento alla Chiava Primaria di Utente',
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Data Creazione del Record',
+	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT 'Data Aggiornamento del Record',
+	CONSTRAINT UtenteDescrizioneFK FOREIGN KEY(utente) REFERENCES Utente(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Profilo personale dell''Utente';
+
 
 OPTIMIZE TABLE Descrizioneutente;
 
@@ -128,15 +138,18 @@ DESCRIBE Descrizioneutente;
 --
 
 CREATE TABLE IF NOT EXISTS Post (
-                                    id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero del Post dell'' Utente',
-                                    testo VARCHAR(255) NOT NULL COMMENT 'Testo del Post dell'' Utente',
-                                    foto VARCHAR(25) NOT NULL COMMENT 'Foto del Post dell'' Utente (relativa path del file)',
-                                    utente INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiava Primaria di Utente',
-                                    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Data Creazione del Record (consente di ottenere anche la di Pubblicazione del Post)',
-                                    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT 'Data Aggiornamento del Record',
-                                    CONSTRAINT UtenteCreatedAt_UtentePost_UNIQUE UNIQUE(utente, created_at),
-                                    CONSTRAINT UtentePostFK FOREIGN KEY (Utente) REFERENCES Utente(id) ON DELETE CASCADE ON UPDATE CASCADE
+	id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero del Post dell'' Utente',
+	testo VARCHAR(255) NOT NULL COMMENT 'Testo del Post dell'' Utente',
+	foto VARCHAR(25) NOT NULL COMMENT 'Foto del Post dell'' Utente (relativa path del file)',
+	utente INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiava Primaria di Utente',
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Data Creazione del Record (consente di ottenere anche la di Pubblicazione del Post)',
+	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT 'Data Aggiornamento del Record',
+	CONSTRAINT UtenteCreatedAt_UtentePost_UNIQUE UNIQUE(utente, created_at),
+	CONSTRAINT TestoPostCheck CHECK(CHAR_LENGTH(testo) > 2),
+	CONSTRAINT FotoPostCheck CHECK(CHAR_LENGTH(foto) > 2),
+	CONSTRAINT UtentePostFK FOREIGN KEY (Utente) REFERENCES Utente(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Post pubblicati dagli Utenti';
+
 
 OPTIMIZE TABLE Post;
 
@@ -150,13 +163,14 @@ DESCRIBE Post;
 --
 
 CREATE TABLE IF NOT EXISTS MiPiace (
-                                       id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Chiave Primaria della Tabella MiPiace',
-                                       post INT(10) UNSIGNED NOT NULL COMMENT 'Post su cui è stato applicatto il Like' ,
-                                       utente INT(10) UNSIGNED NOT NULL COMMENT 'Utente che ha messo il Like al Post',
-                                       CONSTRAINT PostUtenteMiPiace_UNIQUE UNIQUE(post, utente),
-                                       CONSTRAINT PostMiPiaceFK FOREIGN KEY (post) REFERENCES Post(id) ON DELETE CASCADE ON UPDATE CASCADE,
-                                       CONSTRAINT PostUtenteFK FOREIGN KEY (utente) REFERENCES Utente(id) ON DELETE CASCADE ON UPDATE CASCADE
+    id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Chiave Primaria della Tabella MiPiace',
+    post INT(10) UNSIGNED NOT NULL COMMENT 'Post su cui è stato applicatto il Like' ,
+    utente INT(10) UNSIGNED NOT NULL COMMENT 'Utente che ha messo il Like al Post',
+    CONSTRAINT PostUtenteMiPiace_UNIQUE UNIQUE(post, utente),
+    CONSTRAINT PostMiPiaceFK FOREIGN KEY (post) REFERENCES Post(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT PostUtenteFK FOREIGN KEY (utente) REFERENCES Utente(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Like degli Utenti ai Post';
+
 
 OPTIMIZE TABLE MiPiace;
 
@@ -172,16 +186,18 @@ DESCRIBE MiPiace;
 --
 
 CREATE TABLE IF NOT EXISTS RichiestaAmicizia (
-                                                 id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero della Richiesta di Amicizia degli Utenti',
-                                                 utenteMittente INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiava Primaria dell'' Utente (mittente della richiesta di amicizia)',
-                                                 utenteRicevente INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiava Primaria dell'' Utente (ricevente della richiesta di amicizia)',
-                                                 stato ENUM('Sospesa','Accettata') NOT NULL DEFAULT 'Sospesa' COMMENT 'Stato della Richiesta di Amicizia (in sospeso, rifiutata, Accettata)',
-                                                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Data Creazione del Record (consente di ottenere anche la data di Pubblicazione del Post)',
-                                                 updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT 'Data Aggiornamento del Record',
-                                                 CONSTRAINT utenteMittenteRicevente_Utente_UNIQUE UNIQUE(utenteMittente, utenteRicevente),
-                                                 CONSTRAINT UtenteMittenteRichiestaAmiciziaFK FOREIGN KEY (utenteMittente) REFERENCES Utente(id) ON UPDATE CASCADE ON DELETE CASCADE,
-                                                 CONSTRAINT utenteRiceventeRichiestaAmiciziaFK FOREIGN KEY (utenteRicevente) REFERENCES Utente(id) ON UPDATE CASCADE ON DELETE CASCADE
+	id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Identificativo Intero della Richiesta di Amicizia degli Utenti',
+	utenteMittente INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiava Primaria dell'' Utente (mittente della richiesta di amicizia)',
+	utenteRicevente INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiava Primaria dell'' Utente (ricevente della richiesta di amicizia)',
+	stato ENUM('Sospesa','Accettata') NOT NULL DEFAULT 'Sospesa' COMMENT 'Stato della Richiesta di Amicizia (in sospeso, rifiutata, Accettata)',
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT 'Data Creazione del Record (consente di ottenere anche la data di Pubblicazione del Post)',
+	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT 'Data Aggiornamento del Record',
+	CONSTRAINT utenteMittenteRicevente_UNIQUE UNIQUE(utenteMittente, utenteRicevente),
+	CONSTRAINT utenteRiceventeMittente_UNIQUE UNIQUE(utenteMittente, utenteRicevente),
+	CONSTRAINT UtenteMittenteRichiestaAmiciziaFK FOREIGN KEY (utenteMittente) REFERENCES Utente(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT utenteRiceventeRichiestaAmiciziaFK FOREIGN KEY (utenteRicevente) REFERENCES Utente(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Richieste di Amicizia inviate da un Utente ad un altro';
+
 
 OPTIMIZE TABLE MiPiace;
 
@@ -196,12 +212,12 @@ DESCRIBE MiPiace;
 --
 
 CREATE TABLE IF NOT EXISTS UtenteLavoro (
-                                            utente INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiave Primaria di Utente',
-                                            lavoro INT(10) UNSIGNED NOT NULL DEFAULT 1 COMMENT 'Riferimento alla Chiave Primaria di Lavoro',
-                                            dataInizioLavoro DATE DEFAULT NULL COMMENT 'Data inizio Lavoro dell'' Utente',
-                                            PRIMARY KEY (Utente, Lavoro),
-                                            CONSTRAINT UtenteLavoroFK FOREIGN KEY (utente) REFERENCES Utente(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-                                            CONSTRAINT LavoroUtenteFK FOREIGN KEY (lavoro) REFERENCES Lavoro(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+	utente INT(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiave Primaria di Utente',
+	lavoro INT(10) UNSIGNED NOT NULL DEFAULT 1 COMMENT 'Riferimento alla Chiave Primaria di Lavoro',
+	dataInizioLavoro DATE DEFAULT NULL COMMENT 'Data inizio Lavoro dell'' Utente',
+	PRIMARY KEY (Utente, Lavoro),
+	CONSTRAINT UtenteLavoroFK FOREIGN KEY (utente) REFERENCES Utente(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT LavoroUtenteFK FOREIGN KEY (lavoro) REFERENCES Lavoro(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Relazione contenente le Chiavi Primarie della Relazione Utente e della Relazione Lavoro';
 
 OPTIMIZE TABLE UtenteLavoro;

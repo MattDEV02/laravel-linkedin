@@ -6,12 +6,14 @@
 ## Run this Commands to replicate the Application:
 
 - #### git clone https://github.com/MattDEV02/laravel-linkedin.git
-- #### npm install
+- #### npm install (this command is optional)
 - #### composer install (if you use Linux add the --ignore-platform-reqs flag)
 - #### php artisan storage:link
 - #### php artisan db:create
 - #### php artisan migrate:refresh --seed
 - #### php artisan serve
+
+  ##### If the migration command does not work, there is an .sql file in the Database folder to replicate it.
 
 # About this Application
 
@@ -36,7 +38,7 @@
 - ### PHPUnit
 - ### PHPStorm, Visual-studio Code.
 
-### Project phase
+### Project phases
 
 - ER Model
 - Relational Model
