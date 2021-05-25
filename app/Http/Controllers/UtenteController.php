@@ -60,7 +60,6 @@ class UtenteController extends Controller {
          'password' => ['required', 'min:8', 'max:8'],
          'nome' => ['required', 'min:3', 'max:45'],
          'cognome' => ['required', 'min:3', 'max:45'],
-         'lavoro' => ['required'],
          'citta' => ['required'],
       ], [
          'email.required' => 'Email is Required.',
@@ -77,7 +76,6 @@ class UtenteController extends Controller {
          'cognome.min' => 'Cognome almeno 3 caratteri.',
          'cognome.max' => 'Cognome massimo 45 caratteri.',
          'citta.required'  => 'Citta is Required.',
-         'lavoro.required' => 'Lavoro is Required.'
       ]);
       $email = $req->email;
       if(isLogged($email))

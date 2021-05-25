@@ -47,6 +47,20 @@ class ProfileController extends Controller {
             ->route('logout');
    }
    public function updateProfile(Request $req): RedirectResponse {
+      $req->validate([
+         //'image' => ['image'],
+         'nome' => ['required', 'min:2', 'max:45'],
+         'cognome' => ['required', 'min:2', 'max:45'],
+         'citta' => ['required'],
+      ], [
+         'nome.required' => 'Nome is Required.',
+         'nome.min' => 'Nome almeno 3 caratteri.',
+         'nome.max' => 'Nome massimo 45 caratteri.',
+         'cognome.required' => 'Cognome is Required.',
+         'cognome.min' => 'Cognome almeno 3 caratteri.',
+         'cognome.max' => 'Cognome massimo 45 caratteri.',
+         'citta.required'  => 'Citta is Required.',
+      ]);
       updateProfile($req);
       return redirect('/profile');
    }

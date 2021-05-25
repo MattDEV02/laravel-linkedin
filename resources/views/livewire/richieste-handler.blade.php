@@ -3,9 +3,9 @@
     $richiesteClass = getNumRichiesteSospese(session()->get('utente')->id) <= 0 ? 'no-richieste' : null;
 @endphp
 
-<div class="{{ $selectors['col'] }}5">
+<div class="col-xs-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mt-5">
     <div class="{{ $selectors['row'] }}">
-        <table class="table-sm table-hover text-center table-bordered richieste {{ $richiesteClass }}">
+        <table class="table table-hover text-center table-bordered richieste {{ $richiesteClass }}">
             <thead class="richieste">
             <tr>
                 <th scope="col">Utente</th>
@@ -21,7 +21,9 @@
                 @endphp
                 <tr class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
                     <td title="{{ $richiesta->email }}">
-                        {{ $richiesta->utenteNomeCognome }}
+                        <b>
+                            {{ $richiesta->utenteNomeCognome }}
+                        </b>
                     </td>
                     <td>
                         {{ $richiesta->dataInvio }}

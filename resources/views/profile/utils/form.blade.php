@@ -30,6 +30,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-7 col-sm-9 col-xs-9 p-4" id="form-card">
                             <form method="POST" action="{{ $selectors['action'] }}/edit-profile" id="profile-form" enctype="multipart/form-data">
                                 @csrf
+                               <x-errors />
                                 <input
                                         type="hidden"
                                         name="utente_id"
@@ -101,7 +102,8 @@
                                         <select
                                                 class="{{ $selectors['input'] }}"
                                                 id="{{ $selectors['select2']}}"
-                                                name="{{ $selectors['select2'] }}">
+                                                name="{{ $selectors['select2'] }}"
+                                                required>
                                             @component('components.option', [
                                                 'data' => $citta,
                                                 'selected' => $profile->citta

@@ -23,9 +23,13 @@
         @endcomponent
     </div>
     @if($own_profile)
-        @livewire('richieste-handler', [
-        'richieste' => $richieste
-        ])
+    <div class="{{ $selectors['col'] }}5">
+        <div class="{{ $selectors['row'] }}">
+            @livewire('richieste-handler', [
+            'richieste' => $richieste
+            ])
+        </div>
+    </div>
     @endif
     <div id="posts-container">
         @include('feed.utils.posts', [

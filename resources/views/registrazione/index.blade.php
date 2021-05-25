@@ -56,7 +56,8 @@
                                     </label>
                                     <select
                                             class="{{ $selectors['input'] }}"
-                                            name="{{ $selectors['select2'] }}">
+                                            name="{{ $selectors['select2'] }}"
+                                            required>
                                         @component('components.option', ['data' => $citta])
                                         @endcomponent
                                     </select>
