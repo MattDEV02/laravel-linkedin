@@ -243,7 +243,7 @@ if(
          ->select([
             'ra.utenteMittente AS utenteMittente',
             'ra.utenteRicevente AS utenteRicevente',
-            DB::raw("DATE_FORMAT(ra.created_at, '%Y-%m-%d %H:%m') AS dataInvio"),
+            DB::raw("DATE_FORMAT(ra.created_at, '%Y-%m-%d %H:%i') AS dataInvio"),
             'ra.stato',
             'u.email',
             DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome")

@@ -46,8 +46,8 @@ class UtenteController extends Controller {
       $req->validate([
          'email' => ['email', 'required', 'unique:utente','min:2', 'max:35'],
          'password' => ['required', 'min:8', 'max:8'],
-         'nome' => ['text', 'required', 'min:3', 'max:45'],
-         'cognome' => ['text', 'required', 'min:3', 'max:45'],
+         'nome' => ['required', 'min:3', 'max:45'],
+         'cognome' => ['required', 'min:3', 'max:45'],
          'lavoro' => ['required'],
          'citta' => ['required'],
       ], [
@@ -79,7 +79,7 @@ class UtenteController extends Controller {
    public function logResult(Request $req): Factory | View | RedirectResponse | Application {
       $req->validate([
          'email' => ['email', 'required', 'min:2', 'max:35'],
-         'password' => ['required', 'min:8', 'max:8'],
+         'password' => ['required', 'min:8', 'max:60'],
       ], [
          'email.email' => 'Inserisci Email valida',
          'email.required' => 'Email is Required.',
@@ -87,7 +87,6 @@ class UtenteController extends Controller {
          'email.max' => 'Email massimo 35 caratteri.',
          'password.required'  => 'Password is Required.',
          'password.min'  => 'Password con 8 caratteri.',
-         'password.max'  => 'Password con 8 caratteri.',
       ]);
       $email = $req->email;
       $password = $req->password;
@@ -118,7 +117,7 @@ class UtenteController extends Controller {
 
    public function feed(int $utente_id): Factory | View | Application {
       return view('feed.index', [
-         'posts' => getAllPosts($utente_id),
+         'posts' => getAllPosts(7),
          'profile_id' => null
       ]);
    }
