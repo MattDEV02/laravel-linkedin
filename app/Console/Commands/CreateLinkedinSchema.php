@@ -39,10 +39,11 @@ class CreateLinkedinSchema extends Command
     */
    public function handle(): int {
       $schema = 'Linkedin';
-      DB::statement("DROP SCHEMA IF EXISTS $schema;");
-      $result = (int) DB::statement("CREATE SCHEMA IF NOT EXISTS $schema;");
-      $out = $result ? 'Schema Created.' : 'Schema not Created.';
-      $this->info($out);
+      $result = (int) (
+         DB::statement("DROP SCHEMA IF EXISTS $schema;") &&
+         DB::statement("CREATE SCHEMA IF NOT EXISTS $schema;")
+      );
+      $result ? $this->info('Schema Created.') : $this->error('Schema not Created.');
       return $result;
    }
 }

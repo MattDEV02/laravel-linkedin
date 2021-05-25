@@ -37,7 +37,7 @@ class LogClear extends Command {
    public function handle(): int
    {
       $path = storage_path('logs/laravel.log');
-      exec("echo '' > $path");
+      exec("break > $path");
       $this->info('Logs have been cleared.');
       return 1;
    }
