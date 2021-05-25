@@ -15,8 +15,8 @@ class AddForeignKeysToRichiestaamiciziaTable extends Migration
    public function up()
    {
       Schema::table('RichiestaAmicizia', function (Blueprint $table) {
-         $table->foreign('utenteMittente', 'UtenteMittenteRichiestaAmiciziaFK')->references('id')->on('utente')->onUpdate('CASCADE')->onDelete('CASCADE');
-         $table->foreign('utenteRicevente', 'UtenteRiceventeRichiestaAmiciziaFK')->references('id')->on('utente')->onUpdate('CASCADE')->onDelete('CASCADE');
+         $table->foreign('utenteMittente', 'UtenteMittenteRichiestaAmiciziaFK')->references('id')->on('Utente')->onUpdate('CASCADE')->onDelete('CASCADE');
+         $table->foreign('utenteRicevente', 'UtenteRiceventeRichiestaAmiciziaFK')->references('id')->on('Utente')->onUpdate('CASCADE')->onDelete('CASCADE');
          DB::statement("ALTER TABLE RichiestaAmicizia COMMENT = 'Richieste di Amicizia inviate da un Utente ad un altro';");
       });
    }
@@ -28,7 +28,7 @@ class AddForeignKeysToRichiestaamiciziaTable extends Migration
     */
    public function down()
    {
-      Schema::table('richiestaamicizia', function (Blueprint $table) {
+      Schema::table('RichiestaAmicizia', function (Blueprint $table) {
          $table->dropForeign('UtenteMittenteRichiestaAmiciziaFK');
          $table->dropForeign('UtenteRiceventeRichiestaAmiciziaFK');
       });
