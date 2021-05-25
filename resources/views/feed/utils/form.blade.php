@@ -10,6 +10,7 @@
         </div>
         <div class="{{ $selectors['col'] }}4">
             <div class="{{ $selectors['row'] }}">
+                <x-errors />
                 <input
                         type="text"
                         name="testo"

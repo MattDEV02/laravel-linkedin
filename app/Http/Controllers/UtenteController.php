@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lavoro;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
@@ -13,11 +12,18 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\Utente;
 use App\Models\Citta;
+use App\Models\Lavoro;
 
 
 class UtenteController extends Controller {
 
    public function login(Request $req): Factory | View | Application {
+      $req->validate([
+         'msg' => ['min:3', 'max:7'],
+      ], [
+         'msg.min' => 'Invalid MSG.',
+         'msg.max' => 'Invalid MSG.'
+      ]);
       return view('login.index',[
          'msg' => $req->msg,
          'ref' => (checkRef($req, 'login') || checkRef($req, 'registrazione'))
@@ -34,6 +40,12 @@ class UtenteController extends Controller {
    }
 
    public function registrazione(Request $req): Factory | View | Application {
+      $req->validate([
+         'msg' => ['min:3', 'max:3'],
+      ], [
+         'msg.min' => 'Invalid MSG.',
+         'msg.max' => 'Invalid MSG.'
+      ]);
       return view('registrazione.index',[
          'citta' => Citta::all(),
          'lavori' => Lavoro::all(),
@@ -54,6 +66,7 @@ class UtenteController extends Controller {
          'email.required' => 'Email is Required.',
          'email.min' => 'Email almeno 2 caratteri.',
          'email.max' => 'Email massimo 35 caratteri.',
+         'email.unique' => 'Utente già Registrato, è possible effettuare il Login.',
          'password.required'  => 'Password is Required.',
          'password.min'  => 'Password con 8 caratteri.',
          'password.max'  => 'Password con 8 caratteri.',
@@ -63,6 +76,8 @@ class UtenteController extends Controller {
          'cognome.required' => 'Cognome is Required.',
          'cognome.min' => 'Cognome almeno 3 caratteri.',
          'cognome.max' => 'Cognome massimo 45 caratteri.',
+         'citta.required'  => 'Citta is Required.',
+         'lavoro.required' => 'Lavoro is Required.'
       ]);
       $email = $req->email;
       if(isLogged($email))
@@ -117,12 +132,23 @@ class UtenteController extends Controller {
 
    public function feed(int $utente_id): Factory | View | Application {
       return view('feed.index', [
-         'posts' => getAllPosts(7),
+         'posts' => getAllPosts($utente_id),
          'profile_id' => null
       ]);
    }
 
    public function passwordDimenticata(Request $req): bool {
+      $req->validate([
+         'email' => ['email', 'required', 'min:2', 'max:35'],
+         'password' => ['required', 'min:8', 'max:8'],
+      ], [
+         'email.email' => 'Inserisci Email valida',
+         'email.required' => 'Email is Required.',
+         'email.min' => 'Email almeno 2 caratteri.',
+         'email.max' => 'Email massimo 35 caratteri.',
+         'password.required'  => 'Password is Required.',
+         'password.min'  => 'Password con 8 caratteri.',
+      ]);
       $email = $req->email;
       $password = $req->password;
       $res = false;

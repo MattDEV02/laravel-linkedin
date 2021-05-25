@@ -9,11 +9,12 @@
 - #### npm install
 - #### composer install (if you use Linux add the --ignore-platform-reqs flag)
 - #### php artisan storage:link
+- ### php artisan optimize:clear
 - #### php artisan db:create
 - #### php artisan migrate:refresh --seed
 - #### php artisan serve
 
-  ##### If the migration command does not work, there is an .sql file in the Database folder to replicate it.
+  ##### N.B. = If the migration command does not work, there is an .sql file in the Database folder to replicate it.
 
 # About this Application
 
@@ -31,11 +32,13 @@
 - ### GIT, GITHUB
 - ### Markdown
 - ### Windows
+- ### Ubuntu
 - ### Composer
 - ### NPM
 - ### Artisan
 - ### JSON, XML
 - ### PHPUnit
+- ### DigitalOcean
 - ### PHPStorm, Visual-studio Code.
 
 ### Project phases
@@ -75,6 +78,7 @@ On the Login page, the user can also retrieve his password by entering his email
 
 - Easy to carry from one machine to another (both database and application).
 
+- Simple to use.
 
 ## Laravel "components" used:
 

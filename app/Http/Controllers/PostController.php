@@ -17,6 +17,16 @@ class PostController extends Controller
    private ?Utente $utente;
 
    public function insert(Request $req): Factory | View | Application {
+      $req->validate([
+         'testo' => ['required', 'min:2', 'max:255'],
+         'image' => ['required', 'image'],
+      ], [
+         'testo.required' => 'Testo is Required.',
+         'testo.min' => 'Testo almeno 2 caratteri.',
+         'testo.max' => 'Testo massimo 255 caratteri.',
+         'image.required'  => 'Image is Required.',
+         'image.image'  => 'Insert valid Image.',
+      ]);
       $this->utente =
          $req
             ->session()
@@ -28,7 +38,7 @@ class PostController extends Controller
       $post->foto = $fileName;
       $post->utente = $utente_id;
       $post->save();
-      Log::debug("New Post Inserted  ($fileName).");
+      Log::debug("New Post Inserted ($fileName).");
       return view('feed.utils.posts', [
          'posts' => getAllPosts($utente_id, false),
          'profile_id' => null
@@ -36,6 +46,13 @@ class PostController extends Controller
    }
 
    public function like(Request $req): Factory | View | Application {
+      $req->validate([
+         'post' => ['required'],
+         'utente' => ['required'],
+      ], [
+         'post.required' => 'Post_like is required.',
+         'utente.required' => 'Utente_like is Required.',
+      ]);
       $this->utente =
          $req
             ->session()
