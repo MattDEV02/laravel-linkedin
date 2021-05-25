@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
+
 class AddForeignKeysToMipiaceTable extends Migration
 {
    /**
@@ -15,8 +16,8 @@ class AddForeignKeysToMipiaceTable extends Migration
    public function up()
    {
       Schema::table('MiPiace', function (Blueprint $table) {
-         $table->foreign('post', 'PostMiPiaceFK')->references('id')->on('post')->onUpdate('CASCADE')->onDelete('CASCADE');
-         $table->foreign('utente', 'UtenteMiPiaceFK')->references('id')->on('utente')->onUpdate('CASCADE')->onDelete('CASCADE');
+         $table->foreign('post', 'PostMiPiaceFK')->references('id')->on('Post')->onUpdate('CASCADE')->onDelete('CASCADE');
+         $table->foreign('utente', 'UtenteMiPiaceFK')->references('id')->on('Utente')->onUpdate('CASCADE')->onDelete('CASCADE');
          DB::statement("ALTER TABLE MiPiace COMMENT = 'Like degli Utenti ai Post';");
       });
    }
@@ -28,7 +29,7 @@ class AddForeignKeysToMipiaceTable extends Migration
     */
    public function down()
    {
-      Schema::table('mipiace', function (Blueprint $table) {
+      Schema::table('MiPiace', function (Blueprint $table) {
          $table->dropForeign('PostMiPiaceFK');
          $table->dropForeign('UtenteMiPiaceFK');
       });
