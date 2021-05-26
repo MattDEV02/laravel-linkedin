@@ -9,7 +9,7 @@
 - #### npm install
 - #### composer install (if you use Linux add the --ignore-platform-reqs flag)
 - #### php artisan storage:link
-- ### php artisan optimize:clear
+- #### php artisan optimize:clear
 - #### php artisan db:create
 - #### php artisan migrate:refresh --seed
 - #### php artisan serve
