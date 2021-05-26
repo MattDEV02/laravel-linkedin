@@ -32,3 +32,9 @@ $blue: getColor('blue');
    color: getColor('black') !important;
    background-color: #E8E6E6;
 }
+
+@media(max-width: 576px) {
+   #span-title {
+      margin-left: 1.7rem !important;
+   }
+}

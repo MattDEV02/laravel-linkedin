@@ -1,0 +1,18 @@
+[2021-05-26 15:10:18] production.INFO: New User-Session started (matteolambertucci3@gmail.com)  
+[2021-05-26 15:10:55] production.DEBUG: New Post Inserted (2021_05_26_15_10_55.jpg).  
+[2021-05-26 16:06:40] production.DEBUG: 
+       <h1>Ecco la tua nuova Password: 12345678</h1>
+       <a href='http://127.0.0.1:8000/login/'>
+         <button style='background-color: #007BFF; color: #FFFFFF; padding: 7px;'>
+           Vai al Login
+         </button>
+       </a>
+    
+[2021-05-26 16:09:53] production.DEBUG: 
+       <h1>Ecco la tua nuova Password: 12345678</h1>
+       <a href='http://127.0.0.1:8000/login/'>
+         <button style='background-color: #007BFF; color: #FFFFFF; padding: 7px;'>
+           Vai al Login
+         </button>
+       </a>
+    

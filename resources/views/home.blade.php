@@ -2,7 +2,7 @@
     $selectors = selectors();
 @endphp
 
-        <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
@@ -11,9 +11,8 @@
 </head>
 
 <body>
-
 <nav class="navbar navbar-light bg-light">
-     <span class="navbar-brand ml-5">
+     <span class="navbar-brand ml-5" id="span-title">
         <x-title />
     </span>
     <div class="form-inline my-2 my-lg-0 mr-5">

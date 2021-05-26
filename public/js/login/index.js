@@ -32,7 +32,7 @@ String.prototype.isValidEmail = function() {
 }
 
 passwordDimenticata.click(async function() {
-   const email = window.prompt('Inserisci Email: ') || '';
+   const email = window.prompt('Inserisci Email: ').replace(' ', '') || '';
    let password = '';
    if(email.isValidEmail()) {
       let cond = false;
