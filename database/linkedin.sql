@@ -372,7 +372,7 @@ SELECT
     p.utente AS utente_id,
     p.foto,
     p.testo,
-    p.created_at,
+    DATE_FORMAT(p.created_at,'%Y-%m-%d %H:%i') AS dataPubblicazione,
     CONCAT(u.nome, ' ', u.cognome) AS utente,
     CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
     u.email AS utenteEmail,
@@ -393,6 +393,8 @@ GROUP BY
 ORDER BY
     p.created_at DESC
 LIMIT 25;
+
+
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
