@@ -12,7 +12,7 @@
 - #### php artisan optimize:clear
 - #### php artisan db:create
 - #### php artisan migrate:refresh --seed
-- #### php artisan serve --host <HOST> --port <PORT>
+- #### php artisan serve --host HOST --port PORT
 
   ##### N.B. = If the migration command does not work, there is an .sql file in the Database folder to replicate it.
 
@@ -25,7 +25,7 @@
 - ### Blade
 - ### MySQL 8.0.25
 - ### Eloquent
-- ### Livewire
+- ### Livewire 2.4.4
 - ### Bootstrap 4.6
 - ### JavaScript (ES11), Jquery 3.6.1
 - ### SASS 1.15.2

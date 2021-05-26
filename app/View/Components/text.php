@@ -17,7 +17,7 @@ class text extends Component
     *
     * @return void
     */
-   public function __construct(?string $label = null, ?string $name = 'testo', ?string $val = null)
+   public function __construct(?string $label = null, ?string $name = 'testo', ?string $val = '')
    {
       $this->label = $label;
       $this->name = $name;

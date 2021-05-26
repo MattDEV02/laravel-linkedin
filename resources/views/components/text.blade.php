@@ -1,5 +1,6 @@
 @php
 $selectors = selectors();
+$val__ = $val ?? '';
 @endphp
 <label for="{{ $selectors['txt'] }}">
     {{ ucfirst($label) }}
@@ -9,7 +10,7 @@ $selectors = selectors();
         name="{{ $label }}"
         id="{{ $label ?? $selectors['txt'] }}"
         class="{{ $selectors['input'] }}"
-        value="{{ $val }}"
+        value="{{ $val__ }}"
         placeholder="{{ ucfirst($label) }}"
         autocomplete="{{ $selectors['autocomplete'] }}"
         minlength="{{ 3 }}"
