@@ -16,7 +16,8 @@
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row']}}">
-            <x-noscript />
+            @component('components.no-script')
+            @endcomponent
             @include('feed.utils.form')
             <div class="{{ $selectors['col'] }}">
                 <div class="{{ $selectors['row'] }}" id="posts-container">

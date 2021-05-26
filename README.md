@@ -12,7 +12,7 @@
 - #### php artisan optimize:clear
 - #### php artisan db:create
 - #### php artisan migrate:refresh --seed
-- #### php artisan serve
+- #### php artisan serve --host <HOST> --port <PORT>
 
   ##### N.B. = If the migration command does not work, there is an .sql file in the Database folder to replicate it.
 
@@ -21,20 +21,20 @@
 ## Technologies used:
 
 - ### Laravel 8
-- ### PHP 8
+- ### PHP 8.0.6
 - ### Blade
-- ### MySQL
+- ### MySQL 8.0.25
 - ### Eloquent
 - ### Livewire
-- ### Bootstrap
-- ### JavaScript (ES6), Jquery
-- ### SASS
-- ### GIT, GITHUB
+- ### Bootstrap 4.6
+- ### JavaScript (ES11), Jquery 3.6.1
+- ### SASS 1.15.2
+- ### GIT 2.31.1, GITHUB
 - ### Markdown
 - ### Windows
 - ### Ubuntu
-- ### Composer
-- ### NPM
+- ### Composer 2.0.10
+- ### NPM 7.14.0
 - ### Artisan
 - ### JSON, XML
 - ### PHPUnit

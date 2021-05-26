@@ -17,7 +17,8 @@
     <div class="{{ $selectors['row'] }}">
         <div class="{{ $selectors['col'] }}">
             <div class="row">
-                <x-noscript />
+                @component('components.no-script')
+                @endcomponent
                 <div class="{{ $selectors['col'] }}">
                     <div class="{{ $selectors['row'] }} mt-5">
                         <h5 id="subtitle">
@@ -134,7 +135,7 @@
                     <div class="row justify-content-center">
                         <p id="footer">
                             Clicca per tornare al
-                            <a href="/profile?utente_id={{ $utente->id }}" class="text-decoration-none">
+                            <a href="/profile" class="text-decoration-none">
                                 <b class="primaryTXT">  Profilo</b>
                             </a>
                         </p>

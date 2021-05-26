@@ -15,7 +15,8 @@
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
     <div class="row justify-content-center justify-content-md-start">
-        <x-noscript />
+        @component('components.no-script')
+        @endcomponent
         @component('components.profile', [
          'profile' => $profile,
          'own_profile' => $own_profile
