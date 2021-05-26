@@ -56,3 +56,9 @@ table.no-richieste {
       display: none;
    }
 }
+
+@media(max-width: 576px) {
+   #username-container {
+      margin-top: -10px !important;
+   }
+}
