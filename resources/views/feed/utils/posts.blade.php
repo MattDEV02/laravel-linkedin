@@ -36,6 +36,9 @@
                   'profile_id' => $profile_id
                 ])
                 @endcomponent
+                @php
+                    $i++;
+                @endphp
             @else
                 @if($post->utente_id === $utente_id || $post->utente_id === $profile_id)
                     @component('components.post', [

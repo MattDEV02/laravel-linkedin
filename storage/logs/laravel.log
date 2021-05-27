@@ -484,3 +484,10 @@
 [2021-05-27 22:53:03] production.INFO: New User-Session started (boh@boh.it)  
 [2021-05-27 22:53:16] production.DEBUG: New Post Inserted (2021_05_27_22_53_16.png).  
 [2021-05-27 22:53:58] production.INFO: New User-Session started (boh@boh.it)  
+[2021-05-27 22:56:00] production.WARNING: Finished User-Session.  
+[2021-05-27 22:56:34] production.DEBUG: New User Interted.  
+[2021-05-27 22:56:41] production.INFO: New User-Session started (boh@boh.it)  
+[2021-05-27 22:57:20] production.INFO: New User-Session started (matteolambertucci3@gmail.com)  
+[2021-05-27 22:58:51] production.WARNING: Finished User-Session.  
+[2021-05-27 22:59:08] production.INFO: New User-Session started (boh@boh.it)  
+[2021-05-27 22:59:18] production.DEBUG: New Post Inserted (2021_05_27_22_59_18.png).  
