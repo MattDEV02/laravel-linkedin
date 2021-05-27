@@ -367,6 +367,8 @@ SHOW TABLES;
 
 -- QUERY DI ESEMPIO --
 
+SET @n = 15;
+
 SELECT
     p.id,
     p.utente AS utente_id,
@@ -387,12 +389,13 @@ FROM
         JOIN Nazione n ON c.nazione = n.id
 WHERE
         Nazione <> 'Finlandia' AND
-        p.utente < 15
+        p.utente < (SELECT @n)
 GROUP BY
     p.id
 ORDER BY
     p.created_at DESC
 LIMIT 25;
+
 
 
 

@@ -56,7 +56,7 @@ class UtenteController extends Controller {
 
    public function insert(Request $req): RedirectResponse {
       $req->validate([
-         'email' => ['email', 'required', 'unique:utente','min:2', 'max:35'],
+         'email' => ['email', 'required', 'unique:Utente','min:2', 'max:35'],
          'password' => ['required', 'min:8', 'max:8'],
          'nome' => ['required', 'min:3', 'max:45'],
          'cognome' => ['required', 'min:3', 'max:45'],

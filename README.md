@@ -12,7 +12,7 @@
 - #### php artisan optimize:clear
 - #### php artisan db:create
 - #### php artisan migrate:refresh --seed
-- #### php artisan serve --host HOST --port PORT
+- #### php artisan serve --host 0.0.0.0 --port PORT
 
   ##### N.B. = If the migration command does not work, there is an .sql file in the Database folder to replicate it.
 
