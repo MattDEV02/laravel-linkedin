@@ -46,13 +46,6 @@ class PostController extends Controller
    }
 
    public function like(Request $req): Factory | View | Application {
-      $req->validate([
-         'post' => ['required'],
-         'utente' => ['required'],
-      ], [
-         'post.required' => 'Post_like is required.',
-         'utente.required' => 'Utente_like is Required.',
-      ]);
       $this->utente =
          $req
             ->session()

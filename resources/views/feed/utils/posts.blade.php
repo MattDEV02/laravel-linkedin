@@ -12,13 +12,16 @@
         </h1>
     </div>
 </div>
-@if(empty($posts) || count($posts) <= 0 || !isset($posts))
+@if(false)
     @php
         $noPosts = true;
     @endphp
 @else
     @foreach($posts as $post)
         @if(isset($profile_id) && $profile_id > 0)
+            1
+           <h1>{{ $profile_id }}</h1>
+           <h1>{{ $utente_id }}</h1>
             @component('components.post', [
               'post' => $post,
               'utente_id' => $utente_id,
@@ -30,6 +33,9 @@
             @endphp
         @else
             @if(isLinked($utente_id, $post->utente_id))
+                2
+                <h1>{{ $profile_id }}</h1>
+                <h1>{{ $utente_id }}</h1>
                 @component('components.post', [
                   'post' => $post,
                   'utente_id' => $utente_id,
@@ -41,15 +47,15 @@
                 @endphp
             @else
                 @if($post->utente_id === $utente_id || $post->utente_id === $profile_id)
+                    3
+                    <h1>{{ $profile_id }}</h1>
+                    <h1>{{ $utente_id }}</h1>
                     @component('components.post', [
                  'post' => $post,
                  'utente_id' => $utente_id,
                  'profile_id' => $profile_id
              ])
                     @endcomponent
-                    @php
-                        $i++;
-                    @endphp
                 @endif
             @endif
         @endif
