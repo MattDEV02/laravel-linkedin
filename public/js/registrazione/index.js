@@ -8,10 +8,15 @@ const
    lavoro = $('#lavoro');
 
 $('#profile-form').submit(function(e) {
-   if(dataInizioLavoro.val() && isDisoccupato(lavoro))
+   let ok = true;
+   if(dataInizioLavoro.val() && isDisoccupato(lavoro)) {
       dataInizioLavoro.val(null);
+   }
    else if(!isDisoccupato(lavoro) && !dataInizioLavoro.val()) {
+      ok = false;
       e.preventDefault();
       window.alert('Inserire Data Inizio Lavoro');
    }
+   if(ok)
+      window.alert('Utnete Registrato con successo, è possible effetture il Login.');
 });

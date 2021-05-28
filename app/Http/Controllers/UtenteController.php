@@ -85,7 +85,7 @@ class UtenteController extends Controller {
          insertUtente($req);
          Log::debug('New User Interted.');
          return redirect()
-            ->route('login', ['msg' => 'reg']);
+            ->route('login');
       }
    }
 

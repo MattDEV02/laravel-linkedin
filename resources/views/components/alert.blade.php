@@ -2,12 +2,9 @@
    @if(strlen($msg) > 0)
       <script type="text/javascript">
          const msg = "{{ $msg }}";
-         const ref = {{ $ref }};
+         const ref = "{{ $ref }}";
          let out = null;
          switch(msg) {
-            case 'reg':
-               out = 'Utente Registrato con successo, è possible effettuare il Login.'
-               break;
             case 'log':
                out = 'Utente già Registrato, è possible effettuare il Login.'
                break;

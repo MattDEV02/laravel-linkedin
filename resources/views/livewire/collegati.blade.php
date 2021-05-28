@@ -1,8 +1,16 @@
+@php
+    $cond = (
+       isLinked($utenteMittente, $utenteRicevente) ||
+       isSentRichiesta($utenteMittente, $utenteRicevente )
+       || $clicked
+       );
+@endphp
+
 <div>
     <div>
         <button
                 class="btn btn-primary border border-dark ml-4"
-                {{ isLinked($utenteMittente, $utenteRicevente) || $clicked ? 'disabled' : '' }}
+                {{ $cond ? 'disabled' : '' }}
                 wire:click="link({{ $utenteMittente }}, {{ $utenteRicevente  }})">
             <b>Collegati</b>
         </button>

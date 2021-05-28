@@ -30,7 +30,8 @@ if(
    !function_exists('isLiked') and
    !function_exists('isLinked') and
    !function_exists('getNumCollegamenti') and
-   !function_exists('getNumRichiesteSospese')
+   !function_exists('getNumRichiesteSospese') and
+   !function_exists('isSentRichiesta')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -263,7 +264,8 @@ if(
          ->first();
       return $res->liked;
    }
-   function isLinked (int $utenteMittente, int $utenteRicevente): int {
+   function isLinked (int $utenteMittente, int $utenteRicevente, bool $flag = false): int {
+      $stato = $flag ? 'Sospesa' : 'Accettata';
       $res = DB::table('RichiestaAmicizia AS ra')
          ->select(DB::raw('COUNT(ra.id) AS linked'))
          ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
@@ -278,7 +280,7 @@ if(
                ->where('ra.utenteMittente', $utenteRicevente)
                ->Orwhere('ra.utenteRicevente', $utenteRicevente);
          })
-         ->where('ra.stato', 'Accettata')
+         ->where('ra.stato', $stato)
          ->first();
       return $res->linked;
    }
@@ -297,6 +299,15 @@ if(
          ->where('ra.stato', 'Sospesa')
          ->where('ra.utenteRicevente', $utenteRicevente)
          ->count() ;
+   }
+   function isSentRichiesta(int $utenteMittente, int $utenteRicevente): int {
+      return DB::table('RichiestaAmicizia AS ra')
+         ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
+         ->join('Utente AS u2', 'ra.utenteRicevente', 'u2.id')
+         ->where('ra.utenteMittente', $utenteMittente)
+         ->where('ra.utenteRicevente', $utenteRicevente)
+         ->count();
+
    }
 }
 

@@ -4,7 +4,6 @@
     $path = isset($profile->foto) ? $profile->utente_id. '/'.$profile->foto : 'default.jpg';
     $utente = session()->get('utente');
     $collegamenti = getNumCollegamenti($profile->utente_id);
-    $collegamenti = $collegamenti < 0 ? 0 : $collegamenti;
     $ml = 'ml-4';
     $mt = 3;
 @endphp
