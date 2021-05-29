@@ -1,9 +1,17 @@
-[2021-05-28 21:25:27] production.INFO: New User-Session started (matteolambertucci3@gmail.com)  
-[2021-05-28 21:25:54] production.INFO: New User-Session started (matteolambertucci3@gmail.com)  
-[2021-05-28 21:26:03] production.WARNING: Finished User-Session.  
-[2021-05-28 21:26:38] production.DEBUG: New User Interted.  
-[2021-05-28 21:27:46] production.DEBUG: New User Interted.  
-[2021-05-28 21:28:54] production.DEBUG: New User Interted.  
-[2021-05-28 21:29:26] production.INFO: New User-Session started (boh@b.it)  
-[2021-05-28 21:29:41] production.DEBUG: New Post Inserted (2021_05_28_21_29_41.png).  
-[2021-05-28 21:29:48] production.DEBUG: New Post Inserted (2021_05_28_21_29_48.jpg).  
+[2021-05-29 09:36:07] production.INFO: New User-Session started (carol@libero.it)  
+[2021-05-29 09:36:53] production.WARNING: Finished User-Session.  
+[2021-05-29 09:37:06] production.INFO: New User-Session started (mich@gmail.com)  
+[2021-05-29 09:38:38] production.WARNING: Finished User-Session.  
+[2021-05-29 09:38:45] production.INFO: New User-Session started (matteolambertucci3@gmail.com)  
+[2021-05-29 09:39:18] production.DEBUG: New Post Inserted (2021_05_29_09_39_18.jpg).  
+[2021-05-29 09:39:25] production.DEBUG: New Post Inserted (2021_05_29_09_39_25.jpg).  
+[2021-05-29 09:41:11] production.WARNING: Finished User-Session.  
+[2021-05-29 09:41:50] production.DEBUG: 
+       <h1>Ecco la tua nuova Password: 12345678</h1>
+       <a href='http://127.0.0.1:8000/login/'>
+         <button style='background-color: #007BFF; color: #FFFFFF; padding: 7px;'>
+           Vai al Login
+         </button>
+       </a>
+    
+[2021-05-29 09:42:22] production.INFO: New User-Session started (matteolambertucci3@gmail.com)  
