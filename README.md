@@ -80,6 +80,10 @@ On the Login page, the user can also retrieve his password by entering his email
 
 - Simple to use.
 
+- Secure.
+
+- Good graphics.
+
 ## Laravel "components" used:
 
 - ### Route 
@@ -93,6 +97,8 @@ On the Login page, the user can also retrieve his password by entering his email
 - ### Seeder 
 
 - ### Blade (with components and other)
+
+- ### Auth
 
 - ### LiveWire 
 

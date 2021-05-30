@@ -1,17 +1,31 @@
-[2021-05-29 09:36:07] production.INFO: New User-Session started (carol@libero.it)  
-[2021-05-29 09:36:53] production.WARNING: Finished User-Session.  
-[2021-05-29 09:37:06] production.INFO: New User-Session started (mich@gmail.com)  
-[2021-05-29 09:38:38] production.WARNING: Finished User-Session.  
-[2021-05-29 09:38:45] production.INFO: New User-Session started (matteolambertucci3@gmail.com)  
-[2021-05-29 09:39:18] production.DEBUG: New Post Inserted (2021_05_29_09_39_18.jpg).  
-[2021-05-29 09:39:25] production.DEBUG: New Post Inserted (2021_05_29_09_39_25.jpg).  
-[2021-05-29 09:41:11] production.WARNING: Finished User-Session.  
-[2021-05-29 09:41:50] production.DEBUG: 
-       <h1>Ecco la tua nuova Password: 12345678</h1>
-       <a href='http://127.0.0.1:8000/login/'>
-         <button style='background-color: #007BFF; color: #FFFFFF; padding: 7px;'>
-           Vai al Login
-         </button>
-       </a>
-    
-[2021-05-29 09:42:22] production.INFO: New User-Session started (matteolambertucci3@gmail.com)  
+[2021-05-30 14:18:43] production.ERROR: Command "optimize:cleae" is not defined.
+
+Did you mean one of these?
+    cache:clear
+    config:clear
+    event:clear
+    log:clear
+    optimize
+    optimize:clear
+    queue:clear
+    route:clear
+    view:clear {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"optimize:cleae\" is not defined.
+
+Did you mean one of these?
+    cache:clear
+    config:clear
+    event:clear
+    log:clear
+    optimize
+    optimize:clear
+    queue:clear
+    route:clear
+    view:clear at C:\\xampp\\htdocs\\Laravel\\linkedin\\vendor\\symfony\\console\\Application.php:675)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\Laravel\\linkedin\\vendor\\symfony\\console\\Application.php(254): Symfony\\Component\\Console\\Application->find('optimize:cleae')
+#1 C:\\xampp\\htdocs\\Laravel\\linkedin\\vendor\\symfony\\console\\Application.php(166): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\Laravel\\linkedin\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(92): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\Laravel\\linkedin\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\xampp\\htdocs\\Laravel\\linkedin\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
