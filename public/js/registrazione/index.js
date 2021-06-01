@@ -17,6 +17,6 @@ $('#profile-form').submit(function(e) {
       e.preventDefault();
       window.alert('Inserire Data Inizio Lavoro');
    }
-   if(ok)
+   if(ok && $(this).hasClass('reg'))
       window.alert('Utnete Registrato con successo, è possible effetture il Login.');
 });

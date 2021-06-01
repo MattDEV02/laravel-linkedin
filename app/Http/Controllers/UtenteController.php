@@ -34,6 +34,7 @@ class UtenteController extends Controller {
       $req
          ->session()
          ->forget('utente');
+      Cookie::forget('password');
       Log::warning('Finished User-Session.');
       return redirect()
          ->route('login');

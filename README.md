@@ -82,6 +82,8 @@ On the Login page, the user can also retrieve his password by entering his email
 
 - Simple to use.
 
+- Modular Code.
+
 - Secure.
 
 - Good graphics.

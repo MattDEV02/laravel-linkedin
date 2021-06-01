@@ -27,7 +27,7 @@
             <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                 <div class="{{ $selectors['row'] }} mt-4">
                     <div id="form-card" class="{{ $selectors['col'] }} p-4">
-                        <form method="POST" action="{{ $selectors['action'] }}/registrazione" id="profile-form">
+                        <form method="POST" action="{{ $selectors['action'] }}/registrazione" id="profile-form" class="reg">
                             @csrf
                             <x-errors />
                             <div class="{{ $selectors['col'] }}">
