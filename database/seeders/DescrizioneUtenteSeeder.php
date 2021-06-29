@@ -12,7 +12,7 @@ class DescrizioneUtenteSeeder extends Seeder {  // Profilo personale dell'Utente
          'id' => 1,
          'utente' => 1,
          'testo' => 'Ciao a tutti mi chiamo Matteo Lambertucci e sono in cerca di Lavoro !!',
-         'foto' => '2021_05_20_19_21_16.jpg'
+         'foto' => '2021_06_19_11_52_26.jpg'
       ],
       [
          'id' => 2,

@@ -12,7 +12,7 @@ class UtenteSeeder extends Seeder
       [
          'id' => 1,
          'email' => 'matteolambertucci3@gmail.com',
-         'password' => 'mivallus',
+         'password' => '12345678',
          'nome' => 'Matteo',
          'cognome' => 'Lambertucci',
          'citta' => 1
@@ -36,7 +36,7 @@ class UtenteSeeder extends Seeder
       [
          'id' => 4,
          'email' => 'carol@libero.it',
-         'password' => 'mivallus',
+         'password' => '12345678',
          'nome' => 'Carol',
          'cognome' => 'Muscedere',
          'citta' => 2
