@@ -30,7 +30,6 @@
                         <form method="POST" action="{{ $selectors['action'] }}/registrazione" id="profile-form" class="reg">
                             @csrf
                             <x-errors />
-
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
                                     <x-email label="{{ ucfirst($selectors['email']) }}"/>

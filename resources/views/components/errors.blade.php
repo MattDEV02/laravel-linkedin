@@ -4,7 +4,7 @@
             <span aria-hidden="true">×</span>
         </button>
         @foreach($errors->all() as $error)
-            {{ $error }}<br/>
+            <p class="card-text">{{ $error }}</p>
         @endforeach
     </div>
 @endif

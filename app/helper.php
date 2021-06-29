@@ -161,9 +161,6 @@ if(
          $sql = str_replace('True', "p.utente = $utente_id", $sql);
       return DB::select($sql);
    }
-   function checkRef(Request $req, string $path): bool {
-      return str_contains($req->header('referer'), $path);
-   }
    function insertUtente(Request $req): void {
       $utente = new Utente();
       $utente->email = $req->email;
@@ -183,6 +180,7 @@ if(
       $descrizioneUtente = new DescrizioneUtente();
       $descrizioneUtente->utente = $id;
       $descrizioneUtente->save();
+      Cookie::queue('password', $password, (60 * 24));
    }
    function getProfile(int $utente_id): ?object {
       return DB::table('Utente AS u')

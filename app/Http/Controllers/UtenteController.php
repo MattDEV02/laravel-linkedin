@@ -49,8 +49,7 @@ class UtenteController extends Controller {
       return view('registrazione.index',[
          'citta' => Citta::all(),
          'lavori' => Lavoro::all(),
-         'msg' => $req->msg,
-         'ref' => checkRef($req, 'login')
+         'msg' => $req->msg
       ]);
    }
 
@@ -80,7 +79,7 @@ class UtenteController extends Controller {
       insertUtente($req);
       Log::debug('New User Interted.');
       return redirect('/login')
-         ->with('msg', 'Utente registrato con successo, è possibile effettuare il Login.');
+         ->with('msg', 'reg');
    }
 
    public function logResult(Request $req): Factory | View | RedirectResponse | Application {
@@ -92,7 +91,7 @@ class UtenteController extends Controller {
          'email.required' => 'Email is Required.',
          'email.min' => 'Email almeno 2 caratteri.',
          'email.max' => 'Email massimo 35 caratteri.',
-         'password.required'  => 'Password is Required.',
+         'password.required' => 'Password is Required.',
          'password.min'  => 'Password con 8 caratteri.',
          'password.max'  => 'Password con 8 caratteri.',
       ]);
@@ -123,9 +122,10 @@ class UtenteController extends Controller {
             'profile_id' => null
          ]);
       } else
-         return back()->withErrors([
-            'error' => 'Utente non registrato, è possible farlo.'
-         ]);
+         return back()
+            ->withErrors([
+               'error' => 'Utente non registrato, è possible farlo.'
+            ]);
    }
 
    public function passwordDimenticata(Request $req): bool {
