@@ -33,6 +33,7 @@
                         <form method="POST" action="/feed">
                             @csrf
                             <x-errors />
+                            <x-success />
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
                                     <x-email />
@@ -61,9 +62,5 @@
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/login/index.js') }}"></script>
-<x-alert
-        msg="{{ $msg }}"
-        ref="{{ $ref }}"
-/>
 </body>
 </html>

@@ -19,14 +19,13 @@ class UtenteController extends Controller {
 
    public function login(Request $req): Factory | View | Application {
       $req->validate([
-         'msg' => ['min:3', 'max:7'],
+         'msg' => ['min:3', 'max:75'],
       ], [
          'msg.min' => 'Invalid MSG.',
          'msg.max' => 'Invalid MSG.'
       ]);
       return view('login.index',[
-         'msg' => $req->msg,
-         'ref' => (checkRef($req, 'login') || checkRef($req, 'registrazione'))
+         'msg' => $req->msg
       ]);
    }
 
@@ -34,7 +33,7 @@ class UtenteController extends Controller {
       $req
          ->session()
          ->forget('utente');
-      Cookie::forget('password');
+      Cookie::queue(Cookie::forget('password'));
       Log::warning('Finished User-Session.');
       return redirect()
          ->route('login');
@@ -42,7 +41,7 @@ class UtenteController extends Controller {
 
    public function registrazione(Request $req): Factory | View | Application {
       $req->validate([
-         'msg' => ['min:3', 'max:3'],
+         'msg' => ['min:3', 'max:75'],
       ], [
          'msg.min' => 'Invalid MSG.',
          'msg.max' => 'Invalid MSG.'
@@ -76,24 +75,18 @@ class UtenteController extends Controller {
          'cognome.required' => 'Cognome is Required.',
          'cognome.min' => 'Cognome almeno 3 caratteri.',
          'cognome.max' => 'Cognome massimo 45 caratteri.',
-         'citta.required'  => 'Citta is Required.',
+         'citta.required'  => 'Città is Required.',
       ]);
-      $email = $req->email;
-      if(isLogged($email))
-         return redirect()
-            ->route('login', ['msg' => 'log']);
-      else {
-         insertUtente($req);
-         Log::debug('New User Interted.');
-         return redirect()
-            ->route('login');
-      }
+      insertUtente($req);
+      Log::debug('New User Interted.');
+      return redirect('/login')
+         ->with('msg', 'Utente registrato con successo, è possibile effettuare il Login.');
    }
 
    public function logResult(Request $req): Factory | View | RedirectResponse | Application {
       $req->validate([
          'email' => ['email', 'required', 'min:2', 'max:35'],
-         'password' => ['required', 'min:8', 'max:60'],
+         'password' => ['required', 'min:8', 'max:8'],
       ], [
          'email.email' => 'Inserisci Email valida',
          'email.required' => 'Email is Required.',
@@ -101,6 +94,7 @@ class UtenteController extends Controller {
          'email.max' => 'Email massimo 35 caratteri.',
          'password.required'  => 'Password is Required.',
          'password.min'  => 'Password con 8 caratteri.',
+         'password.max'  => 'Password con 8 caratteri.',
       ]);
       $email = $req->email;
       $password = $req->password;
@@ -122,18 +116,16 @@ class UtenteController extends Controller {
                ->put('utente', $utente);
             Log::info("New User-Session started ($email)");
          }
-         $utente_id = $req->session()->get('utente')->id;
-         return $this->feed($utente_id);
+         $utente_id = $req->session()
+            ->get('utente')->id;
+         return view('feed.index', [
+            'posts' => getAllPosts($utente_id),
+            'profile_id' => null
+         ]);
       } else
-         return redirect()
-            ->route('login', ['msg' => 'not-reg']);
-   }
-
-   public function feed(int $utente_id): Factory | View | Application {
-      return view('feed.index', [
-         'posts' => getAllPosts($utente_id),
-         'profile_id' => null
-      ]);
+         return back()->withErrors([
+            'error' => 'Utente non registrato, è possible farlo.'
+         ]);
    }
 
    public function passwordDimenticata(Request $req): bool {

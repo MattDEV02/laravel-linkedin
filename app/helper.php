@@ -23,7 +23,6 @@ if(
    !function_exists('handleError') and
    !function_exists('store') and
    !function_exists('getAllPosts') and
-   !function_exists('checkRef') and
    !function_exists('insertUtente') and
    !function_exists('getProfile') and
    !function_exists('updateProfile') and

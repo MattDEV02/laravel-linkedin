@@ -30,6 +30,7 @@
                         <form method="POST" action="{{ $selectors['action'] }}/registrazione" id="profile-form" class="reg">
                             @csrf
                             <x-errors />
+
                             <div class="{{ $selectors['col'] }}">
                                 <div class="row">
                                     <x-email label="{{ ucfirst($selectors['email']) }}"/>
@@ -98,9 +99,5 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/login/index.js"></script>
 <script type="text/javascript" src="js/registrazione/index.js"></script>
-<x-alert
-        msg="{{ $msg }}"
-        ref="{{ $ref }}"
-/>
 </body>
 </html>

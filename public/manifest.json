@@ -3,13 +3,18 @@
    "name": "linkedin",
    "icons": [
       {
+         "src": "img/logo.png",
+         "sizes": "108x108",
+         "type": "image/png"
+      },
+      {
          "src": "img/favicon.ico",
-         "sizes": "192x192",
+         "sizes": "64x64",
          "type": "image/x-icon"
       }
    ],
    "start_url": ".",
    "display": "standalone",
-   "theme_color": "#000000",
+   "theme_color": "#FFFFFF",
    "background_color": "#FFFFFF"
 }
