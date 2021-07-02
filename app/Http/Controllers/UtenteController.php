@@ -35,8 +35,8 @@ class UtenteController extends Controller {
          ->forget('utente');
       Cookie::queue(Cookie::forget('password'));
       Log::warning('Finished User-Session.');
-      return redirect()
-         ->route('login');
+      return redirect('/login')
+         ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
    }
 
    public function registrazione(Request $req): Factory | View | Application {

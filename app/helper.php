@@ -21,6 +21,7 @@ if(
    !function_exists('consoleLog') and
    !function_exists('sendMail') and
    !function_exists('handleError') and
+   !function_exists('checkRef') and
    !function_exists('store') and
    !function_exists('getAllPosts') and
    !function_exists('insertUtente') and
@@ -30,7 +31,9 @@ if(
    !function_exists('isLinked') and
    !function_exists('getNumCollegamenti') and
    !function_exists('getNumRichiesteSospese') and
-   !function_exists('isSentRichiesta')
+   !function_exists('isSentRichiesta') and
+   !function_exists('getCollegamenti') and
+   !function_exists('removeCollegamento')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -106,6 +109,9 @@ if(
       $ERROR_CODE = 500;
       Log::error($msg);
       abort($ERROR_CODE, $msg);
+   }
+   function checkRef(Request $req, string $path): bool {
+      return str_contains($req->header('referer'), $path);
    }
    function isLogged(string $email, ?string $password = null): bool {
       $attr = ['email', 'password'];
@@ -305,6 +311,43 @@ if(
          ->where('ra.utenteRicevente', $utenteRicevente)
          ->count();
 
+   }
+   function getCollegamenti(int $utente_id): Collection
+   {
+      return DB::table('Utente AS u')
+         ->select([
+            DB::raw('CONCAT(u.nome, " ", u.cognome) AS utenteNomeCognome'),
+            'u.email AS utenteEmail',
+            DB::raw('DATE_FORMAT(ra.created_at, "%Y-%m-%d %H:%i") AS dataInvioRichiesta')
+         ])
+         ->join('RichiestaAmicizia AS ra', function ($join) {
+            $join
+               ->on('u.id', 'ra.utenteMittente')
+               ->orOn('u.id', 'ra.utenteRicevente');
+         })
+         ->join('Utente AS u2', 'u2.id', 'ra.utenteRicevente')
+         ->where(function($query) use ($utente_id) {
+            $query
+               ->where('ra.utenteRicevente', $utente_id)
+               ->Orwhere('ra.utenteMittente', $utente_id);
+         })
+         ->where('u.id', '<>', $utente_id)
+         ->where('ra.stato', 'Accettata')
+         ->get();
+   }
+   function removeCollegamento($utente, $collegamento) {
+      RichiestaAmicizia::where(function($query) use ($utente) {
+         $query
+            ->where('utenteMittente', $utente)
+            ->Orwhere('utenteRicevente', $utente);
+      })
+         ->where(function($query) use ($collegamento) {
+            $query
+               ->where('utenteMittente', $collegamento)
+               ->Orwhere('utenteRicevente', $collegamento);
+         })
+         ->where('stato', 'accettata')
+         ->delete();
    }
 }
 

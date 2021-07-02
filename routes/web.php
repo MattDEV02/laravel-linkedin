@@ -37,24 +37,30 @@ Route::get('/logout', [$UC, 'logout'])
 Route::get('/registrazione', [$UC, 'registrazione'])
    ->name('registrazione');
 
-Route::post('/feed', [$UC, 'logResult']);
+Route::match(['GET', 'POST'], '/feed', [$UC, 'logResult']);
 
 Route::middleware('isSessionLogged')
-   ->group(function () use($UC, $PC, $PRC){
+   ->group(function() use($UC, $PC, $PRC) {
       Route::get('/edit-profile', [$PRC, 'editProfile']);
       Route::get('/profile', [$PRC, 'profile']);
       Route::get('/show-profile', [$PRC, 'showProfile']);
+      Route::get('/collegamenti', [$PRC, 'collegamenti'])
+         ->name('collegamenti');
    });
 
 Route::prefix('ricezione-dati')
    ->group(function () use($UC, $PC, $PRC) {
       Route::post('/registrazione', [$UC, 'insert']);
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
+      Route::post('/remove-collegamento', [$PRC, 'removeCollegamento'])
+         ->name('remove-collegamento');
       Route::post('/feed', [$PC, 'insert'])
+         ->name('insert-post')
          ->middleware('isSessionLogged');
       Route::post('/like', [$PC, 'like'])
          ->middleware('isSessionLogged');
       Route::post('/edit-profile', [$PRC, 'updateProfile'])
+         ->name('edit-profile')
          ->middleware('isSessionLogged');
    });
 

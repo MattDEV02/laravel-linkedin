@@ -4,20 +4,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class LogClear extends Command {
+class ClearAll extends Command
+{
    /**
     * The name and signature of the console command.
     *
     * @var string
     */
-   protected $signature = 'log:clear';
+   protected $signature = 'clear:all';
 
    /**
     * The console command description.
     *
     * @var string
     */
-   protected $description = 'Clear laravel.log file.';
+   protected $description = 'Clear All.';
 
    /**
     * Create a new command instance.
@@ -36,9 +37,15 @@ class LogClear extends Command {
     */
    public function handle(): int
    {
-      $path = storage_path('logs/laravel.log');
-      shell_exec("break > $path");
-      $this->info('Logs have been cleared.');
+      shell_exec('php artisan log:clear');
+      shell_exec('php artisan db:create');
+      shell_exec('php artisan migrate:refresh --seed');
+      shell_exec('php artisan storage:link');
+      shell_exec('php artisan optimize');
+      shell_exec('php artisan optimize:clear');
+      shell_exec('composer clear-cache');
+      shell_exec('composer dump-autoload --optimize');
+      $this->info('Cleared all.');
       return 1;
    }
 }

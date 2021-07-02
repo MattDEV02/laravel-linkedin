@@ -1,0 +1,30 @@
+@import '../variables';
+
+
+@function getColor($key) {
+   $result: map-get($colors, $key);
+   @debug 'Color: ' + $result; // Console Output
+   @return $result;
+}
+
+$yellow: #EFF500;
+
+
+table.collegamenti {
+   color: getColor('black');
+}
+
+thead.collegamenti {
+   color: getColor('white');
+   background-color: #343A40;
+   border-color: #454D55;
+}
+
+#utenteNomeCognome {
+   color: getColor('primary');
+}
+
+button.remove_collegamento:hover {
+   color: $yellow;
+   border-color: $yellow !important;
+}

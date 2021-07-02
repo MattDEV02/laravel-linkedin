@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RichiestaAmicizia;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -87,5 +88,24 @@ class ProfileController extends Controller {
          Log::error("User $emailSearched NOT FOUND.");
          return view('utils.user-not-found');
       }
+   }
+   public function collegamenti(Request $req): Factory | View | Application {
+      $this->utente = $req
+         ->session()
+         ->get('utente');
+      return view('collegamenti.index', [
+         'collegamenti' => getCollegamenti( $this->utente->id)
+      ]);
+   }
+   public function removeCollegamento(Request $req) {
+      $this->utente = $req
+         ->session()
+         ->get('utente');
+      $utente_id = $this->utente->id;
+      $utenteCollegamento = Utente::where('email', $req->email)
+         ->first();
+      $idUtenteCollegamento = $utenteCollegamento->id;
+      removeCollegamento($utente_id, $idUtenteCollegamento);
+      return 'Collegamento deleted.';
    }
 }

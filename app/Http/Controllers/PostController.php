@@ -19,7 +19,7 @@ class PostController extends Controller
    public function insert(Request $req): Factory | View | Application {
       $req->validate([
          'testo' => ['required', 'min:2', 'max:255'],
-         'image' => ['required', 'image'],
+         'image' => ['required'],
       ], [
          'testo.required' => 'Testo is Required.',
          'testo.min' => 'Testo almeno 2 caratteri.',

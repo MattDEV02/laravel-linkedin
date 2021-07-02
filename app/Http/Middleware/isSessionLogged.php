@@ -20,7 +20,7 @@ class isSessionLogged
          ->session()
          ->exists('utente') ?
          $next($request) :
-         redirect()
-            ->route('logout');
+         redirect('/login')
+            ->withErrors(['Effettua il Login.']);
    }
 }

@@ -8,7 +8,6 @@
     $mt = 3;
 @endphp
 
-
 <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt-5 ml-md-4" id="mll">
     <div class="row">
         <div class="{{ $selectors['col'] }} border border-dark" id="profile_card" title="{{ $profile->utenteEmail }}">
@@ -67,14 +66,16 @@
                                     'utenteRicevente' => $profile->utente_id
                                     ])
                                 @endif
-                                <b
-                                        class="text-primary ml-3 c"
-                                        id="collegamenti">
-                                    {{ $collegamenti }}
-                                </b>
-                                <b class="text-primary ml-1 c">
-                                    Collegamenti
-                                </b>
+                                <a href="{{ route('collegamenti') }}" title="Visualizza e modifica la tua lista collegamenti.">
+                                    <b
+                                            class="text-primary ml-3 c"
+                                            id="collegamenti">
+                                        {{ $collegamenti }}
+                                    </b>
+                                    <b class="text-primary ml-1 c">
+                                        Collegamenti
+                                    </b>
+                                </a>
                             </div>
                         </div>
                         <div class="{{ $selectors['col'] }}{{ $mt }} mb-2">
