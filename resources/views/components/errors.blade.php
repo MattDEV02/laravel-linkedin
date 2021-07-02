@@ -4,7 +4,15 @@
             <span aria-hidden="true">×</span>
         </button>
         @foreach($errors->all() as $error)
-            <p class="card-text">{{ $error }}</p>
+            <p class="card-text">
+                {{ $error }}
+                @if(str_contains($error, 'Login'))
+                    <a href="{{ route('login') }}" class="ml-1">Login Page</a>
+                @else @if(str_contains($error, 'reg'))
+                    <a href="{{ route('registrazione') }}">Pagina di Registrazione</a>
+                @endif
+                @endif
+            </p>
         @endforeach
     </div>
 @endif

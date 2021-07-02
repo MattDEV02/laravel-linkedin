@@ -59,22 +59,22 @@ class UtenteController extends Controller {
          'password' => ['required', 'min:8', 'max:8'],
          'nome' => ['required', 'min:3', 'max:45'],
          'cognome' => ['required', 'min:3', 'max:45'],
-         'citta' => ['required'],
+         'citta' => ['required']
       ], [
          'email.required' => 'Email is Required.',
          'email.min' => 'Email almeno 2 caratteri.',
          'email.max' => 'Email massimo 35 caratteri.',
          'email.unique' => 'Utente già Registrato, è possible effettuare il Login.',
-         'password.required'  => 'Password is Required.',
-         'password.min'  => 'Password con 8 caratteri.',
-         'password.max'  => 'Password con 8 caratteri.',
+         'password.required' => 'Password is Required.',
+         'password.min' => 'Password con 8 caratteri.',
+         'password.max' => 'Password con 8 caratteri.',
          'nome.required' => 'Nome is Required.',
          'nome.min' => 'Nome almeno 3 caratteri.',
          'nome.max' => 'Nome massimo 45 caratteri.',
          'cognome.required' => 'Cognome is Required.',
          'cognome.min' => 'Cognome almeno 3 caratteri.',
          'cognome.max' => 'Cognome massimo 45 caratteri.',
-         'citta.required'  => 'Città is Required.',
+         'citta.required' => 'Città is Required.'
       ]);
       insertUtente($req);
       Log::debug('New User Interted.');

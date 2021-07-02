@@ -51,8 +51,7 @@ class ProfileController extends Controller {
       $req->validate([
          //'image' => ['image'],
          'nome' => ['required', 'min:2', 'max:45'],
-         'cognome' => ['required', 'min:2', 'max:45'],
-         'citta' => ['required'],
+         'citta' => ['required']
       ], [
          'nome.required' => 'Nome is Required.',
          'nome.min' => 'Nome almeno 3 caratteri.',
@@ -60,7 +59,7 @@ class ProfileController extends Controller {
          'cognome.required' => 'Cognome is Required.',
          'cognome.min' => 'Cognome almeno 3 caratteri.',
          'cognome.max' => 'Cognome massimo 45 caratteri.',
-         'citta.required'  => 'Citta is Required.',
+         'citta.required'  => 'Citta is Required.'
       ]);
       updateProfile($req);
       return redirect('/profile');
