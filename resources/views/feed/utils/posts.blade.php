@@ -5,7 +5,7 @@
     $noPosts = false;
 @endphp
 
-<div class="{{ $selectors['col'] }}5">
+<div class="{{ $selectors['col'] }}4">
     <div class="{{ $selectors['row'] }}">
         <h1>
             Posts

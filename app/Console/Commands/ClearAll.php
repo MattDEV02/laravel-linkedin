@@ -20,6 +20,17 @@ class ClearAll extends Command
     */
    protected $description = 'Clear All.';
 
+   private array $commands = [
+      'php artisan log:clear',
+      'php artisan db:create',
+      'php artisan migrate:refresh --seed',
+      'php artisan storage:link',
+      'php artisan optimize' ,
+      'php artisan optimize:clear' ,
+      'composer dump-autoload --optimize',
+      'composer clear-cache'
+   ];
+
    /**
     * Create a new command instance.
     *
@@ -37,15 +48,11 @@ class ClearAll extends Command
     */
    public function handle(): int
    {
-      shell_exec('php artisan log:clear');
-      shell_exec('php artisan db:create');
-      shell_exec('php artisan migrate:refresh --seed');
-      shell_exec('php artisan storage:link');
-      shell_exec('php artisan optimize');
-      shell_exec('php artisan optimize:clear');
-      shell_exec('composer clear-cache');
-      shell_exec('composer dump-autoload --optimize');
-      $this->info('Cleared all.');
+      $commands_ = $this->commands;
+      foreach($commands_ AS $command) {
+         $output = shell_exec($command);
+         $this->info($output);
+      }
       return 1;
    }
 }

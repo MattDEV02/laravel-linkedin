@@ -18,6 +18,14 @@
         <div class="{{ $selectors['row']}}">
             @component('components.no-script')
             @endcomponent
+            <div class="{{ $selectors['col'] }}">
+                <div class="{{ $selectors['row'] }}">
+                    <h1>Benvenuto</h1>
+                    <h1 class="text-info ml-3">
+                        {{ $utente->nome }} {{ $utente->cognome }}
+                    </h1>
+                </div>
+            </div>
             @include('feed.utils.form')
             <div class="{{ $selectors['col'] }}">
                 <div class="{{ $selectors['row'] }}" id="posts-container">
