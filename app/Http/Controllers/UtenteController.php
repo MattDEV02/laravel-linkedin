@@ -95,7 +95,7 @@ class UtenteController extends Controller {
          'password.min'  => 'Password con 8 caratteri.',
          'password.max'  => 'Password con 8 caratteri.',
       ]);
-      $email = $req->email;
+      $email = trim($req->email);
       $password = $req->password;
       $logged = isLogged($email, $password);
       if($logged) {
@@ -103,7 +103,6 @@ class UtenteController extends Controller {
             $utente = Utente::all([
                'id',
                'email',
-               'password',
                'nome',
                'cognome',
             ])
@@ -115,7 +114,8 @@ class UtenteController extends Controller {
                ->put('utente', $utente);
             Log::info("New User-Session started ($email)");
          }
-         $utente_id = $req->session()
+         $utente_id = $req
+            ->session()
             ->get('utente')->id;
          return view('feed.index', [
             'posts' => getAllPosts($utente_id),
@@ -123,9 +123,7 @@ class UtenteController extends Controller {
          ]);
       } else
          return back()
-            ->withErrors([
-               'error' => 'Utente non registrato, è possible farlo.'
-            ]);
+            ->withErrors(['Utente non registrato, è possible farlo.']);
    }
 
    public function passwordDimenticata(Request $req): bool {
@@ -140,7 +138,7 @@ class UtenteController extends Controller {
          'password.required'  => 'Password is Required.',
          'password.min'  => 'Password con 8 caratteri.',
       ]);
-      $email = $req->email;
+      $email = trim($req->email);
       $password = $req->password;
       $res = false;
       $utente = Utente::where('email', $email);

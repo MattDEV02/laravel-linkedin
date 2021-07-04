@@ -9,7 +9,7 @@
     <td>
         {{ $dataInvioRichiesta }}
     </td>
-    <td>
+    <td style="display: {{ $display }};">
         <form method="POST" action="{{ route('remove-collegamento') }}" onsubmit="return false;" class="remove_collegamento">
             @csrf
             <button type="submit" class="btn btn-danger border border-dark remove_collegamento" onclick="removeCollegamento('{{ $utenteEmail }}');">

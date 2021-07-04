@@ -3,7 +3,8 @@
    $utente = session()->get('utente');
 @endphp
 
-        <!DOCTYPE HTML>
+<!DOCTYPE HTML>
+
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>
@@ -40,7 +41,10 @@
                                             Data
                                         </h5>
                                     </th>
-                                    <th scope="col">
+                                    @php
+                                    $display = route('profile') === $ref ? 'block' : 'none';
+                                    @endphp
+                                    <th scope="col" style="display: {{ $display }};">
                                         <h5>
                                             Azioni
                                         </h5>
@@ -53,6 +57,7 @@
                                             utenteNomeCognome="{{ $collegamento->utenteNomeCognome }}"
                                             utenteEmail="{{ $collegamento->utenteEmail }}"
                                             dataInvioRichiesta="{{ $collegamento->dataInvioRichiesta }}"
+                                            display="{{ $display }}"
                                     />
                                 @endforeach
                                 </tbody>

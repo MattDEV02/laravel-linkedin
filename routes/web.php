@@ -42,7 +42,8 @@ Route::match(['GET', 'POST'], '/feed', [$UC, 'logResult']);
 Route::middleware('isSessionLogged')
    ->group(function() use($UC, $PC, $PRC) {
       Route::get('/edit-profile', [$PRC, 'editProfile']);
-      Route::get('/profile', [$PRC, 'profile']);
+      Route::get('/profile', [$PRC, 'profile'])
+         ->name('profile');
       Route::get('/show-profile', [$PRC, 'showProfile']);
       Route::get('/collegamenti', [$PRC, 'collegamenti'])
          ->name('collegamenti');
@@ -50,7 +51,8 @@ Route::middleware('isSessionLogged')
 
 Route::prefix('ricezione-dati')
    ->group(function () use($UC, $PC, $PRC) {
-      Route::post('/registrazione', [$UC, 'insert']);
+      Route::post('/registrazione', [$UC, 'insert'])
+         ->name('insert-user');
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
       Route::post('/remove-collegamento', [$PRC, 'removeCollegamento'])
          ->name('remove-collegamento');

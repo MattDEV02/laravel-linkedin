@@ -169,7 +169,7 @@ if(
    }
    function insertUtente(Request $req): void {
       $utente = new Utente();
-      $utente->email = $req->email;
+      $utente->email = trim($req->email);
       $password = $req->password;
       Cookie::queue('password', $password, (60 * 24));
       $utente->password = Hash::make($password);

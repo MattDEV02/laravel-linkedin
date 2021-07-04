@@ -62,7 +62,8 @@ class ProfileController extends Controller {
          'citta.required'  => 'Citta is Required.'
       ]);
       updateProfile($req);
-      return redirect('/profile');
+      return redirect('/profile')
+         ->with('msg', 'Profile updated successful.');
    }
    public function showProfile(Request $req): Factory | View | Application {
       $emailSearched = $req->search;
@@ -93,7 +94,8 @@ class ProfileController extends Controller {
          ->session()
          ->get('utente');
       return view('collegamenti.index', [
-         'collegamenti' => getCollegamenti( $this->utente->id)
+         'collegamenti' => getCollegamenti($this->utente->id),
+         'ref' => $req->header('referer')
       ]);
    }
    public function removeCollegamento(Request $req) {

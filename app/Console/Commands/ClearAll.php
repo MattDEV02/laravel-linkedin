@@ -49,7 +49,7 @@ class ClearAll extends Command
    public function handle(): int
    {
       $commands_ = $this->commands;
-      foreach($commands_ AS $command) {
+      foreach($commands_ as $command) {
          $output = shell_exec($command);
          $this->info($output);
       }

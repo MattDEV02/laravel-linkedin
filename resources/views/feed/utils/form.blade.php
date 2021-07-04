@@ -4,7 +4,7 @@ $selectors = selectors();
 
 <div class="{{ $selectors['col'] }}">
     <div class="{{ $selectors['row'] }}">
-        <form method="POST" enctype="multipart/form-data" action="{{ $selectors['action'] }}/feed" id="postForm">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('insert-post') }}" id="postForm">
             @csrf
             <div class="form-group {{ $selectors['border'] }} p-4 mt-5">
                 <div class="{{ $selectors['col'] }}">

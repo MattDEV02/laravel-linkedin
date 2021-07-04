@@ -84,6 +84,7 @@
                                     {{ $profile->testo }}
                                 </p>
                             </div>
+                            <x-success />
                         </div>
                     </div>
                 </div>

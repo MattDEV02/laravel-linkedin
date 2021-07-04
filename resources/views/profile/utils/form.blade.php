@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['row'] }}">
@@ -29,9 +30,9 @@
                 <div class="{{ $selectors['col'] }}5">
                     <div class="{{ $selectors['row'] }}">
                         <div class="col-xl-4 col-lg-6 col-md-7 col-sm-9 col-xs-9 p-4" id="form-card">
-                            <form method="POST" action="{{ $selectors['action'] }}/edit-profile" id="profile-form" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('edit-profile') }}" id="profile-form" enctype="multipart/form-data">
                                 @csrf
-                               <x-errors />
+                                <x-errors />
                                 <input
                                         type="hidden"
                                         name="utente_id"
