@@ -98,4 +98,18 @@ button:hover {
   display: block;
 }
 
+option:checked {
+  color: #008000FF;
+}
+
+select.postsOrder:focus {
+  font-weight: bold;
+}
+
+@media (max-width: 575px) {
+  [name=postsOrderType] {
+    margin-top: 2rem !important;
+  }
+}
+
 /*# sourceMappingURL=index.css.map */

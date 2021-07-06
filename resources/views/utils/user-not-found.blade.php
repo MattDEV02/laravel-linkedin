@@ -1,4 +1,5 @@
 @php
+    $utente = session()->get('utente');
     $selectors = selectors();
 @endphp
 
@@ -10,6 +11,8 @@
 </head>
 
 <body>
+
+@include('utils.navbar')
 <div class="{{ $selectors['container']}}">
     <div class="{{ $selectors['row']}}">
         <div class="{{ $selectors['col'] }}5">

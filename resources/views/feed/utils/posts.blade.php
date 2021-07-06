@@ -5,7 +5,7 @@
     $noPosts = false;
 @endphp
 
-<div class="{{ $selectors['col'] }}4">
+<div class="{{ $selectors['col'] }}5">
     <div class="{{ $selectors['row'] }}">
         <h1>
             Posts
@@ -60,13 +60,3 @@
     <x-no-posts />
 @endif
 
-<script type="text/javascript" defer>
-   let like = async (post, utente, profile_id) => {
-      const res = await axios.post('ricezione-dati/like', { post, utente, profile_id })
-         .catch(e => console.error(e.message));
-      console.log(res);
-      res.status === 200 ?
-         document.querySelector('#posts-container').innerHTML = res.data :
-         window.alert('Errore nel Click del Like.');
-   }
-</script>

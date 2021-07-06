@@ -135,7 +135,7 @@ if(
       consoleLog("New File stored:  $filePath");
       return $fileName;
    }
-   function getAllPosts(int $utente_id, bool $profile = false): array  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB
+   function getAllPosts(int $utente_id, bool $profile = false, $orderBy = 'p.created_at DESC'): array  // unica query scritta "pura", tutte le altre sono state definite tramite models e classe DB
    {
       $sql = ("
          SELECT 
@@ -161,7 +161,7 @@ if(
         GROUP BY 
             p.id
         ORDER BY 
-            p.created_at DESC 
+            $orderBy 
       ");
       if($profile)
          $sql = str_replace('True', "p.utente = $utente_id", $sql);

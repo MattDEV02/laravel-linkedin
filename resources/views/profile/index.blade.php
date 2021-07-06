@@ -4,6 +4,7 @@
 @endphp
 
 <!DOCTYPE html>
+
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Profile" />
@@ -12,6 +13,7 @@
 </head>
 
 <body>
+
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
     <div class="row justify-content-center justify-content-md-start">
@@ -32,6 +34,7 @@
         </div>
     </div>
     @endif
+
     <div id="posts-container">
         @include('feed.utils.posts', [
             'profile_id' => $profile->id

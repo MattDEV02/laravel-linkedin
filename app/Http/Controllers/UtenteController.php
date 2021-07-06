@@ -138,15 +138,17 @@ class UtenteController extends Controller {
          'password.required'  => 'Password is Required.',
          'password.min'  => 'Password con 8 caratteri.',
       ]);
-      $email = trim($req->email);
-      $password = $req->password;
-      $res = false;
-      $utente = Utente::where('email', $email);
-      if($utente->count()) {
-         $utente->update(['password' => Hash::make($password)]);
-         Cookie::queue('password', $password, (60 * 24));
-         $res = sendmail($email, $password);
+      if(checkRef($req, 'login')) {
+         $email = trim($req->email);
+         $password = $req->password;
+         $res = false;
+         $utente = Utente::where('email', $email);
+         if($utente->count()) {
+            $utente->update(['password' => Hash::make($password)]);
+            Cookie::queue('password', $password, (60 * 24));
+            $res = sendmail($email, $password);
+         }
+         return $res;
       }
-      return $res;
    }
 }

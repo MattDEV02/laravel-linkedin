@@ -59,6 +59,9 @@ Route::prefix('ricezione-dati')
       Route::post('/feed', [$PC, 'insert'])
          ->name('insert-post')
          ->middleware('isSessionLogged');
+      Route::post('/orderBy', [$PC, 'orderBy'])
+         ->name('orderBy-post')
+         ->middleware('isSessionLogged');
       Route::post('/like', [$PC, 'like'])
          ->middleware('isSessionLogged');
       Route::post('/edit-profile', [$PRC, 'updateProfile'])

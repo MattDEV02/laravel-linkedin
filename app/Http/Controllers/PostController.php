@@ -64,4 +64,30 @@ class PostController extends Controller
          'profile_id' => $profile_id
       ]);
    }
+   public function orderBy(Request $req): Factory | View | Application
+   {
+      $req->validate([
+         'postsOrderName' => ['required', 'min:7', 'max:12'],
+         'postsOrderType' => ['required', 'min:3', 'max:4'],
+      ], [
+         'postsOrderName.required' => 'Posts order name is required.',
+         'postsOrderName.min' => 'Posts order name min 7 characters.',
+         'postsOrderName.max' => 'Posts order name max 12 characters.',
+         'postsOrderType.required' => 'Posts order type is required.',
+         'postsOrderType.min' => 'Posts order type min 3 characters.',
+         'postsOrderType.max' => 'Posts order type max 4 characters.',
+      ]);
+      $this->utente =
+         $req
+            ->session()
+            ->get('utente');
+      $utente_id = $this->utente->id;
+      $profile_id = $req->profile_id;
+      $cond = $profile_id > 0;
+      $orderBy = $req->postsOrderName . ' ' . $req->postsOrderType;
+      return view('feed.utils.posts', [
+         'posts' => getAllPosts($utente_id, $cond, $orderBy),
+         'profile_id' => $profile_id
+      ]);
+   }
 }
