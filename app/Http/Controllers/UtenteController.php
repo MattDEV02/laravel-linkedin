@@ -32,7 +32,7 @@ class UtenteController extends Controller {
    public function logout(Request $req): RedirectResponse {
       $req
          ->session()
-         ->flush();
+         ->forget('utente');
       Cookie::queue(Cookie::forget('password'));
       $req
          ->session()
@@ -112,8 +112,7 @@ class UtenteController extends Controller {
       ]);
       $email = trim($req->email);
       $password = $req->password;
-      $logged = isLogged($email, $password);
-      if($logged) {
+      if(isLogged($email, $password)) {
          if(!$req->navbar) {
             $utente = Utente::all([
                'id',
@@ -127,9 +126,6 @@ class UtenteController extends Controller {
             $req
                ->session()
                ->put('utente', $utente);
-            $req
-               ->session()
-               ->regenerate();
             Log::info("New User-Session started ($email)");
          }
          $utente_id = $req
