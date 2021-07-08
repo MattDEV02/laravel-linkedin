@@ -19,7 +19,9 @@
             <div class="{{ $selectors['row']}}">
                 @component('components.no-script')
                 @endcomponent
-                <h1>Utente non Trovato !</h1>
+                <h1 class="text-warning bg-dark">
+                    Utente non Trovato !
+                </h1>
                 <button class="btn btn-sm btn-primary {{ $selectors['border'] }} ml-5" onclick="window.history.back();">
                     <b>
                         Torna indietro
@@ -29,6 +31,8 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
 

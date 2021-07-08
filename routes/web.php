@@ -54,18 +54,22 @@ Route::prefix('ricezione-dati')
       Route::post('/registrazione', [$UC, 'insert'])
          ->name('insert-user');
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
-      Route::post('/remove-collegamento', [$PRC, 'removeCollegamento'])
-         ->name('remove-collegamento');
-      Route::post('/feed', [$PC, 'insert'])
-         ->name('insert-post')
-         ->middleware('isSessionLogged');
-      Route::post('/orderBy', [$PC, 'orderBy'])
-         ->name('orderBy-post')
-         ->middleware('isSessionLogged');
-      Route::post('/like', [$PC, 'like'])
-         ->middleware('isSessionLogged');
-      Route::post('/edit-profile', [$PRC, 'updateProfile'])
-         ->name('edit-profile')
-         ->middleware('isSessionLogged');
+      Route::middleware('isSessionLogged')
+         ->group(function () use($UC, $PC, $PRC) {
+            Route::post('/remove-collegamento', [$PRC, 'removeCollegamento'])
+               ->middleware('isSessionLogged')
+               ->name('remove-collegamento');
+            Route::post('/feed', [$PC, 'insert'])
+               ->middleware('isSessionLogged')
+               ->name('insert-post');
+            Route::post('/orderBy', [$PC, 'orderBy'])
+               ->middleware('isSessionLogged')
+               ->name('orderBy-post');
+            Route::post('/like', [$PC, 'like'])
+               ->middleware('isSessionLogged');
+            Route::post('/edit-profile', [$PRC, 'updateProfile'])
+               ->middleware('isSessionLogged')
+               ->name('edit-profile');
+         });
    });
 

@@ -2,9 +2,9 @@
     $selectors = selectors();
 @endphp
 
-<div class="mr-2">
+<div class="mr-3 mr-md-2">
     <input
-            class="form-control inputTXT"
+            class="form-control inputTXT form-inline"
             type="search"
             id="search"
             placeholder="Search Users"
@@ -15,7 +15,7 @@
     />
     <div class="mt-4 ml-3" id="risultato_ricerca">
         @foreach($utenti as $utente)
-            <div class="my-3 border border-dark p-2 text-center">
+            <div class="my-3 border border-dark p-2 text-center" id="ricerca_div">
                 <a href="/show-profile?search={{ $utente->email }}">
                     <b class="text-primary" title="{{ $utente->email }}">
                         {{ $utente->nomeCognome }}

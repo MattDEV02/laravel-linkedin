@@ -32,8 +32,11 @@ class UtenteController extends Controller {
    public function logout(Request $req): RedirectResponse {
       $req
          ->session()
-         ->forget('utente');
+         ->flush();
       Cookie::queue(Cookie::forget('password'));
+      $req
+         ->session()
+         ->regenerate();
       Log::warning('Finished User-Session.');
       return redirect('/login')
          ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
@@ -59,7 +62,9 @@ class UtenteController extends Controller {
          'password' => ['required', 'min:8', 'max:8'],
          'nome' => ['required', 'min:3', 'max:45'],
          'cognome' => ['required', 'min:3', 'max:45'],
-         'citta' => ['required']
+         'citta' => ['required', 'numeric', 'min:1', 'max:13'],
+         'lavoro' => ['required', 'numeric', 'min:1', 'max:15'],
+         'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d']
       ], [
          'email.required' => 'Email is Required.',
          'email.min' => 'Email almeno 2 caratteri.',
@@ -74,7 +79,17 @@ class UtenteController extends Controller {
          'cognome.required' => 'Cognome is Required.',
          'cognome.min' => 'Cognome almeno 3 caratteri.',
          'cognome.max' => 'Cognome massimo 45 caratteri.',
-         'citta.required' => 'Città is Required.'
+         'citta.required' => 'Città is Required.',
+         'citta.numeric' => 'Città inserita non valida.',
+         'citta.min' => 'Città inserita non valida.',
+         'citta.max' => 'Città inserita non valida.',
+         'lavoro.required' => 'Lavoro is Required.',
+         'lavoro.numeric' => 'Lavoro inserito non valido.',
+         'lavoro.min' => 'Lavoro inserito non valido.',
+         'lavoro.max' => 'Lavoro inserito non valido.',
+         'dataInizioLavoro.date' => 'Data inizio lavoro is a date.',
+         'dataInizioLavoro.date_format' => 'Incorrect date format for Data inizio lavoro.',
+         'dataInizioLavoro.before_or_equal' => 'Data inizio lavoro non valida.'
       ]);
       insertUtente($req);
       Log::debug('New User Interted.');
@@ -112,6 +127,9 @@ class UtenteController extends Controller {
             $req
                ->session()
                ->put('utente', $utente);
+            $req
+               ->session()
+               ->regenerate();
             Log::info("New User-Session started ($email)");
          }
          $utente_id = $req

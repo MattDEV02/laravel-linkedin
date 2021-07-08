@@ -51,7 +51,9 @@ class ProfileController extends Controller {
       $req->validate([
          //'image' => ['image'],
          'nome' => ['required', 'min:2', 'max:45'],
-         'citta' => ['required']
+         'citta' => ['required', 'numeric', 'min:1', 'max:13'],
+         'lavoro' => ['required', 'numeric', 'min:1', 'max:15'],
+         'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d']
       ], [
          'nome.required' => 'Nome is Required.',
          'nome.min' => 'Nome almeno 3 caratteri.',
@@ -59,7 +61,17 @@ class ProfileController extends Controller {
          'cognome.required' => 'Cognome is Required.',
          'cognome.min' => 'Cognome almeno 3 caratteri.',
          'cognome.max' => 'Cognome massimo 45 caratteri.',
-         'citta.required'  => 'Citta is Required.'
+         'citta.required' => 'Città is Required.',
+         'citta.numeric' => 'Città inserita non valida.',
+         'citta.min' => 'Città inserita non valida.',
+         'citta.max' => 'Città inserita non valida.',
+         'lavoro.required' => 'Lavoro is Required.',
+         'lavoro.numeric' => 'Lavoro inserito non valido.',
+         'lavoro.min' => 'Lavoro inserito non valido.',
+         'lavoro.max' => 'Lavoro inserito non valido.',
+         'dataInizioLavoro.date' => 'Data inizio lavoro is a date.',
+         'dataInizioLavoro.date_format' => 'Incorrect date format for Data inizio lavoro.',
+         'dataInizioLavoro.before_or_equal' => 'Data inizio lavoro non valida.'
       ]);
       updateProfile($req);
       return redirect('/profile')

@@ -1,8 +1,11 @@
-<nav class="navbar navbar-expand navbar-light p-1">
+<nav class="navbar navbar-expand-md navbar-light p-1">
     <span class="navbar-brand ml-4 mt-1">
         <x-title />
     </span>
-    <div class="collapse navbar-collapse">
+    <button class="navbar-toggler collapsed text-light mr-3" type="button" data-toggle="collapse" data-target="#collapse_navbar" aria-controls="collapse_navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="collapse_navbar">
         <ul class="navbar-nav mr-auto">
             <x-item txt="home" class="text-dark"/>
             <x-item
@@ -10,7 +13,7 @@
                     class="text-danger"
             />
             <x-item txt="profile" />
-            <li class="nav-item active mt-1 ml-2">
+            <li class="nav-item active mt-2 mt-md-1 ml-4 ml-md-2">
                 <form method="POST" action="/feed" id="feed-form">
                     @csrf
                     <input

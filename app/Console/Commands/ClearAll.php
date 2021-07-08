@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Http;
 
 class ClearAll extends Command
 {
@@ -52,6 +54,13 @@ class ClearAll extends Command
       foreach($commands_ as $command) {
          $output = shell_exec($command);
          $this->info($output);
+      }
+      try {
+         Http::get(route('logout'))
+            ->throw();
+         $this->info('Session data deleted.');
+      } catch (RequestException $e) {
+         handleError($e->getMessage());
       }
       return 1;
    }

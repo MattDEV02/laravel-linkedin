@@ -16141,10 +16141,6 @@ nav {
    background-color: #EEF3F8 !important;
 }
 
-#search-div {
-   position: relative !important;
-}
-
 html, body {
    font-family: -apple-system, system-ui, BlinkMacSystemFont,
    "Segoe UI", Roboto,
@@ -16176,17 +16172,12 @@ a.nav-link:hover {
    z-index: 1 !important;
 }
 
-@media(max-width: 820px) {
-   li.nav-item:nth-last-child(n + 3) {
-      display: none;
-   }
-   li.nav-item:nth-last-child(2) {
-      margin-left: 1.5rem !important;
-   }
+#ricerca_div {
+   background-color: #FFFFFF;
 }
 
-@media(max-width: 780px) {
+@media(max-width: 767px) {
    #search {
-      display: none;
+      margin-top: 1rem;
    }
 }
