@@ -15,7 +15,7 @@
     />
     <div class="mt-4 ml-3" id="risultato_ricerca">
         @foreach($utenti as $utente)
-            <div class="my-3 border border-dark p-2 text-center" id="ricerca_div">
+            <div class="my-3 border border-dark p-2 text-center output_div_ricerca">
                 <a href="/show-profile?search={{ $utente->email }}">
                     <b class="text-primary" title="{{ $utente->email }}">
                         {{ $utente->nomeCognome }}

@@ -14,7 +14,6 @@ use App\Models\Utente;
 class UsersSearch extends Component
 {
    public Collection | array $utenti = [];
-   public int $utente_id ;
 
    public function search(string $s): void
    {
@@ -30,6 +29,6 @@ class UsersSearch extends Component
 
    public function render(): Factory | View | Application
    {
-      return view('livewire.users-search');
+      return view('livewire.users-search', $this->utenti);
    }
 }

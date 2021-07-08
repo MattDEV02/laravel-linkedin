@@ -16172,7 +16172,7 @@ a.nav-link:hover {
    z-index: 1 !important;
 }
 
-#ricerca_div {
+div.output_div_ricerca {
    background-color: #FFFFFF;
 }
 
