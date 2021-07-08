@@ -30,7 +30,8 @@ class ClearAll extends Command
       'php artisan optimize' ,
       'php artisan optimize:clear' ,
       'composer dump-autoload --optimize',
-      'composer clear-cache'
+      'composer clear-cache',
+	  'service nginx restart'
    ];
 
    /**

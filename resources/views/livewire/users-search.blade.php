@@ -11,7 +11,7 @@
             autocomplete="{{ $selectors['autocomplete'] }}"
             minlength="{{ 1 }}"
             maxlength="{{ 35 }}"
-            wire:input="search($event.target.value)"
+            wire:input="search(event.target.value)"
     />
     <div class="mt-4 ml-3" id="risultato_ricerca">
         @foreach($utenti as $utente)

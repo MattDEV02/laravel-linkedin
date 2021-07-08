@@ -16180,4 +16180,7 @@ div.output_div_ricerca {
    #search {
       margin-top: 1rem;
    }
+   #risultato_ricerca {
+		position: relative !important;
+   }
 }

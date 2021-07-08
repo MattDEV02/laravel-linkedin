@@ -30,16 +30,18 @@ class UtenteController extends Controller {
    }
 
    public function logout(Request $req): RedirectResponse {
-      $req
-         ->session()
-         ->forget('utente');
-      Cookie::queue(Cookie::forget('password'));
-      $req
-         ->session()
-         ->regenerate();
-      Log::warning('Finished User-Session.');
-      return redirect('/login')
-         ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
+      if(!checkRef($req, 'login') && checkRef($req, 'registrazione') && !checkRef($req, 'home')) {
+         $req
+            ->session()
+            ->forget('utente');
+         Cookie::queue(Cookie::forget('password'));
+         $req
+            ->session()
+            ->regenerate();
+         Log::warning('Finished User-Session.');
+         return redirect('/login')
+            ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
+      }
    }
 
    public function registrazione(Request $req): Factory | View | Application {
