@@ -16176,11 +16176,11 @@ div.output_div_ricerca {
    background-color: #FFFFFF;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 991px) {
    #search {
       margin-top: 1rem;
    }
    #risultato_ricerca {
-		position: relative !important;
+      position: relative !important;
    }
 }

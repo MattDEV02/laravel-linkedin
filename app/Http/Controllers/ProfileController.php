@@ -24,6 +24,9 @@ class ProfileController extends Controller {
          ->get('utente');
       $utente_id = $this->utente->id;
       $profile = getProfile($utente_id);
+      $req
+         ->session()
+         ->put('profile_utente_id', $profile->id);
       return view('profile.index', [
          'profile' => $profile,
          'richieste' => getRichieste($utente_id),
@@ -33,7 +36,7 @@ class ProfileController extends Controller {
    }
 
    public function editProfile(Request $req): Factory | View | Application | RedirectResponse {
-      if(checkRef($req, 'profile') || checkRef($req, 'show-profile')) {
+      if(checkRef($req, 'profile') || checkRef($req, 'show-profile') || checkRef($req, 'edit-profile')) {
          $this->utente = $req
             ->session()
             ->get('utente');
@@ -45,7 +48,7 @@ class ProfileController extends Controller {
          ]);
       } else
          return redirect()
-            ->route('logout');
+            ->route('/profile');
    }
    public function updateProfile(Request $req): RedirectResponse {
       $req->validate([
@@ -90,6 +93,9 @@ class ProfileController extends Controller {
          $utente_id = $this->utente->id;
          $utenteSearched_id = $utenteSearched->id;
          $profile = getProfile($utenteSearched_id);
+         $req
+            ->session()
+            ->put('profile_utente_id', $profile->utente_id);
          return view('profile.index', [
             'profile' => $profile,
             'richieste' => getRichieste($utente_id),
@@ -105,20 +111,26 @@ class ProfileController extends Controller {
       $this->utente = $req
          ->session()
          ->get('utente');
+      $utente_id = $req
+         ->session()
+         ->get('profile_utente_id');
       return view('collegamenti.index', [
-         'collegamenti' => getCollegamenti($this->utente->id),
-         'ref' => $req->header('referer')
+         'collegamenti' => getCollegamenti($utente_id)
       ]);
    }
+
    public function removeCollegamento(Request $req) {
-      $this->utente = $req
-         ->session()
-         ->get('utente');
-      $utente_id = $this->utente->id;
-      $utenteCollegamento = Utente::where('email', $req->email)
-         ->first();
-      $idUtenteCollegamento = $utenteCollegamento->id;
-      removeCollegamento($utente_id, $idUtenteCollegamento);
-      return 'Collegamento deleted.';
+      if(checkRef($req, 'collegamenti')) {
+         $this->utente = $req
+            ->session()
+            ->get('utente');
+         $utente_id = $this->utente->id;
+         $utenteCollegamento = Utente::where('email', $req->email)
+            ->first();
+         $idUtenteCollegamento = $utenteCollegamento->id;
+         removeCollegamento($utente_id, $idUtenteCollegamento);
+         return 'Collegamento deleted.';
+      } else
+         redirect('/profile');
    }
 }

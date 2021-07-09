@@ -30,18 +30,16 @@ class UtenteController extends Controller {
    }
 
    public function logout(Request $req): RedirectResponse {
-      if(!checkRef($req, 'login') && checkRef($req, 'registrazione') && !checkRef($req, 'home')) {
-         $req
-            ->session()
-            ->forget('utente');
-         Cookie::queue(Cookie::forget('password'));
-         $req
-            ->session()
-            ->regenerate();
-         Log::warning('Finished User-Session.');
-         return redirect('/login')
-            ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
-      }
+      $req
+         ->session()
+         ->forget('utente');
+      Cookie::queue(Cookie::forget('password'));
+      $req
+         ->session()
+         ->regenerate();
+      Log::warning('Finished User-Session.');
+      return redirect('/login')
+         ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
    }
 
    public function registrazione(Request $req): Factory | View | Application {
@@ -59,44 +57,47 @@ class UtenteController extends Controller {
    }
 
    public function insert(Request $req): RedirectResponse {
-      $req->validate([
-         'email' => ['email', 'required', 'unique:Utente','min:2', 'max:35'],
-         'password' => ['required', 'min:8', 'max:8'],
-         'nome' => ['required', 'min:3', 'max:45'],
-         'cognome' => ['required', 'min:3', 'max:45'],
-         'citta' => ['required', 'numeric', 'min:1', 'max:13'],
-         'lavoro' => ['required', 'numeric', 'min:1', 'max:15'],
-         'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d']
-      ], [
-         'email.required' => 'Email is Required.',
-         'email.min' => 'Email almeno 2 caratteri.',
-         'email.max' => 'Email massimo 35 caratteri.',
-         'email.unique' => 'Utente già Registrato, è possible effettuare il Login.',
-         'password.required' => 'Password is Required.',
-         'password.min' => 'Password con 8 caratteri.',
-         'password.max' => 'Password con 8 caratteri.',
-         'nome.required' => 'Nome is Required.',
-         'nome.min' => 'Nome almeno 3 caratteri.',
-         'nome.max' => 'Nome massimo 45 caratteri.',
-         'cognome.required' => 'Cognome is Required.',
-         'cognome.min' => 'Cognome almeno 3 caratteri.',
-         'cognome.max' => 'Cognome massimo 45 caratteri.',
-         'citta.required' => 'Città is Required.',
-         'citta.numeric' => 'Città inserita non valida.',
-         'citta.min' => 'Città inserita non valida.',
-         'citta.max' => 'Città inserita non valida.',
-         'lavoro.required' => 'Lavoro is Required.',
-         'lavoro.numeric' => 'Lavoro inserito non valido.',
-         'lavoro.min' => 'Lavoro inserito non valido.',
-         'lavoro.max' => 'Lavoro inserito non valido.',
-         'dataInizioLavoro.date' => 'Data inizio lavoro is a date.',
-         'dataInizioLavoro.date_format' => 'Incorrect date format for Data inizio lavoro.',
-         'dataInizioLavoro.before_or_equal' => 'Data inizio lavoro non valida.'
-      ]);
-      insertUtente($req);
-      Log::debug('New User Interted.');
-      return redirect('/login')
-         ->with('msg', 'reg');
+      if(checkRef($req, 'registrazione')) {
+         $req->validate([
+            'email' => ['email', 'required', 'unique:Utente','min:2', 'max:35'],
+            'password' => ['required', 'min:8', 'max:8'],
+            'nome' => ['required', 'min:3', 'max:45'],
+            'cognome' => ['required', 'min:3', 'max:45'],
+            'citta' => ['required', 'numeric', 'min:1', 'max:13'],
+            'lavoro' => ['required', 'numeric', 'min:1', 'max:15'],
+            'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d']
+         ], [
+            'email.required' => 'Email is Required.',
+            'email.min' => 'Email almeno 2 caratteri.',
+            'email.max' => 'Email massimo 35 caratteri.',
+            'email.unique' => 'Utente già Registrato, è possible effettuare il Login.',
+            'password.required' => 'Password is Required.',
+            'password.min' => 'Password con 8 caratteri.',
+            'password.max' => 'Password con 8 caratteri.',
+            'nome.required' => 'Nome is Required.',
+            'nome.min' => 'Nome almeno 3 caratteri.',
+            'nome.max' => 'Nome massimo 45 caratteri.',
+            'cognome.required' => 'Cognome is Required.',
+            'cognome.min' => 'Cognome almeno 3 caratteri.',
+            'cognome.max' => 'Cognome massimo 45 caratteri.',
+            'citta.required' => 'Città is Required.',
+            'citta.numeric' => 'Città inserita non valida.',
+            'citta.min' => 'Città inserita non valida.',
+            'citta.max' => 'Città inserita non valida.',
+            'lavoro.required' => 'Lavoro is Required.',
+            'lavoro.numeric' => 'Lavoro inserito non valido.',
+            'lavoro.min' => 'Lavoro inserito non valido.',
+            'lavoro.max' => 'Lavoro inserito non valido.',
+            'dataInizioLavoro.date' => 'Data inizio lavoro is a date.',
+            'dataInizioLavoro.date_format' => 'Incorrect date format for Data inizio lavoro.',
+            'dataInizioLavoro.before_or_equal' => 'Data inizio lavoro non valida.'
+         ]);
+         insertUtente($req);
+         Log::debug('New User Interted.');
+         return redirect('/login')
+            ->with('msg', 'reg');
+      } else
+         redirect('/registrazione');
    }
 
    public function logResult(Request $req): Factory | View | RedirectResponse | Application {
@@ -113,7 +114,7 @@ class UtenteController extends Controller {
          'password.max'  => 'Password con 8 caratteri.',
       ]);
       $email = trim($req->email);
-      $password = $req->password;
+      $password = $req->input('password');
       if(isLogged($email, $password)) {
          if(!$req->navbar) {
             $utente = Utente::all([
@@ -128,6 +129,11 @@ class UtenteController extends Controller {
             $req
                ->session()
                ->put('utente', $utente);
+            //----
+            $req
+               ->session()
+               ->regenerate();
+            //----
             Log::info("New User-Session started ($email)");
          }
          $utente_id = $req
@@ -154,17 +160,17 @@ class UtenteController extends Controller {
          'password.required'  => 'Password is Required.',
          'password.min'  => 'Password con 8 caratteri.',
       ]);
+      $res = false;
       if(checkRef($req, 'login')) {
          $email = trim($req->email);
          $password = $req->password;
-         $res = false;
          $utente = Utente::where('email', $email);
          if($utente->count()) {
             $utente->update(['password' => Hash::make($password)]);
             Cookie::queue('password', $password, (60 * 24));
             $res = sendmail($email, $password);
          }
-         return $res;
       }
+      return $res;
    }
 }

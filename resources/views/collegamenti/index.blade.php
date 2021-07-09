@@ -1,6 +1,6 @@
 @php
     $selectors = selectors();
-   $utente = session()->get('utente');
+    $utente = session()->get('utente');
 @endphp
 
 <!DOCTYPE HTML>
@@ -42,7 +42,7 @@
                                         </h5>
                                     </th>
                                     @php
-                                    $display = route('profile') === $ref ? 'block' : 'none';
+                                    $display = $utente->id === session()->get('profile_utente_id') ? 'block' : 'none';
                                     @endphp
                                     <th scope="col" style="display: {{ $display }};">
                                         <h5>

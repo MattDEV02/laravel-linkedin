@@ -44,6 +44,30 @@ class DescrizioneUtenteSeeder extends Seeder {  // Profilo personale dell'Utente
          'testo' => 'Mi chiamo JIT e sono un Imprenditore Parigino',
          'foto' => null
       ],
+      [
+         'id' => 7,
+         'utente' => 7,
+         'testo' => 'Bella rega io so Bruno Graziosi e faccio Biologia.  FS',
+         'foto' => null
+      ],
+      [
+         'id' => 8,
+         'utente' => 8,
+         'testo' => 'Rega, nso voi ma io so Chialastri Matteo',
+         'foto' => null
+      ],
+      [
+         'id' => 9,
+         'utente' => 9,
+         'testo' => 'Io so Riggi Luigi e ovviamente tifo Roma.',
+         'foto' => null
+      ],
+      [
+         'id' => 10,
+         'utente' => 10,
+         'testo' => 'Io so Matteo Ciarla e ovviamente tifo Roma.',
+         'foto' => null
+      ],
    ];
    /**
     * Run the database seeds.

@@ -12,7 +12,7 @@
 
 <body>
 <div class="{{ $selectors['container'] }}">
-    <div class="{{ $selectors['col'] }}4">
+    <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row'] }}">
             @component('components.no-script')
             @endcomponent

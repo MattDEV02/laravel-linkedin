@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+
 class UtenteLavoroSeeder extends Seeder
 {
    private array $utentiLavori = [
@@ -37,6 +38,26 @@ class UtenteLavoroSeeder extends Seeder
          'utente' => 6,
          'lavoro' => 11,
          'dataInizioLavoro' => '2021-05-17'
+      ],
+      [
+         'utente' => 7,
+         'lavoro' => 4,
+         'dataInizioLavoro' => '2021-07-09'
+      ],
+      [
+         'utente' => 8,
+         'lavoro' => 8,
+         'dataInizioLavoro' => '2021-07-09'
+      ],
+      [
+         'utente' => 9,
+         'lavoro' => 10,
+         'dataInizioLavoro' => '2021-06-09'
+      ],
+      [
+         'utente' => 10,
+         'lavoro' => 5,
+         'dataInizioLavoro' => '2021-05-19'
       ],
    ];
    /**

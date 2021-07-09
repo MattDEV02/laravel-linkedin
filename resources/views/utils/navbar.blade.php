@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light p-1">
+<nav class="navbar navbar-expand-lg navbar-light p-1">
     <span class="navbar-brand ml-4 mt-1">
         <x-title />
     </span>
@@ -13,7 +13,7 @@
                     class="text-danger"
             />
             <x-item txt="profile" />
-            <li class="nav-item active mt-2 mt-md-1 ml-4 ml-md-2">
+            <li class="nav-item active mt-2 mt-lg-1 ml-4 ml-lg-2">
                 <form method="POST" action="/feed" id="feed-form">
                     @csrf
                     <input

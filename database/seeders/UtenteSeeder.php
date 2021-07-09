@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+
 class UtenteSeeder extends Seeder
 {
    private array $utenti = [
@@ -56,6 +57,38 @@ class UtenteSeeder extends Seeder
          'nome' => 'Gabriel',
          'cognome' => 'Jitaru',
          'citta' => 9
+      ],
+      [
+         'id' => 7,
+         'email' => 'brunograziosi@gmail.it',
+         'password' => 'brunoooo',
+         'nome' => 'Bruno',
+         'cognome' => 'Graziosi',
+         'citta' => 1
+      ],
+      [
+         'id' => 8,
+         'email' => 'chialastri02@gmail.it',
+         'password' => 'chialaaa',
+         'nome' => 'Matteo',
+         'cognome' => 'Chialastri',
+         'citta' => 1
+      ],
+      [
+         'id' => 9,
+         'email' => 'riggi@gmail.it',
+         'password' => 'riggiiii',
+         'nome' => 'Luigi',
+         'cognome' => 'Riggi',
+         'citta' => 10
+      ],
+      [
+         'id' => 10,
+         'email' => 'mattciarlax@yahoo.it',
+         'password' => 'ciarlaaa',
+         'nome' => 'Matteo',
+         'cognome' => 'Ciarla',
+         'citta' => 11
       ]
    ];
    /**
