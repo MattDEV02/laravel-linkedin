@@ -19,7 +19,7 @@
                     $mittente = $richiesta->utenteMittente;
                     $ricevente = $richiesta->utenteRicevente;
                 @endphp
-                <tr class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
+                <tr  style='background-color: #FFFFFF' class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
                     <td title="{{ $richiesta->email }}">
                         <b>
                             {{ $richiesta->utenteNomeCognome }}
