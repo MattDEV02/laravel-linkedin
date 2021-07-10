@@ -2,7 +2,7 @@
     $selectors = selectors();
 @endphp
 
-<div class="mr-3 mr-md-2">
+<div class="mr-3 mr-lg-2">
     <input
             class="form-control inputTXT form-inline"
             type="search"
@@ -13,7 +13,7 @@
             maxlength="{{ 35 }}"
             wire:input="search(event.target.value)"
     />
-    <div class="mt-4 ml-3" id="risultato_ricerca">
+    <div class="mt-4 ml-lg-3" id="risultato_ricerca">
         @foreach($utenti as $utente)
             <div class="my-4 border border-dark p-2 text-center output_div_ricerca">
                 <a href="/show-profile?search={{ $utente->email }}">
