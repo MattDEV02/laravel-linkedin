@@ -32,7 +32,7 @@ class UtenteController extends Controller {
    public function logout(Request $req): RedirectResponse {
       $req
          ->session()
-         ->forget('utente');
+         ->flush();
       Cookie::queue(Cookie::forget('password'));
       $req
          ->session()
@@ -92,6 +92,7 @@ class UtenteController extends Controller {
             'dataInizioLavoro.date_format' => 'Incorrect date format for Data inizio lavoro.',
             'dataInizioLavoro.before_or_equal' => 'Data inizio lavoro non valida.'
          ]);
+         // date max value control...
          insertUtente($req);
          Log::debug('New User Interted.');
          return redirect('/login')
@@ -129,11 +130,6 @@ class UtenteController extends Controller {
             $req
                ->session()
                ->put('utente', $utente);
-            //----
-            $req
-               ->session()
-               ->regenerate();
-            //----
             Log::info("New User-Session started ($email)");
          }
          $utente_id = $req
