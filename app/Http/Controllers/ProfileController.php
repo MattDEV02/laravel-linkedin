@@ -113,7 +113,7 @@ class ProfileController extends Controller {
          ->get('utente');
       $utente_id = $req
          ->session()
-         ->get('profile_utente_id');
+         ->get('profile_utente_id') ?? $this->utente->id;
       return view('collegamenti.index', [
          'collegamenti' => getCollegamenti($utente_id)
       ]);
