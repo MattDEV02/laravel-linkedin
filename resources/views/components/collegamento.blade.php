@@ -1,4 +1,4 @@
-<tr>
+<tr style='background-color: #FFFFFF'>
     <td>
         <a href="/show-profile?search={{ $utenteEmail }}" title="{{ $utenteEmail }}">
             <b id="utenteNomeCognome">
