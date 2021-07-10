@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-5 col-md-7 col-sm-8 col-xs-12 mt-5">
-                    <div class="{{ $selectors['row']}} table-responsive-sm">
+                    <div class="{{ $selectors['row']}}">
                         @if(!empty($collegamenti) && count($collegamenti) > 0 && isset($collegamenti))
                             <table class="table table-hover text-center table-bordered collegamenti">
                                 <thead class="collegamenti">
