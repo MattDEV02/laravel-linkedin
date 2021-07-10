@@ -24,6 +24,8 @@ class UsersSearch extends Component
          )
             ->where('nome', 'like', "$s%")
             ->orWhere('cognome', 'like', "$s%")
+            ->orderBy('nome', 'ASC')
+            ->orderBy('cognome', 'ASC')
             ->get() : [];
    }
 
