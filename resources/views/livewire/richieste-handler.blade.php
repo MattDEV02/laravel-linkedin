@@ -21,9 +21,11 @@
                 @endphp
                 <tr  style='background-color: #FFFFFF' class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
                     <td title="{{ $richiesta->email }}">
-                        <b>
+                    <a href="/show-profile?search={{ $richiesta->email }}">
+                        <b style='color: #0073B1;'>
                             {{ $richiesta->utenteNomeCognome }}
                         </b>
+                    </a>
                     </td>
                     <td>
                         {{ $richiesta->dataInvio }}
