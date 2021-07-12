@@ -429,9 +429,11 @@ FLUSH PRIVILEGES;
 
 DROP USER 'Lambertucci'@'%';
 
-CREATE USER IF NOT EXISTS 'Lambertucci'@'%' IDENTIFIED WITH mysql_native_password BY '12345678';
+CREATE USER IF NOT EXISTS `Lambertucci`@`%` IDENTIFIED BY PASSWORD '12345678'
 
 GRANT ALL ON Linkedin.* TO 'Lambertucci'@'%';
+
+FLUSH PRIVILEGES;
 
 
 
