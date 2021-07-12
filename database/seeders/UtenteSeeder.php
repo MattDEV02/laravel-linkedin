@@ -89,7 +89,39 @@ class UtenteSeeder extends Seeder
          'nome' => 'Matteo',
          'cognome' => 'Ciarla',
          'citta' => 11
-      ]
+      ],
+      [
+         'id' => 11,
+         'email' => 'richcass@libero.it',
+         'password' => '12345678',
+         'nome' => 'Riccardo',
+         'cognome' => 'Cassanelli',
+         'citta' => 12
+      ],
+      [
+         'id' => 12,
+         'email' => 'beaciocc@gmail.com',
+         'password' => 'beaaaaaa',
+         'nome' => 'Beatrice',
+         'cognome' => 'Cioccari',
+         'citta' => 1
+      ],
+      [
+         'id' => 13,
+         'email' => 'elisa@gmail.com',
+         'password' => '87654321',
+         'nome' => 'Elisa',
+         'cognome' => 'Lambertucci',
+         'citta' => 10
+      ],
+      [
+         'id' => 14,
+         'email' => 'francescoballini@alice.it',
+         'password' => '09876543',
+         'nome' => 'Francesco',
+         'cognome' => 'Ballini',
+         'citta' => 1
+      ],
    ];
    /**
     * Run the database seeds.

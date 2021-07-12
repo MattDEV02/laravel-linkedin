@@ -42,7 +42,10 @@
                                         </h5>
                                     </th>
                                     @php
-                                    $display = $utente->id === session()->get('profile_utente_id') ? 'block' : 'none';
+                                    $profile_utente_id = session()->get('profile_utente_id');
+                                    $display = $utente->id === $profile_utente_id ? 'block' : 'none';
+                                    if($display === 'none' &&  !isset($profile_utente_id))
+                                        $display = 'block';
                                     @endphp
                                     <th scope="col" style="display: {{ $display }};">
                                         <h5>

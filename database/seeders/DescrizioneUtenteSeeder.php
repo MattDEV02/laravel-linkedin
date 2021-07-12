@@ -68,6 +68,30 @@ class DescrizioneUtenteSeeder extends Seeder {  // Profilo personale dell'Utente
          'testo' => 'Io so Matteo Ciarla e ovviamente tifo Roma.',
          'foto' => null
       ],
+      [
+         'id' => 11,
+         'utente' => 11,
+         'testo' => 'Ciao a tutti sono un Freelancer.',
+         'foto' => null
+      ],
+      [
+         'id' => 12,
+         'utente' => 12,
+         'testo' => 'Ciao a tutti, io mi chiamo Bea Cioc ed ho tanti problemi mentali.',
+         'foto' => null
+      ],
+      [
+         'id' => 13,
+         'utente' => 13,
+         'testo' => 'Ciao a tutti io mi chiamo Elisa Lambertucci ed abito a Valmontone.',
+         'foto' => null
+      ],
+      [
+         'id' => 14,
+         'utente' => 14,
+         'testo' => 'De giorno so Francesco Ballini, de notte nvece so er Devakkk',
+         'foto' => null
+      ],
    ];
    /**
     * Run the database seeds.

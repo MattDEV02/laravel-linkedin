@@ -1,17 +1,17 @@
 {
    "short_name": "linkedin",
-   "name": "linkedin",
+   "name": "Linkedin",
    "icons": [
-      {
-         "src": "img/logo.png",
-         "sizes": "108x108",
-         "type": "image/png"
-      },
       {
          "src": "img/favicon.ico",
          "sizes": "64x64",
          "type": "image/x-icon"
-      }
+      },
+	  {
+         "src": "img/logo.png",
+         "sizes": "108x108",
+         "type": "image/png"
+      },
    ],
    "start_url": ".",
    "display": "standalone",

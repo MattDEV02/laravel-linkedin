@@ -427,7 +427,9 @@ LIMIT 25;
 
 FLUSH PRIVILEGES;
 
-CREATE USER 'Lambertucci'@'%' IDENTIFIED WITH mysql_native_password BY '12345678';
+DROP USER 'Lambertucci'@'%';
+
+CREATE USER IF NOT EXISTS 'Lambertucci'@'%' IDENTIFIED WITH mysql_native_password BY '12345678';
 
 GRANT ALL ON Linkedin.* TO 'Lambertucci'@'%';
 

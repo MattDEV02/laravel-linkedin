@@ -12,9 +12,11 @@
                     alt="{{ $post->testo }}"
             />
             <div class="card-body">
-                <h4 class="card-title">
-                    {{ ucfirst($post->utente) }}
-                </h4>
+                <a href="/show-profile?search={{ $post->utenteEmail }}" style="color: #212529">
+                    <h4 class="card-title">
+                        {{ ucfirst($post->utente) }}
+                    </h4>
+                </a>
                 <h6 class="card-subtitle text-muted mb-3">
                     {{ $post->lavoroPresso }}
                 </h6>

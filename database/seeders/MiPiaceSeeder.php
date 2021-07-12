@@ -24,7 +24,7 @@ class MiPiaceSeeder extends Seeder
     *
     * @return void
     */
-   public function run()
+   public function run(): void
    {
       foreach($this->likes as $like)
          DB::table('MiPiace')

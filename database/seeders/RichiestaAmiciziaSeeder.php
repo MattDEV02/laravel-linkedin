@@ -109,6 +109,24 @@ class RichiestaAmiciziaSeeder extends Seeder
          'utenteMittente' => 7,
          'utenteRicevente' => 9,
          'stato' => 'Sospesa',
+      ],
+      [
+         'id' => 18,
+         'utenteMittente' => 11,
+         'utenteRicevente' => 13,
+         'stato' => 'Accettata',
+      ],
+      [
+         'id' => 19,
+         'utenteMittente' => 12,
+         'utenteRicevente' => 1,
+         'stato' => 'Sospesa',
+      ],
+      [
+         'id' => 20,
+         'utenteMittente' => 14,
+         'utenteRicevente' => 1,
+         'stato' => 'Accettata',
       ]
    ];
    /**

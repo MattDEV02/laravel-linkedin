@@ -59,6 +59,26 @@ class UtenteLavoroSeeder extends Seeder
          'lavoro' => 5,
          'dataInizioLavoro' => '2021-05-19'
       ],
+      [
+         'utente' => 11,
+         'lavoro' => 4,
+         'dataInizioLavoro' => '2019-05-19'
+      ],
+      [
+         'utente' => 12,
+         'lavoro' => 1,
+         'dataInizioLavoro' => null
+      ],
+      [
+         'utente' => 13,
+         'lavoro' => 12,
+         'dataInizioLavoro' => '2018-08-18'
+      ],
+      [
+         'utente' => 14,
+         'lavoro' => 1,
+         'dataInizioLavoro' => '2021-07-20'
+      ],
    ];
    /**
     * Run the database seeds.
