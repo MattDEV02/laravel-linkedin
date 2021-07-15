@@ -65,8 +65,8 @@ class ClearAll extends Command
    {
       $commands_ = $this->commands;
       foreach($commands_ as $command) {
-         if(str_contains($command, 'migration'))
-            $this->info('Migrations: ');
+         if(preg_match('(migration|composer)', $command))
+            $this->info('yes');
          $output = shell_exec($command);
          $this->info($output);
       }
