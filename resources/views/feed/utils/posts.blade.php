@@ -12,7 +12,7 @@
         </h1>
     </div>
 </div>
-@if(empty($posts) || count($posts) <= 0 || !isset($posts))
+@if(!isValidCollection($posts))
     @php
         $noPosts = true;
     @endphp
@@ -57,6 +57,8 @@
 @endif
 
 @if($noPosts || $i === 0)
-    <x-no-posts />
+    <div class="mb-5">
+        <x-none txt="No posts there." />
+    </div>
 @endif
 

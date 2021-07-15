@@ -9,16 +9,16 @@
 @endphp
 
 <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt-5 ml-md-4" id="mll">
-    <div class="row">
-        <div class="{{ $selectors['col'] }} border border-dark" id="profile_card" title="{{ $profile->utenteEmail }}">
+    <div class="row justify-content-center justify-content-md-start mt-3">
+        <div class="{{ $selectors['col'] }} {{ $selectors['border'] }}" id="profile_card" title="{{ $profile->utenteEmail }}">
             <div class="row">
                 <div class="{{ $selectors['col'] }} bg-secondary" id="profile_bg">
                     <div class="row">
                         <img
                                 id="profile_img"
                                 src="{{ $base }}{{ $path }}"
-                                alt="{{ $profile->testo }}"
-                                class="rounded-circle mt-5 {{ $ml }}"
+                                alt="{{ $profile->utenteEmail }}"
+                                class="rounded-circle mt-{{ $mt + 2 }} {{ $ml }}"
                         />
                     </div>
                 </div>

@@ -4,8 +4,8 @@
 @endphp
 
 <!DOCTYPE HTML>
-
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
+
 <head>
     <x-head title="Profile-edit" />
     <link rel="stylesheet" type="text/css" href="css/registrazione/index.css" />
@@ -33,12 +33,7 @@
                             <form method="POST" action="{{ route('edit-profile') }}" id="profile-form" enctype="multipart/form-data">
                                 @csrf
                                 <x-errors />
-                                <input
-                                        type="hidden"
-                                        name="utente_id"
-                                        value="{{ $utente->id }}"
-                                />
-                                <div class="{{ $selectors['col'] }}2">
+                                <div class="{{ $selectors['col'] }}3">
                                     <div class="row">
                                         <div class="custom-file border border-dark">
                                             <label

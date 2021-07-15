@@ -53,25 +53,25 @@ class DescrizioneUtenteSeeder extends Seeder {  // Profilo personale dell'Utente
       [
          'id' => 8,
          'utente' => 8,
-         'testo' => 'Rega, nso voi ma io so Chialastri Matteo',
+         'testo' => 'Bella Rega, nso voi ma io so Chialastri Matteooo',
          'foto' => null
       ],
       [
          'id' => 9,
          'utente' => 9,
-         'testo' => 'Io so Riggi Luigi e ovviamente tifo Roma.',
+         'testo' => 'Io so Riggi Luigi, vengo da Velletri e ovviamente tifo Roma.',
          'foto' => null
       ],
       [
          'id' => 10,
          'utente' => 10,
-         'testo' => 'Io so Matteo Ciarla e ovviamente tifo Roma.',
+         'testo' => 'Io so Matteo Ciarla, vengo da Velletri e ovviamente tifo Roma.',
          'foto' => null
       ],
       [
          'id' => 11,
          'utente' => 11,
-         'testo' => 'Ciao a tutti sono un Freelancer.',
+         'testo' => 'Buongiorno. Signori e signore sono un Freelancer di Valmontone.',
          'foto' => null
       ],
       [

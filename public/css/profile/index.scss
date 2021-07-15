@@ -41,18 +41,15 @@ tr.linked {
    display: none;
 }
 
-table.no-richieste {
-   display: none;
-}
 
 @media(min-width: 992px) {
    #mll {
-      margin-left: 9.5rem !important;
+      margin-left: 9.0rem !important;
    }
 }
 
-@media(max-width: 576px) {
+@media(max-width: 575px) {
    #username-container {
-      margin-top: -10px !important;
+      margin-top: 1.5rem !important;
    }
 }

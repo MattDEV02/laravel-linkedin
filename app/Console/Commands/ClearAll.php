@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Http\Client\RequestException;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
+
 
 class ClearAll extends Command
 {
@@ -13,17 +15,23 @@ class ClearAll extends Command
     *
     * @var string
     */
-   protected $signature = 'clear:all';
+   protected $signature = 'reset';
 
    /**
     * The console command description.
     *
     * @var string
     */
-   protected $description = 'Clear All.';
+   protected $description = 'Reset All the project.';
 
    private array $commands = [
-      'php artisan log:clear',
+      'npm install',
+      'npm audit fix --force' ,
+      'npm cache clean --force',
+      'composer clear-cache',
+      'composer update',
+      'composer install',
+      'php artisan clear-compiled',
       'php artisan db:create',
       'php artisan migrate:refresh --seed',
       'php artisan storage:link',
@@ -32,7 +40,10 @@ class ClearAll extends Command
       'composer dump-autoload --optimize',
       'composer clear-cache',
       'service nginx restart',
-      'service mysql restart'
+      'service mysql restart',
+      'apt clean',
+      'apt-get clean',
+      'php artisan log:clear',
    ];
 
    /**
@@ -54,14 +65,18 @@ class ClearAll extends Command
    {
       $commands_ = $this->commands;
       foreach($commands_ as $command) {
+         if(str_contains($command, 'migration'))
+            $this->info('Migrations: ');
          $output = shell_exec($command);
          $this->info($output);
       }
       try {
-         Http::get(route('logout'))
-            ->throw();
-         $this->info('Session data deleted.');
-      } catch (RequestException $e) {
+         Session::flush();
+         Cookie::forget('password');
+         session()->regenerate();
+         session()->regenerateToken();
+         $this->info('Session and Cookies data deleted.');
+      } catch (Exception $e) {
          handleError($e->getMessage());
       }
       return 1;

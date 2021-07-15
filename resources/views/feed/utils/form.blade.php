@@ -19,12 +19,13 @@ $selectors = selectors();
                                 type="text"
                                 name="testo"
                                 id="testo"
-                                class="form-control form-control-lg border border-dark inputTXT"
+                                class="{{ $selectors['input'] }}"
                                 placeholder="Di cosa vorresti parlare?"
                                 autocomplete="off"
                                 minlength="{{ 2 }}"
                                 maxlength="{{ 255 }}"
-                                required>
+                                required
+                        />
                     </div>
                 </div>
                 <div class="{{ $selectors['col']}}4">

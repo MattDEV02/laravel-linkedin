@@ -4,6 +4,7 @@
 @endphp
 
 <!DOCTYPE html>
+
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Profile" />

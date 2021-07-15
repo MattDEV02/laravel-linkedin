@@ -3,7 +3,6 @@
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -17,23 +16,25 @@ use App\Models\UtenteLavoro;
 
 
 if(
-   !function_exists('selectors') and
-   !function_exists('consoleLog') and
-   !function_exists('sendMail') and
-   !function_exists('handleError') and
-   !function_exists('checkRef') and
-   !function_exists('store') and
-   !function_exists('getAllPosts') and
-   !function_exists('insertUtente') and
-   !function_exists('getProfile') and
-   !function_exists('updateProfile') and
-   !function_exists('isLiked') and
-   !function_exists('isLinked') and
-   !function_exists('getNumCollegamenti') and
-   !function_exists('getNumRichiesteSospese') and
-   !function_exists('isSentRichiesta') and
-   !function_exists('getCollegamenti') and
-   !function_exists('removeCollegamento')
+   !function_exists('selectors') &&
+   !function_exists('consoleLog') &&
+   !function_exists('sendMail') &&
+   !function_exists('handleError') &&
+   !function_exists('checkRef') &&
+   !function_exists('store') &&
+   !function_exists('getAllPosts') &&
+   !function_exists('insertUtente') &&
+   !function_exists('getProfile') &&
+   !function_exists('updateProfile') &&
+   !function_exists('isLiked') &&
+   !function_exists('isLinked') &&
+   !function_exists('getNumCollegamenti') &&
+   !function_exists('getNumRichiesteSospese') &&
+   !function_exists('isSentRichiesta') &&
+   !function_exists('getCollegamenti') &&
+   !function_exists('removeCollegamento') &&
+   !function_exists('checkDataInizioLavoroErrors') &&
+   !function_exists('isValidCollection')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -70,7 +71,8 @@ if(
          'autocomplete' => 'off',
          'title' => 'Clicca per Mostrare / Nascondere la Password',
          'fd' => $fd,
-         'storage' => "$fd/storage/"
+         'storage' => "$fd/storage/",
+         'table' => 'table table-hover text-center table-bordered'
       ];
    }
    function consoleLog(mixed $s): string
@@ -167,11 +169,10 @@ if(
          $sql = str_replace('True', "p.utente = $utente_id", $sql);
       return DB::select($sql);
    }
-   function insertUtente(Request $req): void {
+   function insertUtente(Request $req): string {
       $utente = new Utente();
       $utente->email = trim($req->email);
       $password = $req->input('password');
-      Cookie::queue('password', $password, (60 * 24));
       $utente->password = Hash::make($password);
       $utente->nome = ucfirst($req->nome);
       $utente->cognome = ucfirst($req->cognome);
@@ -186,7 +187,7 @@ if(
       $descrizioneUtente = new DescrizioneUtente();
       $descrizioneUtente->utente = $id;
       $descrizioneUtente->save();
-      Cookie::queue('password', $password, (60 * 24));
+      return $utente->email;
    }
    function getProfile(int $utente_id): ?object {
       return DB::table('Utente AS u')
@@ -254,6 +255,7 @@ if(
          ])
          ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
          ->where('ra.utenteRicevente', $utente_id)
+         ->where('ra.stato', 'Sospesa')
          ->orderBy('dataInvio', 'DESC')
          ->get();
    }
@@ -348,6 +350,25 @@ if(
          })
          ->where('stato', 'accettata')
          ->delete();
+   }
+   function checkDataInizioLavoroErrors(Request $req): array {
+      $errors = [];
+      $lavoro = $req->input('lavoro');
+      $dataInizioLavoro = $req->input('dataInizioLavoro');
+      if($dataInizioLavoro > date('Y-m-d'))
+         $errors[] = 'La data di inizio Lavoro deve essere precedente o uguale alla data attuale.';
+      if(isset($dataInizioLavoro) && ($lavoro === '1') || $lavoro === 1)
+         $errors[] = 'La data di inizio Lavoro deve essere presente solo se è presente il Lavoro.';
+      else if(!isset($dataInizioLavoro) && ($lavoro !== '1') && $lavoro !== 1)
+         $errors[] = 'Se si svolge un Lavoro deve essere presente la data di inizio Lavoro.';
+      return $errors;
+   }
+   function isValidCollection(array | object $val): bool {
+      return (
+         isset($val) &&
+         !empty($val) &&
+         count($val) > 0
+      );
    }
 }
 

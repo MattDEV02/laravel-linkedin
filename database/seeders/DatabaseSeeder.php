@@ -12,6 +12,7 @@ use Database\Seeders\PostSeeder;
 use Database\Seeders\DescrizioneUtenteSeeder;
 use Database\Seeders\MiPiaceSeeder;
 use Database\Seeders\RichiestaAmiciziaSeeder;
+use Database\Seeders\CommentoSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -32,7 +33,8 @@ class DatabaseSeeder extends Seeder
          PostSeeder::class,
          DescrizioneUtenteSeeder::class,
          RichiestaAmiciziaSeeder::class,
-         MiPiaceSeeder::class
+         MiPiaceSeeder::class,
+         CommentoSeeder::class
       ]);
    }
 }

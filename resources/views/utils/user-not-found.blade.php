@@ -15,14 +15,14 @@
 @include('utils.navbar')
 <div class="{{ $selectors['container']}}">
     <div class="{{ $selectors['row']}}">
+        @component('components.no-script')
+        @endcomponent
+        <div class="mt-4">
+            <x-none txt="Utente non trovato !" />
+        </div>
         <div class="{{ $selectors['col'] }}5">
-            <div class="{{ $selectors['row']}}">
-                @component('components.no-script')
-                @endcomponent
-                <h1 class="text-warning bg-dark">
-                    Utente non Trovato !
-                </h1>
-                <button class="btn btn-sm btn-primary {{ $selectors['border'] }} ml-5" onclick="window.history.back();">
+            <div class="{{ $selectors['row'] }}">
+                <button class="{{ $selectors['btn'] }} btn-primary {{ $selectors['border'] }}" onclick="window.history.back();">
                     <b>
                         Torna indietro
                     </b>

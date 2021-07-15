@@ -54,15 +54,17 @@ class ProfileController extends Controller {
       $req->validate([
          //'image' => ['image'],
          'nome' => ['required', 'min:2', 'max:45'],
+         'cognome' => ['required', 'min:2', 'max:45'],
          'citta' => ['required', 'numeric', 'min:1', 'max:13'],
          'lavoro' => ['required', 'numeric', 'min:1', 'max:15'],
-         'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d']
+         'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d'],
+         'testo' => ['nullable', 'max:255']
       ], [
          'nome.required' => 'Nome is Required.',
-         'nome.min' => 'Nome almeno 3 caratteri.',
+         'nome.min' => 'Nome almeno 2 caratteri.',
          'nome.max' => 'Nome massimo 45 caratteri.',
          'cognome.required' => 'Cognome is Required.',
-         'cognome.min' => 'Cognome almeno 3 caratteri.',
+         'cognome.min' => 'Cognome almeno 2 caratteri.',
          'cognome.max' => 'Cognome massimo 45 caratteri.',
          'citta.required' => 'Città is Required.',
          'citta.numeric' => 'Città inserita non valida.',
@@ -74,11 +76,17 @@ class ProfileController extends Controller {
          'lavoro.max' => 'Lavoro inserito non valido.',
          'dataInizioLavoro.date' => 'Data inizio lavoro is a date.',
          'dataInizioLavoro.date_format' => 'Incorrect date format for Data inizio lavoro.',
-         'dataInizioLavoro.before_or_equal' => 'Data inizio lavoro non valida.'
+         'testo.max' => 'Testo della descrizione troppo lungo.'
       ]);
-      updateProfile($req);
-      return redirect('/profile')
-         ->with('msg', 'Profile updated successful.');
+      $errors = checkDataInizioLavoroErrors($req);
+      if(isValidCollection($errors))
+         return back()
+            ->withErrors($errors);
+      else {
+         updateProfile($req);
+         return redirect('/profile')
+            ->with('msg', 'Profile updated successful.');
+      }
    }
    public function showProfile(Request $req): Factory | View | Application {
       $emailSearched = $req->search;

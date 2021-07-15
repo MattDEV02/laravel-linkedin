@@ -18,45 +18,32 @@ use App\Models\Lavoro;
 class UtenteController extends Controller {
 
    public function login(Request $req): Factory | View | Application {
-      $req->validate([
-         'msg' => ['min:3', 'max:75'],
-      ], [
-         'msg.min' => 'Invalid MSG.',
-         'msg.max' => 'Invalid MSG.'
-      ]);
-      return view('login.index',[
-         'msg' => $req->msg
+      return view('login.index');
+   }
+
+   public function registrazione(Request $req): Factory | View | Application {
+      return view('registrazione.index',[
+         'citta' => Citta::all(),
+         'lavori' => Lavoro::all()
       ]);
    }
 
    public function logout(Request $req): RedirectResponse {
+      $email = $req
+         ->session()
+         ->get('utente')
+         ->email;
       $req
          ->session()
-         ->flush();
+         ->invalidate();
       Cookie::queue(Cookie::forget('password'));
-      $req
-         ->session()
-         ->regenerate();
-      Log::warning('Finished User-Session.');
+      Log::warning("Finished User-Session ($email).");
       return redirect('/login')
          ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
    }
 
-   public function registrazione(Request $req): Factory | View | Application {
-      $req->validate([
-         'msg' => ['min:3', 'max:75'],
-      ], [
-         'msg.min' => 'Invalid MSG.',
-         'msg.max' => 'Invalid MSG.'
-      ]);
-      return view('registrazione.index',[
-         'citta' => Citta::all(),
-         'lavori' => Lavoro::all(),
-         'msg' => $req->msg
-      ]);
-   }
-
-   public function insert(Request $req): RedirectResponse {
+   public function insert(Request $req): RedirectResponse
+   {
       if(checkRef($req, 'registrazione')) {
          $req->validate([
             'email' => ['email', 'required', 'unique:Utente','min:2', 'max:35'],
@@ -92,11 +79,19 @@ class UtenteController extends Controller {
             'dataInizioLavoro.date_format' => 'Incorrect date format for Data inizio lavoro.',
             'dataInizioLavoro.before_or_equal' => 'Data inizio lavoro non valida.'
          ]);
-         // date max value control...
-         insertUtente($req);
-         Log::debug('New User Interted.');
-         return redirect('/login')
-            ->with('msg', 'reg');
+         $errors = checkDataInizioLavoroErrors($req);
+         if(isValidCollection($errors))
+            return back()
+               ->withErrors($errors);
+         else {
+            $password = $req->input('password');
+            Cookie::queue(Cookie::forever('password', $password));
+            $email = insertUtente($req);
+            Log::debug("New User Interted ($email).");
+            return redirect('/login')
+               ->with('msg', 'reg')
+               ->withCookie('password', $password);
+         }
       } else
          redirect('/registrazione');
    }
@@ -114,10 +109,10 @@ class UtenteController extends Controller {
          'password.min'  => 'Password con 8 caratteri.',
          'password.max'  => 'Password con 8 caratteri.',
       ]);
-      $email = trim($req->email);
+      $email = trim($req->input('email'));
       $password = $req->input('password');
       if(isLogged($email, $password)) {
-         if(!$req->navbar) {
+         if(!$req->input('navbar') && !$req->session()->exists('utente')) {
             $utente = Utente::all([
                'id',
                'email',
@@ -130,7 +125,7 @@ class UtenteController extends Controller {
             $req
                ->session()
                ->put('utente', $utente);
-            Log::info("New User-Session started ($email)");
+            Log::info("New User-Session started ($email).");
          }
          $utente_id = $req
             ->session()
@@ -158,12 +153,12 @@ class UtenteController extends Controller {
       ]);
       $res = false;
       if(checkRef($req, 'login')) {
-         $email = trim($req->email);
-         $password = $req->password;
+         $email = trim($req->input('email'));
+         $password = $req->input('password');
          $utente = Utente::where('email', $email);
          if($utente->count()) {
             $utente->update(['password' => Hash::make($password)]);
-            Cookie::queue('password', $password, (60 * 24));
+            Cookie::queue(Cookie::forever('password', $password));
             $res = sendmail($email, $password);
          }
       }

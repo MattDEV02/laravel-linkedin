@@ -4,7 +4,6 @@
 @endphp
 
 <!DOCTYPE HTML>
-
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>
@@ -20,15 +19,15 @@
         @endcomponent
         <div class="{{ $selectors['col'] }}5">
             <div class="{{ $selectors['row']}}">
-                <div class="{{ $selectors['col'] }}3 mb-2">
+                <div class="{{ $selectors['col'] }}3 ">
                     <div class="{{ $selectors['row']}}">
-                        <h1>Ecco i tuoi collegamenti</h1>
+                        <h1>Collegamenti relativi al profilo ricercato</h1>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-5 col-md-7 col-sm-8 col-xs-12 mt-5">
+                <div class="col-xl-4 col-lg-5 col-md-7 col-sm-8 col-xs-12 mt-4">
                     <div class="{{ $selectors['row']}}">
-                        @if(!empty($collegamenti) && count($collegamenti) > 0 && isset($collegamenti))
-                            <table class="table table-hover text-center table-bordered collegamenti">
+                        @if(isValidCollection($collegamenti))
+                            <table class="{{ $selectors['table'] }} collegamenti mt-5">
                                 <thead class="collegamenti">
                                 <tr>
                                     <th scope="col">
@@ -42,16 +41,18 @@
                                         </h5>
                                     </th>
                                     @php
-                                    $profile_utente_id = session()->get('profile_utente_id');
-                                    $display = $utente->id === $profile_utente_id ? 'block' : 'none';
-                                    if($display === 'none' &&  !isset($profile_utente_id))
-                                        $display = 'block';
+                                        $profile_utente_id = session()->get('profile_utente_id');
+                                        $display = $utente->id === $profile_utente_id ? 'block' : 'none';
+                                        if($display === 'none' &&  !isset($profile_utente_id))
+                                            $display = 'block';
                                     @endphp
-                                    <th scope="col" style="display: {{ $display }};">
-                                        <h5>
-                                            Azioni
-                                        </h5>
-                                    </th>
+                                    @if($display === 'block')
+                                        <th scope="col">
+                                            <h5>
+                                                Azioni
+                                            </h5>
+                                        </th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,13 +67,7 @@
                                 </tbody>
                             </table>
                         @else
-                            <div class="{{ $selectors['col'] }}4">
-                                <div class="{{ $selectors['row'] }}">
-                                    <h1 class="text-warning bg-dark">
-                                        Nessun collegamento.
-                                    </h1>
-                                </div>
-                            </div>
+                            <x-none txt=" Nessun collegamento." />
                         @endif
                     </div>
                 </div>

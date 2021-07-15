@@ -72,4 +72,3 @@ Route::prefix('ricezione-dati')
                ->name('edit-profile');
          });
    });
-
