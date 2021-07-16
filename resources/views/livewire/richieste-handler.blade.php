@@ -1,11 +1,14 @@
 @php
     $selectors = selectors();
+    $utente_id = session()->get('utente')->id;
 @endphp
 
 @if(isValidCollection($richieste))
     <div class="col-xs-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mt-5">
         <div class="{{ $selectors['row'] }}">
-            <table class="{{ $selectors['table'] }} richieste">
+            <h1 class="">Richieste di amicizia in sospeso: </h1>
+            <h1 class="text-primary ml-3">{{ getNumRichiesteSospese($utente_id) }}</h1>
+            <table class="{{ $selectors['table'] }} mt-5 richieste">
                 <thead class="richieste">
                 <tr>
                     <th scope="col">Utente</th>
@@ -19,10 +22,10 @@
                         $mittente = $richiesta->utenteMittente;
                         $ricevente = $richiesta->utenteRicevente;
                     @endphp
-                    <tr  style='background-color: #FFFFFF' class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
+                    <tr class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
                         <td title="{{ $richiesta->email }}">
-                            <a href="/show-profile?search={{ $richiesta->email }}">
-                                <b style='color: #0073B1;'>
+                            <a href="{{ $selectors['show-profile'] }}{{ $richiesta->email }}">
+                                <b style="color: #0073B1">
                                     {{ $richiesta->utenteNomeCognome }}
                                 </b>
                             </a>

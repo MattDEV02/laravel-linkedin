@@ -5,13 +5,14 @@ namespace App\Http\Livewire;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 use App\Models\RichiestaAmicizia;
 
 
 class RichiesteHandler extends Component {
 
-   public $richieste;
+   public ?Collection $richieste;
    public int $utenteMittente;
    public int $utenteRicevente;
    private array $stato = ['Sospesa', 'Accettata'];
@@ -47,9 +48,8 @@ class RichiesteHandler extends Component {
 
    public function accetta(int $utenteMittente, int $utenteRicevente): void {
       $this->get($utenteMittente, $utenteRicevente);
-      if(!isLinked($utenteMittente, $utenteRicevente))
-         $this->update($this->stato[1]);
-      else
+      !isLinked($utenteMittente, $utenteRicevente) ?
+         $this->update($this->stato[1]) :
          $this->delete();
    }
 

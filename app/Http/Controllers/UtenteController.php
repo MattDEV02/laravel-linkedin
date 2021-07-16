@@ -17,11 +17,11 @@ use App\Models\Lavoro;
 
 class UtenteController extends Controller {
 
-   public function login(Request $req): Factory | View | Application {
+   public function login(): Factory | View | Application {
       return view('login.index');
    }
 
-   public function registrazione(Request $req): Factory | View | Application {
+   public function registrazione(): Factory | View | Application {
       return view('registrazione.index',[
          'citta' => Citta::all(),
          'lavori' => Lavoro::all()

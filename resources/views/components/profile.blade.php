@@ -9,7 +9,7 @@
 @endphp
 
 <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt-5 ml-md-4" id="mll">
-    <div class="row justify-content-center justify-content-md-start mt-3">
+    <div class="{{ $selectors['row'] }} justify-content-md-start mt-3">
         <div class="{{ $selectors['col'] }} {{ $selectors['border'] }}" id="profile_card" title="{{ $profile->utenteEmail }}">
             <div class="row">
                 <div class="{{ $selectors['col'] }} bg-secondary" id="profile_bg">
@@ -48,7 +48,7 @@
                                     Data di inizio Lavoro:
                                 </h6>
                                 <h6 class="ml-2">
-                                    {{ $profile->dataInizioLavoro ?? 'no'}}
+                                    {{ $profile->dataInizioLavoro ?? 'no.'}}
                                 </h6>
                             </div>
                         </div>
@@ -56,14 +56,14 @@
                             <div class="row">
                                 @if($own_profile)
                                     <a href="/edit-profile">
-                                        <button class="btn btn-primary border border-dark {{ $ml }}">
+                                        <button class="btn btn-primary {{ $selectors['border'] }} {{ $ml }}">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </a>
                                 @else
                                     @livewire('collegati', [
-                                    'utenteMittente' => $utente->id,
-                                    'utenteRicevente' => $profile->utente_id
+                                        'utenteMittente' => $utente->id,
+                                        'utenteRicevente' => $profile->utente_id
                                     ])
                                 @endif
                                 <a href="{{ route('collegamenti') }}" title="Visualizza / modifica la lista collegamenti relativi a questo profilo.">

@@ -3,8 +3,8 @@
 @endphp
 
 <!DOCTYPE html>
-
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
+
 <head>
     <x-head title="Home" />
     <link rel="stylesheet" type="text/css" href="css/home/index.css" />

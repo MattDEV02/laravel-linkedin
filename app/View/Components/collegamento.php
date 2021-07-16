@@ -14,16 +14,8 @@ class collegamento extends Component
     *
     * @return void
     */
-   public string $utenteNomeCognome;
-   public string $utenteEmail;
-   public string $dataInvioRichiesta;
-   public string $display;
+   public function __construct() {
 
-   public function __construct(string $utenteNomeCognome, string $utenteEmail, string $dataInvioRichiesta, string $display) {
-      $this->utenteNomeCognome = $utenteNomeCognome;
-      $this->utenteEmail = $utenteEmail;
-      $this->dataInvioRichiesta = $dataInvioRichiesta;
-      $this->display = $display;
    }
 
    /**

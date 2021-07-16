@@ -31,7 +31,7 @@
                             name="navbar"
                             value="{{ true }}"
                     />
-                    <a type="submit" class="nav-link" id="feed" >
+                    <a type="submit" class="nav-link" id="feed" onclick="document.querySelector('#feed-form').submit()">
                         <h4 class="text-primary">
                             Feed
                         </h4>
@@ -45,12 +45,6 @@
         </div>
     </div>
 </nav>
-<script type="text/javascript" defer>
-   const
-      form = document.querySelector('#feed-form'),
-      feed = document.querySelector('#feed');
-   feed.onclick = () => form.submit();
-</script>
 
 @livewireScripts
 

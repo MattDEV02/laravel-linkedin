@@ -12,7 +12,7 @@
                     alt="{{ $post->testo }}"
             />
             <div class="card-body">
-                <a href="/show-profile?search={{ $post->utenteEmail }}" style="color: #212529">
+                <a href="{{ $selectors['show-profile'] }}{{ $post->utenteEmail }}" id="creatore_post">
                     <h4 class="card-title">
                         {{ ucfirst($post->utente) }}
                     </h4>

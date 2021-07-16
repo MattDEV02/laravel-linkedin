@@ -30,7 +30,7 @@
                                 <p>Resta al passo con il tuo mondo professionale.</p>
                             </div>
                         </div>
-                        <form method="POST" action="/feed">
+                        <form method="{{ $selectors['method'] }}" action="/feed">
                             @csrf
                             <x-errors />
                             <x-success />
@@ -60,6 +60,7 @@
         </div>
     </div>
 </div>
+
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/login/index.js') }}"></script>
 </body>

@@ -12,6 +12,10 @@ thead.collegamenti {
   color: #0073B1;
 }
 
+#collegamenti_table {
+  background-color: #FFFFFF;
+}
+
 button.remove_collegamento:hover {
   color: #EFF500;
   border-color: #EFF500 !important;

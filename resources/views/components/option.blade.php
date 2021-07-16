@@ -2,14 +2,9 @@
     @php
         $nome = $row->nome;
         $id = $row->id;
+        $cond = isset($selected) && $selected === $nome;
     @endphp
-        @if(isset($selected) && $selected === $nome)
-            <option selected value="{{ $id }}">
-                {{ $nome }}
-            </option>
-    @else
-        <option value="{{ $id }}">
-            {{ $nome }}
-        </option>
-    @endif
+    <option value="{{ $id }}" {{ $cond ? 'selected' : '' }}>
+        {{ $nome }}
+    </option>
 @endforeach

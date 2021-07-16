@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['row'] }}">
@@ -30,7 +29,7 @@
                 <div class="{{ $selectors['col'] }}5">
                     <div class="{{ $selectors['row'] }}">
                         <div class="col-xl-4 col-lg-6 col-md-7 col-sm-9 col-xs-9 p-4" id="form-card">
-                            <form method="POST" action="{{ route('edit-profile') }}" id="profile-form" enctype="multipart/form-data">
+                            <form method="{{ $selectors['method'] }}" action="{{ route('edit-profile') }}" id="profile-form" enctype="multipart/form-data">
                                 @csrf
                                 <x-errors />
                                 <div class="{{ $selectors['col'] }}3">
@@ -128,7 +127,7 @@
                     </div>
                 </div>
                 <div class="{{ $selectors['col'] }}5 mb-3">
-                    <div class="row justify-content-center">
+                    <div class="{{ $selectors['row'] }}">
                         <p id="footer">
                             Clicca per tornare al
                             <a href="/profile" class="text-decoration-none">
@@ -141,6 +140,7 @@
         </div>
     </div>
 </div>
+
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/registrazione/index.js"></script>
 <script type="text/javascript" src="js/profile/index.js"></script>

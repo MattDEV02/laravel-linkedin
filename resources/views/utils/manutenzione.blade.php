@@ -17,7 +17,7 @@
             <div class="{{ $selectors['col'] }}5">
                 <div class="{{ $selectors['row']}}">
                     <h2 class="text-danger">
-                        ERROR {{ 503 }}, Service Unavailable
+                        ERROR {{ 503 }}, Service Unavailable.
                     </h2>
                 </div>
             </div>

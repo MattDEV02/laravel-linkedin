@@ -4,8 +4,8 @@
 @endphp
 
 <!DOCTYPE html>
-
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
+
 <head>
     <x-head title="Feed" />
     <link rel="stylesheet" type="text/css" href="css/feed/index.css" />

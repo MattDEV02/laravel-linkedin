@@ -89,7 +89,7 @@ class ProfileController extends Controller {
       }
    }
    public function showProfile(Request $req): Factory | View | Application {
-      $emailSearched = $req->search;
+      $emailSearched = $req->input('search');
       consoleLog("Profile searched: $emailSearched");
       $this->utente = $req
          ->session()
@@ -111,7 +111,7 @@ class ProfileController extends Controller {
             'own_profile' => $profile->utente_id === $utente_id,
          ]);
       } else {
-         Log::error("User $emailSearched NOT FOUND.");
+         Log::error("User ($emailSearched) NOT FOUND.");
          return view('utils.user-not-found');
       }
    }
@@ -133,8 +133,9 @@ class ProfileController extends Controller {
             ->session()
             ->get('utente');
          $utente_id = $this->utente->id;
-         $utenteCollegamento = Utente::where('email', $req->email)
-            ->first();
+         $utenteCollegamento = Utente::where(
+            'email', $req->input('email')
+         )->first();
          $idUtenteCollegamento = $utenteCollegamento->id;
          removeCollegamento($utente_id, $idUtenteCollegamento);
          return 'Collegamento deleted.';

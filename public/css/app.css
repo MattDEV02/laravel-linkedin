@@ -16176,6 +16176,12 @@ div.output_div_ricerca {
    background-color: #FFFFFF;
 }
 
+#creatore_post {
+   color: #212529;
+}
+
+
+
 @media(max-width: 991px) {
    #search {
       margin-top: 1rem;

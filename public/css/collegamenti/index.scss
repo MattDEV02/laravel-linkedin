@@ -24,6 +24,10 @@ thead.collegamenti {
    color: getColor('primary');
 }
 
+#collegamenti_table {
+   background-color: getColor('white');
+}
+
 button.remove_collegamento:hover {
    color: $yellow;
    border-color: $yellow !important;

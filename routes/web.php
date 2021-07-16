@@ -50,7 +50,7 @@ Route::middleware('isSessionLogged')
    });
 
 Route::prefix('ricezione-dati')
-   ->group(function () use($UC, $PC, $PRC) {
+   ->group(function() use($UC, $PC, $PRC) {
       Route::post('/registrazione', [$UC, 'insert'])
          ->name('insert-user');
       Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);

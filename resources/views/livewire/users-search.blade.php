@@ -15,8 +15,8 @@
     />
     <div class="mt-4 ml-lg-3" id="risultato_ricerca">
         @foreach($utenti as $utente)
-            <div class="my-4 border border-dark p-2 text-center output_div_ricerca">
-                <a href="/show-profile?search={{ $utente->email }}">
+            <div class="my-4 {{ $selectors['border'] }} p-2 text-center output_div_ricerca">
+                <a href="{{ $selectors['show-profile'] }} {{ $utente->email }}">
                     <b class="text-primary" title="{{ $utente->email }}">
                         {{ $utente->nomeCognome }}
                     </b>
@@ -24,6 +24,5 @@
             </div>
         @endforeach
     </div>
-
 </div>
 

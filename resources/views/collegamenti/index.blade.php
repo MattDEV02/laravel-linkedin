@@ -1,6 +1,10 @@
 @php
     $selectors = selectors();
     $utente = session()->get('utente');
+    $profile_utente_id = session()->get('profile_utente_id');
+    $display = $utente->id === $profile_utente_id;
+    if(!$display &&  !isset($profile_utente_id))
+       $display = true;
 @endphp
 
 <!DOCTYPE HTML>
@@ -21,13 +25,14 @@
             <div class="{{ $selectors['row']}}">
                 <div class="{{ $selectors['col'] }}3 ">
                     <div class="{{ $selectors['row']}}">
-                        <h1>Collegamenti relativi al profilo ricercato</h1>
+                        <h1>Collegamenti relativi a questo profilo: </h1>
+                        <h1 class="text-primary ml-3">{{ getNumCollegamenti($profile_utente_id) }}</h1>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-5 col-md-7 col-sm-8 col-xs-12 mt-4">
                     <div class="{{ $selectors['row']}}">
                         @if(isValidCollection($collegamenti))
-                            <table class="{{ $selectors['table'] }} collegamenti mt-5">
+                            <table class="{{ $selectors['table'] }} collegamenti mt-5" id="collegamenti_table">
                                 <thead class="collegamenti">
                                 <tr>
                                     <th scope="col">
@@ -40,13 +45,7 @@
                                             Data
                                         </h5>
                                     </th>
-                                    @php
-                                        $profile_utente_id = session()->get('profile_utente_id');
-                                        $display = $utente->id === $profile_utente_id ? 'block' : 'none';
-                                        if($display === 'none' &&  !isset($profile_utente_id))
-                                            $display = 'block';
-                                    @endphp
-                                    @if($display === 'block')
+                                    @if($display)
                                         <th scope="col">
                                             <h5>
                                                 Azioni
@@ -57,12 +56,11 @@
                                 </thead>
                                 <tbody>
                                 @foreach($collegamenti as $collegamento)
-                                    <x-collegamento
-                                            utenteNomeCognome="{{ $collegamento->utenteNomeCognome }}"
-                                            utenteEmail="{{ $collegamento->utenteEmail }}"
-                                            dataInvioRichiesta="{{ $collegamento->dataInvioRichiesta }}"
-                                            display="{{ $display }}"
-                                    />
+                                    @component('components.collegamento', [
+                                        'collegamento' => $collegamento,
+                                        'display' => $display
+                                    ])
+                                    @endcomponent
                                 @endforeach
                                 </tbody>
                             </table>

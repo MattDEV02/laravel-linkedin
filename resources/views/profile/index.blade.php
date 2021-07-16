@@ -4,8 +4,8 @@
 @endphp
 
 <!DOCTYPE html>
-
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
+
 <head>
     <x-head title="Profile" />
     <link rel="stylesheet" type="text/css" href="css/profile/index.css" />
@@ -16,7 +16,7 @@
 
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
-    <div class="row justify-content-center justify-content-md-start">
+    <div class="{{ $selectors['row'] }} justify-content-md-start">
         @component('components.no-script')
         @endcomponent
         @component('components.profile', [
@@ -29,7 +29,7 @@
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row'] }}">
             @livewire('richieste-handler', [
-            'richieste' => $richieste
+                'richieste' => $richieste
             ])
         </div>
     </div>

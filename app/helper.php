@@ -56,6 +56,7 @@ if(
          'row' => 'row justify-content-center',
          'fw' => 'font-weight-bold',
          'border' => 'border border-dark',
+         'method' => 'POST',
          'action' => 'ricezione-dati',
          'input' => 'form-control form-control-lg border border-dark inputTXT',
          'btn' => 'btn btn-lg',
@@ -72,7 +73,8 @@ if(
          'title' => 'Clicca per Mostrare / Nascondere la Password',
          'fd' => $fd,
          'storage' => "$fd/storage/",
-         'table' => 'table table-hover text-center table-bordered'
+         'table' => 'table table-hover text-center table-bordered',
+         'show-profile' => '/show-profile?search='
       ];
    }
    function consoleLog(mixed $s): string
@@ -171,18 +173,18 @@ if(
    }
    function insertUtente(Request $req): string {
       $utente = new Utente();
-      $utente->email = trim($req->email);
+      $utente->email = trim($req->input('email'));
       $password = $req->input('password');
       $utente->password = Hash::make($password);
-      $utente->nome = ucfirst($req->nome);
-      $utente->cognome = ucfirst($req->cognome);
-      $utente->citta = $req->citta;
+      $utente->nome = ucfirst($req->input('nome'));
+      $utente->cognome = ucfirst($req->input('cognome'));
+      $utente->citta = $req->input('citta');
       $utente->save();
       $id = $utente->id;
       $utenteLavoro = new UtenteLavoro();
       $utenteLavoro->utente = $id;
-      $utenteLavoro->lavoro = $req->lavoro;
-      $utenteLavoro->dataInizioLavoro = $req->dataInizioLavoro;
+      $utenteLavoro->lavoro = $req->input('lavoro');
+      $utenteLavoro->dataInizioLavoro = $req->input('dataInizioLavoro');
       $utenteLavoro->save();
       $descrizioneUtente = new DescrizioneUtente();
       $descrizioneUtente->utente = $id;
@@ -231,13 +233,13 @@ if(
       UtenteLavoro::where(
          'utente', $id
       )->update([
-         'lavoro' => $req->lavoro,
-         'dataInizioLavoro' => $req->dataInizioLavoro
+         'lavoro' => $req->input('lavoro'),
+         'dataInizioLavoro' => $req->input('dataInizioLavoro')
       ]);
       $utente = Utente::find($id);
-      $utente->nome = $req->nome;
-      $utente->cognome = $req->cognome;
-      $utente->citta = $req->citta;
+      $utente->nome = $req->input('nome');
+      $utente->cognome = $req->input('cognome');
+      $utente->citta = $req->input('citta');
       $utente->save();
       $req
          ->session()

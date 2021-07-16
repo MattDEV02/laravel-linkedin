@@ -1,19 +1,19 @@
-<tr style='background-color: #FFFFFF'>
+<tr>
     <td>
-        <a href="/show-profile?search={{ $utenteEmail }}" title="{{ $utenteEmail }}">
+        <a href="/show-profile?search={{ $collegamento->utenteEmail }}" title="{{ $collegamento->utenteEmail }}">
             <b id="utenteNomeCognome">
-                {{ $utenteNomeCognome }}
+                {{ $collegamento->utenteNomeCognome }}
             </b>
         </a>
     </td>
     <td>
-        {{ $dataInvioRichiesta }}
+        {{ $collegamento->dataInvioRichiesta }}
     </td>
-    @if($display === 'block')
+    @if($display)
         <td>
-            <form method="POST" action="{{ route('remove-collegamento') }}" onsubmit="return false;" class="remove_collegamento">
+            <form method="{{ selectors()['method'] }}" action="{{ route('remove-collegamento') }}" onsubmit="return false;" class="remove_collegamento">
                 @csrf
-                <button type="submit" class="btn btn-danger border border-dark remove_collegamento" onclick="removeCollegamento('{{ $utenteEmail }}');">
+                <button type="submit" class="btn btn-danger border border-dark remove_collegamento" onclick="removeCollegamento('{{ $collegamento->utenteEmail }}');">
                     <b>
                         <i class="fas fa-trash"></i>
                     </b>

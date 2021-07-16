@@ -1,11 +1,11 @@
 @php
     $selectors = selectors();
-    $class = $cond ? 'btn-primary' : 'btn-danger';
+    $class = $cond ? 'success' : 'danger';
     $txt = $cond ? 'accetta' : 'rifiuta';
 @endphp
 
 <button
-        class="btn {{ $class }} {{ $selectors['border'] }}"
+        class="btn btn-{{ $class }} {{ $selectors['border'] }}"
         id="{{ $txt }}"
         wire:click="{{ $txt }}({{ $utenteMittente }}, {{ $utenteRicevente }})">
     <b>

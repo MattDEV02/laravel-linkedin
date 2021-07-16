@@ -2,13 +2,15 @@
     $selectors = selectors();
     $isLiked = isLiked($post, $utente);
     $class = $isLiked  ? 'liked' : 'not-liked';
+    $pr = $profile_id ?? '0';
+    $func = $isLiked ?  'return false' : "like($post, $utente, $pr)";
 @endphp
 
 <div class="row">
     <button
             class="btn btn-primary {{ $selectors['fw'] }} {{ $selectors['border'] }} {{ $class }}"
             id="like"
-            onclick="like({{ $post }}, {{ $utente }}, {{ $profile_id ?? '0' }})"
+            onclick="{{ $func }}"
             {{  $isLiked ? 'disabled' : '' }}>
         <i class="fas fa-heart"></i>
     </button>

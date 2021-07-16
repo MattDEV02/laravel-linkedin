@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-
 @php
     $selectors = selectors();
 @endphp
 
+<!DOCTYPE html>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
+
 <head>
     <x-head title="Iscriviti" />
     <link rel="stylesheet" type="text/css" href="/css/registrazione/index.css" />
@@ -27,7 +27,7 @@
             <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                 <div class="{{ $selectors['row'] }} mt-4">
                     <div id="form-card" class="{{ $selectors['col'] }} p-4">
-                        <form method="POST" action="{{ route('insert-user') }}" id="profile-form" class="reg">
+                        <form method="{{ $selectors['method'] }}" action="{{ route('insert-user') }}" id="profile-form" class="reg">
                             @csrf
                             <x-errors />
                             <div class="{{ $selectors['col'] }}">
@@ -95,6 +95,7 @@
         <x-footer />
     </div>
 </div>
+
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/login/index.js"></script>
 <script type="text/javascript" src="js/registrazione/index.js"></script>

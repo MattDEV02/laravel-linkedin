@@ -25,16 +25,16 @@ class PostController extends Controller
          'testo.min' => 'Testo almeno 2 caratteri.',
          'testo.max' => 'Testo massimo 255 caratteri.',
          'image.required'  => 'Image is Required.',
-         'image.image'  => 'Insert valid Image.',
+         'image.image'  => 'Insert a valid Image.',
       ]);
       $this->utente =
          $req
             ->session()
             ->get('utente');
       $utente_id = $this->utente->id;
-      $fileName = store($req->image, 'posts', $utente_id);
+      $fileName = store($req->input('image'), 'posts', $utente_id);
       $post = new Post();
-      $post->testo= $req->testo;
+      $post->testo= $req->input('testo');
       $post->foto = $fileName;
       $post->utente = $utente_id;
       $post->save();
@@ -52,10 +52,10 @@ class PostController extends Controller
             ->get('utente');
       $utente_id = $this->utente->id;
       $miPiace = new MiPiace();
-      $miPiace->post = $req->post;
-      $miPiace->utente = $req->utente;
+      $miPiace->post = $req->input('post');
+      $miPiace->utente = $req->input('utente');
       $miPiace->save();
-      $profile_id = $req->profile_id;
+      $profile_id = $req->input('profile_id');
       $cond =  $profile_id > 0;
       $id = $cond ? $profile_id : $utente_id;
       $posts = getAllPosts($id, $cond);
@@ -84,7 +84,7 @@ class PostController extends Controller
       $utente_id = $this->utente->id;
       $profile_id = $req->profile_id;
       $cond = $profile_id > 0;
-      $orderBy = $req->postsOrderName . ' ' . $req->postsOrderType;
+      $orderBy = $req->input('postsOrderName') . ' ' . $req->input('postsOrderType');
       return view('feed.utils.posts', [
          'posts' => getAllPosts($utente_id, $cond, $orderBy),
          'profile_id' => $profile_id
