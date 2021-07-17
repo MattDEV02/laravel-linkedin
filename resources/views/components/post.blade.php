@@ -17,9 +17,9 @@
                         {{ ucfirst($post->utente) }}
                     </h4>
                 </a>
-                <h6 class="card-subtitle text-muted mb-3">
-                    {{ $post->lavoroPresso }}
-                </h6>
+                <x-lavora-presso
+                    lavoroPresso="{{ $post->lavoroPresso }}"
+                />
                 <p class="card-text">{{ $post->testo }}</p>
                 <div class="{{ $selectors['col'] }}">
                     @component('components.mi-piace-button', [

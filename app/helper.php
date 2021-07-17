@@ -202,10 +202,8 @@ if(
             'u.nome AS utenteName',
             'u.cognome AS utenteSurname',
             'u.id AS utente_id',
-            'l.nome AS lavoro',
             'ul.dataInizioLavoro',
-            'c.nome AS citta',
-            'n.nome AS nazione'
+            DB::raw("CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso")
          ])
          ->join('DescrizioneUtente AS du', 'du.utente', 'u.id')
          ->join('UtenteLavoro AS ul', 'ul.utente', 'u.id')

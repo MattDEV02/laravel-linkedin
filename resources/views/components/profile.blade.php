@@ -34,12 +34,10 @@
                         </div>
                         <div class="{{ $selectors['col'] }}">
                             <div class="row">
-                                <h5 class="text-muted {{ $ml }}">
-                                    {{ $profile->lavoro }}
-                                    presso
-                                    {{ $profile->citta }},
-                                    {{ $profile->nazione }}.
-                                </h5>
+                                <x-lavora-presso
+                                    lavoroPresso="{{ $profile->lavoroPresso}}"
+                                    cond="{{ true }}"
+                                />
                             </div>
                         </div>
                         <div class="{{ $selectors['col'] }}1">
