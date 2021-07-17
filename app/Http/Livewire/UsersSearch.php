@@ -31,6 +31,6 @@ class UsersSearch extends Component
 
    public function render(): Factory | View | Application
    {
-      return view('livewire.users-search', $this->utenti);
+      return view('livewire.users-search');
    }
 }

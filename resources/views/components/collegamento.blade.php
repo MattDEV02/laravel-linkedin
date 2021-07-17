@@ -1,10 +1,9 @@
 <tr>
     <td>
-        <a href="/show-profile?search={{ $collegamento->utenteEmail }}" title="{{ $collegamento->utenteEmail }}">
-            <b id="utenteNomeCognome">
-                {{ $collegamento->utenteNomeCognome }}
-            </b>
-        </a>
+        <x-profile-link
+                utenteEmail="{{ $collegamento->utenteEmail }}"
+                utenteNomeCognome="{{ $collegamento->utenteNomeCognome }}"
+        />
     </td>
     <td>
         {{ $collegamento->dataInvioRichiesta }}
@@ -13,7 +12,7 @@
         <td>
             <form method="{{ selectors()['method'] }}" action="{{ route('remove-collegamento') }}" onsubmit="return false;" class="remove_collegamento">
                 @csrf
-                <button type="submit" class="btn btn-danger border border-dark remove_collegamento" onclick="removeCollegamento('{{ $collegamento->utenteEmail }}');">
+                <button type="submit" class="btn btn-danger {{ selectors()['border'] }} remove_collegamento" onclick="removeCollegamento('{{ $collegamento->utenteEmail }}');">
                     <b>
                         <i class="fas fa-trash"></i>
                     </b>

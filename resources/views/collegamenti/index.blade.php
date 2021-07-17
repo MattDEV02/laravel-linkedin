@@ -25,8 +25,10 @@
             <div class="{{ $selectors['row']}}">
                 <div class="{{ $selectors['col'] }}3 ">
                     <div class="{{ $selectors['row']}}">
-                        <h1>Collegamenti relativi a questo profilo: </h1>
-                        <h1 class="text-primary ml-3">{{ getNumCollegamenti($profile_utente_id) }}</h1>
+                        <h2>Collegamenti relativi a questo profilo: </h2>
+                        <h2 class="text-primary ml-3">
+                            {{ getNumCollegamenti($profile_utente_id) }}
+                        </h2>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-5 col-md-7 col-sm-8 col-xs-12 mt-4">

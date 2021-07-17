@@ -16180,7 +16180,9 @@ div.output_div_ricerca {
    color: #212529;
 }
 
-
+#utenteNomeCognome {
+   color: #0073B1;
+}
 
 @media(max-width: 991px) {
    #search {

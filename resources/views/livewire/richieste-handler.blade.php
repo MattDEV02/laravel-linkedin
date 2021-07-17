@@ -6,15 +6,17 @@
 @if(isValidCollection($richieste))
     <div class="col-xs-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mt-5">
         <div class="{{ $selectors['row'] }}">
-            <h1 class="">Richieste di amicizia in sospeso: </h1>
-            <h1 class="text-primary ml-3">{{ getNumRichiesteSospese($utente_id) }}</h1>
-            <table class="{{ $selectors['table'] }} mt-5 richieste">
+            <h2 class="">Richieste di amicizia in sospeso: </h2>
+            <h2 class="text-primary ml-3">
+                {{ getNumRichiesteSospese($utente_id) }}
+            </h2>
+            <table class="{{ $selectors['table'] }} richieste">
                 <thead class="richieste">
-                <tr>
-                    <th scope="col">Utente</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Azioni</th>
-                </tr>
+                    <tr>
+                        <th scope="col">Utente</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Azioni</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @foreach($richieste as $richiesta)
@@ -23,12 +25,11 @@
                         $ricevente = $richiesta->utenteRicevente;
                     @endphp
                     <tr class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
-                        <td title="{{ $richiesta->email }}">
-                            <a href="{{ $selectors['show-profile'] }}{{ $richiesta->email }}">
-                                <b style="color: #0073B1">
-                                    {{ $richiesta->utenteNomeCognome }}
-                                </b>
-                            </a>
+                        <td>
+                            <x-profile-link
+                                utenteEmail="{{ $richiesta->email }}"
+                                utenteNomeCognome="{{ $richiesta->utenteNomeCognome }}"
+                            />
                         </td>
                         <td>
                             {{ $richiesta->dataInvio }}
