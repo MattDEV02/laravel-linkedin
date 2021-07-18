@@ -112,7 +112,7 @@ class UtenteController extends Controller {
       $email = trim($req->input('email'));
       $password = $req->input('password');
       if(isLogged($email, $password)) {
-         if(!$req->input('navbar') && !$req->session()->exists('utente')) {
+         if(!$req->session()->exists('utente')) {
             $utente = Utente::all([
                'id',
                'email',

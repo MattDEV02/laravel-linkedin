@@ -7,7 +7,7 @@
             class="form-control inputTXT form-inline"
             type="search"
             id="search"
-            placeholder=" Search Users     🔎"
+            placeholder=" Search Users    🔎"
             autocomplete="{{ $selectors['autocomplete'] }}"
             minlength="{{ 1 }}"
             maxlength="{{ 35 }}"

@@ -26,11 +26,6 @@
                             name="password"
                             value="{{ $utente->password }}"
                     />
-                    <input
-                            type="hidden"
-                            name="navbar"
-                            value="{{ true }}"
-                    />
                     <a type="submit" class="nav-link" id="feed" onclick="document.querySelector('#feed-form').submit()">
                         <h4 class="text-primary">
                             Feed

@@ -2,10 +2,7 @@
 
 namespace App\Console\Commands;
 
-use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Session;
 
 
 class ClearAll extends Command
@@ -36,9 +33,10 @@ class ClearAll extends Command
       'php artisan migrate:refresh --seed',
       'php artisan storage:link',
       'php artisan optimize' ,
-      'php artisan optimize:clear' ,
+      'php artisan optimize:clear',
       'composer dump-autoload --optimize',
       'composer clear-cache',
+      'php artisan session:delete',
       'service nginx restart',
       'service mysql restart',
       'apt clean',
@@ -69,15 +67,6 @@ class ClearAll extends Command
             $this->info('yes');
          $output = shell_exec($command);
          $this->info($output);
-      }
-      try {
-         Session::flush();
-         Cookie::forget('password');
-         session()->regenerate();
-         session()->regenerateToken();
-         $this->info('Session and Cookies data deleted.');
-      } catch (Exception $e) {
-         handleError($e->getMessage());
       }
       return 1;
    }

@@ -8,7 +8,7 @@
         <div class="{{ $selectors['row'] }}">
             <h2 class="">Richieste di amicizia in sospeso: </h2>
             <h2 class="text-primary ml-3">
-                {{ getNumRichiesteSospese($utente_id) }}
+                {{ count($richieste) }}
             </h2>
             <table class="{{ $selectors['table'] }} richieste">
                 <thead class="richieste">

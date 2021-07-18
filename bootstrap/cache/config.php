@@ -107,7 +107,7 @@
       'users' => 
       array (
         'driver' => 'eloquent',
-        'model' => 'App\\Models\\User',
+        'model' => 'App\\Models\\Utente',
       ),
     ),
     'passwords' => 
@@ -238,9 +238,11 @@
     ),
     'allowed_origins' => 
     array (
+      0 => '*',
     ),
     'allowed_origins_patterns' => 
     array (
+      0 => '*',
     ),
     'allowed_headers' => 
     array (
@@ -248,6 +250,7 @@
     ),
     'exposed_headers' => 
     array (
+      0 => '*',
     ),
     'max_age' => 0,
     'supports_credentials' => false,
@@ -272,8 +275,8 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'Linkedin',
-        'username' => 'root',
-        'password' => '',
+        'username' => 'Lambertucci',
+        'password' => '12345678',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -292,8 +295,8 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'Linkedin',
-        'username' => 'root',
-        'password' => '',
+        'username' => 'Lambertucci',
+        'password' => '12345678',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -307,8 +310,8 @@
         'host' => '127.0.0.1',
         'port' => '3306',
         'database' => 'Linkedin',
-        'username' => 'root',
-        'password' => '',
+        'username' => 'Lambertucci',
+        'password' => '12345678',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -600,7 +603,7 @@
   array (
     'driver' => 'file',
     'lifetime' => '120',
-    'expire_on_close' => false,
+    'expire_on_close' => true,
     'encrypt' => false,
     'files' => 'C:\\xampp\\htdocs\\Laravel\\linkedin\\storage\\framework/sessions',
     'connection' => NULL,

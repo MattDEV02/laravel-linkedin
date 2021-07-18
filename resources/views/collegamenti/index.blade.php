@@ -27,7 +27,7 @@
                     <div class="{{ $selectors['row']}}">
                         <h2>Collegamenti relativi a questo profilo: </h2>
                         <h2 class="text-primary ml-3">
-                            {{ getNumCollegamenti($profile_utente_id) }}
+                            {{ count($collegamenti) }}
                         </h2>
                     </div>
                 </div>

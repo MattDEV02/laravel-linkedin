@@ -217,8 +217,8 @@ if(
       $id = $req
          ->session()
          ->get('utente')->id;
-      $img = $req->image;
-      $toUpdate = ['testo' => $req->testo];
+      $img = $req->input('image');
+      $toUpdate = ['testo' => $req->input('testo')];
       if(isset($img)) {
          $dir = 'profiles';
          $files =  Storage::allFiles("public/$dir/$id/");
