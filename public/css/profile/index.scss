@@ -9,7 +9,6 @@
 
 #profile_img {
    height: 14.5rem !important;
-   background-color: #ACABAB;
    border: $pad solid getColor('white');
 }
 
@@ -22,25 +21,15 @@
    border-radius: $br;
 }
 
-b.c {
+b.numero_collegamenti {
    position: relative;
    bottom: ($pad + 1) * -1;
 }
 
 table.richieste {
-   background-color: getColor('white');
    margin-top: 3.2rem;
 }
 
-thead.richieste {
-   color: getColor('white');
-   background-color: #343A40;
-   border-color: #454D55;
-}
-
-tr.linked {
-   display: none;
-}
 
 @media(min-width: 992px) {
    #mll {

@@ -4,13 +4,13 @@
     $selectors = selectors();
 @endphp
 
-<html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
+<html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}" class="big_font_size">
 <head>
     <x-head title="Accesso" />
     <link rel="stylesheet" type="text/css" href="/css/login/index.css" />
 </head>
 
-<body>
+<body class="big_font_size">
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row'] }}">

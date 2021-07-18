@@ -66,11 +66,11 @@
                                 @endif
                                 <a href="{{ route('collegamenti') }}" title="Visualizza / modifica la lista collegamenti relativi a questo profilo.">
                                     <b
-                                            class="text-primary ml-3 c"
+                                            class="text-primary ml-3 numero_collegamenti"
                                             id="collegamenti">
                                         {{ $collegamenti }}
                                     </b>
-                                    <b class="text-primary ml-1 c">
+                                    <b class="text-primary ml-1 numero_collegamenti">
                                         Collegamenti
                                     </b>
                                 </a>

@@ -1,68 +1,3 @@
-html, body {
-  font-size: 100% !important;
-}
-
-#form-card {
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-  background-color: #FFFFFF;
-}
-
-.primaryBG {
-  background-color: #0073B1 !important;
-  color: #FFFFFF !important;
-}
-
-.primaryTXT {
-  color: #0073B1;
-  display: inline-block;
-}
-
-.primaryTXT:hover {
-  background-color: #B9DDEF;
-  padding: 0 4px !important;
-  border-radius: 28px !important;
-}
-
-#passwordDimenticata {
-  font-size: 100%;
-}
-
-#accediBTN {
-  border-radius: 28px !important;
-  font-size: 104%;
-  position: relative;
-  bottom: -8px;
-}
-
-#accediBTN:hover {
-  background-color: #004182 !important;
-}
-
-#header {
-  position: relative;
-  top: -16px;
-}
-
-.inputTXT {
-  border-radius: 8px;
-  color: #000000 !important;
-}
-
-.inputTXT:focus {
-  box-shadow: 0 0 0 1px #0A66C2 !important;
-}
-
-#show {
-  position: absolute;
-  right: 21px;
-  bottom: 1px;
-}
-
-.p-5 {
-  padding: 2.8rem !important;
-}
-
 .form-group {
   border-radius: 0.8rem !important;
   background-color: #FFFFFF !important;
@@ -78,8 +13,9 @@ html, body {
   border-radius: 0.2666666667rem 0.2666666667rem 0 0;
 }
 
-button:hover {
+button.not-liked:hover {
   cursor: pointer;
+  color: #15DC07 !important;
 }
 
 [type=text] {
@@ -96,14 +32,6 @@ button:hover {
   opacity: 0;
   outline: none;
   display: block;
-}
-
-option:checked {
-  color: #008000FF;
-}
-
-select.postsOrder:focus {
-  font-weight: bold;
 }
 
 @media (max-width: 575px) {

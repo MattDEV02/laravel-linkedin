@@ -93,7 +93,7 @@ class UtenteController extends Controller {
                ->withCookie('password', $password);
          }
       } else
-         redirect('/registrazione');
+         return redirect('/registrazione');
    }
 
    public function logResult(Request $req): Factory | View | RedirectResponse | Application {

@@ -16184,6 +16184,64 @@ div.output_div_ricerca {
    color: #0073B1;
 }
 
+table.white_bg {
+   background-color: #FFFFFF;
+}
+
+thead.white_bg {
+   color: #FFFFFF;
+   background-color: #343A40;
+   border-color: #454D55;
+}
+
+.inputTXT {
+   border-radius: 8px;
+   color: #000000 !important;
+}
+
+.primaryBG {
+   background-color: #0073B1 !important;
+   color: #FFFFFF !important;
+}
+
+.primaryTXT {
+   color: #0073B1;
+   display: inline-block;
+}
+
+.inputTXT:focus {
+   box-shadow: 0 0 0 1px #0A66C2 !important;
+}
+
+select:focus{
+   font-weight: bold;
+}
+
+option:checked  {
+   color: #008000FF;
+}
+
+.primaryTXT:hover {
+   background-color: #B9DDEF;
+   padding: 0 4px;
+   border-radius: 28px !important;
+}
+
+select:hover {
+   cursor: pointer;
+}
+
+.warning_hover:hover {
+   color: #EFF500;
+   border-color: #EFF500 !important;
+}
+
+.success_hover:hover {
+   color: #EFF500;
+   border-color: #EFF500 !important;
+}
+
+
 @media(max-width: 991px) {
    #search {
       margin-top: 1rem;

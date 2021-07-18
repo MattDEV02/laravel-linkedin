@@ -1,9 +1,10 @@
-@import '../login/index';
+@import '../variables';
 
 
 $b: 1px solid #000000;
 $br2: ($br / 3);
 $max: 100%;
+
 
 .form-group {
    border-radius: $br !important;
@@ -20,8 +21,9 @@ $max: 100%;
    border-radius: $br2 $br2 $default $default;
 }
 
-button:hover {
+button.not-liked:hover {
    cursor: pointer;
+   color: #15DC07 !important;
 }
 
 [type=text] {
@@ -40,13 +42,6 @@ button:hover {
    display: block;
 }
 
-option:checked  {
-   color: #008000FF;
-}
-
-select.postsOrder:focus {
-   font-weight: bold;
-}
 
 @media(max-width: 575px) {
    [name = 'postsOrderType'] {

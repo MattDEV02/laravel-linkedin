@@ -7,7 +7,7 @@
    @return $result;
 }
 
-html, body {
+.big_font_size {
    font-size: $fs !important;
 }
 
@@ -15,22 +15,6 @@ html, body {
    border-radius: ($pad * 3);
    box-shadow: $default $pad ($pad * 3) rgb(0 0 0 / 15%) !important;
    background-color: getColor('white');
-}
-
-.primaryBG {
-   background-color: getColor('primary') !important;
-   color: getColor('white') !important;
-}
-
-.primaryTXT {
-   color: getColor('primary');
-   display: inline-block;
-}
-
-.primaryTXT:hover {
-   background-color: getColor('lightBlue');
-   padding: $default $pad !important;
-   border-radius: ($pad * 7) !important;
 }
 
 #passwordDimenticata {
@@ -51,15 +35,6 @@ html, body {
 #header {
    position: relative;
    top: ($pad * 4) * -1;
-}
-
-.inputTXT {
-   border-radius: ($pad * 2);
-   color: getColor('black') !important;
-}
-
-.inputTXT:focus {
-   box-shadow: $default $default $default 1px getColor('blue') !important;
 }
 
 #show {

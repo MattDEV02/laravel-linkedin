@@ -28,6 +28,7 @@
                     />
                     <a type="submit" class="nav-link" id="feed" onclick="document.querySelector('#feed-form').submit()">
                         <h4 class="text-primary">
+                            <i class="fas fa-user-friends mr-1"></i>
                             Feed
                         </h4>
                     </a>

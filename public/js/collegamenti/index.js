@@ -16,5 +16,5 @@ const removeCollegamento = email => {
    const form = $('form.remove_collegamento')[0];
    window.confirm(`Confermi l'eliminazione del collegamento con ${email} ?`) ?
       makeRequest(form, email) :
-      window.alert('Eliminazione collegamento annullata.');
+      window.alert(`Eliminazione collegamento con ${email} annullata.`);
 };

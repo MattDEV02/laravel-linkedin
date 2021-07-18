@@ -65,7 +65,7 @@ postsOrder.change(async (e) => {
       window.alert("Errore nell' ordinamento dei Post.");
 });
 
-let like = async (post, utente, profile_id) => {
+const like = async (post, utente, profile_id) => {
    const res = await axios.post('ricezione-dati/like', {
       post,
       utente,

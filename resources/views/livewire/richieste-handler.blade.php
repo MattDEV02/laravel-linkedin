@@ -1,6 +1,5 @@
 @php
     $selectors = selectors();
-    $utente_id = session()->get('utente')->id;
 @endphp
 
 @if(isValidCollection($richieste))
@@ -10,8 +9,8 @@
             <h2 class="text-primary ml-3">
                 {{ count($richieste) }}
             </h2>
-            <table class="{{ $selectors['table'] }} richieste">
-                <thead class="richieste">
+            <table class="{{ $selectors['table'] }} richieste white_bg">
+                <thead class="white_bg">
                     <tr>
                         <th scope="col">Utente</th>
                         <th scope="col">Data</th>
@@ -24,29 +23,31 @@
                         $mittente = $richiesta->utenteMittente;
                         $ricevente = $richiesta->utenteRicevente;
                     @endphp
-                    <tr class="{{ isLinked($mittente, $ricevente) ? 'linked' : '' }}">
-                        <td>
-                            <x-profile-link
-                                utenteEmail="{{ $richiesta->email }}"
-                                utenteNomeCognome="{{ $richiesta->utenteNomeCognome }}"
-                            />
-                        </td>
-                        <td>
-                            {{ $richiesta->dataInvio }}
-                        </td>
-                        <td>
-                            <x-richiesta-b-t-n
-                                    utenteMittente="{{ $mittente }}"
-                                    utenteRicevente="{{ $ricevente }}"
-                                    cond="{{ true }}"
-                            />
-                            <x-richiesta-b-t-n
-                                    utenteMittente="{{ $mittente }}"
-                                    utenteRicevente="{{ $ricevente }}"
-                                    cond="{{ false }}"
-                            />
-                        </td>
-                    </tr>
+                    @if(!isLinked($mittente, $ricevente))
+                        <tr>
+                            <td>
+                                <x-profile-link
+                                        utenteEmail="{{ $richiesta->email }}"
+                                        utenteNomeCognome="{{ $richiesta->utenteNomeCognome }}"
+                                />
+                            </td>
+                            <td>
+                                {{ $richiesta->dataInvio }}
+                            </td>
+                            <td>
+                                <x-richiesta-b-t-n
+                                        utenteMittente="{{ $mittente }}"
+                                        utenteRicevente="{{ $ricevente }}"
+                                        cond="{{ true }}"
+                                />
+                                <x-richiesta-b-t-n
+                                        utenteMittente="{{ $mittente }}"
+                                        utenteRicevente="{{ $ricevente }}"
+                                        cond="{{ false }}"
+                                />
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>
@@ -54,5 +55,4 @@
     </div>
 @else
     <x-none txt="Non ci sono richieste di amicizia." />
-
 @endif

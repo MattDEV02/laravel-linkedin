@@ -47,12 +47,11 @@ class ProfileController extends Controller {
             'profile' => $profile
          ]);
       } else
-         return redirect()
-            ->route('/profile');
+         return redirect('/profile');
    }
    public function updateProfile(Request $req): RedirectResponse {
       $req->validate([
-         //'image' => ['image'],
+        // 'image' => ['nullable', 'max:2000', 'mimes:jpeg,png,doc,docs,pdf,ico'],
          'nome' => ['required', 'min:2', 'max:45'],
          'cognome' => ['required', 'min:2', 'max:45'],
          'citta' => ['required', 'numeric', 'min:1', 'max:13'],

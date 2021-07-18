@@ -1,6 +1,6 @@
 @php
     $selectors = selectors();
-    $class = $cond ? 'success' : 'danger';
+    $class = $cond ? 'success' : 'danger warning_hover';
     $txt = $cond ? 'accetta' : 'rifiuta';
 @endphp
 

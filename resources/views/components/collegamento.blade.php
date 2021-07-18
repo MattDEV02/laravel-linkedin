@@ -12,7 +12,7 @@
         <td>
             <form method="{{ selectors()['method'] }}" action="{{ route('remove-collegamento') }}" onsubmit="return false;" class="remove_collegamento">
                 @csrf
-                <button type="submit" class="btn btn-danger {{ selectors()['border'] }} remove_collegamento" onclick="removeCollegamento('{{ $collegamento->utenteEmail }}');">
+                <button type="submit" class="btn btn-danger {{ selectors()['border'] }} warning_hover" onclick="removeCollegamento('{{ $collegamento->utenteEmail }}');">
                     <b>
                         <i class="fas fa-trash"></i>
                     </b>
