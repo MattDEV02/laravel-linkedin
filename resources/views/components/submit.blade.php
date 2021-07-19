@@ -6,11 +6,13 @@
     <div class="row">
         <button
                 id="accediBTN"
-                class="{{$selectors['btn'] }} {{ $selectors['col'] }} {{$selectors['border'] }} {{ $selectors['fw'] }} primaryBG p-2"
+                class="{{$selectors['btn'] }} {{ $selectors['col'] }} {{$selectors['border'] }} primaryBG p-2"
                 name="submit"
                 value="{{ $text }}"
                 type="submit">
-            {{ $text }}
+            <b class="big_font_size">
+                {{ $text }}
+            </b>
         </button>
     </div>
 </div>

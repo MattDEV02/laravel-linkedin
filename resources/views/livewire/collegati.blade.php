@@ -10,7 +10,7 @@
 <div>
     <div>
         <button
-                class="btn btn-primary border border-dark ml-4"
+                class="btn btn-primary {{ selectors()['border'] }} ml-4"
                 {{ $cond ? 'disabled' : '' }}
                 wire:click="{{ $func }}">
             <b>Collegati</b>

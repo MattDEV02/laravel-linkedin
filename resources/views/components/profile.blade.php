@@ -78,7 +78,7 @@
                         </div>
                         <div class="{{ $selectors['col'] }}{{ $mt }} mb-2">
                             <div class="{{ $selectors['row'] }}">
-                                <p class="text-dark">
+                                <p class="text-dark big_font_size">
                                     {{ $profile->testo }}
                                 </p>
                             </div>

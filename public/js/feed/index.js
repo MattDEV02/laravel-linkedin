@@ -20,6 +20,8 @@ const reset = e => {
    btn.css(prop, colors[0]);
 };
 
+const isValid = val => val !== null && val !== undefined
+
 $('#postForm').submit(
    async function (e) {
       e.preventDefault();
@@ -38,7 +40,7 @@ $('#postForm').submit(
       })
          .catch(e => console.error(e));
       console.log(res);
-      res.status === 200 ?
+      isValid(res) && res.status === 200  ?
          container.html(res.data) :
          window.alert('Errore nella Pubblicazione del Post.');
       reset(e);
@@ -60,7 +62,7 @@ postsOrder.change(async (e) => {
    })
       .catch(e => console.error(e));
    console.log(res);
-   res.status === 200 ?
+   isValid(res) && res.status === 200 ?
       container.html(res.data) :
       window.alert("Errore nell' ordinamento dei Post.");
 });

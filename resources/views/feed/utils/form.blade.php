@@ -12,6 +12,8 @@ $selectors = selectors();
                         <h2>Nuovo Post</h2>
                     </div>
                 </div>
+                <x-errors />
+                <x-success />
                 <div class="{{ $selectors['col'] }}4">
                     <div class="{{ $selectors['row'] }}">
                         <x-errors />

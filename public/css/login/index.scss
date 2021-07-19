@@ -7,9 +7,6 @@
    @return $result;
 }
 
-.big_font_size {
-   font-size: $fs !important;
-}
 
 #form-card {
    border-radius: ($pad * 3);
@@ -18,12 +15,12 @@
 }
 
 #passwordDimenticata {
-   font-size: $fs;
+   font-size: $fs !important;
 }
 
 #accediBTN {
    border-radius: ($pad * 7) !important;
-   font-size: ($fs + 4);
+   font-size: ($fs + 4) !important;
    position: relative;
    bottom: ($pad * 2) * -1;
 }

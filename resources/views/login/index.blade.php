@@ -4,19 +4,19 @@
     $selectors = selectors();
 @endphp
 
-<html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}" class="big_font_size">
+<html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Accesso" />
     <link rel="stylesheet" type="text/css" href="/css/login/index.css" />
 </head>
 
-<body class="big_font_size">
+<body>
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['col'] }}5">
         <div class="{{ $selectors['row'] }}">
             @component('components.no-script')
             @endcomponent
-            <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 big_font_size">
                 <div class="{{ $selectors['col'] }}">
                     <x-title row="justify-content-xl-start" />
                 </div>

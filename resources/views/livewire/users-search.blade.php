@@ -15,7 +15,7 @@
     />
     <div class="mt-4 ml-lg-3" id="risultato_ricerca">
         @foreach($utenti as $utente)
-            <div class="my-4 {{ $selectors['border'] }} p-2 text-center output_div_ricerca">
+            <div class="my-4 {{ $selectors['border'] }} p-2 text-center output_div_ricerca big_font_size">
                 <x-profile-link
                         utenteEmail="{{ $utente->email }}"
                         utenteNomeCognome="{{ $utente->nomeCognome }}"

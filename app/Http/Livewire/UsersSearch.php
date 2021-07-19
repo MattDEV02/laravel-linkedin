@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Illuminate\Support\Str;
 use App\Models\Utente;
 
 
@@ -17,7 +18,7 @@ class UsersSearch extends Component
 
    public function search(string $s): void
    {
-      $this->utenti = strlen($s) > 0 ?
+      $this->utenti = Str::length($s) > 0 ?
          $this->utenti = Utente::select(
             DB::raw("CONCAT(nome, ' ', cognome) AS nomeCognome"),
             'email'

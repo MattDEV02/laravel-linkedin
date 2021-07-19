@@ -41,9 +41,12 @@ class mnt extends Command
     */
    public function handle(): int
    {
-      $command = $this->argument('switch') === 'off' ? 'up' : 'down --render=' . $this->view;
-      Artisan::call($command);
-      $this->info(Artisan::output());
+      if($this->confirm('Confermi la tua scelta?')) {
+         $command = $this->argument('switch') === 'off' ? 'up' : 'down --render=' . $this->view;
+         Artisan::call($command);
+         $this->info(Artisan::output());
+      } else
+         $this->info('Operazione annullata.');
       return 1;
    }
 }

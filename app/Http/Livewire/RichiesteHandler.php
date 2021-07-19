@@ -25,7 +25,7 @@ class RichiesteHandler extends Component {
    }
 
    public function refresh(): void {
-      $this->richieste = getRichieste($this->utenteRicevente);
+      $this->richieste = RichiestaAmicizia::getRichieste($this->utenteRicevente);
    }
 
    public function update(string $stato): void {
@@ -48,7 +48,7 @@ class RichiesteHandler extends Component {
 
    public function accetta(int $utenteMittente, int $utenteRicevente): void {
       $this->get($utenteMittente, $utenteRicevente);
-      !isLinked($utenteMittente, $utenteRicevente) ?
+      !RichiestaAmicizia::isLinked($utenteMittente, $utenteRicevente) ?
          $this->update($this->stato[1]) :
          $this->delete();
    }

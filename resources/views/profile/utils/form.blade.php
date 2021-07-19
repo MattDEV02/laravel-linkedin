@@ -128,7 +128,7 @@
                 </div>
                 <div class="{{ $selectors['col'] }}5 mb-3">
                     <div class="{{ $selectors['row'] }}">
-                        <p id="footer">
+                        <p id="footer" class="big_font_size">
                             Clicca per tornare al
                             <a href="/profile" class="text-decoration-none">
                                 <b class="primaryTXT">  Profilo</b>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Foundation\Application;
@@ -29,17 +30,20 @@ class UtenteController extends Controller {
    }
 
    public function logout(Request $req): RedirectResponse {
-      $email = $req
-         ->session()
-         ->get('utente')
-         ->email;
-      $req
-         ->session()
-         ->invalidate();
-      Cookie::queue(Cookie::forget('password'));
-      Log::warning("Finished User-Session ($email).");
-      return redirect('/login')
-         ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
+      if($req->session()->exists('utente')) {
+         $email = $req
+            ->session()
+            ->get('utente')
+            ->email;
+         $req
+            ->session()
+            ->invalidate();
+         Cookie::queue(Cookie::forget('password'));
+         Log::warning("Finished User-Session ($email).");
+         return redirect('/login')
+            ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
+      } else
+         return redirect('/login');
    }
 
    public function insert(Request $req): RedirectResponse
@@ -86,7 +90,7 @@ class UtenteController extends Controller {
          else {
             $password = $req->input('password');
             Cookie::queue(Cookie::forever('password', $password));
-            $email = insertUtente($req);
+            $email = Utente::registrazione($req);
             Log::debug("New User Interted ($email).");
             return redirect('/login')
                ->with('msg', 'reg')
@@ -111,7 +115,7 @@ class UtenteController extends Controller {
       ]);
       $email = trim($req->input('email'));
       $password = $req->input('password');
-      if(isLogged($email, $password)) {
+      if(Utente::isLogged($email, $password)) {
          if(!$req->session()->exists('utente')) {
             $utente = Utente::all([
                'id',
@@ -131,7 +135,7 @@ class UtenteController extends Controller {
             ->session()
             ->get('utente')->id;
          return view('feed.index', [
-            'posts' => getAllPosts($utente_id),
+            'posts' => Post::getAll($utente_id),
             'profile_id' => null
          ]);
       } else

@@ -17,9 +17,8 @@ class Collegati extends Component
    public bool $clicked;
    private array $attr = ['utenteMittente', 'utenteRicevente'];
 
-
    public function link(int $utenteMittente, int $utenteRicevente): void {
-      if(!isLinked($utenteMittente, $utenteRicevente)) {
+      if(!RichiestaAmicizia::isLinked($utenteMittente, $utenteRicevente)) {
          $this->utenteMittente = $utenteMittente;
          $this->utenteRicevente = $utenteRicevente;
          $richiestaAmicizia = new RichiestaAmicizia();

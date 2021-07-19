@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DescrizioneUtente;
+use App\Models\Post;
 use App\Models\RichiestaAmicizia;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,14 +25,14 @@ class ProfileController extends Controller {
          ->session()
          ->get('utente');
       $utente_id = $this->utente->id;
-      $profile = getProfile($utente_id);
+      $profile = DescrizioneUtente::getProfile($utente_id);
       $req
          ->session()
          ->put('profile_utente_id', $profile->id);
       return view('profile.index', [
          'profile' => $profile,
-         'richieste' => getRichieste($utente_id),
-         'posts' => getAllPosts($utente_id, true),
+         'richieste' => RichiestaAmicizia::getRichieste($utente_id),
+         'posts' => Post::getAll($utente_id, true),
          'own_profile' => true
       ]);
    }
@@ -40,7 +42,7 @@ class ProfileController extends Controller {
          $this->utente = $req
             ->session()
             ->get('utente');
-         $profile = getProfile($this->utente->id);
+         $profile = DescrizioneUtente::getProfile($this->utente->id);
          return view('profile.utils.form', [
             'lavori' => Lavoro::all(),
             'citta' => Citta::all(),
@@ -51,7 +53,7 @@ class ProfileController extends Controller {
    }
    public function updateProfile(Request $req): RedirectResponse {
       $req->validate([
-        // 'image' => ['nullable', 'max:2000', 'mimes:jpeg,png,doc,docs,pdf,ico'],
+         'image' => ['nullable', 'max:2000', 'mimes:jpeg,png,doc,docs,pdf,ico,svg,bmp,web'],
          'nome' => ['required', 'min:2', 'max:45'],
          'cognome' => ['required', 'min:2', 'max:45'],
          'citta' => ['required', 'numeric', 'min:1', 'max:13'],
@@ -59,6 +61,8 @@ class ProfileController extends Controller {
          'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d'],
          'testo' => ['nullable', 'max:255']
       ], [
+         'image.mimes' => 'Insert a valid image.',
+         'image.max' => 'Immagine troppo pesante.',
          'nome.required' => 'Nome is Required.',
          'nome.min' => 'Nome almeno 2 caratteri.',
          'nome.max' => 'Nome massimo 45 caratteri.',
@@ -82,7 +86,8 @@ class ProfileController extends Controller {
          return back()
             ->withErrors($errors);
       else {
-         updateProfile($req);
+         $utenteProfileUpdated = DescrizioneUtente::updateProfile($req);
+         Log::debug("User $utenteProfileUpdated updated his profile.");
          return redirect('/profile')
             ->with('msg', 'Profile updated successful.');
       }
@@ -99,14 +104,14 @@ class ProfileController extends Controller {
       if(isset($utenteSearched)) {
          $utente_id = $this->utente->id;
          $utenteSearched_id = $utenteSearched->id;
-         $profile = getProfile($utenteSearched_id);
+         $profile = DescrizioneUtente::getProfile($utenteSearched_id);
          $req
             ->session()
             ->put('profile_utente_id', $profile->utente_id);
          return view('profile.index', [
             'profile' => $profile,
-            'richieste' => getRichieste($utente_id),
-            'posts' => getAllPosts($utenteSearched_id, true),
+            'richieste' => RichiestaAmicizia::getRichieste($utente_id),
+            'posts' => Post::getAll($utenteSearched_id, true),
             'own_profile' => $profile->utente_id === $utente_id,
          ]);
       } else {
@@ -122,7 +127,7 @@ class ProfileController extends Controller {
             ->session()
             ->get('profile_utente_id') ?? $this->utente->id;
       return view('collegamenti.index', [
-         'collegamenti' => getCollegamenti($utente_id)
+         'collegamenti' => RichiestaAmicizia::getCollegamenti($utente_id)
       ]);
    }
 
@@ -136,7 +141,7 @@ class ProfileController extends Controller {
             'email', $req->input('email')
          )->first();
          $idUtenteCollegamento = $utenteCollegamento->id;
-         removeCollegamento($utente_id, $idUtenteCollegamento);
+         RichiestaAmicizia::removeCollegamento($utente_id, $idUtenteCollegamento);
          return 'Collegamento deleted.';
       } else
          redirect('/profile');
