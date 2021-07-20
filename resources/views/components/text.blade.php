@@ -1,7 +1,8 @@
 @php
 $selectors = selectors();
-$val__ = $val ?? '';
+$val__ = old($label ?? $selectors['txt']) ?? $val  ;
 @endphp
+
 <label for="{{ $selectors['txt'] }}">
     {{ ucfirst($label) }}
 </label>

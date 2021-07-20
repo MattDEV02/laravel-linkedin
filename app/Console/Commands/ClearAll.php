@@ -61,13 +61,15 @@ class ClearAll extends Command
     */
    public function handle(): int
    {
-      $commands_ = $this->commands;
-      foreach($commands_ as $command) {
-         if(preg_match('(migration|composer)', $command))
-            $this->info('yes');
-         $output = shell_exec($command);
-         $this->info($output);
-      }
+      if($this->confirm('Confermi il reset?', true)) {
+         foreach($this->commands as $command) {
+            if(preg_match('(migration|composer)', $command))
+               $this->info('yes');
+            $output = shell_exec($command);
+            $this->info($output);
+         }
+      } else
+         $this->info('Reset annullato.');
       return 1;
    }
 }

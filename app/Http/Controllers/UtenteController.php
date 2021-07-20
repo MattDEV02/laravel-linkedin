@@ -58,24 +58,20 @@ class UtenteController extends Controller {
             'lavoro' => ['required', 'numeric', 'min:1', 'max:15'],
             'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d']
          ], [
-            'email.required' => 'Email is Required.',
+            'required' => ':attribute is Required.',
             'email.min' => 'Email almeno 2 caratteri.',
             'email.max' => 'Email massimo 35 caratteri.',
             'email.unique' => 'Utente già Registrato, è possible effettuare il Login.',
-            'password.required' => 'Password is Required.',
             'password.min' => 'Password con 8 caratteri.',
             'password.max' => 'Password con 8 caratteri.',
-            'nome.required' => 'Nome is Required.',
             'nome.min' => 'Nome almeno 3 caratteri.',
             'nome.max' => 'Nome massimo 45 caratteri.',
             'cognome.required' => 'Cognome is Required.',
             'cognome.min' => 'Cognome almeno 3 caratteri.',
             'cognome.max' => 'Cognome massimo 45 caratteri.',
-            'citta.required' => 'Città is Required.',
             'citta.numeric' => 'Città inserita non valida.',
             'citta.min' => 'Città inserita non valida.',
             'citta.max' => 'Città inserita non valida.',
-            'lavoro.required' => 'Lavoro is Required.',
             'lavoro.numeric' => 'Lavoro inserito non valido.',
             'lavoro.min' => 'Lavoro inserito non valido.',
             'lavoro.max' => 'Lavoro inserito non valido.',
@@ -86,6 +82,7 @@ class UtenteController extends Controller {
          $errors = checkDataInizioLavoroErrors($req);
          if(isValidCollection($errors))
             return back()
+               ->withInput($req->all())
                ->withErrors($errors);
          else {
             $password = $req->input('password');
@@ -105,11 +102,10 @@ class UtenteController extends Controller {
          'email' => ['email', 'required', 'min:2', 'max:35'],
          'password' => ['required', 'min:8', 'max:8'],
       ], [
-         'email.email' => 'Inserisci Email valida',
-         'email.required' => 'Email is Required.',
+         'email.email' => 'Inserisci Email valida.',
+         'required' => ':attribute is Required.',
          'email.min' => 'Email almeno 2 caratteri.',
          'email.max' => 'Email massimo 35 caratteri.',
-         'password.required' => 'Password is Required.',
          'password.min'  => 'Password con 8 caratteri.',
          'password.max'  => 'Password con 8 caratteri.',
       ]);
@@ -140,6 +136,7 @@ class UtenteController extends Controller {
          ]);
       } else
          return back()
+            ->withInput($req->all())
             ->withErrors(['Utente non registrato, è possible farlo.']);
    }
 
@@ -149,10 +146,9 @@ class UtenteController extends Controller {
          'password' => ['required', 'min:8', 'max:8'],
       ], [
          'email.email' => 'Inserisci Email valida',
-         'email.required' => 'Email is Required.',
+         'required' => ':attribute is Required.',
          'email.min' => 'Email almeno 2 caratteri.',
          'email.max' => 'Email massimo 35 caratteri.',
-         'password.required'  => 'Password is Required.',
          'password.min'  => 'Password con 8 caratteri.',
       ]);
       $res = false;

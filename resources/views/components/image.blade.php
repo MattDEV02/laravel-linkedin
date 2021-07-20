@@ -8,5 +8,6 @@ $selectors = selectors();
         accept="{{ $selectors['img'] }}/*"
         name="{{ $selectors['img'] }}"
         id="{{ $selectors['img'] }}"
+        value="{{ old('image') }}"
         required
 />

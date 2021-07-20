@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\MiPiace;
@@ -19,13 +18,12 @@ class PostController extends Controller
 
    public function insert(Request $req): Factory | View | Application {
       $req->validate([
-         'testo' => ['required', 'min:2', 'max:255'],
+         'testo' => ['required', 'min:1', 'max:255'],
          'image' => ['required', 'max:2000', 'mimes:jpeg,png,doc,docs,pdf,ico,svg,bmp,web'],
       ], [
-         'testo.required' => 'Testo is Required.',
-         'testo.min' => 'Testo almeno 2 caratteri.',
+         'required' => ':attribute is Required.',
+         'testo.min' => 'Testo almeno 1 carattere.',
          'testo.max' => 'Testo massimo 255 caratteri.',
-         'image.required'  => 'Image is Required.',
          'image.max' => 'File immagine troppo pesante.',
          'image.mimes'  => 'Insert a valid image.',
       ]);
@@ -48,10 +46,7 @@ class PostController extends Controller
             ->session()
             ->get('utente');
       $utente_id = $this->utente->id;
-      $miPiace = new MiPiace();
-      $miPiace->post = $req->input('post');
-      $miPiace->utente = $req->input('utente');
-      $miPiace->save();
+      MiPiace::like($req->input('post'), $req->input('utente'));
       $profile_id = $req->input('profile_id');
       $cond =  $profile_id > 0;
       $id = $cond ? $profile_id : $utente_id;

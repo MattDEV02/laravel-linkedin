@@ -11,6 +11,6 @@ $selectors = selectors();
         class="{{ $selectors['input'] }}"
         name="{{ $selectors['date'] }}"
         id="{{ $selectors['date'] }}"
-        value="{{ $val }}"
+        value="{{ $val ?? old('dataInizioLavoro') }}"
         max="{{ date('Y-m-d') }}"
 />

@@ -16,7 +16,6 @@ if(
    !function_exists('selectors') &&
    !function_exists('consoleLog') &&
    !function_exists('sendMail') &&
-   !function_exists('handleError') &&
    !function_exists('checkRef') &&
    !function_exists('store') &&
    !function_exists('insertUtente') &&

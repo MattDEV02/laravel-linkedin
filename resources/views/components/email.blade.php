@@ -1,6 +1,7 @@
 @php
 $selectors = selectors();
 @endphp
+
 <label for="{{ $selectors['email'] }}">
     {{ $label  }}
 </label>
@@ -12,5 +13,6 @@ $selectors = selectors();
         maxlength="{{ $selectors['emailLen'] }}"
         name="{{ $selectors['email'] }}"
         placeholder="{{ ucfirst($selectors['email']) }}"
+        value="{{ old('email') }}"
         required
 />

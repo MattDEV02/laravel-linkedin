@@ -16,7 +16,6 @@ $selectors = selectors();
                 <x-success />
                 <div class="{{ $selectors['col'] }}4">
                     <div class="{{ $selectors['row'] }}">
-                        <x-errors />
                         <input
                                 type="text"
                                 name="testo"
@@ -24,7 +23,7 @@ $selectors = selectors();
                                 class="{{ $selectors['input'] }}"
                                 placeholder="Di cosa vorresti parlare?"
                                 autocomplete="off"
-                                minlength="{{ 2 }}"
+                                minlength="{{ 1 }}"
                                 maxlength="{{ 255 }}"
                                 required
                         />

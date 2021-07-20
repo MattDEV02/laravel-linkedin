@@ -14,8 +14,7 @@ class RichiestaAmicizia extends Model
    protected $table = 'RichiestaAmicizia';
    public $timestamps = true;
 
-   public function scopeGetRichieste(Builder $query, int $utente_id): ?Collection
-   {
+   public function scopeGetRichieste(Builder $query, int $utente_id): ?Collection {
       return DB::table('RichiestaAmicizia AS ra')
          ->select([
             'ra.utenteMittente AS utenteMittente',
@@ -32,7 +31,7 @@ class RichiestaAmicizia extends Model
          ->get();
    }
 
-   public  function scopeRemoveCollegamento(Builder $query, int $utente, int $collegamento) {
+   public  function scopeRemoveCollegamento(Builder $query, int $utente, int $collegamento): void {
       RichiestaAmicizia::where(function($query) use ($utente) {
          $query
             ->where('utenteMittente', $utente)
@@ -47,12 +46,13 @@ class RichiestaAmicizia extends Model
          ->delete();
    }
 
-   public function scopeIsSentRichiesta(Builder $query, int $utenteMittente, int $utenteRicevente): int {
-      return DB::table('RichiestaAmicizia AS ra')
+   public function scopeIsSentRichiesta(Builder $query, int $utenteMittente, int $utenteRicevente): bool {
+      return (bool) DB::table('RichiestaAmicizia AS ra')
          ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
          ->join('Utente AS u2', 'ra.utenteRicevente', 'u2.id')
          ->where('ra.utenteMittente', $utenteMittente)
          ->where('ra.utenteRicevente', $utenteRicevente)
+         ->where('ra.stato', 'Sospesa')
          ->count();
    }
 
@@ -80,7 +80,7 @@ class RichiestaAmicizia extends Model
          ->get();
    }
 
-   public function scopeIsLinked (Builder $query, int $utenteMittente, int $utenteRicevente, bool $flag = false): int {
+   public function scopeIsLinked (Builder $query, int $utenteMittente, int $utenteRicevente, bool $flag = false): bool {
       $stato = $flag ? 'Sospesa' : 'Accettata';
       $res = DB::table('RichiestaAmicizia AS ra')
          ->select(DB::raw('COUNT(ra.id) AS linked'))
@@ -98,7 +98,7 @@ class RichiestaAmicizia extends Model
          })
          ->where('ra.stato', $stato)
          ->first();
-      return $res->linked;
+      return (bool) $res->linked;
    }
 
    public function scopeGetNumCollegamenti(Builder $query, int $utenteRicevente): int {
@@ -108,7 +108,6 @@ class RichiestaAmicizia extends Model
             $query
                ->where('ra.utenteRicevente', $utenteRicevente)
                ->Orwhere('ra.utenteMittente', $utenteRicevente);
-         })
-         ->count() ;
+         })->count() ;
    }
 }

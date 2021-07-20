@@ -19,7 +19,7 @@
 <li class="nav-item active mt-2 mt-lg-1 {{ $ml }}">
     <a class="nav-link" href="/{{ $txt }}" target="{{ $cond ? '_blank' : '_self' }}">
         <h4 class="{{ $class ?? 'text-primary'}}">
-            <i class="fas fa-{{ $icon }} mr-1"></i>
+            <i class="fas fa-{{ $icon }} mr-lg-1 mr-2"></i>
             {{ ucfirst($txt) }}
         </h4>
     </a>

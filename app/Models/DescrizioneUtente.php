@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class DescrizioneUtente extends Model  // Profilo dell'Utente
 {
+
    protected $table = 'DescrizioneUtente';
    public $timestamps = true;
 
@@ -53,20 +54,21 @@ class DescrizioneUtente extends Model  // Profilo dell'Utente
          Storage::delete($files);
          $toUpdate['foto'] = store($img , $dir, $id);
       }
-      DescrizioneUtente::where(
-         'utente', $id
-      )->update($toUpdate);
-      UtenteLavoro::where(
-         'utente', $id
-      )->update([
-         'lavoro' => $data->input('lavoro'),
-         'dataInizioLavoro' => $data->input('dataInizioLavoro')
-      ]);
+      DescrizioneUtente::where('utente', $id)
+         ->update($toUpdate);
+      UtenteLavoro::where('utente', $id)
+         ->update([
+            'lavoro' => $data->input('lavoro'),
+            'dataInizioLavoro' => $data->input('dataInizioLavoro')
+         ]);
       $utente = Utente::find($id);
       $utente->nome = $data->input('nome');
       $utente->cognome = $data->input('cognome');
       $utente->citta = $data->input('citta');
       $utente->save();
+      $data
+         ->session()
+         ->forget('utente');
       $data
          ->session()
          ->put('utente', $utente);

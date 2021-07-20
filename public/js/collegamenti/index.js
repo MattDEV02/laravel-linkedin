@@ -7,7 +7,7 @@ const makeRequest = async (form, email) => {
       .catch(e => console.error(e));
    console.log(res);
    if(res.data === 'Collegamento deleted.' && res.status === 200) {
-      window.alert('Collegamento eliminato con successo.');
+      window.alert(`Collegamento con ${email} eliminato con successo.`);
       window.location.href = '/profile';
    }
 };

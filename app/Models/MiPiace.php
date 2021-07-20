@@ -23,4 +23,11 @@ class MiPiace extends Model
          ->first();
       return (bool) $res->liked;
    }
+
+   public function scopeLike(Builder $query, int $post, int $utente): void {
+      $miPiace = new MiPiace();
+      $miPiace->post = $post;
+      $miPiace->utente = $utente;
+      $miPiace->save();
+   }
 }

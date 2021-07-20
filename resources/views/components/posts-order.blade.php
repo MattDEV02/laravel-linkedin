@@ -4,12 +4,12 @@ $selectors = selectors();
 
 <div class="{{ $selectors['col']}}5">
     <div class="{{ $selectors['row'] }}">
-        <form method="POST" action="{{ route('orderBy-post') }}" title="Ordina i Post!" class="form-inline postsOrder">
+        <form method="{{ $selectors['method'] }}" action="{{ route('orderBy-post') }}" title="Ordina i Post!" class="form-inline postsOrder">
             @csrf
             @php
                 $class = $selectors['input'] . ' text-muted postsOrder';
             @endphp
-            <select name="postsOrderName" class="{{ $class }}" required>
+            <select name="postsOrderName" class="{{ $class }}" required >
                 <option value="p.created_at">
                     Data creazione
                 </option>

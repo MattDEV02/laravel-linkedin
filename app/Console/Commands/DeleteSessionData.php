@@ -7,7 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 
 class DeleteSessionData extends Command
@@ -46,15 +46,14 @@ class DeleteSessionData extends Command
       try {
          Session::flush();
          Cookie::queue(Cookie::forget('password'));
-         $session_files = Storage::allFiles('/storage/framework/sessions');
-         /*foreach($session_files as $session_file) {
-            $this->info($session_file);
-            if($session_file !== '.gitignore')
-               Storage::delete($session_file);
-         }*/
+         $session_files = File::allFiles(storage_path('framework/sessions'));
+         $bootstrap_files = File::allFiles("bootstrap/cache");
+         $directories = [$bootstrap_files, $session_files];
+         foreach($directories as $directory)
+            File::delete($directory);
          session()->regenerate();
          session()->regenerateToken();
-         $this->info('Session and Cookies data deleted.');
+         $this->info('Session data deleted.');
       } catch (Exception $e) {
          $msg = $e->getMessage();
          $this->alert($msg);

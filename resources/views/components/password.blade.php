@@ -5,6 +5,7 @@ $selectors = selectors();
 <label for="{{ $selectors['pass'] }}">
     {{ $label }}
 </label>
+
 <input
         class="{{ $selectors['input'] }}"
         id="{{ $selectors['pass'] }}"
@@ -13,6 +14,7 @@ $selectors = selectors();
         maxlength="{{ $selectors['passLen'] }}"
         name="{{ $selectors['pass'] }}"
         placeholder="{{ ucfirst($selectors['pass']) }}"
+        value="{{ old('password') }}"
         required
 />
 <h6 class="primaryTXT" id="show">

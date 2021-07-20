@@ -4,7 +4,6 @@
 @endphp
 
 <!DOCTYPE html>
-
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Utente non trovato" />
@@ -22,7 +21,7 @@
         </div>
         <div class="{{ $selectors['col'] }}5">
             <div class="{{ $selectors['row'] }}">
-                <button class="{{ $selectors['btn'] }} btn-primary {{ $selectors['border'] }}" onclick="window.history.back();">
+                <button class="btn btn-lg btn-outline-primary white_bg" onclick="window.history.back();">
                     <b>
                         Torna indietro
                     </b>

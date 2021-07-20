@@ -14,7 +14,7 @@
             />
             <x-item txt="profile" />
             <li class="nav-item active mt-2 mt-lg-1 ml-4 ml-lg-2">
-                <form method="POST" action="/feed" id="feed-form">
+                <form method="{{ selectors()['method'] }}" action="/feed" id="feed-form">
                     @csrf
                     <input
                             type="hidden"
@@ -28,7 +28,7 @@
                     />
                     <a type="submit" class="nav-link" id="feed" onclick="document.querySelector('#feed-form').submit()">
                         <h4 class="text-primary">
-                            <i class="fas fa-user-friends mr-1"></i>
+                            <i class="fas fa-user-friends mr-lg-1 mr-2"></i>
                             Feed
                         </h4>
                     </a>

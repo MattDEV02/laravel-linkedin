@@ -17,7 +17,7 @@ class AddForeignKeysToPostTable extends Migration
    {
       Schema::table('Post', function (Blueprint $table) {
          $table->foreign('utente', 'UtentePostFK')->references('id')->on('Utente')->onUpdate('CASCADE')->onDelete('CASCADE');
-         DB::statement('ALTER TABLE Post ADD CONSTRAINT CHECK_TestoPost CHECK (char_length(testo) >= 2);');
+         DB::statement('ALTER TABLE Post ADD CONSTRAINT CHECK_TestoPost CHECK (char_length(testo) >= 1);');
          DB::statement('ALTER TABLE Post ADD CONSTRAINT CHECK_FotoPost CHECK (char_length(foto) > 6);');
          DB::statement("ALTER TABLE Post COMMENT = 'Post pubblicati dagli Utenti';");
       });

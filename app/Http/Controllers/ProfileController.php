@@ -63,17 +63,14 @@ class ProfileController extends Controller {
       ], [
          'image.mimes' => 'Insert a valid image.',
          'image.max' => 'Immagine troppo pesante.',
-         'nome.required' => 'Nome is Required.',
+         'required' => ':attribute is Required.',
          'nome.min' => 'Nome almeno 2 caratteri.',
          'nome.max' => 'Nome massimo 45 caratteri.',
-         'cognome.required' => 'Cognome is Required.',
          'cognome.min' => 'Cognome almeno 2 caratteri.',
          'cognome.max' => 'Cognome massimo 45 caratteri.',
-         'citta.required' => 'Città is Required.',
          'citta.numeric' => 'Città inserita non valida.',
          'citta.min' => 'Città inserita non valida.',
          'citta.max' => 'Città inserita non valida.',
-         'lavoro.required' => 'Lavoro is Required.',
          'lavoro.numeric' => 'Lavoro inserito non valido.',
          'lavoro.min' => 'Lavoro inserito non valido.',
          'lavoro.max' => 'Lavoro inserito non valido.',
@@ -98,9 +95,8 @@ class ProfileController extends Controller {
       $this->utente = $req
          ->session()
          ->get('utente');
-      $utenteSearched = Utente::where(
-         'email',  $emailSearched
-      )->first();
+      $utenteSearched = Utente::where('email',  $emailSearched)
+         ->first();
       if(isset($utenteSearched)) {
          $utente_id = $this->utente->id;
          $utenteSearched_id = $utenteSearched->id;
