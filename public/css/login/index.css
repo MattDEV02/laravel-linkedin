@@ -8,7 +8,7 @@
   font-size: 100% !important;
 }
 
-#accediBTN {
+#accediBTN, #resetBTN {
   border-radius: 28px !important;
   font-size: 104% !important;
   position: relative;

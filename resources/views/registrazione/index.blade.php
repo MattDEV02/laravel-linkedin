@@ -12,20 +12,20 @@
 
 <body>
 <div class="{{ $selectors['container'] }}">
-    <div class="{{ $selectors['col'] }}4">
+    <div class="{{ $selectors['col'] }}">
         <div class="{{ $selectors['row'] }}">
             @component('components.no-script')
             @endcomponent
             <div class="{{ $selectors['col'] }}">
                 <x-title />
-                <div class="{{ $selectors['row'] }} mt-3">
+                <div class="{{ $selectors['row'] }} mt-4">
                     <h5 id="subtitle">
                         Ottieni il massimo dalla tua vita professionale
                     </h5>
                 </div>
             </div>
-            <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                <div class="{{ $selectors['row'] }} mt-4">
+            <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4 mt-5">
+                <div class="{{ $selectors['row'] }}">
                     <div id="form-card" class="{{ $selectors['col'] }} p-4">
                         <form method="{{ $selectors['method'] }}" action="{{ route('insert-user') }}" id="profile-form" class="reg">
                             @csrf
@@ -87,6 +87,7 @@
                                 </div>
                             </div>
                             <x-submit text="Iscriviti" mt="{{ 4 }}" />
+                            <x-reset />
                         </form>
                     </div>
                 </div>

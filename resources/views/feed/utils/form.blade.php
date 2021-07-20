@@ -31,7 +31,7 @@ $selectors = selectors();
                 </div>
                 <div class="{{ $selectors['col']}}4">
                     <div class="{{ $selectors['row']}}">
-                        <button class="btn btn-primary {{ $selectors['border'] }} col-8" id="fileBTN">
+                        <button class="btn btn-primary {{ $selectors['border'] }} col-8 success_hover" id="fileBTN">
                             <b>
                                 <i class="fas fa-image">
                                     <x-image />
@@ -42,7 +42,7 @@ $selectors = selectors();
                                 type="submit"
                                 name="submit"
                                 value="submit"
-                                class="btn btn-success {{ $selectors['border'] }} {{ $selectors['fw'] }} ml-3 col-2">
+                                class="btn btn-success {{ $selectors['border'] }} {{ $selectors['fw'] }} ml-3 col-2 warning_hover">
                             <i class="fas fa-share-square"></i>
                         </button>
                     </div>

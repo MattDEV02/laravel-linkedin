@@ -18,7 +18,7 @@
    font-size: $fs !important;
 }
 
-#accediBTN {
+#accediBTN, #resetBTN {
    border-radius: ($pad * 7) !important;
    font-size: ($fs + 4) !important;
    position: relative;

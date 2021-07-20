@@ -1,6 +1,6 @@
 @php
 $selectors = selectors();
-$val__ = old($label ?? $selectors['txt']) ?? $val  ;
+$val__ = !isset($val ) ? old($label ?? $selectors['txt']) : $val  ;
 @endphp
 
 <label for="{{ $selectors['txt'] }}">

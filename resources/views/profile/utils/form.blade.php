@@ -70,6 +70,24 @@
                                 </div>
                                 <div class="{{ $selectors['col'] }}3">
                                     <div class="row">
+                                        <label for="{{ $selectors['select2'] }}">
+                                            {{ ucfirst($selectors['select2']) }}
+                                        </label>
+                                        <select
+                                                class="{{ $selectors['input'] }}"
+                                                id="{{ $selectors['select2']}}"
+                                                name="{{ $selectors['select2'] }}"
+                                                required>
+                                            @component('components.option', [
+                                                'data' => $citta,
+                                                'selected' => $profile->citta
+                                            ])
+                                            @endcomponent
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="{{ $selectors['col'] }}3">
+                                    <div class="row">
                                         <label for="{{ $selectors['select1'] }}">
                                             {{ ucfirst($selectors['select1']) }}
                                         </label>
@@ -92,24 +110,6 @@
                                 </div>
                                 <div class="{{ $selectors['col'] }}3">
                                     <div class="row">
-                                        <label for="{{ $selectors['select2'] }}">
-                                            {{ ucfirst($selectors['select2']) }}
-                                        </label>
-                                        <select
-                                                class="{{ $selectors['input'] }}"
-                                                id="{{ $selectors['select2']}}"
-                                                name="{{ $selectors['select2'] }}"
-                                                required>
-                                            @component('components.option', [
-                                                'data' => $citta,
-                                                'selected' => $profile->citta
-                                            ])
-                                            @endcomponent
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="{{ $selectors['col'] }}3">
-                                    <div class="row">
                                         <label for="testo">
                                             Testo del Profilo
                                         </label>
@@ -122,11 +122,12 @@
                                     </div>
                                 </div>
                                 <x-submit text="Salva" mt="4" />
+                                <x-reset />
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="{{ $selectors['col'] }}5 mb-3">
+                <div class="{{ $selectors['col'] }}5 mb-4">
                     <div class="{{ $selectors['row'] }}">
                         <p id="footer" class="big_font_size">
                             Clicca per tornare al

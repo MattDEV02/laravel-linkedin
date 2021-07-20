@@ -3662,7 +3662,7 @@ input[type=button].btn-block {
    position: relative;
    display: inline-block;
    width: 100%;
-   height: calc(1.6em + 0.75rem + 2px);
+   height: 2.55rem;
    margin-bottom: 0;
 }
 
@@ -3675,6 +3675,7 @@ input[type=button].btn-block {
    overflow: hidden;
    opacity: 0;
 }
+
 .custom-file-input:focus ~ .custom-file-label {
    border-color: #a1cbef;
    box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
@@ -16241,8 +16242,7 @@ select:hover {
 }
 
 .success_hover:hover {
-   color: #EFF500;
-   border-color: #EFF500 !important;
+   color: #15DC07 !important;;
 }
 
 

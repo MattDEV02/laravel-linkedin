@@ -94,7 +94,7 @@ const like = async (post, utente, profile_id) => {
    })
       .catch(e => console.error(e));
    console.log(res);
-   res.status === 200 ?
+   isValid(res) && res.status === 200 ?
       document.querySelector('#posts-container').innerHTML = res.data :
       window.alert('Errore nel Click del Like.');
 }
