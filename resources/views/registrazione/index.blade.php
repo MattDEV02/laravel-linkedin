@@ -42,7 +42,7 @@
                             </div>
                             <div class="{{ $selectors['col'] }}3">
                                 <div class="row">
-                                    <x-text label="nome" />
+                                    <x-text label="nome"/>
                                 </div>
                             </div>
                             <div class="{{ $selectors['col'] }}3">
@@ -59,7 +59,7 @@
                                             class="{{ $selectors['input'] }}"
                                             name="{{ $selectors['select2'] }}"
                                             required>
-                                        @component('components.option', ['data' => $citta])
+                                        @component('components.option', ['data' => $citta, 'selected' => old('citta')])
                                         @endcomponent
                                     </select>
                                 </div>
@@ -75,7 +75,7 @@
                                             name="{{ $selectors['select1'] }}">
                                         @component('components.option', [
                                            'data' => $lavori,
-                                           'selected' => 'Disoccupato'
+                                           'selected' => old('lavoro') ?? 'Disoccupato'
                                            ])
                                         @endcomponent
                                     </select>

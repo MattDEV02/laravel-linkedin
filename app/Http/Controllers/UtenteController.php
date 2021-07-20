@@ -59,6 +59,7 @@ class UtenteController extends Controller {
             'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d']
          ], [
             'required' => ':attribute is Required.',
+            'email.email' => 'Inserisci Email valida.',
             'email.min' => 'Email almeno 2 caratteri.',
             'email.max' => 'Email massimo 35 caratteri.',
             'email.unique' => 'Utente già Registrato, è possible effettuare il Login.',
@@ -66,7 +67,6 @@ class UtenteController extends Controller {
             'password.max' => 'Password con 8 caratteri.',
             'nome.min' => 'Nome almeno 3 caratteri.',
             'nome.max' => 'Nome massimo 45 caratteri.',
-            'cognome.required' => 'Cognome is Required.',
             'cognome.min' => 'Cognome almeno 3 caratteri.',
             'cognome.max' => 'Cognome massimo 45 caratteri.',
             'citta.numeric' => 'Città inserita non valida.',
