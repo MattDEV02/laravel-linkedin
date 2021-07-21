@@ -66,6 +66,9 @@ class DescrizioneUtente extends Model  // Profilo dell'Utente
       $utente->cognome = $data->input('cognome');
       $utente->citta = $data->input('citta');
       $utente->save();
+      $utente->password = $data
+         ->session()
+         ->get('utente')->password;
       $data
          ->session()
          ->forget('utente');

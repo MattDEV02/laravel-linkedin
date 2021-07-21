@@ -37,7 +37,7 @@ class PostController extends Controller
       return view('feed.utils.posts', [
          'posts' => Post::getAll($utente_id, false),
          'profile_id' => null
-      ]);
+      ])->with('msg', 'Post pubblicato con successo.'); //...
    }
 
    public function like(Request $req): Factory | View | Application {

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 
 class Utente extends Model
@@ -28,7 +29,7 @@ class Utente extends Model
 
    public function scopeRegistrazione(Builder $query, Request $data): string {
       $utente = new Utente();
-      $utente->email = trim($data->input('email'));
+      $utente->email = Str::lower(trim($data->input('email')));
       $password = $data->input('password');
       $utente->password = Hash::make($password);
       $utente->nome = ucfirst($data->input('nome'));

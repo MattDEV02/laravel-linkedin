@@ -16,7 +16,7 @@ class RichiesteHandler extends Component {
    public int $utenteMittente;
    public int $utenteRicevente;
    private array $stato = ['Sospesa', 'Accettata'];
-   private array $attr = ['utenteMittente', 'utenteRicevente'];
+   private array $attr = ['utenteMittente', 'utenteRicevente', 'stato'];
    public bool $click = false;
 
    public function get(int $utenteMittente, int $utenteRicevente): void {
@@ -39,18 +39,25 @@ class RichiesteHandler extends Component {
    }
 
    public function delete(): void {
-      RichiestaAmicizia::where($this->attr[0], $this->utenteMittente)
-         ->where($this->attr[1], $this->utenteRicevente)
-         ->delete();
+      RichiestaAmicizia::where($this->attr[2], 'Sospesa')
+         ->where(function($query) {
+            $query
+               ->where($this->attr[0], $this->utenteMittente)
+               ->orWhere($this->attr[1], $this->utenteMittente);
+         })
+         ->where(function($query) {
+            $query
+               ->where($this->attr[0], $this->utenteRicevente)
+               ->orWhere($this->attr[1], $this->utenteRicevente);
+         })->delete();
       $this->refresh();
       $this->click = true;
    }
 
    public function accetta(int $utenteMittente, int $utenteRicevente): void {
       $this->get($utenteMittente, $utenteRicevente);
-      !RichiestaAmicizia::isLinked($utenteMittente, $utenteRicevente) ?
-         $this->update($this->stato[1]) :
-         $this->delete();
+      $this->update($this->stato[1]);
+      $this->delete();
    }
 
    public function rifiuta(int $utenteMittente, int $utenteRicevente): void {

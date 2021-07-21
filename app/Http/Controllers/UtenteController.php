@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 use App\Models\Utente;
 use App\Models\Citta;
 use App\Models\Lavoro;
@@ -109,7 +110,7 @@ class UtenteController extends Controller {
          'password.min'  => 'Password con 8 caratteri.',
          'password.max'  => 'Password con 8 caratteri.',
       ]);
-      $email = trim($req->input('email'));
+      $email = Str::lower(trim($req->input('email')));
       $password = $req->input('password');
       if(Utente::isLogged($email, $password)) {
          if(!$req->session()->exists('utente')) {
@@ -153,7 +154,7 @@ class UtenteController extends Controller {
       ]);
       $res = false;
       if(checkRef($req, 'login')) {
-         $email = trim($req->input('email'));
+         $email = Str::lower(trim($req->input('email')));
          $password = $req->input('password');
          $utente = Utente::where('email', $email);
          if($utente->count()) {

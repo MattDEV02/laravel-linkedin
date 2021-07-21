@@ -39,7 +39,7 @@ $('#postForm').submit(
       const
          postImage = image[0].files[0],
          postText = testo.val();
-      if((postImage.size / 1000 ) > 2) {
+      if((postImage.size / 1000 ) > 2000) {
          window.alert('File troppo pesante (max = 2 MB).');
          err = true;
       }

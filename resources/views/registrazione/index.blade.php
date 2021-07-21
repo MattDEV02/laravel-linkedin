@@ -16,17 +16,19 @@
         <div class="{{ $selectors['row'] }}">
             @component('components.no-script')
             @endcomponent
-            <div class="{{ $selectors['col'] }}">
+            <div class="mt-4">
                 <x-title />
+            </div>
+            <div class="{{ $selectors['col'] }}">
                 <div class="{{ $selectors['row'] }} mt-4">
                     <h5 id="subtitle">
                         Ottieni il massimo dalla tua vita professionale
                     </h5>
                 </div>
             </div>
-            <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4 mt-5">
+            <div class="col-xs-11 col-sm-8 col-md-6 col-lg-5 col-xl-4 mt-4">
                 <div class="{{ $selectors['row'] }}">
-                    <div id="form-card" class="{{ $selectors['col'] }} p-4">
+                    <div id="form-card" class="{{ $selectors['col'] }}3 p-4">
                         <form method="{{ $selectors['method'] }}" action="{{ route('insert-user') }}" id="profile-form" class="reg">
                             @csrf
                             <x-errors />

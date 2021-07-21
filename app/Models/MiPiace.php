@@ -25,9 +25,11 @@ class MiPiace extends Model
    }
 
    public function scopeLike(Builder $query, int $post, int $utente): void {
-      $miPiace = new MiPiace();
-      $miPiace->post = $post;
-      $miPiace->utente = $utente;
-      $miPiace->save();
+      if(!MiPiace::isLiked($post, $utente)) {
+         $miPiace = new MiPiace();
+         $miPiace->post = $post;
+         $miPiace->utente = $utente;
+         $miPiace->save();
+      }
    }
 }

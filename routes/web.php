@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Models\RichiestaAmicizia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UtenteController;
 use App\Http\Controllers\PostController;

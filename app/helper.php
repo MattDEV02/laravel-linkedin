@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Illuminate\Support\Str;
 use App\Models\RichiestaAmicizia;
@@ -18,14 +19,15 @@ if(
    !function_exists('sendMail') &&
    !function_exists('checkRef') &&
    !function_exists('store') &&
-   !function_exists('insertUtente') &&
    !function_exists('isLiked') &&
    !function_exists('isLinked') &&
    !function_exists('getNumCollegamenti') &&
    !function_exists('isSentRichiesta') &&
    !function_exists('checkDataInizioLavoroErrors') &&
    !function_exists('isValidCollection') &&
-   !function_exists('isValidResponse')
+   !function_exists('isValidResponse') &&
+   !function_exists('adjustEmail') &&
+   !function_exists('removeFirstWS')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -75,8 +77,7 @@ if(
       $out->writeln("<info>$s</info>");
       return $s;
    }
-   function sendmail(string $email, string $password): bool
-   {
+   function sendmail(string $email, string $password): bool {
       $url = 'https://matteolambertucci.altervista.org/mail/text/';
       $data = [
          'email' => $email,
@@ -144,9 +145,15 @@ if(
    }
    function isValidResponse(Response $res): bool {
       return (
-         isset($res) &&
+         isValidCollection($res) &&
          ($res->ok() || $res->status() === 200)
       );
+   }
+   #[Pure] function adjustEmail(string $email): string {
+      return Str::lower(trim($email));
+   }
+   #[Pure] function removeFirstWS(string $s): string {
+      return Str::substr($s, 0);
    }
 }
 
