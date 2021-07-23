@@ -16214,6 +16214,11 @@ thead.white_bg {
    font-size: 110%;
 }
 
+#commenti_link_container {
+   margin-top: 0.85rem;
+   margin-left: 3rem;
+}
+
 .inputTXT:focus {
    box-shadow: 0 0 0 1px #0A66C2 !important;
 }
@@ -16224,6 +16229,10 @@ select:focus{
 
 option:checked  {
    color: #008000FF;
+}
+
+#commenti_link:hover {
+   color: #1D68A7 !important;
 }
 
 .primaryTXT:hover {

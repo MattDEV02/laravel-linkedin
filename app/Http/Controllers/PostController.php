@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commento;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -37,7 +38,7 @@ class PostController extends Controller
       return view('feed.utils.posts', [
          'posts' => Post::getAll($utente_id, false),
          'profile_id' => null
-      ])->with('msg', 'Post pubblicato con successo.'); //...
+      ]);
    }
 
    public function like(Request $req): Factory | View | Application {
@@ -80,6 +81,17 @@ class PostController extends Controller
       return view('feed.utils.posts', [
          'posts' => Post::getAll($utente_id, $cond, $orderBy),
          'profile_id' => $profile_id
+      ]);
+   }
+
+   public function commenti(Request $req): Factory | View | Application {
+      $post_id = $req->input('post_id');
+      $req
+         ->session()
+         ->put('post_commenti_id', $post_id);
+      $commenti = Commento::all(); // passing $post_id
+      return view('commenti.index', [
+         'commenti' => $commenti
       ]);
    }
 }

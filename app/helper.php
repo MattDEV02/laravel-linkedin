@@ -26,8 +26,7 @@ if(
    !function_exists('checkDataInizioLavoroErrors') &&
    !function_exists('isValidCollection') &&
    !function_exists('isValidResponse') &&
-   !function_exists('adjustEmail') &&
-   !function_exists('removeFirstWS')
+   !function_exists('adjustEmail')
 ) {
    function selectors(): array {
       $imgFolder = 'img';
@@ -145,15 +144,12 @@ if(
    }
    function isValidResponse(Response $res): bool {
       return (
-         isValidCollection($res) &&
+         isset($res) &&
          ($res->ok() || $res->status() === 200)
       );
    }
    #[Pure] function adjustEmail(string $email): string {
       return Str::lower(trim($email));
-   }
-   #[Pure] function removeFirstWS(string $s): string {
-      return Str::substr($s, 0);
    }
 }
 

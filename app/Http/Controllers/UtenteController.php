@@ -110,7 +110,7 @@ class UtenteController extends Controller {
          'password.min'  => 'Password con 8 caratteri.',
          'password.max'  => 'Password con 8 caratteri.',
       ]);
-      $email = Str::lower(trim($req->input('email')));
+      $email = adjustEmail($req->input('email'));
       $password = $req->input('password');
       if(Utente::isLogged($email, $password)) {
          if(!$req->session()->exists('utente')) {

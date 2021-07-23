@@ -117,7 +117,7 @@
                                                 class="{{ $selectors['input'] }}"
                                                 name="testo"
                                         >
-                                            {{ removeFirstWS($profile->testo ?? '') }}
+                                            {{ $profile->testo ?? '' }}
                                         </textarea>
                                     </div>
                                 </div>

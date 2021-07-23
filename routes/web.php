@@ -42,6 +42,7 @@ Route::match(['GET', 'POST'], '/feed', [$UC, 'logResult']);
 
 Route::middleware('isSessionLogged')
    ->group(function() use($UC, $PC, $PRC) {
+      Route::get('/commenti', [$PC, 'commenti']);
       Route::get('/edit-profile', [$PRC, 'editProfile']);
       Route::get('/profile', [$PRC, 'profile'])
          ->name('profile');
