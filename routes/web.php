@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UtenteController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Utente;
+use App\Models\Commento;
 
 
 /*
@@ -74,3 +74,7 @@ Route::prefix('ricezione-dati')
                ->name('edit-profile');
          });
    });
+
+Route::get('/test', function() {
+   return Commento::all();
+});

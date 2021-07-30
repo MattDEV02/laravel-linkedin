@@ -3,7 +3,7 @@
     $utente = session('utente');
 @endphp
 
-<!DOCTYPE HTML>
+        <!DOCTYPE HTML>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>
@@ -15,48 +15,57 @@
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }} mt-5 mb-5">
     <div class="d-flex {{ $selectors['row'] }}">
-        <div class="{{ $selectors['col'] }}">
-            <div class="{{ $selectors['row'] }}">
-                <h1>Comments</h1>
-            </div>
-        </div>
+        <x-subtitle txt="Comments" />
         <div class="d-flex flex-column col-md-6 mt-5">
-            <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-5 {{ $selectors['border'] }} border-bottom-0">
-                <div class="">
-                    <img class="rounded-circle" src="storage/profiles/1/2021_06_19_11_52_26.jpg" width="60" />
-                </div>
-                <div class="d-flex flex-column ml-3 mt-3">
+            <div class="d-flex flex-row align-items-center text-left p-2 bg-white {{ $selectors['border'] }} border-bottom-0 px-5 ">
+                <img
+                        src="storage/profiles/{{ $commenti[0]->autore_post_id }}/{{ $commenti[0]->foto_autore_post }}"
+                        alt="Immagine autore Post."
+                        width="68"
+                        class="rounded-circle"
+                />
+                <div class="d-flex flex-column ml-4 mt-3">
                     <div class="d-flex flex-row">
-                        <h5>Is sketch 3.9.1 stable?</h5>
-                        <b class="ml-3 text-primary">(Jesshead)</b>
+                        <h5>{{ $commenti[0]->testo_post }}</h5>
+                        <div class="ml-4">
+                            <x-profile-link
+                                    utenteEmail="{{ $commenti[0]->autore_post_email }}"
+                                    utenteNomeCognome="{{ $commenti[0]->autore_post_email }}"
+                            />
+                        </div>
                     </div>
                     <div class="d-flex flex-row align-items-center align-content-center mb-2">
-                        <span class="mr-2 text-primary">13 comments&nbsp;</span>
-                        <span class="mr-2 dot"></span>
-                        <span class="text-muted">6 hours ago</span></div>
+                        <span class="mr-2 text-primary">
+                            X comments&nbsp;
+                        </span>
+                        <span class="text-muted ml-2">
+                           {{ $commenti[0]->data_post }}
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="bg-white p-2 px-5 pb-4 {{ $selectors['border'] }}">
                 <div class="d-flex flex-row mt-4 mb-4">
-                    <img class="img-fluid img-responsive rounded-circle mr-2" src="storage/posts/1/2021_05_15_15_07_34.png" width="38" />
+                    <img
+                            src="storage/profiles/{{ $profile->id }}/{{ $profile->foto }}"
+                            alt="La tua Immagine di Profilo."
+                            width="38"
+                            class="img-fluid img-responsive rounded-circle mr-2"
+                    />
                     <input type="text" class="form-control border border-secondary ml-2 mr-3 inputTXT" placeholder="Add comment" />
-                    <button class="btn btn-outline-primary white_bg" type="button">
-                        <b>
-                            Comment
-                        </b>
+                    <button class="btn btn-outline-primary white_bg" type="button" role="button">
+                        <b>Comment</b>
                     </button>
                 </div>
-                <div class="mt-4">
-                    <div class="d-flex flex-row align-items-center">
-                        <h5 class="mr-2">Corey oates</h5>
-                        <span class="mb-1 ml-2 text-muted">4 hours ago</span>
-                    </div>
-                    <div class="">
-                        <span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </span>
-                    </div>
-                </div>
+                @forelse($commenti as $commento)
+                    <x-commento
+                            autoreCommento="{{ $commento->autoreCommento_nomeCognome }}"
+                            dataCommento="{{ $commento->data_commento }}"
+                            testoCommento="{{ $commento->testo_commento }}"
+                    />
+                @empty
+                    <x-none txt="No Comments there." />
+                @endforelse
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 @php
-    $utente = session()->get('utente');
+    $utente = session('utente');
     $selectors = selectors();
 @endphp
 

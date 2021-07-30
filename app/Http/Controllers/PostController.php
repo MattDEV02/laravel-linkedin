@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commento;
+use App\Models\DescrizioneUtente;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -85,13 +86,18 @@ class PostController extends Controller
    }
 
    public function commenti(Request $req): Factory | View | Application {
+      $this->utente =
+         $req
+            ->session()
+            ->get('utente');
       $post_id = $req->input('post_id');
       $req
          ->session()
          ->put('post_commenti_id', $post_id);
-      $commenti = Commento::all(); // passing $post_id
+      $commenti = Commento::getAllByPost(1); // passing $post_id
       return view('commenti.index', [
-         'commenti' => $commenti
+         'commenti' => $commenti,
+         'profile' => DescrizioneUtente::getProfile($this->utente->id)
       ]);
    }
 }

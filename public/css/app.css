@@ -16214,9 +16214,13 @@ thead.white_bg {
    font-size: 110%;
 }
 
+.mt-4-5 {
+   margin-top: 2.30rem !important;
+}
+
 #commenti_link_container {
    margin-top: 0.85rem;
-   margin-left: 3rem;
+   margin-left: 4rem;
 }
 
 .inputTXT:focus {
