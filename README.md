@@ -53,10 +53,10 @@
 The first web page will be the Home page, reachable at the root ('/').  
 Through the Home page, it is possible to reach the registration and/or login page.  
 On the registration page, it is possible to insert new users in the database, who enter values ​​such as email (unique), password, name, surname, role in the world of work and City of residence.  
-Once the user is registered, he will be redirected to the login page (obviously you can go there even without having registered) and enter your credentials (email and password), and if present in the database, a redirection will take place in an area ('/ feed') where he can view his posts plus those of his friends and like each post. On this page, you can also publish new posts.  
+Once the user is registered, he will be redirected to the login page (obviously you can go there even without having registered) and enter your credentials (email and password), and if present in the database, a redirection will take place in an area ('/ feed') where he can view his posts plus those of his friends and like each post. On this page, you can also publish new posts and comment them.  
 Also in this area, we can find a horizontal navigation bar, thanks to which we can reach different pages and perform different actions, such as:
 
-- Access your profile card, edit it, view your posts and like them.
+- Access your profile card, edit it, view your posts, like them, view your links and remove them.
 
 - Search for other users and view (by clicking) their tabs, view their posts and connect with them.
 
@@ -127,3 +127,11 @@ On the Login page, the user can also retrieve his password by entering his email
 - ### Http
 
 - ### Console
+
+- ### Str
+
+- ### Observer
+
+- ### EventServiceProvider
+
+- ### File
