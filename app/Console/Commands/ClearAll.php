@@ -22,6 +22,7 @@ class ClearAll extends Command
    protected $description = 'Reset All the project.';
 
    private array $commands = [
+      'php artisan mnt:off',
       'npm install',
       'npm audit fix --force' ,
       'npm cache clean --force',
