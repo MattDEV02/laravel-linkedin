@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 
 
+/**
+ * @method static getRichieste(int $utenteRicevente)
+ */
 class RichiestaAmicizia extends Model
 {
 

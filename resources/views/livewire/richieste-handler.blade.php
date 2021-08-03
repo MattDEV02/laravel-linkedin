@@ -11,11 +11,11 @@
             </h2>
             <table class="{{ $selectors['table'] }} richieste white_bg">
                 <thead class="white_bg">
-                    <tr>
-                        <th scope="col">Utente</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Azioni</th>
-                    </tr>
+                <tr>
+                    <th scope="col">Utente</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Azioni</th>
+                </tr>
                 </thead>
                 <tbody>
                 @foreach($richieste as $richiesta)

@@ -61,7 +61,10 @@
                                             class="{{ $selectors['input'] }}"
                                             name="{{ $selectors['select2'] }}"
                                             required>
-                                        @component('components.option', ['data' => $citta, 'selected' => old('citta')])
+                                        @component('components.option', [
+                                            'data' => $citta,
+                                            'selected' => old('citta')
+                                        ])
                                         @endcomponent
                                     </select>
                                 </div>

@@ -27,6 +27,7 @@
                           'utente' => $utente_id,
                           'like' => $post->miPiace,
                           'profile_id' => $profile_id,
+                          'numero_commenti' => $post->numero_commenti
                     ])
                     @endcomponent
                 </div>

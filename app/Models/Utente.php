@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 
+/**
+ * @method static isLogged(string $email, mixed $password)
+ */
 class Utente extends Model
 {
    protected $table = 'Utente';

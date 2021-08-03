@@ -1,6 +1,6 @@
 @php
     $selectors = selectors();
-    $utente = session()->get('utente');
+    $utente = session('utente');
 @endphp
 
 <!DOCTYPE html>

@@ -1,8 +1,8 @@
 @php
     $selectors = selectors();
     $base = 'storage/profiles/';
-    $path = isset($profile->foto) ? $profile->utente_id. '/'.$profile->foto : 'default.jpg';
-    $utente = session()->get('utente');
+    $utente = session('utente');
+    $path = getProfileImage($profile->foto, $profile->utente_id);
     $collegamenti = getNumCollegamenti($profile->utente_id);
     $ml = 'ml-4';
     $mt = 3;
@@ -18,6 +18,7 @@
                                 id="profile_img"
                                 src="{{ $base }}{{ $path }}"
                                 alt="{{ $profile->utenteEmail }}"
+                                title="{{ $profile->utenteEmail }}"
                                 class="rounded-circle mt-{{ $mt + 2 }} {{ $ml }}"
                         />
                     </div>
