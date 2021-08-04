@@ -18,7 +18,7 @@
                     </h4>
                 </a>
                 <x-lavora-presso
-                    lavoroPresso="{{ $post->lavoroPresso }}"
+                        lavoroPresso="{{ $post->lavoroPresso }}"
                 />
                 <p class="card-text">{{ $post->testo }}</p>
                 <div class="{{ $selectors['col'] }}">
@@ -26,8 +26,8 @@
                           'post' => $post->id,
                           'utente' => $utente_id,
                           'like' => $post->miPiace,
-                          'profile_id' => $profile_id,
-                          'numero_commenti' => $post->numero_commenti
+                          'autore' => $post->utente_id,
+                          'profile_id' => $profile_id
                     ])
                     @endcomponent
                 </div>

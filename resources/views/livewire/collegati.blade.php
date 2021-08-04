@@ -3,7 +3,7 @@
        isLinked($utenteMittente, $utenteRicevente) ||
        isSentRichiesta($utenteMittente, $utenteRicevente )
        || $clicked
-       );
+    );
     $func = $cond ? null : "link($utenteMittente, $utenteRicevente)" ;
 @endphp
 

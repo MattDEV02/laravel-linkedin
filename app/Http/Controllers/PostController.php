@@ -85,12 +85,10 @@
          ]);
       }
 
-      public function commenti(Request $req): Factory | View | Application | RedirectResponse
-      {
+      public function commenti(Request $req, int $post_id): Factory | View | Application | RedirectResponse {
          $this->utente = $req
             ->session()
             ->get('utente');
-         $post_id = $req->input('post');
          $commenti = Commento::getAllByPost($post_id);
          $post = Post::getWithAuthor($post_id);
          return isValidCollection($post) ? view('commenti.index', [

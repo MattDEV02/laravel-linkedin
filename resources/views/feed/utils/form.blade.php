@@ -13,7 +13,7 @@ $selectors = selectors();
                     </div>
                 </div>
                 <div class="{{ $selectors['col'] }}4">
-                    <div class="{{ $selectors['row'] }}">
+                    <div cl-ass="{{ $selectors['row'] }}">
                         <input
                                 type="text"
                                 name="testo"

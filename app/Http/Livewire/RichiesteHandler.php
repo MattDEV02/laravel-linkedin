@@ -24,11 +24,6 @@
          $this->utenteRicevente = session()->get('utente')->id;
       }
 
-      public function get(int $utenteMittente, int $utenteRicevente): void {
-         $this->utenteMittente = $utenteMittente;
-         $this->utenteRicevente = $utenteRicevente;
-      }
-
       public function refresh(): void {
          $this->richieste = RichiestaAmicizia::getRichieste($this->utenteRicevente);
       }
@@ -59,19 +54,18 @@
          $this->click = true;
       }
 
-      public function accetta(int $utenteMittente, int $utenteRicevente): void {
-         $this->get($utenteMittente, $utenteRicevente);
+      public function accetta(int $utenteMittente): void {
+         $this->utenteMittente = $utenteMittente;
          $this->update($this->stato[1]);
          $this->delete();
       }
 
-      public function rifiuta(int $utenteMittente, int $utenteRicevente): void {
-         $this->get($utenteMittente, $utenteRicevente);
+      public function rifiuta(int $utenteMittente): void {
+         $this->utenteMittente = $utenteMittente;
          $this->delete();
       }
 
       public function render(): Factory | View | Application {
-         $this->refresh();
          return view('livewire.richieste-handler');
       }
    }

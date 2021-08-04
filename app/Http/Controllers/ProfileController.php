@@ -90,7 +90,7 @@
          }
       }
       public function showProfile(Request $req): Factory | View | Application {
-         $emailSearched = $req->input('search');
+         $emailSearched = $req->query('search');
          consoleLog("Profile searched: $emailSearched");
          $this->utente = $req
             ->session()

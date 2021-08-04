@@ -1,5 +1,6 @@
 @php
 $selectors = selectors();
+$path = $cond ? '../' : null;
 @endphp
 
 <title>{{ $title }} | {{ $selectors['app'] }}</title>
@@ -20,8 +21,8 @@ $selectors = selectors();
 <meta name="copyright" content="Proprietario di questa Web-App" />
 <meta name="robots" content="NOINDEX, NOFOLLOW" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="shortcut icon" type="image/x-icon" href="{{ $selectors['icons']['ico'] }}" />
-<link rel="icon" sizes="64x64" type="image/x-icon" href="{{ $selectors['icons']['ico'] }}" />
-<link rel="manifest" href="manifest.json" />
+<link rel="shortcut icon" type="image/x-icon" href="{{ $path }}{{ $selectors['icons']['ico'] }}" />
+<link rel="icon" sizes="64x64" type="image/x-icon" href="{{ $path }}{{ $selectors['icons']['ico'] }}" />
+<link rel="manifest" href="{{ $path }}manifest.json" />
 @livewireStyles
 <link rel="stylesheet" type='text/css' href="{{ asset("css/app.css") }}" />

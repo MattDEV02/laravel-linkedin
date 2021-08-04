@@ -5,12 +5,8 @@
     $noPosts = false;
 @endphp
 
-<div class="{{ $selectors['col'] }}5">
-    <div class="{{ $selectors['row'] }}">
-        <h1>
-            Posts
-        </h1>
-    </div>
+<div class="mt-5">
+    <x-subtitle txt="Posts" />
 </div>
 @if(!isValidCollection($posts))
     @php

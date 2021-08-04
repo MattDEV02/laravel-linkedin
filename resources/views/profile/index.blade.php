@@ -3,17 +3,15 @@
     $utente = session()->get('utente');
 @endphp
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>
     <x-head title="Profile" />
     <link rel="stylesheet" type="text/css" href="css/profile/index.css" />
-    <link rel="stylesheet" type="text/css" href="/css/registrazione/index.css" />
 </head>
 
 <body>
-
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['row'] }} justify-content-md-start">
@@ -26,13 +24,9 @@
         @endcomponent
     </div>
     @if($own_profile)
-    <div class="{{ $selectors['col'] }}5">
-        <div class="{{ $selectors['row'] }}">
-            @livewire('richieste-handler', [
-                'richieste' => $richieste
-            ])
-        </div>
-    </div>
+        @livewire('richieste-handler', [
+        'richieste' => $richieste
+        ])
     @endif
 
     <div id="posts-container">
@@ -41,6 +35,7 @@
         ])
     </div>
 </div>
+
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/feed/index.js"></script>
 </body>

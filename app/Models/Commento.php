@@ -10,6 +10,7 @@
 
    /**
     * @method static getAllByPost(int $post_id)
+    * @method static getNumByPost(int $post)
     * @property string testo
     * @property int utente
     * @property int post
@@ -23,18 +24,11 @@
       {
          return DB::table('Commento AS c')
             ->select([
-               'p.id AS post_id',
-               'p.foto AS foto_post',
-               'p.testo AS testo_post',
-               'p.created_at AS data_post',
                'c.testo AS testo_commento',
                'c.created_at AS data_commento',
-               'up.id AS autore_post_id',
-               'up.email AS autore_post_email',
                'uc.email AS autore_commento_email',
                DB::raw("CONCAT(uc.nome, ' ', uc.cognome) AS autoreCommento_nomeCognome"),
                'uc.id AS autore_commento_id',
-               'dup.foto AS foto_autore_post',
                'duc.foto AS foto_autore_commento'
             ])
             ->join('Post AS p', 'c.post', 'p.id')
@@ -45,5 +39,9 @@
             ->where('p.id', $post)
             ->orderBy('c.created_at', 'DESC')
             ->get();
+      }
+
+      public function scopeGetNumByPost(Builder $query, int $post_id): int {
+         return Commento::where('post', $post_id)->count() ;
       }
    }

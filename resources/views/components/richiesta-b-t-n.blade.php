@@ -7,7 +7,7 @@
 <button
         class="btn btn-{{ $class }} {{ $selectors['border'] }} warning_hover"
         id="{{ $txt }}"
-        wire:click="{{ $txt }}({{ $utenteMittente }}, {{ $utenteRicevente }})">
+        wire:click="{{ $txt }}({{ $utenteMittente }})">
     <b>
         {{ ucfirst($txt) }}
     </b>

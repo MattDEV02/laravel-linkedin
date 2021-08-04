@@ -1,11 +1,11 @@
 @php
     $utente = session('utente');
     $selectors = selectors();
-    $base = 'storage';
+    $base = '../storage';
     $path = getProfileImage($utente->profile_foto, $utente->id);
 @endphp
 
-<div wire:key="{{ uniqid() }}">
+<div wire:key="{{ uniqid() }}" wire:poll.700ms="refresh({{ $post['id'] }})">
     <div class="d-flex flex-row align-items-center text-left p-2 bg-white {{ $selectors['border'] }} border-bottom-0 px-4">
         <img
                 src="{{ $base }}/posts/{{ $post['autore_id'] }}/{{ $post['foto'] }}"
@@ -25,11 +25,11 @@
                 </div>
             </div>
             <div class="d-flex flex-row align-items-center align-content-center mb-2">
-                        <span class="mr-2 text-primary">
-                            {{ count($commenti) }} comments&nbsp;
-                        </span>
+                    <span class="mr-2 text-primary">
+                        {{ count($commenti) }} commenti
+                    </span>
                 <span class="text-dark ml-2">
-                           {{ $post['created_at'] }}
+                    {{ $post['created_at'] }}
                 </span>
             </div>
         </div>
@@ -47,12 +47,13 @@
                     type="text"
                     id="testo"
                     name="testo"
-                    wire:model="testo"
-                    min="{{ 1 }}"
-                    max="{{ 255 }}"
+                    minlength="{{ 1 }}"
+                    maxlength="{{ 255 }}"
                     autocomplete="off"
                     class="form-control border border-secondary ml-2 mr-3 inputTXT"
                     placeholder="Add comment"
+                    wire:model="testo"
+                    wire:keyup.enter="pubblicazione({{ $post['id'] }})"
             />
             <button
                     class="btn btn-outline-primary white_bg"
@@ -74,4 +75,3 @@
         </div>
     </div>
 </div>
-

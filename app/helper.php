@@ -1,11 +1,11 @@
 <?php
 
+   use App\Models\Commento;
    use App\Models\DescrizioneUtente;
    use App\Models\MiPiace;
    use App\Models\Utente;
    use Illuminate\Http\Client\RequestException;
    use Illuminate\Http\Request;
-   use Illuminate\Support\Arr;
    use Illuminate\Support\Facades\Http;
    use Illuminate\Support\Facades\Log;
    use Illuminate\Support\Facades\Storage;
@@ -31,7 +31,8 @@
       !function_exists('isValidResponse') &&
       !function_exists('adjustEmail') &&
       !function_exists('getProfileImage') &&
-      !function_exists('sessionPutUser')
+      !function_exists('sessionPutUser') &&
+      !function_exists('getNumCommentiByPost')
    ) {
       function selectors(): array {
          $imgFolder = 'img';
@@ -173,6 +174,9 @@
          $req
             ->session()
             ->put('utente', $utente);
+      }
+      function getNumCommentiByPost(int $post): int {
+         return Commento::getNumByPost($post);
       }
    }
 

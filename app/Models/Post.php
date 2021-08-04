@@ -14,6 +14,8 @@
     * @method static getAll(int $utente_id, false $false)
     * @method static getWithAuthor(int $post_id)
     * @property string testo
+    * @property string foto
+    * @property int utente
     */
    class Post extends Model {
 
@@ -41,13 +43,11 @@
             CONCAT(u.nome, ' ', u.cognome) AS utente,
             CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
             u.email AS utenteEmail,
-            COUNT(mp.id) AS miPiace,
-            COUNT(cm.id) AS numero_commenti 
+            COUNT(mp.id) AS miPiace
         FROM 
 	         Post p
             LEFT JOIN MiPiace mp ON p.id = mp.post
             JOIN Utente u ON p.utente = u.id
-	         LEFT JOIN Commento cm ON cm.post = p.id
             JOIN UtenteLavoro ul ON ul.utente = u.id
             JOIN Lavoro l ON ul.lavoro = l.id
             JOIN Citta c ON u.citta = c.id

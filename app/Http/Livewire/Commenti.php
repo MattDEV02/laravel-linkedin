@@ -7,6 +7,7 @@
    use Illuminate\Contracts\View\Factory;
    use Illuminate\Contracts\View\View;
    use Illuminate\Support\Collection;
+   use Illuminate\Support\Str;
    use Livewire\Component;
 
 
@@ -17,27 +18,29 @@
 
       public string $testo;
 
+
       public function mount(): void {
          $this->testo = '';
       }
 
       public function pubblicazione(int $post_id): void {
-         $commento = new Commento();
-         $commento->testo = $this->testo;
-         $commento->post = $post_id;
-         $commento->utente = session()->get('utente')->id;
-         $commento->save();
-         $this->refresh($post_id);
+         $len = Str::length($this->testo);
+         if($len > 0 && $len < 255) {
+            $commento = new Commento();
+            $commento->testo = $this->testo;
+            $commento->post = $post_id;
+            $commento->utente = session()->get('utente')->id;
+            $commento->save();
+            $this->testo = '';
+            $this->refresh($post_id);
+         }
       }
 
       public function refresh(int $post_id): void {
-         $this->testo = '';
          $this->commenti = Commento::getAllByPost($post_id);
       }
 
       public function render(): Factory | View | Application {
-         return view('livewire.commenti', [
-            'commenti' =>  Commento::getAllByPost(1)
-         ]);
+         return view('livewire.commenti');
       }
    }

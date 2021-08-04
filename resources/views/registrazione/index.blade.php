@@ -16,11 +16,11 @@
         <div class="{{ $selectors['row'] }}">
             @component('components.no-script')
             @endcomponent
-            <div class="mt-4">
+            <div class="mt-4-5">
                 <x-title />
             </div>
-            <div class="{{ $selectors['col'] }}">
-                <div class="{{ $selectors['row'] }} mt-4">
+            <div class="{{ $selectors['col'] }}4">
+                <div class="{{ $selectors['row'] }}">
                     <h5 id="subtitle">
                         Ottieni il massimo dalla tua vita professionale
                     </h5>

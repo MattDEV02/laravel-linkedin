@@ -20,10 +20,17 @@
         </h3>
     </div>
     <div id="commenti_link_container">
-        <a href="/commenti?post={{ $post }}">
+        <a href="/commenti/{{ $post }}">
             <h6 class="text-secondary big_font_size" id="commenti_link">
-                {{ $numero_commenti }}&ensp;Commenti
+                {{ getNumCommentiByPost($post) }}&ensp;commenti
             </h6>
+        </a>
+    </div>
+    <div id="numero_collegamenti_post">
+        <a href="/collegamenti">
+            <p class="text-info">
+                {{ getNumCollegamenti($autore) }} collegamenti
+            </p>
         </a>
     </div>
 </div>
