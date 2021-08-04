@@ -5,7 +5,7 @@
     $path = getProfileImage($utente->profile_foto, $utente->id);
 @endphp
 
-<div wire:key="{{ uniqid() }}" wire:poll.700ms="refresh({{ $post['id'] }})">
+<div wire:key="{{ uniqid() }}" wire:poll.625ms="refresh({{ $post['id'] }})">
     <div class="d-flex flex-row align-items-center text-left p-2 bg-white {{ $selectors['border'] }} border-bottom-0 px-4">
         <img
                 src="{{ $base }}/posts/{{ $post['autore_id'] }}/{{ $post['foto'] }}"
