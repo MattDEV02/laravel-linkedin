@@ -3,7 +3,7 @@
 @endphp
 
 @if(isValidCollection($richieste))
-    <div class="col-xs-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mt-5">
+    <div class="col-xs-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mt-5" wire:poll.750ms.keep-alive>
         <div class="{{ $selectors['row'] }}">
             <h2 class="">Richieste di amicizia in sospeso: </h2>
             <h2 class="text-primary ml-3">
@@ -20,19 +20,20 @@
                 <tbody>
                 @foreach($richieste as $richiesta)
                     @php
-                        $mittente = $richiesta->utenteMittente;
-                        $ricevente = $richiesta->utenteRicevente;
+                        $richiesta = (array) $richiesta;
+                        $mittente = $richiesta['utenteMittente'];
+                        $ricevente = $richiesta['utenteRicevente'];
                     @endphp
                     @if(!isLinked($mittente, $ricevente))
                         <tr>
                             <td>
                                 <x-profile-link
-                                        utenteEmail="{{ $richiesta->email }}"
-                                        utenteNomeCognome="{{ $richiesta->utenteNomeCognome }}"
+                                        utenteEmail="{{ $richiesta['email'] }}"
+                                        utenteNomeCognome="{{ $richiesta['utenteNomeCognome'] }}"
                                 />
                             </td>
                             <td>
-                                {{ $richiesta->dataInvio }}
+                                {{ $richiesta['dataInvio'] }}
                             </td>
                             <td>
                                 <x-richiesta-b-t-n

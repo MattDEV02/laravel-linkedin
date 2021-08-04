@@ -3,7 +3,6 @@
    namespace App\Http\Livewire;
 
    use App\Models\Commento;
-   use App\Models\Post;
    use Illuminate\Contracts\Foundation\Application;
    use Illuminate\Contracts\View\Factory;
    use Illuminate\Contracts\View\View;
@@ -34,10 +33,11 @@
       public function refresh(int $post_id): void {
          $this->testo = '';
          $this->commenti = Commento::getAllByPost($post_id);
-         $this->post = Post::getWithAuthor($post_id);
       }
 
       public function render(): Factory | View | Application {
-         return view('livewire.commenti');
+         return view('livewire.commenti', [
+            'commenti' =>  Commento::getAllByPost(1)
+         ]);
       }
    }

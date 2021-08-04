@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 
+/**
+ * @method static like(mixed $input, mixed $input1)
+ */
 class MiPiace extends Model
 {
 

@@ -11,10 +11,10 @@
 
    /**
     * @method static getProfile(int $id)
+    * @method static updateProfile(Request $req)
     */
    class DescrizioneUtente extends Model  // Profilo dell'Utente
    {
-
       protected $table = 'DescrizioneUtente';
       public $timestamps = true;
 

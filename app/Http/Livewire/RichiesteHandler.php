@@ -19,6 +19,11 @@
       private array $attr = ['utenteMittente', 'utenteRicevente', 'stato'];
       public bool $click = false;
 
+
+      public function mount(): void {
+         $this->utenteRicevente = session()->get('utente')->id;
+      }
+
       public function get(int $utenteMittente, int $utenteRicevente): void {
          $this->utenteMittente = $utenteMittente;
          $this->utenteRicevente = $utenteRicevente;
@@ -66,6 +71,7 @@
       }
 
       public function render(): Factory | View | Application {
+         $this->refresh();
          return view('livewire.richieste-handler');
       }
    }

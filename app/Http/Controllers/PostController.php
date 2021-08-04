@@ -6,6 +6,7 @@
    use Illuminate\Contracts\Foundation\Application;
    use Illuminate\Contracts\View\Factory;
    use Illuminate\Contracts\View\View;
+   use Illuminate\Http\RedirectResponse;
    use Illuminate\Http\Request;
    use Illuminate\Support\Facades\Log;
    use App\Models\MiPiace;
@@ -13,8 +14,8 @@
    use App\Models\Utente;
 
 
-   class PostController extends Controller
-   {
+   class PostController extends Controller {
+
       private ?Utente $utente;
 
       public function insert(Request $req): Factory | View | Application {
@@ -84,15 +85,17 @@
          ]);
       }
 
-      public function commenti(Request $req) {
+      public function commenti(Request $req): Factory | View | Application | RedirectResponse
+      {
          $this->utente = $req
             ->session()
             ->get('utente');
          $post_id = $req->input('post');
          $commenti = Commento::getAllByPost($post_id);
-         return view('commenti.index', [
+         $post = Post::getWithAuthor($post_id);
+         return isValidCollection($post) ? view('commenti.index', [
             'commenti' => $commenti,
-            'post' => Post::getWithAuthor($post_id)
-         ]);
+            'post' => $post
+         ]) : back();
       }
    }
