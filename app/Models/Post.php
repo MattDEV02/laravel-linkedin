@@ -11,8 +11,9 @@
 
    /**
     * @method static pubblicazione(int $utente_id, Request $req)
-    * @method static getAll(int $utente_id, false $false)
+    * @method static getAll(int $utente_id, bool $profile = false, string $orderBy = 'p.created_at DESC')
     * @method static getWithAuthor(int $post_id)
+    * @method static getNumLikes()
     * @property string testo
     * @property string foto
     * @property int utente
@@ -34,34 +35,59 @@
 
       public function scopeGetAll(Builder $query, int $utente_id, bool $profile = false, $orderBy = 'p.created_at DESC'): array {
          $sql = ("
-         SELECT 
-            p.id,
-            p.utente AS utente_id,
-	         p.foto,
-            p.testo,
-            p.created_at,
-            CONCAT(u.nome, ' ', u.cognome) AS utente,
-            CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
-            u.email AS utenteEmail,
-            COUNT(mp.id) AS miPiace
-        FROM 
-	         Post p
-            LEFT JOIN MiPiace mp ON p.id = mp.post
-            JOIN Utente u ON p.utente = u.id
-            JOIN UtenteLavoro ul ON ul.utente = u.id
-            JOIN Lavoro l ON ul.lavoro = l.id
-            JOIN Citta c ON u.citta = c.id
-            JOIN Nazione n ON c.nazione = n.id
-         WHERE
-            True
-        GROUP BY 
-            p.id
-        ORDER BY 
-            $orderBy 
+            SELECT 
+               p.id,
+               p.utente AS utente_id,
+               p.foto,
+               p.testo,
+               p.created_at,
+               CONCAT(u.nome, ' ', u.cognome) AS utente,
+               CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
+               u.email AS utenteEmail
+           FROM 
+              Post p
+              JOIN Utente u ON p.utente = u.id
+              LEFT JOIN RichiestaAmicizia ra ON (ra.utenteMittente = u.id OR ra.utenteRicevente = u.id)
+              JOIN UtenteLavoro ul ON ul.utente = u.id
+              JOIN Lavoro l ON ul.lavoro = l.id
+              JOIN Citta c ON u.citta = c.id
+              JOIN Nazione n ON c.nazione = n.id
+           WHERE
+               ra.stato = 'Accettata' AND
+              (ra.utenteMittente = $utente_id OR ra.utenteRicevente = $utente_id)
+           GROUP BY
+              p.id
+           ORDER BY 
+               $orderBy 
       ");
          if($profile)
-            $sql = Str::replace('True', "p.utente = $utente_id", $sql);
+            $sql = Post::getSQLQuery_postsByProfile($utente_id, $orderBy);
          return DB::select($sql);
+      }
+
+      public static function getSQLQuery_postsByProfile(int $profile, string $orderBy): string {
+         return ("
+            SELECT 
+                  p.id,
+                  p.utente AS utente_id,
+                  p.foto,
+                  p.testo,
+                  p.created_at,
+                  CONCAT(u.nome, ' ', u.cognome) AS utente,
+                  CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
+                  u.email AS utenteEmail
+               FROM
+                   Post p
+                       JOIN Utente u ON p.utente = u.id
+                       JOIN UtenteLavoro ul ON ul.utente = u.id
+                       JOIN Lavoro l ON ul.lavoro = l.id
+                       JOIN Citta c ON u.citta = c.id
+                       JOIN Nazione n ON c.nazione = n.id
+               WHERE
+                   u.id = $profile
+               ORDER BY
+                   $orderBy
+         ");
       }
 
       public function scopeGetWithAuthor(Builder $query, int $post_id): array {

@@ -16,7 +16,7 @@
     </button>
     <div>
         <h3 class="card-text ml-3 mt-1">
-            {{ $like }}
+            {{ getNumLikes($post) }}
         </h3>
     </div>
     <div id="commenti_link_container">

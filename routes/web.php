@@ -71,3 +71,7 @@
                   ->name('edit-profile');
             });
       });
+
+   Route::any('test', function() {
+      return \App\Models\Post::getAll(1);
+   });

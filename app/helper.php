@@ -3,6 +3,7 @@
    use App\Models\Commento;
    use App\Models\DescrizioneUtente;
    use App\Models\MiPiace;
+   use App\Models\Post;
    use App\Models\Utente;
    use Illuminate\Http\Client\RequestException;
    use Illuminate\Http\Request;
@@ -32,7 +33,8 @@
       !function_exists('adjustEmail') &&
       !function_exists('getProfileImage') &&
       !function_exists('sessionPutUser') &&
-      !function_exists('getNumCommentiByPost')
+      !function_exists('getNumCommentiByPost') &&
+      !function_exists('getNumLikes')
    ) {
       function selectors(): array {
          $imgFolder = 'img';
@@ -177,6 +179,9 @@
       }
       function getNumCommentiByPost(int $post): int {
          return Commento::getNumByPost($post);
+      }
+      function getNumLikes(int $post_id): int {
+         return MiPiace::getNumLikes($post_id);
       }
    }
 

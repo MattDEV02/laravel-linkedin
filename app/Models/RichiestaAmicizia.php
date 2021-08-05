@@ -10,6 +10,8 @@
 
    /**
     * @method static getRichieste(int $utenteRicevente)
+    * @method static isLinked(int $utenteMittente, int $utenteRicevente, bool $flag)
+    * @method static getNumCollegamenti(int $utenteRicevente)
     */
    class RichiestaAmicizia extends Model
    {

@@ -25,7 +25,6 @@
                     @component('components.mi-piace-button', [
                           'post' => $post->id,
                           'utente' => $utente_id,
-                          'like' => $post->miPiace,
                           'autore' => $post->utente_id,
                           'profile_id' => $profile_id
                     ])

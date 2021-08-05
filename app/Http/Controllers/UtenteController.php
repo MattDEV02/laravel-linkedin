@@ -89,7 +89,7 @@
                $password = $req->input('password');
                Cookie::queue(Cookie::forever('password', $password));
                $email = Utente::registrazione($req);
-               Log::debug("New User Interted ($email).");
+               Log::debug("New User inserted ($email).");
                return redirect('/login')
                   ->with('msg', 'reg')
                   ->withCookie('password', $password);
