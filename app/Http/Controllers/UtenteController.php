@@ -32,6 +32,7 @@
 
       public function logout(Request $req): RedirectResponse {
          if($req->session()->exists('utente')) {
+            Cookie::queue(Cookie::forget('password'));
             $email = $req
                ->session()
                ->get('utente')
@@ -39,7 +40,6 @@
             $req
                ->session()
                ->invalidate();
-            Cookie::queue(Cookie::forget('password'));
             Log::warning("Finished User-Session ($email).");
             return redirect('/login')
                ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
@@ -47,8 +47,7 @@
             return redirect('/login');
       }
 
-      public function insert(Request $req): RedirectResponse
-      {
+      public function insert(Request $req): RedirectResponse {
          if(checkRef($req, 'registrazione')) {
             $req->validate([
                'email' => ['email', 'required', 'unique:Utente','min:2', 'max:35'],

@@ -4,6 +4,7 @@
 
    use Closure;
    use Illuminate\Http\Request;
+   use Illuminate\Support\Facades\Artisan;
    use Illuminate\Support\Facades\Log;
    use Illuminate\Support\Str;
 
@@ -17,6 +18,8 @@
        * @return mixed
        */
       public function handle(Request $request, Closure $next): mixed {
+         if(getLogLines() > 2500)
+            Artisan::call('log:clear');
          $ip = $request->ip();
          $method = Str::upper($request->method());
          $url = urldecode($request->fullUrl());

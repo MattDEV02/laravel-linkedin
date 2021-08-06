@@ -3,10 +3,12 @@
    use App\Models\Commento;
    use App\Models\DescrizioneUtente;
    use App\Models\MiPiace;
-   use App\Models\Post;
    use App\Models\Utente;
+   use App\Models\UtenteLavoro;
    use Illuminate\Http\Client\RequestException;
    use Illuminate\Http\Request;
+   use Illuminate\Support\Facades\Cookie;
+   use Illuminate\Support\Facades\File;
    use Illuminate\Support\Facades\Http;
    use Illuminate\Support\Facades\Log;
    use Illuminate\Support\Facades\Storage;
@@ -34,7 +36,8 @@
       !function_exists('getProfileImage') &&
       !function_exists('sessionPutUser') &&
       !function_exists('getNumCommentiByPost') &&
-      !function_exists('getNumLikes')
+      !function_exists('getNumLikes') &&
+      !function_exists('getLogLines')
    ) {
       function selectors(): array {
          $imgFolder = 'img';
@@ -163,25 +166,26 @@
          return isset($profile_foto) ? ($utente_id . '/' . $profile_foto) : 'default.jpg';
       }
       function sessionPutUser(Request $req): void {
-         $utente = Utente::all([
-            'id',
-            'email',
-            'nome',
-            'cognome',
-         ])
+         $utente = Utente::all()
             ->where('email', adjustEmail($req->input('email')))
             ->first();
-         $utente->password = $req->input('password');
-         $utente->profile_foto = DescrizioneUtente::find($utente->id)->foto;
+         $password = $req->input('password');
+         $utente->password = $password;
+         $utente->profile = DescrizioneUtente::find($utente->id);
+         $utente->ul = UtenteLavoro::where('utente', $utente->id)->first();
          $req
             ->session()
             ->put('utente', $utente);
+         Cookie::queue(Cookie::forever('password', $password));
       }
       function getNumCommentiByPost(int $post): int {
          return Commento::getNumByPost($post);
       }
       function getNumLikes(int $post_id): int {
          return MiPiace::getNumLikes($post_id);
+      }
+      function getLogLines(): int {
+         return count(File::lines(storage_path('logs/laravel.log'))) - 1;
       }
    }
 

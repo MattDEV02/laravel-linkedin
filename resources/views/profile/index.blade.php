@@ -31,7 +31,7 @@
 
     <div id="posts-container">
         @include('feed.utils.posts', [
-            'profile_id' => $profile->id
+            'profile_id' => $profile->utente_id
         ])
     </div>
 </div>

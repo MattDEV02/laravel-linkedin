@@ -25,12 +25,8 @@
             ->session()
             ->get('utente');
          $utente_id = $this->utente->id;
-         $profile = DescrizioneUtente::getProfile($utente_id);
-         $req
-            ->session()
-            ->put('profile_utente_id', $profile->id);
          return view('profile.index', [
-            'profile' => $profile,
+            'profile' => DescrizioneUtente::getAll($utente_id),
             'richieste' => RichiestaAmicizia::getRichieste($utente_id),
             'posts' => Post::getAll($utente_id, true),
             'own_profile' => true
@@ -42,11 +38,9 @@
             $this->utente = $req
                ->session()
                ->get('utente');
-            $profile = DescrizioneUtente::getProfile($this->utente->id);
             return view('profile.utils.form', [
                'lavori' => Lavoro::all(),
-               'citta' => Citta::all(),
-               'profile' => $profile
+               'citta' => Citta::all()
             ]);
          } else
             return redirect('/profile');
@@ -59,7 +53,7 @@
             'citta' => ['required', 'numeric', 'min:1', 'max:13'],
             'lavoro' => ['required', 'numeric', 'min:1', 'max:15'],
             'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d'],
-            'testo' => ['nullable', 'max:255']
+            'testo' => ['nullable', 'min:2' , 'max:255']
          ], [
             'image.mimes' => 'Insert a valid image.',
             'image.max' => 'Immagine troppo pesante.',
@@ -76,7 +70,8 @@
             'lavoro.max' => 'Lavoro inserito non valido.',
             'dataInizioLavoro.date' => 'Data inizio lavoro is a date.',
             'dataInizioLavoro.date_format' => 'Incorrect date format for Data inizio lavoro.',
-            'testo.max' => 'Testo della descrizione troppo lungo.'
+            'testo.min' => 'Testo della descrizione troppo lungo (min: 2).',
+            'testo.max' => 'Testo della descrizione troppo lungo (max: 255).'
          ]);
          $errors = checkDataInizioLavoroErrors($req);
          if(isValidCollection($errors))
@@ -100,42 +95,45 @@
          if(isset($utenteSearched)) {
             $utente_id = $this->utente->id;
             $utenteSearched_id = $utenteSearched->id;
-            $profile = DescrizioneUtente::getProfile($utenteSearched_id);
-            $req
-               ->session()
-               ->put('profile_utente_id', $profile->utente_id);
+            $profile = DescrizioneUtente::getAll($utenteSearched_id);
+            $own_profile = $profile->utente_id === $utente_id;
+            $richieste = $own_profile ? RichiestaAmicizia::getRichieste($utente_id) : null;
             return view('profile.index', [
                'profile' => $profile,
-               'richieste' => RichiestaAmicizia::getRichieste($utente_id),
+               'richieste' => $richieste,
                'posts' => Post::getAll($utenteSearched_id, true),
-               'own_profile' => $profile->utente_id === $utente_id,
+               'own_profile' => $own_profile,
             ]);
          } else {
             Log::error("User ($emailSearched) NOT FOUND.");
             return view('utils.user-not-found');
          }
       }
-      public function collegamenti(Request $req): Factory | View | Application {
+      public function collegamenti(Request $req, int $utente_id): Factory | View | Application {
          $this->utente = $req
             ->session()
             ->get('utente');
-         $utente_id = $req
-               ->session()
-               ->get('profile_utente_id') ?? $this->utente->id;
          return view('collegamenti.index', [
-            'collegamenti' => RichiestaAmicizia::getCollegamenti($utente_id)
+            'collegamenti' => RichiestaAmicizia::getCollegamenti($utente_id),
+            'profile_id' => $utente_id
          ]);
       }
 
       public function removeCollegamento(Request $req) {
          if(checkRef($req, 'collegamenti')) {
+            $req->validate([
+               'email' => ['required', 'email', 'min:2', 'max:35']
+            ], [
+               'required' => ':attribute is Required.',
+               'email.email' => 'Inserisci Email valida.',
+               'email.min' => 'Email almeno 2 caratteri.',
+               'email.max' => 'Email massimo 35 caratteri.',
+            ]);
             $this->utente = $req
                ->session()
                ->get('utente');
             $utente_id = $this->utente->id;
-            $utenteCollegamento = Utente::where(
-               'email', $req->input('email')
-            )->first();
+            $utenteCollegamento = Utente::where('email', $req->input('email'))->first();
             $idUtenteCollegamento = $utenteCollegamento->id;
             RichiestaAmicizia::removeCollegamento($utente_id, $idUtenteCollegamento);
             return 'Collegamento deleted.';

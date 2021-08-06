@@ -5,13 +5,13 @@
     $noPosts = false;
 @endphp
 
-<div class="mt-5">
-    <x-subtitle txt="Posts" />
+<div class="{{ $selectors['col'] }}5">
+        <x-subtitle txt="Posts" />
+    @if(!isValidCollection($posts))
+        <div class="mb-5">
+            <x-none txt="No posts there." />
+        </div>
 </div>
-@if(!isValidCollection($posts))
-    <div class="mb-5">
-        <x-none txt="No posts there." />
-    </div>
 @else
     @foreach($posts as $post)
         @component('components.post', [

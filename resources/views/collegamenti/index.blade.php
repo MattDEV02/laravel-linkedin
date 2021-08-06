@@ -1,17 +1,14 @@
 @php
     $selectors = selectors();
-    $utente = session()->get('utente');
-    $profile_utente_id = session()->get('profile_utente_id');
-    $display = $utente->id === $profile_utente_id;
-    if(!$display &&  !isset($profile_utente_id))
-       $display = true;
+    $utente = session('utente');
+    $display = $utente->id === $profile_id;
 @endphp
 
 <!DOCTYPE HTML>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>
-    <x-head title="Collegamenti" />
+    <x-head title="Collegamenti" cond="{{ true }}" />
 </head>
 
 <body>

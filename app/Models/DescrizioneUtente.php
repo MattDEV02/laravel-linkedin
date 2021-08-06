@@ -4,28 +4,29 @@
 
    use Illuminate\Database\Eloquent\Builder;
    use Illuminate\Database\Eloquent\Model;
+   use Illuminate\Support\Facades\Cookie;
    use Illuminate\Support\Facades\DB;
    use Illuminate\Http\Request;
    use Illuminate\Support\Facades\Storage;
 
 
    /**
-    * @method static getProfile(int $id)
+    * @method static getAll(int $utente_id)
     * @method static updateProfile(Request $req)
     */
    class DescrizioneUtente extends Model  // Profilo dell'Utente
    {
       protected $table = 'DescrizioneUtente';
+      protected $primaryKey = 'utente';
+      public $incrementing = false;
       public $timestamps = true;
 
-      public function scopeGetProfile(Builder $query, int $utente_id): ?object
-      {
+
+      public function scopeGetAll(Builder $query, int $utente_id): ?object {
          return DB::table('Utente AS u')
             ->select([
-               'du.id',
                'du.testo',
                'du.foto',
-               'du.updated_at',
                'u.email AS utenteEmail',
                'u.nome AS utenteName',
                'u.cognome AS utenteSurname',
@@ -45,37 +46,36 @@
             ->first();
       }
 
-      public function scopeUpdateProfile(Builder $query, Request $data): string {
-         $id = $data
+      public function scopeUpdateProfile(Builder $query, Request $req): string {
+         $id = $req
             ->session()
             ->get('utente')->id;
-         $img = $data->file('image');
-         $toUpdate = ['testo' => $data->input('testo')];
+         $img = $req->file('image');
+         $toUpdate = ['testo' => $req->input('testo')];
          if(isset($img)) {
             $dir = 'profiles';
             $files =  Storage::allFiles("public/$dir/$id/");
             Storage::delete($files);
             $toUpdate['foto'] = store($img , $dir, $id);
          }
-         DescrizioneUtente::where('utente', $id)
-            ->update($toUpdate);
+         DescrizioneUtente::find($id)->update($toUpdate);
          UtenteLavoro::where('utente', $id)
             ->update([
-               'lavoro' => $data->input('lavoro'),
-               'dataInizioLavoro' => $data->input('dataInizioLavoro')
+               'lavoro' => $req->input('lavoro'),
+               'dataInizioLavoro' => $req->input('dataInizioLavoro')
             ]);
          $utente = Utente::find($id);
-         $utente->nome = $data->input('nome');
-         $utente->cognome = $data->input('cognome');
-         $utente->citta = $data->input('citta');
+         $utente->nome = $req->input('nome');
+         $utente->cognome = $req->input('cognome');
+         $utente->citta = $req->input('citta');
          $utente->save();
-         $utente->password = $data
-            ->session()
-            ->get('utente')->password;
-         $data
+         $utente->password = $req
+               ->session()
+               ->get('utente')->password ?? Cookie::get('password');
+         $req
             ->session()
             ->forget('utente');
-         $data
+         $req
             ->session()
             ->put('utente', $utente);
          return $utente->email;

@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Models;
+   namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+   use Illuminate\Database\Eloquent\Model;
 
 
-class Lavoro extends Model
-{
-   use HasFactory;
+   class Lavoro extends Model {
+      protected $table = 'Lavoro';
+      public $timestamps = false;
 
-   protected $table = 'Lavoro';
-   public $timestamps = false;
-
-}
+   }

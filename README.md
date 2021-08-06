@@ -23,7 +23,7 @@
 ## Technologies used:
 
 - ### Laravel 8
-- ### PHP 8.0.6
+- ### PHP 8.0.9
 - ### Blade
 - ### MySQL 8.0.25
 - ### Eloquent
@@ -40,6 +40,7 @@
 - ### Artisan
 - ### JSON, XML
 - ### PHPUnit
+- ### PHPDocs
 - ### DigitalOcean
 - ### PHPStorm, Visual-studio Code.
 
@@ -99,6 +100,8 @@ On the Login page, the user can also retrieve his password by entering his email
 - ### Migration 
 
 - ### Seeder 
+
+- ### Factory
 
 - ### Blade (with components and other)
 

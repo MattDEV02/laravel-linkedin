@@ -65,7 +65,7 @@
                                         'utenteRicevente' => $profile->utente_id
                                     ])
                                 @endif
-                                <a href="{{ route('collegamenti') }}" title="Visualizza / modifica la lista collegamenti relativi a questo profilo.">
+                                <a href="{{ route('collegamenti', $profile->utente_id) }}" title="Visualizza / modifica la lista collegamenti relativi a questo profilo.">
                                     <b
                                             class="text-primary ml-3 numero_collegamenti"
                                             id="collegamenti">

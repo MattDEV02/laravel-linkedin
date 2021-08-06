@@ -44,7 +44,7 @@
          Route::get('/profile', [$PRC, 'profile'])
             ->name('profile');
          Route::get('/show-profile', [$PRC, 'showProfile']);
-         Route::get('/collegamenti', [$PRC, 'collegamenti'])
+         Route::get('/collegamenti/{utente_id}', [$PRC, 'collegamenti'])
             ->name('collegamenti');
       });
 
@@ -73,5 +73,5 @@
       });
 
    Route::any('test', function() {
-      return \App\Models\Post::getAll(1);
+      return getLogLines();
    });

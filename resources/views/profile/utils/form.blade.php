@@ -1,6 +1,6 @@
 @php
     $selectors = selectors();
-    $utente = session()->get('utente');
+    $utente = session('utente');
 @endphp
 
 <!DOCTYPE HTML>
@@ -22,7 +22,7 @@
                 <div class="{{ $selectors['col'] }}">
                     <div class="{{ $selectors['row'] }} mt-5">
                         <h5 id="subtitle">
-                          Modifica del Profilo
+                            Modifica del Profilo
                         </h5>
                     </div>
                 </div>
@@ -40,11 +40,12 @@
                                                     class="custom-file-label border-0"
                                                     id="fileLabel"
                                             >
-                                                Seleziona Immagine di Profilo
+                                                {{ $utente->profile->foto ?? ' Seleziona Immagine di Profilo' }}
                                             </label>
                                             <input
                                                     type="file"
                                                     accept="{{ $selectors['img'] }}/*"
+                                                    value="{{ $utente->profile->foto }}"
                                                     name="{{ $selectors['img'] }}"
                                                     id="{{ $selectors['img'] }}"
                                                     class="custom-file-input"
@@ -77,10 +78,10 @@
                                                 class="{{ $selectors['input'] }}"
                                                 id="{{ $selectors['select2']}}"
                                                 name="{{ $selectors['select2'] }}"
-                                                required>
+                                                required >
                                             @component('components.option', [
                                                 'data' => $citta,
-                                                'selected' => $profile->citta
+                                                'selected' => $utente->citta
                                             ])
                                             @endcomponent
                                         </select>
@@ -97,7 +98,7 @@
                                                 name="{{ $selectors['select1'] }}">
                                             @component('components.option', [
                                                'data' => $lavori,
-                                               'selected' => $profile->lavoro
+                                               'selected' => $utente->ul->lavoro
                                                ])
                                             @endcomponent
                                         </select>
@@ -105,7 +106,7 @@
                                 </div>
                                 <div class="{{ $selectors['col'] }}3">
                                     <div class="row">
-                                        <x-date val="{{ $profile->dataInizioLavoro }}"/>
+                                        <x-date val="{{ $utente->ul->dataInizioLavoro }}"/>
                                     </div>
                                 </div>
                                 <div class="{{ $selectors['col'] }}3">
@@ -117,7 +118,7 @@
                                                 class="{{ $selectors['input'] }}"
                                                 name="testo"
                                         >
-                                            {{ $profile->testo ?? '' }}
+                                            {{ $utente->profile->testo ?? '' }}
                                         </textarea>
                                     </div>
                                 </div>

@@ -27,7 +27,7 @@
         </a>
     </div>
     <div id="numero_collegamenti_post">
-        <a href="/collegamenti">
+        <a href="{{ route('collegamenti', $autore) }}">
             <p class="text-info">
                 {{ getNumCollegamenti($autore) }} collegamenti
             </p>

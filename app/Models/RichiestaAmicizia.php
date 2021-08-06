@@ -12,6 +12,9 @@
     * @method static getRichieste(int $utenteRicevente)
     * @method static isLinked(int $utenteMittente, int $utenteRicevente, bool $flag)
     * @method static getNumCollegamenti(int $utenteRicevente)
+    * @method static isSentRichiesta(int $utenteMittente, int $utenteRicevente)
+    * @method static getCollegamenti(mixed $utente_id)
+    * @method static removeCollegamento(mixed $utente_id, $idUtenteCollegamento)
     */
    class RichiestaAmicizia extends Model
    {
