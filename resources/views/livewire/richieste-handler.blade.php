@@ -3,9 +3,9 @@
 @endphp
 
 @if(isValidCollection($richieste))
-    <div class="{{ $selectors['col'] }}5">
+    <div class="{{ $selectors['col'] }}5" wire:key="{{ uniqid() }}">
         <div class="{{ $selectors['row'] }}">
-            <div class="col-xs-12 col-sm-11 col-md-9 col-lg-8 col-xl-6 mt-5" wire:poll.850ms="refresh()">
+            <div class="col-xs-12 col-sm-11 col-md-9 col-lg-8 col-xl-6" wire:poll.850ms="refresh()">
                 <div class="{{ $selectors['row'] }}">
                     <h2>Richieste di amicizia in sospeso: </h2>
                     <h2 class="text-primary ml-3">
@@ -31,7 +31,9 @@
                 </div>
             </div>
             @else
-                <x-none txt="Non ci sono richieste di amicizia." />
+                <div class="mt-4">
+                    <x-none txt="Non ci sono richieste di amicizia." />
+                </div>
             @endif
         </div>
     </div>

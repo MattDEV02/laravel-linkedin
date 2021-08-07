@@ -3,7 +3,7 @@
     $utente = session('utente');
 @endphp
 
-<!DOCTYPE HTML>
+        <!DOCTYPE HTML>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>
@@ -45,7 +45,6 @@
                                             <input
                                                     type="file"
                                                     accept="{{ $selectors['img'] }}/*"
-                                                    value="{{ $utente->profile->foto }}"
                                                     name="{{ $selectors['img'] }}"
                                                     id="{{ $selectors['img'] }}"
                                                     class="custom-file-input"
@@ -98,7 +97,7 @@
                                                 name="{{ $selectors['select1'] }}">
                                             @component('components.option', [
                                                'data' => $lavori,
-                                               'selected' => $utente->ul->lavoro
+                                               'selected' => $utente->ul->lavoro_id
                                                ])
                                             @endcomponent
                                         </select>
@@ -116,13 +115,13 @@
                                         </label>
                                         <textarea
                                                 class="{{ $selectors['input'] }}"
-                                                name="testo"
+                                                name="descrizione"
                                         >
-                                            {{ $utente->profile->testo ?? '' }}
+                                            {{ $utente->profile->descrizione ?? '' }}
                                         </textarea>
                                     </div>
                                 </div>
-                                <x-submit text="Salva" mt="4" />
+                                <x-submit text="Salva" mt="{{ 4 }}" />
                                 <x-reset />
                             </form>
                         </div>

@@ -6,8 +6,7 @@
    use Illuminate\Support\Facades\Schema;
 
 
-   class AddForeignKeysToPostTable extends Migration
-   {
+   class AddForeignKeysToPostTable extends Migration {
       /**
        * Run the migrations.
        *
@@ -15,7 +14,7 @@
        */
       public function up(): void {
          Schema::table('Post', function (Blueprint $table) {
-            $table->foreign('utente', 'UtentePostFK')->references('id')->on('Utente')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('utente_id', 'UtentePostFK')->references('id')->on('Utente')->onUpdate('CASCADE')->onDelete('CASCADE');
             DB::statement('ALTER TABLE Post ADD CONSTRAINT CHECK_TestoPost CHECK (char_length(testo) >= 1);');
             DB::statement('ALTER TABLE Post ADD CONSTRAINT CHECK_FotoPost CHECK (char_length(foto) > 6);');
             DB::statement("ALTER TABLE Post COMMENT = 'Post pubblicati dagli Utenti';");
@@ -27,8 +26,7 @@
        *
        * @return void
        */
-      public function down()
-      {
+      public function down(): void {
          Schema::table('Post', function (Blueprint $table) {
             $table->dropForeign('UtentePostFK');
          });

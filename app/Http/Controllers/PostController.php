@@ -58,8 +58,7 @@
             'profile_id' => $profile_id
          ]);
       }
-      public function orderBy(Request $req): Factory | View | Application
-      {
+      public function orderBy(Request $req): Factory | View | Application {
          $req->validate([
             'postsOrderName' => ['required', 'min:7', 'max:12'],
             'postsOrderType' => ['required', 'min:3', 'max:4'],
@@ -76,7 +75,7 @@
                ->session()
                ->get('utente');
          $utente_id = $this->utente->id;
-         $profile_id = $req->profile_id;
+         $profile_id = $req->input('profile_id');
          $cond = $profile_id > 0;
          $orderBy = $req->input('postsOrderName') . ' ' . $req->input('postsOrderType');
          return view('feed.utils.posts', [

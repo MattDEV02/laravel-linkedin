@@ -10,7 +10,8 @@
     </td>
     @if($display)
         <td>
-            <form method="{{ selectors()['method'] }}" action="{{ route('remove-collegamento') }}" onsubmit="return false;" class="remove_collegamento">
+            <form action="{{ route('remove-collegamento') }}" onsubmit="return false;" class="remove_collegamento">
+                @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-danger {{ selectors()['border'] }} warning_hover" onclick="removeCollegamento('{{ $collegamento->utenteEmail }}');">
                     <b>

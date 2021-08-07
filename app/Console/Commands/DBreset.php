@@ -5,8 +5,8 @@
    use Illuminate\Console\Command;
    use Illuminate\Support\Str;
 
-   class DBreset extends Command
-   {
+
+   class DBreset extends Command{
       /**
        * The name and signature of the console command.
        *
@@ -49,7 +49,7 @@
             $output = shell_exec($command);
             $this->info($output);
          }
-         $this->info(env('DB_DATABASE') . ' Schema resetted.');
+         $this->info(env('DB_DATABASE', 'Linkedin') . ' Schema resetted.');
          return 1;
       }
    }

@@ -26,22 +26,21 @@
             ->select([
                'c.testo AS testo_commento',
                'c.created_at AS data_commento',
-               'uc.email AS autore_commento_email',
-               DB::raw("CONCAT(uc.nome, ' ', uc.cognome) AS autoreCommento_nomeCognome"),
-               'uc.id AS autore_commento_id',
-               'duc.foto AS foto_autore_commento'
+               'u.email AS autore_commento_email',
+               DB::raw("CONCAT(u.nome, ' ', u.cognome) AS autoreCommento_nomeCognome"),
+               'u.id AS autore_commento_id',
+               'pr.foto AS foto_autore_commento'
             ])
-            ->join('Post AS p', 'c.post', 'p.id')
-            ->join('Utente AS uc', 'c.utente', 'uc.id')
-            ->join('Utente AS up', 'p.utente', 'up.id')
-            ->join('DescrizioneUtente AS duc', 'duc.utente', 'uc.id')
-            ->join('DescrizioneUtente AS dup', 'dup.utente', 'up.id')
+            ->join('Post AS p', 'c.post_id', 'p.id')
+            ->join('Utente AS u', 'c.utente_id', 'u.id')
+            ->join('Utente AS up', 'p.utente_id', 'up.id')
+            ->join('Profilo AS pr', 'pr.utente_id', 'u.id')
             ->where('p.id', $post)
             ->orderBy('c.created_at', 'DESC')
             ->get();
       }
 
       public function scopeGetNumByPost(Builder $query, int $post_id): int {
-         return Commento::where('post', $post_id)->count() ;
+         return Commento::where('post_id', $post_id)->count() ;
       }
    }

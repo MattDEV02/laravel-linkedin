@@ -6,7 +6,6 @@
    use Illuminate\Database\Eloquent\Builder;
    use Illuminate\Http\Request;
    use Illuminate\Support\Facades\DB;
-   use Illuminate\Support\Str;
 
 
    /**
@@ -37,21 +36,21 @@
          $sql = ("
             SELECT 
                p.id,
-               p.utente AS utente_id,
+               u.id AS utente_id,
                p.foto,
                p.testo,
                p.created_at,
-               CONCAT(u.nome, ' ', u.cognome) AS utente,
-               CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
-               u.email AS utenteEmail
+               u.email AS utenteEmail,
+               CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome,
+               CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso
            FROM 
               Post p
-              JOIN Utente u ON p.utente = u.id
+              JOIN Utente u ON p.utente_id = u.id
               LEFT JOIN RichiestaAmicizia ra ON (ra.utenteMittente = u.id OR ra.utenteRicevente = u.id)
-              JOIN UtenteLavoro ul ON ul.utente = u.id
-              JOIN Lavoro l ON ul.lavoro = l.id
-              JOIN Citta c ON u.citta = c.id
-              JOIN Nazione n ON c.nazione = n.id
+              JOIN UtenteLavoro ul ON ul.utente_id = u.id
+              JOIN Lavoro l ON ul.lavoro_id = l.id
+              JOIN Citta c ON u.citta_id = c.id
+              JOIN Nazione n ON c.nazione_id = n.id
            WHERE
                ra.stato = 'Accettata' AND
               (ra.utenteMittente = $utente_id OR ra.utenteRicevente = $utente_id)
@@ -69,20 +68,20 @@
          return ("
             SELECT 
                   p.id,
-                  p.utente AS utente_id,
+                  u.id AS utente_id,
                   p.foto,
                   p.testo,
                   p.created_at,
-                  CONCAT(u.nome, ' ', u.cognome) AS utente,
-                  CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
-                  u.email AS utenteEmail
+                  u.email AS utenteEmail, 
+                  CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome,
+                  CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso
                FROM
                    Post p
-                       JOIN Utente u ON p.utente = u.id
-                       JOIN UtenteLavoro ul ON ul.utente = u.id
-                       JOIN Lavoro l ON ul.lavoro = l.id
-                       JOIN Citta c ON u.citta = c.id
-                       JOIN Nazione n ON c.nazione = n.id
+                       JOIN Utente u ON p.utente_id = u.id
+                       JOIN UtenteLavoro ul ON ul.utente_id = u.id
+                       JOIN Lavoro l ON ul.lavoro_id = l.id
+                       JOIN Citta c ON u.citta_id = c.id
+                       JOIN Nazione n ON c.nazione_id = n.id
                WHERE
                    u.id = $profile
                ORDER BY
@@ -101,7 +100,7 @@
                'u.email AS autore_email',
                DB::raw("CONCAT(u.nome, ' ', u.cognome) AS autore_nomeCognome")
             ])
-            ->join('Utente AS u', 'p.utente', 'u.id')
+            ->join('Utente AS u', 'p.utente_id', 'u.id')
             ->where('p.id', $post_id)
             ->first();
       }

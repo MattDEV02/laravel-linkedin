@@ -2,65 +2,64 @@
 
    namespace Database\Seeders;
 
+   use App\Models\Commento;
    use Illuminate\Database\Seeder;
-   use Illuminate\Support\Facades\DB;
 
 
-   class CommentoSeeder extends Seeder
-   {
+   class CommentoSeeder extends Seeder {
       private array $comments = [
          [
             'id' => 1,
-            'post' => 1,
-            'utente' => 3,
+            'post_id' => 1,
+            'utente_id' => 3,
             'testo' => 'Bellissimo Post !!'
          ],
          [
             'id' => 2,
-            'post' => 2,
-            'utente' => 3,
+            'post_id' => 2,
+            'utente_id' => 3,
             'testo' => 'Forza Romaaa !!'
          ],
          [
             'id' => 3,
-            'post' => 3,
-            'utente' => 7,
+            'post_id' => 3,
+            'utente_id' => 7,
             'testo' => 'Buongiorno a tutti i cugini'
          ],
          [
             'id' => 4,
-            'post' => 4,
-            'utente' => 1,
+            'post_id' => 4,
+            'utente_id' => 1,
             'testo' => 'Ok'
          ],
          [
             'id' => 5,
-            'post' => 8,
-            'utente' => 4,
+            'post_id' => 8,
+            'utente_id' => 4,
             'testo' => 'Bella bici'
          ],
          [
             'id' => 6,
-            'post' => 6,
-            'utente' => 2,
+            'post_id' => 6,
+            'utente_id' => 2,
             'testo' => 'Viva il futurismoooo'
          ],
          [
             'id' => 7,
-            'post' => 5,
-            'utente' => 6,
+            'post_id' => 5,
+            'utente_id' => 6,
             'testo' => 'Viva il futurismoooo'
          ],
          [
             'id' => 8,
-            'post' => 1,
-            'utente' => 1,
+            'post_id' => 1,
+            'utente_id' => 1,
             'testo' => 'Ehh già lo so.'
          ],
          [
             'id' => 9,
-            'post' => 7,
-            'utente' => 1,
+            'post_id' => 7,
+            'utente_id' => 1,
             'testo' => 'Molto utile.'
          ],
       ];
@@ -72,7 +71,6 @@
       public function run(): void
       {
          foreach($this->comments as $comment)
-            DB::table('Commento')
-               ->insert($comment);
+            Commento::create($comment);
       }
    }

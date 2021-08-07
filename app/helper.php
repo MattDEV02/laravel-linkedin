@@ -1,7 +1,7 @@
 <?php
 
    use App\Models\Commento;
-   use App\Models\DescrizioneUtente;
+   use App\Models\Profilo;
    use App\Models\MiPiace;
    use App\Models\Utente;
    use App\Models\UtenteLavoro;
@@ -17,6 +17,7 @@
    use Illuminate\Support\Str;
    use App\Models\RichiestaAmicizia;
    use Illuminate\Http\Client\Response;
+   use Illuminate\Http\UploadedFile;
 
 
    if(
@@ -112,7 +113,7 @@
       function checkRef(Request $req, string $path): bool {
          return Str::contains($req->header('referer'), $path);
       }
-      function store($img, string $folder,  int $utente_id): string  {
+      function store(UploadedFile $img, string $folder, int $utente_id): string  {
          $extension = $img->extension();
          $now = date('Y_m_d_H_i_s');
          $fileName = "$now.$extension";
@@ -166,13 +167,17 @@
          return isset($profile_foto) ? ($utente_id . '/' . $profile_foto) : 'default.jpg';
       }
       function sessionPutUser(Request $req): void {
+         $email = $req->input('email') ?? $req->session()->get('utente')->email;
+         $password = $req->input('password') ?? $req->session()->get('utente')->password;
          $utente = Utente::all()
-            ->where('email', adjustEmail($req->input('email')))
+            ->where('email', adjustEmail($email))
             ->first();
-         $password = $req->input('password');
          $utente->password = $password;
-         $utente->profile = DescrizioneUtente::find($utente->id);
-         $utente->ul = UtenteLavoro::where('utente', $utente->id)->first();
+         $utente->profile = Profilo::find($utente->id);
+         $utente->ul = UtenteLavoro::where('utente_id', $utente->id)->first();
+         $req
+            ->session()
+            ->forget('utente');
          $req
             ->session()
             ->put('utente', $utente);

@@ -7,77 +7,76 @@
    use Illuminate\Support\Facades\Cookie;
    use Illuminate\Support\Facades\DB;
    use Illuminate\Http\Request;
+   use Illuminate\Support\Facades\Log;
    use Illuminate\Support\Facades\Storage;
 
 
    /**
     * @method static getAll(int $utente_id)
     * @method static updateProfile(Request $req)
+    * @property int utente_id
     */
-   class DescrizioneUtente extends Model  // Profilo dell'Utente
-   {
-      protected $table = 'DescrizioneUtente';
-      protected $primaryKey = 'utente';
+   class Profilo extends Model {
+
+      protected $table = 'Profilo';
+      protected $primaryKey = 'utente_id';
       public $incrementing = false;
       public $timestamps = true;
+      protected $fillable = [ 'descrizione' ];
 
 
       public function scopeGetAll(Builder $query, int $utente_id): ?object {
          return DB::table('Utente AS u')
             ->select([
-               'du.testo',
-               'du.foto',
+               'p.descrizione',
+               'p.foto',
                'u.email AS utenteEmail',
-               'u.nome AS utenteName',
-               'u.cognome AS utenteSurname',
                'u.id AS utente_id',
                'ul.dataInizioLavoro',
                'l.nome AS lavoro',
                'c.nome AS citta',
                'n.nome AS nazione',
+               DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome"),
                DB::raw("CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso")
             ])
-            ->join('DescrizioneUtente AS du', 'du.utente', 'u.id')
-            ->join('UtenteLavoro AS ul', 'ul.utente', 'u.id')
-            ->join('Lavoro AS l', 'ul.lavoro', 'l.id')
-            ->join('Citta AS c', 'u.citta', 'c.id')
-            ->join('Nazione AS n', 'c.nazione', 'n.id' )
+            ->join('Profilo AS p', 'p.utente_id', 'u.id')
+            ->join('UtenteLavoro AS ul', 'ul.utente_id', 'u.id')
+            ->join('Lavoro AS l', 'ul.lavoro_id', 'l.id')
+            ->join('Citta AS c', 'u.citta_id', 'c.id')
+            ->join('Nazione AS n', 'c.nazione_id', 'n.id' )
             ->where('u.id', $utente_id)
             ->first();
       }
 
       public function scopeUpdateProfile(Builder $query, Request $req): string {
-         $id = $req
+         $utente_id = $req
             ->session()
             ->get('utente')->id;
          $img = $req->file('image');
-         $toUpdate = ['testo' => $req->input('testo')];
+         $toUpdate = ['descrizione' => $req->input('descrizione')];
          if(isset($img)) {
             $dir = 'profiles';
-            $files =  Storage::allFiles("public/$dir/$id/");
-            Storage::delete($files);
-            $toUpdate['foto'] = store($img , $dir, $id);
+            Storage::delete(Storage::allFiles("public/$dir/$utente_id/"));
+            $toUpdate['foto'] = store($img, $dir, $utente_id);
          }
-         DescrizioneUtente::find($id)->update($toUpdate);
-         UtenteLavoro::where('utente', $id)
+         $profilo = Profilo::find($utente_id);
+         $profilo->descrizione = $toUpdate['descrizione'];
+         $profilo->foto = $toUpdate['foto'];
+         $profilo->save();
+         UtenteLavoro::where('utente_id', $utente_id)
             ->update([
-               'lavoro' => $req->input('lavoro'),
+               'lavoro_id' => $req->input('lavoro'),
                'dataInizioLavoro' => $req->input('dataInizioLavoro')
             ]);
-         $utente = Utente::find($id);
+         $utente = Utente::find($utente_id);
          $utente->nome = $req->input('nome');
          $utente->cognome = $req->input('cognome');
-         $utente->citta = $req->input('citta');
+         $utente->citta_id = $req->input('citta');
          $utente->save();
          $utente->password = $req
                ->session()
                ->get('utente')->password ?? Cookie::get('password');
-         $req
-            ->session()
-            ->forget('utente');
-         $req
-            ->session()
-            ->put('utente', $utente);
+         sessionPutUser($req);
          return $utente->email;
       }
    }

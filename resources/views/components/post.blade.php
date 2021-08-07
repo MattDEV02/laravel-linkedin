@@ -14,7 +14,7 @@
             <div class="card-body">
                 <a href="{{ $selectors['show-profile'] }}{{ $post->utenteEmail }}" id="creatore_post">
                     <h4 class="card-title">
-                        {{ ucfirst($post->utente) }}
+                        {{ ucfirst($post->utenteNomeCognome) }}
                     </h4>
                 </a>
                 <x-lavora-presso

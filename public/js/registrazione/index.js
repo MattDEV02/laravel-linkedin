@@ -1,11 +1,11 @@
 const isDisoccupato = input => input
-   .find(':selected')
-   .text()
-   .includes('Disoccupato');
+    .find(':selected')
+    .text()
+    .includes('Disoccupato');
 
 const
-   dataInizioLavoro = $('#dataInizioLavoro'),
-   lavoro = $('#lavoro');
+    dataInizioLavoro = $('#dataInizioLavoro'),
+    lavoro = $('#lavoro');
 
 $('#profile-form').submit(function(e) {
    if(!isDisoccupato(lavoro) && !dataInizioLavoro.val()) {

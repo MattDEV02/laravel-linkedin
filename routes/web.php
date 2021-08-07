@@ -1,5 +1,6 @@
 <?php
 
+   use App\Models\Utente;
    use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\UtenteController;
    use App\Http\Controllers\PostController;
@@ -55,7 +56,7 @@
          Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
          Route::middleware('isSessionLogged')
             ->group(function () use($UC, $PC, $PRC) {
-               Route::post('/remove-collegamento', [$PRC, 'removeCollegamento'])
+               Route::delete('/remove-collegamento', [$PRC, 'removeCollegamento'])
                   ->middleware('isSessionLogged')
                   ->name('remove-collegamento');
                Route::post('/feed', [$PC, 'insert'])
@@ -73,5 +74,5 @@
       });
 
    Route::any('test', function() {
-      return getLogLines();
+      return Utente::getProfileLink(1);
    });

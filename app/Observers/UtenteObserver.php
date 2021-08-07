@@ -1,24 +1,18 @@
 <?php
 
-namespace App\Observers;
+   namespace App\Observers;
+
+   use App\Models\Utente;
+   use App\Models\UtenteLavoro;
 
 
-use App\Models\DescrizioneUtente;
-use App\Models\UtenteLavoro;
-use Illuminate\Database\Eloquent\Model;
+   class UtenteObserver {
 
-class UtenteObserver
-{
-   /*
-    public function store(Utente $utente) {
-       $id = $utente->id;
-       $utenteLavoro = new UtenteLavoro();
-       $utenteLavoro->utente = $id;
-       $utenteLavoro->lavoro = $data->input('lavoro');
-       $utenteLavoro->dataInizioLavoro = $data->input('dataInizioLavoro');
-       $utenteLavoro->save();
-       $descrizioneUtente = new DescrizioneUtente();
-       $descrizioneUtente->utente = $id;
-       $descrizioneUtente->save();
-    }*/
-}
+      public function created(Utente $utente) {
+         $utenteLavoro = new UtenteLavoro();
+         $utenteLavoro->utente_id = $utente->id;
+         $utenteLavoro->lavoro_id = $data->input('lavoro');
+         $utenteLavoro->dataInizioLavoro = $data->input('dataInizioLavoro');
+         $utenteLavoro->save();
+      }
+   }

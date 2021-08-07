@@ -2,7 +2,7 @@
     $selectors = selectors();
 @endphp
 
-<div class="mr-3 mr-lg-2">
+<div class="mr-3 mr-lg-2" wire:key="{{ uniqid() }}">
     <input
             class="form-control inputTXT form-inline"
             type="search"

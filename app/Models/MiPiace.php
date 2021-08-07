@@ -8,39 +8,39 @@
 
 
    /**
-    * @method static like(mixed $input, mixed $input1)
-    * @method static isLiked(int $post, int $utente)
+    * @method static like(int $post_id, int $utente_id)
+    * @method static isLiked(int $post_id, int $utente_id)
     * @method static getNumLikes(int $post_id)
-    * @property int post
-    * * @property int utente
+    * @property int post_id
+    * @property int utente_id
     */
    class MiPiace extends Model {
 
       protected $table = 'MiPiace';
       public $timestamps = false;
 
-      public function scopeIsLiked (Builder $query, int $post, int $utente): bool {
+      public function scopeIsLiked (Builder $query, int $post_id, int $utente_id): bool {
          return (bool) DB::table('MiPiace AS mp')
-            ->join('Post AS p', 'mp.post', 'p.id')
-            ->join('Utente AS u', 'mp.utente', 'u.id')
-            ->where('p.id', $post)
-            ->where('u.id', $utente)
+            ->join('Post AS p', 'mp.post_id', 'p.id')
+            ->join('Utente AS u', 'mp.utente_id', 'u.id')
+            ->where('p.id', $post_id)
+            ->where('u.id', $utente_id)
             ->count();
       }
 
-      public function scopeLike(Builder $query, int $post, int $utente): void {
-         if(!MiPiace::isLiked($post, $utente)) {
+      public function scopeLike(Builder $query, int $post_id, int $utente_id): void {
+         if(!MiPiace::isLiked($post_id, $utente_id)) {
             $miPiace = new MiPiace();
-            $miPiace->post = $post;
-            $miPiace->utente = $utente;
+            $miPiace->post_id = $post_id;
+            $miPiace->utente_id = $utente_id;
             $miPiace->save();
          }
       }
 
       public function scopeGetNumLikes(Builder $query, int $post_id): int {
          return DB::table('Post AS p')
-            ->leftJoin('MiPiace AS mp', 'mp.post', 'p.id')
-            ->where('mp.post', $post_id)
+            ->leftJoin('MiPiace AS mp', 'mp.post_id', 'p.id')
+            ->where('mp.post_id', $post_id)
             ->count();
       }
    }

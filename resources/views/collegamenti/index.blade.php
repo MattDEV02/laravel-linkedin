@@ -21,8 +21,14 @@
             <div class="{{ $selectors['row']}}">
                 <div class="{{ $selectors['col'] }}3 ">
                     <div class="{{ $selectors['row']}}">
-                        <h2>Collegamenti relativi a questo profilo: </h2>
-                        <h2 class="text-primary ml-3">
+                        <h3>Collegamenti relativi a </h3>
+                        <h3 id="utenteNomeCognome" class="ml-2">
+                            <x-profile-link
+                                utenteNomeCognome="{{ $utente_profile->nomeCognome }}"
+                                utenteEmail="{{ $utente_profile->email }}"
+                            />:
+                        </h3>
+                        <h2 class="text-success ml-3">
                             {{ count($collegamenti) }}
                         </h2>
                     </div>

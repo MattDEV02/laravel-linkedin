@@ -7,8 +7,8 @@
 <tr>
     <td>
         <x-profile-link
-                utenteEmail="{{ $richiesta['email'] }}"
-                utenteNomeCognome="{{ $richiesta['utenteNomeCognome'] }}"
+                utenteEmail="{{ $richiesta['utenteMittenteEmail'] }}"
+                utenteNomeCognome="{{ $richiesta['utenteMittenteNomeCognome'] }}"
         />
     </td>
     <td>

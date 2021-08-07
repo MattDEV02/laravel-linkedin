@@ -6,6 +6,7 @@
 
 
    class Lavoro extends Model {
+
       protected $table = 'Lavoro';
       public $timestamps = false;
 

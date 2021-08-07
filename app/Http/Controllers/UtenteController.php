@@ -2,7 +2,6 @@
 
    namespace App\Http\Controllers;
 
-   use App\Models\DescrizioneUtente;
    use App\Models\Post;
    use Illuminate\Contracts\View\Factory;
    use Illuminate\Contracts\View\View;
@@ -112,6 +111,7 @@
          $email = adjustEmail($req->input('email'));
          $password = $req->input('password');
          if(Utente::isLogged($email, $password)) {
+            $req->session()->regenerate();
             if(!$req->session()->exists('utente')) {
                sessionPutUser($req);
                Log::info("New User-Session started ($email).");

@@ -9,8 +9,7 @@
    use JetBrains\PhpStorm\ArrayShape;
 
 
-   class UtenteFactory extends Factory
-   {
+   class UtenteFactory extends Factory {
       /**
        * The name of the factory's corresponding model.
        *
@@ -23,13 +22,13 @@
        *
        * @return array
        */
-      #[ArrayShape(['nome' => "string", 'cognome' => "string", 'email' => "mixed", 'password' => "string", 'citta' => "int"])] public function definition(): array {
+      #[ArrayShape(['nome' => "string", 'cognome' => "string", 'email' => "mixed", 'password' => "string", 'citta_id' => "int"])] public function definition(): array {
          return [
             'nome' => $this->faker->name(),
             'cognome' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make(Str::random(8)),
-            'citta' => rand(1, 13)
+            'citta_id' => rand(1, 13)
          ];
       }
    }

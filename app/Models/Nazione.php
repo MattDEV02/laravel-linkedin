@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Models;
+   namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+   use Illuminate\Database\Eloquent\Model;
 
 
-class Nazione extends Model
-{
+   class Nazione extends Model {
 
-   protected $table = 'Nazione';
-   public $timestamps = false;
+      protected $table = 'Nazione';
+      public $timestamps = false;
 
-}
+   }

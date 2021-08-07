@@ -2,7 +2,7 @@
 
    namespace App\Http\Controllers;
 
-   use App\Models\DescrizioneUtente;
+   use App\Models\Profilo;
    use App\Models\Post;
    use App\Models\RichiestaAmicizia;
    use Illuminate\Contracts\Foundation\Application;
@@ -26,7 +26,7 @@
             ->get('utente');
          $utente_id = $this->utente->id;
          return view('profile.index', [
-            'profile' => DescrizioneUtente::getAll($utente_id),
+            'profile' => Profilo::getAll($utente_id),
             'richieste' => RichiestaAmicizia::getRichieste($utente_id),
             'posts' => Post::getAll($utente_id, true),
             'own_profile' => true
@@ -39,6 +39,7 @@
                ->session()
                ->get('utente');
             return view('profile.utils.form', [
+               'profilo' => Profilo::getAll($this->utente->id),
                'lavori' => Lavoro::all(),
                'citta' => Citta::all()
             ]);
@@ -53,7 +54,7 @@
             'citta' => ['required', 'numeric', 'min:1', 'max:13'],
             'lavoro' => ['required', 'numeric', 'min:1', 'max:15'],
             'dataInizioLavoro' => ['nullable', 'date', 'date_format:Y-m-d'],
-            'testo' => ['nullable', 'min:2' , 'max:255']
+            'descrizione' => ['nullable', 'min:2' , 'max:255']
          ], [
             'image.mimes' => 'Insert a valid image.',
             'image.max' => 'Immagine troppo pesante.',
@@ -70,15 +71,15 @@
             'lavoro.max' => 'Lavoro inserito non valido.',
             'dataInizioLavoro.date' => 'Data inizio lavoro is a date.',
             'dataInizioLavoro.date_format' => 'Incorrect date format for Data inizio lavoro.',
-            'testo.min' => 'Testo della descrizione troppo lungo (min: 2).',
-            'testo.max' => 'Testo della descrizione troppo lungo (max: 255).'
+            'descrizione.min' => 'Testo della descrizione troppo lungo (min: 2).',
+            'descrizione.max' => 'Testo della descrizione troppo lungo (max: 255).'
          ]);
          $errors = checkDataInizioLavoroErrors($req);
          if(isValidCollection($errors))
             return back()
                ->withErrors($errors);
          else {
-            $utenteProfileUpdated = DescrizioneUtente::updateProfile($req);
+            $utenteProfileUpdated = Profilo::updateProfile($req);
             Log::debug("User $utenteProfileUpdated updated his profile.");
             return redirect('/profile')
                ->with('msg', 'Profile updated successful.');
@@ -95,7 +96,7 @@
          if(isset($utenteSearched)) {
             $utente_id = $this->utente->id;
             $utenteSearched_id = $utenteSearched->id;
-            $profile = DescrizioneUtente::getAll($utenteSearched_id);
+            $profile = Profilo::getAll($utenteSearched_id);
             $own_profile = $profile->utente_id === $utente_id;
             $richieste = $own_profile ? RichiestaAmicizia::getRichieste($utente_id) : null;
             return view('profile.index', [
@@ -109,14 +110,12 @@
             return view('utils.user-not-found');
          }
       }
-      public function collegamenti(Request $req, int $utente_id): Factory | View | Application {
-         $this->utente = $req
-            ->session()
-            ->get('utente');
-         return view('collegamenti.index', [
+      public function collegamenti(Request $req, int $utente_id): Factory | View | Application | RedirectResponse {
+         return (Utente::find($utente_id) !== null) ? view('collegamenti.index', [
             'collegamenti' => RichiestaAmicizia::getCollegamenti($utente_id),
+            'utente_profile' => Utente::getProfileLink($utente_id),
             'profile_id' => $utente_id
-         ]);
+         ]) : back();
       }
 
       public function removeCollegamento(Request $req) {
@@ -134,8 +133,7 @@
                ->get('utente');
             $utente_id = $this->utente->id;
             $utenteCollegamento = Utente::where('email', $req->input('email'))->first();
-            $idUtenteCollegamento = $utenteCollegamento->id;
-            RichiestaAmicizia::removeCollegamento($utente_id, $idUtenteCollegamento);
+            RichiestaAmicizia::removeCollegamento($utente_id, $utenteCollegamento->id);
             return 'Collegamento deleted.';
          } else
             redirect('/profile');

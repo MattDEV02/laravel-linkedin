@@ -10,14 +10,15 @@
 
    /**
     * @method static getRichieste(int $utenteRicevente)
-    * @method static isLinked(int $utenteMittente, int $utenteRicevente, bool $flag)
+    * @method static isLinked(int $utenteMittente, int $utenteRicevente, bool $flag = false)
     * @method static getNumCollegamenti(int $utenteRicevente)
     * @method static isSentRichiesta(int $utenteMittente, int $utenteRicevente)
-    * @method static getCollegamenti(mixed $utente_id)
+    * @method static getCollegamenti(int $utente_id)
     * @method static removeCollegamento(mixed $utente_id, $idUtenteCollegamento)
+    * @property int utenteMittente
+    * @property int utenteRicevente
     */
-   class RichiestaAmicizia extends Model
-   {
+   class RichiestaAmicizia extends Model {
 
       protected $table = 'RichiestaAmicizia';
       public $timestamps = true;
@@ -25,11 +26,11 @@
       public function scopeGetRichieste(Builder $query, int $utente_id): ?Collection {
          return DB::table('RichiestaAmicizia AS ra')
             ->select([
-               'ra.utenteMittente AS utenteMittente',
+               'ra.utenteMittente',
                DB::raw("DATE_FORMAT(ra.created_at, '%Y-%m-%d %H:%i') AS dataInvio"),
                'ra.stato',
-               'u.email',
-               DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome")
+               'u.email AS utenteMittenteEmail',
+               DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utenteMittenteNomeCognome")
             ])
             ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
             ->where('ra.utenteRicevente', $utente_id)
@@ -63,8 +64,7 @@
             ->count();
       }
 
-      public function scopeGetCollegamenti(Builder $query, int $utente_id): Collection
-      {
+      public function scopeGetCollegamenti(Builder $query, int $utente_id): Collection {
          return DB::table('Utente AS u')
             ->select([
                DB::raw('CONCAT(u.nome, " ", u.cognome) AS utenteNomeCognome'),

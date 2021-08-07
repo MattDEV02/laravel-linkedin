@@ -1,0 +1,1 @@
+[2021-08-07 14:50:18] local.NOTICE: 127.0.0.1 -> POST -> ( http://127.0.0.1:8000/livewire/message/richieste-handler ) -> accept: html { reg: yes, log: yes }.  

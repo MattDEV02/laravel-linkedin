@@ -2,31 +2,32 @@
 
    namespace Database\Seeders;
 
+   use App\Models\MiPiace;
    use Illuminate\Database\Seeder;
-   use Illuminate\Support\Facades\DB;
 
 
    class MiPiaceSeeder extends Seeder {
+
       private array $likes = [
          [
             'id' => 1,
-            'post' => 1,
-            'utente' => 1
+            'post_id' => 1,
+            'utente_id' => 1
          ],
          [
             'id' => 2,
-            'post' => 3,
-            'utente' => 5
+            'post_id' => 3,
+            'utente_id' => 5
          ],
          [
             'id' => 3,
-            'post' => 8,
-            'utente' => 5
+            'post_id' => 8,
+            'utente_id' => 5
          ],
          [
             'id' => 4,
-            'post' => 4,
-            'utente' => 1
+            'post_id' => 4,
+            'utente_id' => 1
          ],
       ];
       /**
@@ -34,10 +35,8 @@
        *
        * @return void
        */
-      public function run(): void
-      {
+      public function run(): void {
          foreach($this->likes as $like)
-            DB::table('MiPiace')
-               ->insert($like);
+            MiPiace::create($like);
       }
    }

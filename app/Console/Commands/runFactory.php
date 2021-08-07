@@ -13,7 +13,7 @@
        *
        * @var string
        */
-      protected $signature = 'factory:run';
+      protected $signature = 'factory:run {n=1}';
 
       /**
        * The console command description.
@@ -38,8 +38,11 @@
        * @return int
        */
       public function handle(): int {
-         Utente::factory()->count(10)->create();
-         $this->info('Factory data inserted.');
+         $n = (int) $this->arguments('n');
+         if(Utente::factory()->count($n)->create())
+            $this->info('Factory data inserted.');
+         else
+            $this->info('Factory data not inserted.');
          return 1;
       }
    }

@@ -1,9 +1,9 @@
 @php
     $selectors = selectors();
-    $utente = session()->get('utente');
+    $utente = session('utente');
 @endphp
 
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>
@@ -18,14 +18,14 @@
         @component('components.no-script')
         @endcomponent
         @component('components.profile', [
-         'profile' => $profile,
-         'own_profile' => $own_profile
+            'profile' => $profile,
+            'own_profile' => $own_profile
          ])
         @endcomponent
     </div>
     @if($own_profile)
         @livewire('richieste-handler', [
-        'richieste' => $richieste
+            'richieste' => $richieste
         ])
     @endif
 

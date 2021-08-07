@@ -8,8 +8,8 @@
     $mt = 3;
 @endphp
 
-<div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt-5 ml-md-4" id="mll">
-    <div class="{{ $selectors['row'] }} justify-content-md-start mt-3">
+<div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 col-xs-12 mt-5 mb-3 ml-md-4" id="mll">
+    <div class="{{ $selectors['row'] }} justify-content-md-start">
         <div class="{{ $selectors['col'] }} {{ $selectors['border'] }}" id="profile_card" title="{{ $profile->utenteEmail }}">
             <div class="row">
                 <div class="{{ $selectors['col'] }} bg-secondary" id="profile_bg">
@@ -28,8 +28,7 @@
                         <div class="{{ $selectors['col'] }}5" id="username-container">
                             <div class="row">
                                 <h1 class="{{ $ml }} mt-{{ $mt + 1 }}">
-                                    {{ $profile->utenteName }}
-                                    {{ $profile->utenteSurname }}
+                                    {{ $profile->utenteNomeCognome }}
                                 </h1>
                             </div>
                         </div>
@@ -80,7 +79,7 @@
                         <div class="{{ $selectors['col'] }}{{ $mt }} mb-2">
                             <div class="{{ $selectors['row'] }}">
                                 <p class="text-dark big_font_size">
-                                    {{ $profile->testo }}
+                                    {{ $profile->descrizione }}
                                 </p>
                             </div>
                             <x-success />

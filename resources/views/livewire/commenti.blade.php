@@ -2,7 +2,7 @@
     $utente = session('utente');
     $selectors = selectors();
     $base = '../storage';
-    $path = getProfileImage($utente->profile_foto, $utente->id);
+    $path = getProfileImage($utente->profile->foto, $utente->id);
 @endphp
 
 <div wire:key="{{ uniqid() }}" wire:poll.625ms="refresh({{ $post['id'] }})">
