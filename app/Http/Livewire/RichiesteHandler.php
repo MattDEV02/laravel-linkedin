@@ -12,12 +12,11 @@
 
    class RichiesteHandler extends Component {
 
-      public ?Collection $richieste;
+      public Collection | array | null $richieste;
       public int $utenteMittente;
       public int $utenteRicevente;
-      private array $stato = ['Sospesa', 'Accettata'];
       private array $attr = ['utenteMittente', 'utenteRicevente', 'stato'];
-      public bool $click = false;
+      private array $stato = ['Sospesa', 'Accettata'];
 
 
       public function mount(): void {
@@ -31,11 +30,8 @@
       public function update(string $stato): void {
          RichiestaAmicizia::where($this->attr[0], $this->utenteMittente)
             ->where($this->attr[1], $this->utenteRicevente)
-            ->update([
-               'stato' => $stato
-            ]);
+            ->update(['stato' => $stato]);
          $this->refresh();
-         $this->click = true;
       }
 
       public function delete(): void {
@@ -51,7 +47,6 @@
                   ->orWhere($this->attr[1], $this->utenteRicevente);
             })->delete();
          $this->refresh();
-         $this->click = true;
       }
 
       public function accetta(int $utenteMittente): void {

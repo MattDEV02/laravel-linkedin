@@ -12,8 +12,8 @@
     * @method static getAllByPost(int $post_id)
     * @method static getNumByPost(int $post)
     * @property string testo
-    * @property int utente
-    * @property int post
+    * @property int utente_id
+    * @property int post_id
     */
    class Commento extends Model {
 

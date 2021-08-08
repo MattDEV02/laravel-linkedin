@@ -91,8 +91,7 @@
          $this->utente = $req
             ->session()
             ->get('utente');
-         $utenteSearched = Utente::where('email',  $emailSearched)
-            ->first();
+         $utenteSearched = Utente::where('email', $emailSearched)->first();
          if(isset($utenteSearched)) {
             $utente_id = $this->utente->id;
             $utenteSearched_id = $utenteSearched->id;

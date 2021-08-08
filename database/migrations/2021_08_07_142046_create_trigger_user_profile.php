@@ -14,10 +14,11 @@
        */
       public function up(): void {
          DB::statement("
-            CREATE TRIGGER CreateUserProfile AFTER INSERT ON Utente
+            CREATE TRIGGER CreateUtente_LavoroProfile AFTER INSERT ON Utente
                FOR EACH ROW
             BEGIN
                INSERT INTO Profilo(utente_id) VALUES(NEW.id);
+               INSERT INTO UtenteLavoro(utente_id, lavoro_id) VALUES(NEW.id, 1);
             END
          ");
       }

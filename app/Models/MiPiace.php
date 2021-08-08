@@ -17,7 +17,10 @@
    class MiPiace extends Model {
 
       protected $table = 'MiPiace';
+      protected $primaryKey = ['utente_id', 'post_id'];
+      public $incrementing = false;
       public $timestamps = false;
+
 
       public function scopeIsLiked (Builder $query, int $post_id, int $utente_id): bool {
          return (bool) DB::table('MiPiace AS mp')

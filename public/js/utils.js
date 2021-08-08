@@ -1,0 +1,1 @@
+const sound = () => new Audio('/sound/success.mp3').play();

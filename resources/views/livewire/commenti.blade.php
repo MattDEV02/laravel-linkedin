@@ -11,7 +11,7 @@
                 src="{{ $base }}/posts/{{ $post['autore_id'] }}/{{ $post['foto'] }}"
                 alt="Immagine Post."
                 title="Immagine Post."
-                width="{{ 70 }}"
+                width="{{ 72 }}"
                 class="img-fluid img-responsive"
         />
         <div class="d-flex flex-column ml-4 mt-3">
@@ -59,7 +59,8 @@
                     class="btn btn-outline-primary white_bg"
                     type="button"
                     role="button"
-                    wire:click="pubblicazione({{ $post['id'] }})">
+                    wire:click="pubblicazione({{ $post['id'] }})"
+                    onclick="sound()">
                 <b>Comment</b>
             </button>
         </div>
@@ -75,3 +76,4 @@
         </div>
     </div>
 </div>
+

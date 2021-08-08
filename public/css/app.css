@@ -16224,8 +16224,9 @@ thead.white_bg {
 }
 
 #numero_collegamenti_post {
-   position: relative;
-   top: -25px;
+   position: absolute;
+   right: 1px;
+   top: -20px;
 }
 
 .inputTXT:focus {

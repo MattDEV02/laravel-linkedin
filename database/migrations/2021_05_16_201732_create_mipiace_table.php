@@ -14,10 +14,9 @@
       public function up(): void {
          if(!Schema::hasTable('MiPiace')) {
             Schema::create('MiPiace', function (Blueprint $table) {
-               $table->increments('id')->comment('Chiave Primaria della Tabella MiPiace');
                $table->unsignedInteger('post_id')->index('PostMiPiaceFK')->comment('Post su cui è stato applicatto il Like');
                $table->unsignedInteger('utente_id')->index('UtenteMiPiaceFK')->comment('Utente che ha messo il Like al Post');
-               $table->unique(['post_id', 'utente_id'], 'PostUtenteMiPiace_UNIQUE');
+               $table->primary(['post_id', 'utente_id']);
                $table->engine = 'InnoDB';
                $table->charset = 'utf8mb4';
                $table->collation = 'utf8mb4_unicode_ci';

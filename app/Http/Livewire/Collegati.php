@@ -11,6 +11,7 @@
 
 
    class Collegati extends Component {
+
       public int $utenteMittente;
       public int $utenteRicevente;
       public bool $clicked;

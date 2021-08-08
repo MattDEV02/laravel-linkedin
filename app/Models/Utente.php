@@ -52,11 +52,9 @@
          $utente->citta_id = $data->input('citta');
          $utente->save();
          $utente_id = $utente->id;
-         $utenteLavoro = new UtenteLavoro();
-         $utenteLavoro->utente_id = $utente_id;
-         $utenteLavoro->lavoro_id = $data->input('lavoro');
-         $utenteLavoro->dataInizioLavoro = $data->input('dataInizioLavoro');
-         $utenteLavoro->save();
+         $lavoro_id = $data->input('lavoro');
+         UtenteLavoro::where(['utente_id' => $utente_id])
+            ->update(['lavoro_id' => $lavoro_id]);
          return $utente->email;
       }
 

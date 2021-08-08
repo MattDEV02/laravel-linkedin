@@ -10,22 +10,18 @@
 
       private array $likes = [
          [
-            'id' => 1,
             'post_id' => 1,
             'utente_id' => 1
          ],
          [
-            'id' => 2,
             'post_id' => 3,
             'utente_id' => 5
          ],
          [
-            'id' => 3,
             'post_id' => 8,
             'utente_id' => 5
          ],
          [
-            'id' => 4,
             'post_id' => 4,
             'utente_id' => 1
          ],

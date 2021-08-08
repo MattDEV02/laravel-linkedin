@@ -86,7 +86,11 @@
        * @return void
        */
       public function run(): void {
-         foreach($this->utentiLavori as $utenteLavoro)
-            UtenteLavoro::create($utenteLavoro);
+         foreach($this->utentiLavori as $utenteLavoro) {
+            UtenteLavoro::where([
+               'utente_id' => $utenteLavoro['utente_id'],
+               'lavoro_id' => $utenteLavoro['lavoro_id']
+            ])->update($utenteLavoro);
+         }
       }
    }

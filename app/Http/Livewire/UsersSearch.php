@@ -14,11 +14,15 @@
 
    class UsersSearch extends Component {
 
-      public Collection | array $utenti = [];
+      public array | Collection $utenti;
 
-      public function search(string $s): void
-      {
-         $this->utenti = Str::length($s) > 0 ?
+
+      public function mount(): void {
+         $this->utenti = [];
+      }
+
+      public function search(string $s): void {
+         $this->utenti = (Str::length($s) > 0) ?
             $this->utenti = Utente::select(
                DB::raw("CONCAT(nome, ' ', cognome) AS nomeCognome"),
                'email'
