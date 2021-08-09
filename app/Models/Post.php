@@ -9,27 +9,28 @@
 
 
    /**
-    * @method static pubblicazione(int $utente_id, Request $req)
+    * @method static pubblicazione(Request $req)
     * @method static getAll(int $utente_id, bool $profile = false, string $orderBy = 'p.created_at DESC')
     * @method static getWithAuthor(int $post_id)
     * @method static getNumLikes()
     * @property string testo
     * @property string foto
-    * @property int utente
+    * @property int utente_id
     */
    class Post extends Model {
 
       protected $table = 'Post';
       public $timestamps = true;
 
-      public function scopePubblicazione(Builder $query, int $utente, Request $data): string {
-         $fileName = store($data->file('image'), 'posts', $utente);
+      public function scopePubblicazione(Builder $query, Request $req): string {
+         $utente_id = $req->session()->get('utente')->id;
+         $fileName = store($req->file('image'), 'posts', $utente_id);
          $post = new Post();
-         $post->testo= $data->input('testo');
+         $post->testo= $req->input('testo');
          $post->foto = $fileName;
-         $post->utente = $utente;
+         $post->utente_id = $utente_id;
          $post->save();
-         return "$utente/$fileName";
+         return "$utente_id/$fileName";
       }
 
       public function scopeGetAll(Builder $query, int $utente_id, bool $profile = false, $orderBy = 'p.created_at DESC'): array {
@@ -42,7 +43,8 @@
                p.created_at,
                u.email AS utenteEmail,
                CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome,
-               CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso
+               CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
+               COUNT(mp.utente_id) AS miPiace
            FROM 
               Post p
               JOIN Utente u ON p.utente_id = u.id
@@ -50,7 +52,8 @@
               JOIN UtenteLavoro ul ON ul.utente_id = u.id
               JOIN Lavoro l ON ul.lavoro_id = l.id
               JOIN Citta c ON u.citta_id = c.id
-              JOIN Nazione n ON c.nazione_id = n.id
+              JOIN Nazione n ON c.nazione_id = n.id 
+              LEFT JOIN MiPiace mp ON mp.post_id = p.id
            WHERE
                ra.stato = 'Accettata' AND
               (ra.utenteMittente = $utente_id OR ra.utenteRicevente = $utente_id)

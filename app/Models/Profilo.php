@@ -22,7 +22,7 @@
       protected $primaryKey = 'utente_id';
       public $incrementing = false;
       public $timestamps = true;
-      protected $fillable = [ 'descrizione' ];
+      protected $fillable = ['descrizione', 'foto'];
 
 
       public function scopeGetAll(Builder $query, int $utente_id): ?object {
@@ -53,7 +53,10 @@
             ->session()
             ->get('utente')->id;
          $img = $req->file('image');
-         $toUpdate = ['descrizione' => $req->input('descrizione')];
+         $toUpdate = [
+            'descrizione' => $req->input('descrizione'),
+            'foto' => null
+         ];
          if(isset($img)) {
             $dir = 'profiles';
             Storage::delete(Storage::allFiles("public/$dir/$utente_id/"));

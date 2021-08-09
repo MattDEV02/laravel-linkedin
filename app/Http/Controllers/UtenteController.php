@@ -111,7 +111,7 @@
          $email = adjustEmail($req->input('email'));
          $password = $req->input('password');
          if(Utente::isLogged($email, $password)) {
-            $req->session()->regenerate();
+           // $req->session()->regenerate();
             if(!$req->session()->exists('utente')) {
                sessionPutUser($req);
                Log::info("New User-Session started ($email).");
@@ -120,8 +120,7 @@
                ->session()
                ->get('utente')->id;
             return view('feed.index', [
-               'posts' => Post::getAll($utente_id),
-               'profile_id' => null
+               'posts' => Post::getAll($utente_id)
             ]);
          } else
             return back()

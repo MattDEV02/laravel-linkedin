@@ -34,11 +34,10 @@
                ->session()
                ->get('utente');
          $utente_id = $this->utente->id;
-         $path = Post::pubblicazione($utente_id, $req);
+         $path = Post::pubblicazione($req);
          Log::debug("New Post Inserted ($path).");
          return view('feed.utils.posts', [
-            'posts' => Post::getAll($utente_id, false),
-            'profile_id' => null
+            'posts' => Post::getAll($utente_id, false)
          ]);
       }
 
@@ -47,17 +46,13 @@
             $req
                ->session()
                ->get('utente');
-         $utente_id = $this->utente->id;
-         MiPiace::like($req->input('post'), $req->input('utente'));
-         $profile_id = $req->input('profile_id');
-         $cond =  $profile_id > 0;
-         $id = $cond ? $profile_id : $utente_id;
-         $posts = Post::getAll($id, $cond);
-         return view('feed.utils.posts', [
-            'posts' => $posts,
-            'profile_id' => $profile_id
+         $post_id = $req->input('post_id');
+         MiPiace::like($post_id, $this->utente->id);
+         return view('components.like', [
+            'postId' => $post_id
          ]);
       }
+
       public function orderBy(Request $req): Factory | View | Application {
          $req->validate([
             'postsOrderName' => ['required', 'min:7', 'max:12'],
@@ -74,13 +69,9 @@
             $req
                ->session()
                ->get('utente');
-         $utente_id = $this->utente->id;
-         $profile_id = $req->input('profile_id');
-         $cond = $profile_id > 0;
          $orderBy = $req->input('postsOrderName') . ' ' . $req->input('postsOrderType');
          return view('feed.utils.posts', [
-            'posts' => Post::getAll($utente_id, $cond, $orderBy),
-            'profile_id' => $profile_id
+            'posts' => Post::getAll($this->utente->id, false, $orderBy)
          ]);
       }
 

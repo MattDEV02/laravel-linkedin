@@ -1,10 +1,12 @@
 <?php
 
    use App\Models\Utente;
+   use Illuminate\Support\Facades\Mail;
    use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\UtenteController;
    use App\Http\Controllers\PostController;
    use App\Http\Controllers\ProfileController;
+   use App\Mail\PasswordDimenticata;
 
 
    /*
@@ -67,12 +69,12 @@
                   ->name('orderBy-post');
                Route::post('/like', [$PC, 'like'])
                   ->middleware('isSessionLogged');
-               Route::post('/edit-profile', [$PRC, 'updateProfile'])
+               Route::put('/edit-profile', [$PRC, 'updateProfile'])
                   ->middleware('isSessionLogged')
                   ->name('edit-profile');
             });
       });
 
    Route::any('test', function() {
-      return Utente::getProfileLink(1);
+      Mail::to('matteolambertucci3@gmail.com')->send(new PasswordDimenticata());
    });

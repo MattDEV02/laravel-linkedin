@@ -39,7 +39,7 @@
        */
       public function handle(): int {
          $n = (int) $this->arguments('n');
-         if(Utente::factory()->count($n)->create())
+         if(Utente::factory()->count(20)->create())
             $this->info('Factory data inserted.');
          else
             $this->info('Factory data not inserted.');

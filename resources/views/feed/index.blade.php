@@ -30,7 +30,7 @@
             <div class="{{ $selectors['col'] }}">
                 <x-posts-order />
                 <div class="{{ $selectors['row'] }}" id="posts-container">
-                    @include('feed.utils.posts', ['profile' => false])
+                    @include('feed.utils.posts')
                 </div>
             </div>
         </div>

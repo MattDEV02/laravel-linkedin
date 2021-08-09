@@ -16219,13 +16219,12 @@ thead.white_bg {
 }
 
 #commenti_link_container {
-   margin-top: 0.85rem;
-   margin-left: 4rem;
+   margin-left: 7.6rem;
 }
 
 #numero_collegamenti_post {
    position: absolute;
-   right: 1px;
+   right: 8px;
    top: -20px;
 }
 

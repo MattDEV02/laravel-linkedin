@@ -6,6 +6,7 @@ const
     prop = 'backgroundColor',
     colors = ['#3490DC', '#EF7E05F2'];
 
+
 image.on({
         input: () => btn.css(prop, colors[1]),
         change: () => {
@@ -51,12 +52,11 @@ $('#postForm').submit(
             data.append('image', postImage);
             data.append('testo',  postText);
             console.log(data.get('image'), data.get('testo'));
-            const res = await axios.post(form.action, data,{
+            const res = await axios.post(form.action, data, {
                 headers: {
                     "Content-Type": form.enctype
                 }
-            })
-                .catch(e => console.error(e));
+            }).catch(e => console.error(e));
             console.log(res);
             isValid(res) && res.status === 200  ?
                 container.html(res.data) :
@@ -86,14 +86,12 @@ postsOrder.change(async (e) => {
         window.alert("Errore nell' ordinamento dei Post.");
 });
 
-const like = async (post, utente, profile_id) => {
-    const res = await axios.post('ricezione-dati/like', {
-        post,
-        utente,
-        profile_id
-    }).catch(e => console.error(e));
+
+const like = async (post_id) => {
+    const res = await axios.post('ricezione-dati/like', { post_id })
+        .catch(e => console.error(e));
     console.log(res);
     isValid(res) && res.status === 200 ?
-        document.querySelector('#posts-container').innerHTML = res.data :
-        window.alert('Errore nel click del Like.');
+        $('#like_container-'+ post_id).html(res.data) :
+        window.alert("Errore nel click del Like.");
 }

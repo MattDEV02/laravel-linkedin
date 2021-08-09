@@ -21,15 +21,11 @@
                         lavoroPresso="{{ $post->lavoroPresso }}"
                 />
                 <p class="card-text">{{ $post->testo }}</p>
-                <div class="{{ $selectors['col'] }}">
-                    @component('components.mi-piace-button', [
-                          'post' => $post->id,
-                          'utente' => $utente_id,
-                          'autore' => $post->utente_id,
-                          'profile_id' => $profile_id
-                    ])
-                    @endcomponent
-                </div>
+                @component('components.mi-piace-button', [
+                      'post_id' => $post->id,
+                      'autore_id' => $post->utente_id
+                ])
+                @endcomponent
             </div>
             <div class="card-footer">
                 <small class="text-muted">

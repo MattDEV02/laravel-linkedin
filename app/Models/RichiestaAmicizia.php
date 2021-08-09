@@ -89,8 +89,7 @@
 
       public function scopeIsLinked (Builder $query, int $utenteMittente, int $utenteRicevente, bool $flag = false): bool {
          $stato = $flag ? 'Sospesa' : 'Accettata';
-         $res = DB::table('RichiestaAmicizia AS ra')
-            ->select(DB::raw('COUNT(ra.id) AS linked'))
+         return (bool) DB::table('RichiestaAmicizia AS ra')
             ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
             ->join('Utente AS u2', 'ra.utenteRicevente', 'u2.id')
             ->where(function($query) use ($utenteMittente) {
@@ -104,8 +103,7 @@
                   ->Orwhere('ra.utenteRicevente', $utenteRicevente);
             })
             ->where('ra.stato', $stato)
-            ->first();
-         return (bool) $res->linked;
+            ->count();
       }
 
       public function scopeGetNumCollegamenti(Builder $query, int $utenteRicevente): int {

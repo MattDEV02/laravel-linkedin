@@ -3,7 +3,7 @@
     $utente = session('utente');
 @endphp
 
-        <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>
@@ -30,6 +30,7 @@
                     <div class="{{ $selectors['row'] }}">
                         <div class="col-xl-4 col-lg-6 col-md-7 col-sm-9 col-xs-9 p-4" id="form-card">
                             <form method="{{ $selectors['method'] }}" action="{{ route('edit-profile') }}" id="profile-form" enctype="multipart/form-data">
+                                @method('PUT')
                                 @csrf
                                 <x-errors />
                                 <div class="{{ $selectors['col'] }}3">
