@@ -41,6 +41,7 @@
 - ### JSON, XML
 - ### PHPUnit
 - ### PHPDocs
+- ### HTTP 1.1
 - ### DigitalOcean
 - ### PHPStorm, Visual-studio Code.
 
@@ -142,3 +143,5 @@ On the Login page, the user can also retrieve his password by entering his email
 - ### Request
 
 - ### Artisan
+
+- ### Mail

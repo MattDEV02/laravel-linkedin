@@ -60,7 +60,8 @@
            GROUP BY
               p.id
            ORDER BY 
-               $orderBy 
+               $orderBy,
+               p.created_at DESC
       ");
          if($profile)
             $sql = Post::getSQLQuery_postsByProfile($utente_id, $orderBy);

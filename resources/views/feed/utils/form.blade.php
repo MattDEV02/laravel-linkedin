@@ -12,8 +12,12 @@ $selectors = selectors();
                         <h2>Nuovo Post</h2>
                     </div>
                 </div>
+                <div class="mt-3">
+                    <x-success />
+                    <x-errors />
+                </div>
                 <div class="{{ $selectors['col'] }}4">
-                    <div cl-ass="{{ $selectors['row'] }}">
+                    <div class="{{ $selectors['row'] }}">
                         <input
                                 type="text"
                                 name="testo"

@@ -1,6 +1,8 @@
 <?php
 
    use App\Models\Utente;
+   use Illuminate\Mail\Mailable;
+   use Illuminate\Support\Facades\Cookie;
    use Illuminate\Support\Facades\Mail;
    use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\UtenteController;
@@ -38,10 +40,10 @@
    Route::get('/registrazione', [$UC, 'registrazione'])
       ->name('registrazione');
 
-   Route::match(['GET', 'POST'], '/feed', [$UC, 'logResult']);
+   Route::get('/feed', [$PC, 'feed']);
 
    Route::middleware('isSessionLogged')
-      ->group(function() use($UC, $PC, $PRC) {
+      ->group(function() use($UC, $PC, $PRC): void {
          Route::get('/commenti/{post_id}', [$PC, 'commenti']);
          Route::get('/edit-profile', [$PRC, 'editProfile']);
          Route::get('/profile', [$PRC, 'profile'])
@@ -52,12 +54,14 @@
       });
 
    Route::prefix('ricezione-dati')
-      ->group(function() use($UC, $PC, $PRC) {
+      ->group(function() use($UC, $PC, $PRC): void {
          Route::post('/registrazione', [$UC, 'insert'])
             ->name('insert-user');
-         Route::post('/passwordDimenticata', [$UC, 'passwordDimenticata']);
+         Route::post('login-result', [$UC, 'logResult'])
+            ->name('log-result');
+         Route::post('/password-dimenticata', [$UC, 'passwordDimenticata']);
          Route::middleware('isSessionLogged')
-            ->group(function () use($UC, $PC, $PRC) {
+            ->group(function () use($UC, $PC, $PRC): void {
                Route::delete('/remove-collegamento', [$PRC, 'removeCollegamento'])
                   ->middleware('isSessionLogged')
                   ->name('remove-collegamento');
@@ -76,5 +80,13 @@
       });
 
    Route::any('test', function() {
-      Mail::to('matteolambertucci3@gmail.com')->send(new PasswordDimenticata());
+      Mail::send('utils.password-dimenticata', [
+         'email' => 'matteolambertucci3@gmail.com',
+         'password' => '12345678'
+      ],
+         function($message) {
+            $message
+               ->to('matteolambertucci3@gmail.com', 'Mailable')
+               ->subject('Linkedin password reset');
+         });
    });

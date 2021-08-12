@@ -11,6 +11,8 @@
             case 'profile':
                $icon = 'user';
           break;
+          case 'feed':
+             $icon = 'users';
     }
     $cond = $txt === 'home';
     $ml = $cond ? 'ml-4' : 'ml-4 ml-lg-2';

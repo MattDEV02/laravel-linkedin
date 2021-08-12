@@ -28,7 +28,6 @@
        * @return $this
        */
       public function build() {
-         return $this->from('laravel.linkedin@gmail.com', 'Example')
-            ->view('home');
+         return $this;
       }
    }

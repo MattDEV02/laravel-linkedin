@@ -55,7 +55,6 @@
          $img = $req->file('image');
          $toUpdate = [
             'descrizione' => $req->input('descrizione'),
-            'foto' => null
          ];
          if(isset($img)) {
             $dir = 'profiles';
@@ -64,7 +63,8 @@
          }
          $profilo = Profilo::find($utente_id);
          $profilo->descrizione = $toUpdate['descrizione'];
-         $profilo->foto = $toUpdate['foto'];
+         if(isset($img))
+            $profilo->foto = $toUpdate['foto'];
          $profilo->save();
          UtenteLavoro::where('utente_id', $utente_id)
             ->update([

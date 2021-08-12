@@ -30,7 +30,7 @@
                                 <p>Resta al passo con il tuo mondo professionale.</p>
                             </div>
                         </div>
-                        <form method="{{ $selectors['method'] }}" action="/feed">
+                        <form method="{{ $selectors['method'] }}" action="{{ route('log-result') }}">
                             @csrf
                             <x-errors />
                             <x-success />

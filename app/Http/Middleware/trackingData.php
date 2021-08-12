@@ -19,15 +19,16 @@
        * @return mixed
        */
       public function handle(Request $request, Closure $next): mixed {
-         if(getLogLines() > 2500)
+         if(getLogLines() > 1500)
             Artisan::call('log:clear');
          $ip = $request->ip();
          $method = Str::upper($request->method());
          $url = urldecode($request->fullUrl());
          $format = $request->format();
+         $ref = $request->header('referer');
          $reg = $request->hasCookie('password') ? 'yes' : 'no';
          $log = $request->session()->exists('utente') ? 'yes' : 'no';
-         Log::notice("$ip -> $method -> ( $url ) -> accept: $format { reg: $reg, log: $log }.");
+         Log::notice("$ip -> $method -> ( URL = $url, referer = $ref ) -> accept: $format { reg: $reg, log: $log }");
          return $next($request);
       }
    }

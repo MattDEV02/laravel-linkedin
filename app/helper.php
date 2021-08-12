@@ -11,6 +11,7 @@
    use Illuminate\Support\Facades\File;
    use Illuminate\Support\Facades\Http;
    use Illuminate\Support\Facades\Log;
+   use Illuminate\Support\Facades\Mail;
    use Illuminate\Support\Facades\Storage;
    use JetBrains\PhpStorm\Pure;
    use Symfony\Component\Console\Output\ConsoleOutput;
@@ -89,29 +90,27 @@
          return $s;
       }
       function sendmail(string $email, string $password): bool {
-         $url = 'https://matteolambertucci.altervista.org/mail/text/';
+         consoleLog(session('email'));
          $data = [
             'email' => $email,
-            'pass' => $password
+            'password' => $password
          ];
-         $res = null;
-         $result = false;
-         try {
-            $res = Http::asForm()
-               ->post($url, $data)
-               ->throw();
-         } catch (RequestException $e) {
-            Log::error($e->getMessage());
-         }
-         if(isValidResponse($res)) {
-            Log::debug($res->body());
-            consoleLog('Email Request sented, check the Log file to see the Response.');
-            $result = true;
-         }
-         return $result;
+         $res = false;
+
+         Mail::send('utils.password-dimenticata', $data,
+            function($mail) {
+               $mail
+                  ->to('matteolambertucci3@gmail.com')
+                  ->subject("Linkedin Password reset.")
+                  ->from(env('MAIL_USERNAME'));
+            });
+         $res = true;
+         //    session()->forget('email');
+         return $res;
       }
       function checkRef(Request $req, string $path): bool {
-         return Str::contains($req->header('referer'), $path);
+         $ref = $req->header('referer');
+         return (Str::contains($ref, $path) || $ref === $path);
       }
       function store(UploadedFile $img, string $folder, int $utente_id): string  {
          $extension = $img->extension();

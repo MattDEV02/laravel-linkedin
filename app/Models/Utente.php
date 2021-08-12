@@ -51,9 +51,8 @@
          $utente->cognome = ucfirst($data->input('cognome'));
          $utente->citta_id = $data->input('citta');
          $utente->save();
-         $utente_id = $utente->id;
          $lavoro_id = $data->input('lavoro');
-         UtenteLavoro::where(['utente_id' => $utente_id])
+         UtenteLavoro::where(['utente_id' => $utente->id])
             ->update(['lavoro_id' => $lavoro_id]);
          return $utente->email;
       }

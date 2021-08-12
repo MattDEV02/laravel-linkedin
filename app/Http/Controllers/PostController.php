@@ -18,16 +18,31 @@
 
       private ?Utente $utente;
 
-      public function insert(Request $req): Factory | View | Application {
+
+      public function feed(Request $req): Factory | View | Application | RedirectResponse {
+         consoleLog($req->header('referer'));
+         if($req->session()->exists('utente')) {
+            $this->utente = $req
+               ->session()
+               ->get('utente');
+            return view('feed.index', [
+               'posts' => Post::getAll($this->utente->id)
+            ]);
+         } else
+            return redirect('/logout');
+      }
+
+      public function insert(Request $req): RedirectResponse {
+         $mimes = 'jpeg,png,doc,docs,pdf,ico,svg,bmp,web';
          $req->validate([
             'testo' => ['required', 'min:1', 'max:255'],
-            'image' => ['required', 'max:2000', 'mimes:jpeg,png,doc,docs,pdf,ico,svg,bmp,web'],
+            'image' => ['required', 'max:2000', "mimes:$mimes"],
          ], [
             'required' => ':attribute is Required.',
             'testo.min' => 'Testo almeno 1 carattere.',
             'testo.max' => 'Testo massimo 255 caratteri.',
             'image.max' => 'File immagine troppo pesante.',
-            'image.mimes'  => 'Insert a valid image.',
+            'image.mimes' => "Insert a valid image (mimes: $mimes).",
          ]);
          $this->utente =
             $req
@@ -36,9 +51,8 @@
          $utente_id = $this->utente->id;
          $path = Post::pubblicazione($req);
          Log::debug("New Post Inserted ($path).");
-         return view('feed.utils.posts', [
-            'posts' => Post::getAll($utente_id, false)
-         ]);
+         return back()
+            ->with('msg', 'Post pubblicato con successo');
       }
 
       public function like(Request $req): Factory | View | Application {

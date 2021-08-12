@@ -30,6 +30,7 @@
       }
 
       public function logout(Request $req): RedirectResponse {
+         $path = '/login';
          if($req->session()->exists('utente')) {
             Cookie::queue(Cookie::forget('password'));
             $email = $req
@@ -40,10 +41,10 @@
                ->session()
                ->invalidate();
             Log::warning("Finished User-Session ($email).");
-            return redirect('/login')
+            return redirect($path)
                ->withErrors('Ti sei disconnesso, devi effettuare di nuovo il Login.');
          } else
-            return redirect('/login');
+            return redirect($path);
       }
 
       public function insert(Request $req): RedirectResponse {
@@ -96,7 +97,7 @@
             return redirect('/registrazione');
       }
 
-      public function logResult(Request $req): Factory | View | RedirectResponse | Application {
+      public function logResult(Request $req): RedirectResponse {
          $req->validate([
             'email' => ['email', 'required', 'min:2', 'max:35'],
             'password' => ['required', 'min:8', 'max:8'],
@@ -111,17 +112,12 @@
          $email = adjustEmail($req->input('email'));
          $password = $req->input('password');
          if(Utente::isLogged($email, $password)) {
-           // $req->session()->regenerate();
+            $req->session()->regenerate();
             if(!$req->session()->exists('utente')) {
                sessionPutUser($req);
                Log::info("New User-Session started ($email).");
             }
-            $utente_id = $req
-               ->session()
-               ->get('utente')->id;
-            return view('feed.index', [
-               'posts' => Post::getAll($utente_id)
-            ]);
+            return redirect('/feed');
          } else
             return back()
                ->withInput($req->all())
@@ -143,9 +139,10 @@
          if(checkRef($req, 'login')) {
             $email = adjustEmail($req->input('email'));
             $password = $req->input('password');
-            $utente = Utente::where('email', $email);
-            if($utente->count()) {
-               $utente->update(['password' => Hash::make($password)]);
+            $utente = Utente::where('email', $email)->first();
+            if(isset($utente)) {
+               $utente->password = Hash::make($password);
+               $utente->save();
                Cookie::queue(Cookie::forever('password', $password));
                $res = sendmail($email, $password);
             }
