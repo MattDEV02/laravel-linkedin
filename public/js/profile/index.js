@@ -7,7 +7,7 @@ $('#image').change(function() {
    if(txt.length <= 1)
       txt = labelTXT;
    $(this)
-      .siblings('.custom-file-label')
-      .addClass('selected')
-      .html(txt);
+       .siblings('.custom-file-label')
+       .addClass('selected')
+       .html(txt);
 });

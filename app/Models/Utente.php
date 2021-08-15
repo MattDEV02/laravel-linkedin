@@ -42,7 +42,7 @@
             ) : $cond;
       }
 
-      public function scopeRegistrazione(Builder $query, Request $data): string {
+      public function scopeRegistrazione(Builder $query, Request $data): Utente {
          $utente = new Utente();
          $utente->email = adjustEmail($data->input('email'));
          $password = $data->input('password');
@@ -54,13 +54,22 @@
          $lavoro_id = $data->input('lavoro');
          UtenteLavoro::where(['utente_id' => $utente->id])
             ->update(['lavoro_id' => $lavoro_id]);
-         return $utente->email;
+         return $utente;
       }
 
-      public function scopeGetProfileLink(Builder $query, int $utente_id) {
+      public function scopeGetProfileLink(Builder $query, int $utente_id): Utente {
          return Utente::select([
             'email',
             DB::raw("CONCAT(nome, ' ', cognome) AS nomeCognome")
          ])->find($utente_id);
       }
+
+      public function scopeGetNomeCognome(Builder $query, int $utente_id): string {
+         return Utente::select([
+            DB::raw("CONCAT(nome, ' ', cognome) AS nomeCognome")
+         ])
+            ->find($utente_id)
+            ->nomeCognome;
+      }
+
    }

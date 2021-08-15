@@ -80,13 +80,5 @@
       });
 
    Route::any('test', function() {
-      Mail::send('utils.password-dimenticata', [
-         'email' => 'matteolambertucci3@gmail.com',
-         'password' => '12345678'
-      ],
-         function($message) {
-            $message
-               ->to('matteolambertucci3@gmail.com', 'Mailable')
-               ->subject('Linkedin password reset');
-         });
+      sendNotification('Matteo Lambertucci');
    });

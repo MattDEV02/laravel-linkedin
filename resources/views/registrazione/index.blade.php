@@ -105,5 +105,6 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="js/login/index.js"></script>
 <script type="text/javascript" src="js/registrazione/index.js"></script>
+@include('utils.notification-script')
 </body>
 </html>

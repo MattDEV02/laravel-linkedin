@@ -16,36 +16,24 @@ image.on({
     }
 );
 
-const reset = e => {
-    e.preventDefault();
-    e.target.reset();
-    btn.css(prop, colors[0]);
-};
-
-const isValid = val => val !== null && val !== undefined
-
-const isValidPost = (image, text) => (
-    isValid(image) &&
-    isValid(text) &&
-    (image.size / 1000 ) < 2000 &&
-    text.length > 1
-);
+const isValid = val => val !== null && val !== undefined && val !== false;
 
 $('#postForm').submit(function (e) {
-    let err = 0;
+    let num_errors = 0;
     const
         postImage = image[0].files[0],
         postText = testo.val();
+    console.table(postImage);
+    console.log('Text: ' + postText);
     if(postText.length <= 0) {
         window.alert('Testo del post troppo corto (min = 1 carattere).');
-        err++;
+        num_errors++;
     }
     if((postImage.size / 1000 ) > 2000) {  // KB
         window.alert('File troppo pesante (max = 2 MB).');
-        err++;
+        num_errors++;
     }
-    if(err > 0)
-        e.preventDefault();
+    num_errors > 0 ? e.preventDefault() : console.log('Post is OK.');
 });
 
 const
@@ -61,20 +49,21 @@ postsOrder.change(async (e) => {
             postsOrderName:  postsOrder[0].value,
             postsOrderType:  postsOrder[1].value,
         }
-    })
-        .catch(e => console.error(e));
+    }).catch(e => console.error(e));
     console.log(res);
     isValid(res) && res.status === 200 ?
         container.html(res.data) :
-        window.alert("Errore nell' ordinamento dei Post.");
+        window.alert('Errore nell\' ordinamento dei Post.');
 });
 
 
 const like = async (post_id) => {
-    const res = await axios.post('ricezione-dati/like', { post_id })
+    sound();
+    const res = await axios
+        .post('ricezione-dati/like', { post_id })
         .catch(e => console.error(e));
     console.log(res);
     isValid(res) && res.status === 200 ?
-        $('#like_container-'+ post_id).html(res.data) :
-        window.alert("Errore nel click del Like.");
-}
+        $('#like_container-' + post_id).html(res.data) :
+        window.alert('Errore nel click del Like.');
+};

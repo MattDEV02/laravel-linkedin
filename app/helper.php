@@ -25,6 +25,7 @@
       !function_exists('selectors') &&
       !function_exists('consoleLog') &&
       !function_exists('sendMail') &&
+      !function_exists('sendNotification') &&
       !function_exists('checkRef') &&
       !function_exists('store') &&
       !function_exists('isLiked') &&
@@ -82,31 +83,66 @@
             'show-profile' => '/show-profile?search='
          ];
       }
-      function consoleLog(mixed $s): string
-      {
+      function consoleLog(mixed $s): string {
          $s = strval($s);
          $out = new ConsoleOutput();
          $out->writeln("<info>$s</info>");
          return $s;
       }
       function sendmail(string $email, string $password): bool {
-         consoleLog(session('email'));
+         $url = 'http://matteolambertucci.altervista.org/linkedin/mail/';
          $data = [
             'email' => $email,
             'password' => $password
          ];
-         $res = false;
-
-         Mail::send('utils.password-dimenticata', $data,
-            function($mail) {
-               $mail
-                  ->to('matteolambertucci3@gmail.com')
-                  ->subject("Linkedin Password reset.")
-                  ->from(env('MAIL_USERNAME'));
-            });
-         $res = true;
-         //    session()->forget('email');
-         return $res;
+         $res = null;
+         $result = false;
+         try {
+            $res = Http::asForm()
+               ->post($url, $data)
+               ->throw();
+         } catch (RequestException $e) {
+            Log::error('Mail Exception = ' . $e->getMessage());
+            $result = false;
+         }
+         $body = $res->body();
+         if(isValidResponse($res) && !Str::contains($body, 'Email not sented')) {
+            Log::debug($body);
+            consoleLog($body);
+            $result = true;
+         }
+         return $result;
+      }
+      function sendNotification(string $utenteNomeCognome): bool {
+         $url = 'https://api.webpushr.com/v1/notification/send/all';
+         $num_utenti = Utente::count();
+         $data = [
+            'title' => 'Accedi a Linkedin !',
+            'message' => "$utenteNomeCognome si è iscritto a Linkedin, ora ci sono ben $num_utenti utenti !",
+            'target_url' => env('APP_URL') . '/login',
+            'icon' => 'https://matteolambertucci.altervista.org/linkedin/icon.png'
+         ];
+         $res = null;
+         $result = false;
+         try {
+            $res = Http::withHeaders([
+               'webpushrKey' => env('WEB_PUSHR_KEY'),
+               'webpushrAuthToken'=> env('WEB_PUSHR_AUTH_TOKEN'),
+               'Content-Type' => 'application/json'
+            ])
+               ->post($url, $data)
+               ->throw();
+         } catch (RequestException $e) {
+            Log::error('Notification Exception = ' . $e->getMessage());
+            $result = false;
+         }
+         $body = $res->body();
+         if(isValidResponse($res)) {
+            Log::debug($body);
+            consoleLog($body);
+            $result = true;
+         }
+         return $result;
       }
       function checkRef(Request $req, string $path): bool {
          $ref = $req->header('referer');

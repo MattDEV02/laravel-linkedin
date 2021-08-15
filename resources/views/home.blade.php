@@ -2,7 +2,7 @@
     $selectors = selectors();
 @endphp
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>
@@ -41,6 +41,7 @@
                     <div class="{{ $selectors['row'] }}">
                         <img
                                 src="img/home.svg"
+                                title="Home page IMG"
                                 alt="HOME IMG"
                                 class="img-fluid"
                         />
@@ -50,6 +51,8 @@
         </div>
     </div>
 </div>
+
+@include('utils.notification-script')
 </body>
 
 </html>
