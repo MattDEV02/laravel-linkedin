@@ -22,13 +22,17 @@
          if(getLogLines() > 1500)
             Artisan::call('log:clear');
          $ip = $request->ip();
+         $userAgent = $request->header('User-Agent');
          $method = Str::upper($request->method());
          $url = urldecode($request->fullUrl());
+         $ref = $request->header('referer') ?? 'null';
          $format = $request->format();
-         $ref = $request->header('referer');
+         $langHeader = $request->header('accept-language');
+         $lang = Str::substr($langHeader, 0, strpos($langHeader, ','));
+         $connection = $request->header('connection');
          $reg = $request->hasCookie('password') ? 'yes' : 'no';
          $log = $request->session()->exists('utente') ? 'yes' : 'no';
-         Log::notice("$ip -> $method -> ( URL = $url, referer = $ref ) -> accept: $format { reg: $reg, log: $log }");
+         Log::notice("( $ip, $userAgent ) -> $method -> [ URL = $url, referer = $ref ] -> format: $format ; lang: $lang ; connection: $connection  { registered: $reg, logged: $log }");
          return $next($request);
       }
    }

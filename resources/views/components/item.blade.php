@@ -1,9 +1,10 @@
 @php
     $icon = null;
+    $cond = false;
     switch($txt) {
-       case 'home':
-          $cond = $txt === 'home';
-          $icon = $txt;
+       case 'stats':
+          $cond = true;
+          $icon = 'calculator';
           break;
             case 'logout':
                $icon = 'sign-out-alt';
@@ -14,12 +15,11 @@
           case 'feed':
              $icon = 'users';
     }
-    $cond = $txt === 'home';
     $ml = $cond ? 'ml-4' : 'ml-4 ml-lg-2';
 @endphp
 
 <li class="nav-item active mt-2 mt-lg-1 {{ $ml }}">
-    <a class="nav-link" href="/{{ $txt }}" target="{{ $cond ? '_blank' : '_self' }}">
+    <a class="nav-link" href="/{{ $cond ? 'reportistica' : $txt }}" target="{{ $cond ? '_blank' : '_self' }}">
         <h4 class="{{ $class ?? 'text-primary'}}">
             <i class="fas fa-{{ $icon }} mr-lg-1 mr-2"></i>
             {{ ucfirst($txt) }}

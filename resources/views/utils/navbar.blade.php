@@ -14,7 +14,7 @@
     </button>
     <div class="navbar-collapse collapse" id="collapse_navbar">
         <ul class="navbar-nav mr-auto">
-            <x-item txt="home" class="text-dark"/>
+            <x-item txt="stats" class="text-dark"/>
             <x-item
                     txt="logout"
                     class="text-danger"

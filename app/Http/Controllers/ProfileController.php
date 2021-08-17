@@ -87,7 +87,7 @@
       }
       public function showProfile(Request $req): Factory | View | Application {
          $emailSearched = $req->query('search');
-         consoleLog("Profile searched: $emailSearched");
+         consoleLog("Profile searched:  ($emailSearched)");
          $this->utente = $req
             ->session()
             ->get('utente');
@@ -97,10 +97,9 @@
             $utenteSearched_id = $utenteSearched->id;
             $profile = Profilo::getAll($utenteSearched_id);
             $own_profile = $profile->utente_id === $utente_id;
-            $richieste = $own_profile ? RichiestaAmicizia::getRichieste($utente_id) : null;
             return view('profile.index', [
                'profile' => $profile,
-               'richieste' => $richieste,
+               'richieste' => $own_profile ? RichiestaAmicizia::getRichieste($utente_id) : null,
                'posts' => Post::getAll($utenteSearched_id, true),
                'own_profile' => $own_profile,
             ]);
@@ -109,7 +108,7 @@
             return view('utils.user-not-found');
          }
       }
-      public function collegamenti(Request $req, int $utente_id): Factory | View | Application | RedirectResponse {
+      public function collegamenti(int $utente_id): Factory | View | Application | RedirectResponse {
          return (Utente::find($utente_id) !== null) ? view('collegamenti.index', [
             'collegamenti' => RichiestaAmicizia::getCollegamenti($utente_id),
             'utente_profile' => Utente::getProfileLink($utente_id),
@@ -127,10 +126,9 @@
                'email.min' => 'Email almeno 2 caratteri.',
                'email.max' => 'Email massimo 35 caratteri.',
             ]);
-            $this->utente = $req
+            $utente_id = $req
                ->session()
-               ->get('utente');
-            $utente_id = $this->utente->id;
+               ->get('utente')->id;
             $utenteCollegamento = Utente::where('email', $req->input('email'))->first();
             RichiestaAmicizia::removeCollegamento($utente_id, $utenteCollegamento->id);
             return 'Collegamento deleted.';

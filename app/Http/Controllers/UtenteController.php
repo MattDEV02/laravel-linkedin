@@ -49,7 +49,7 @@
 
       public function insert(Request $req): RedirectResponse {
          if(checkRef($req, 'registrazione')) {
-            $req->validate([
+            $data = $req->validate([
                'email' => ['email', 'required', 'unique:Utente','min:2', 'max:35'],
                'password' => ['required', 'min:8', 'max:8'],
                'nome' => ['required', 'min:3', 'max:45'],
@@ -87,7 +87,7 @@
             else {
                $password = $req->input('password');
                Cookie::queue(Cookie::forever('password', $password));
-               $utente = Utente::registrazione($req);
+               $utente = Utente::registrazione($data);
                $utenteEmail = $utente->email;
                sendNotification(Utente::getNomeCognome($utente->id));
                Log::debug("New User inserted ($utenteEmail).");

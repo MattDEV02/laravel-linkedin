@@ -52,7 +52,7 @@
     </div>
 </div>
 
-@include('utils.notification-script')
+<script type="text/javascript" src="/js/notification-script.js"></script>
 </body>
 
 </html>

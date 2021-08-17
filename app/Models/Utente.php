@@ -5,14 +5,13 @@
    use Illuminate\Database\Eloquent\Builder;
    use Illuminate\Database\Eloquent\Factories\HasFactory;
    use Illuminate\Database\Eloquent\Model;
-   use Illuminate\Http\Request;
    use Illuminate\Support\Facades\DB;
    use Illuminate\Support\Facades\Hash;
 
 
    /**
-    * @method static isLogged(string $email, mixed $password)
-    * @method static registrazione(Request $req)
+    * @method static isLogged(string $email, string $password)
+    * @method static registrazione(array $data)
     * @method static getProfileLink(int $utente_id)
     * @property string email
     * @property string password
@@ -29,30 +28,27 @@
       public $timestamps = true;
 
 
-      public function scopeIsLogged(Builder $query, string $email, ?string $password = null): bool {
+      public function scopeIsLogged(Builder $query, string $email, string $password): bool {
          $attr = ['email', 'password'];
          $utente = Utente::select($attr)
             ->where($attr[0], $email)
             ->first();
-         $cond = isset($utente);
-         return isset($password) ?
-            $cond && (
+         return isset($utente) && (
                Hash::check($password, $utente->password) ||
                $password === $utente->password
-            ) : $cond;
+            );
       }
 
-      public function scopeRegistrazione(Builder $query, Request $data): Utente {
+      public function scopeRegistrazione(Builder $query, array $data): Utente {
          $utente = new Utente();
-         $utente->email = adjustEmail($data->input('email'));
-         $password = $data->input('password');
-         $utente->password = Hash::make($password);
-         $utente->nome = ucfirst($data->input('nome'));
-         $utente->cognome = ucfirst($data->input('cognome'));
-         $utente->citta_id = $data->input('citta');
+         $utente->email = adjustEmail($data['email']);
+         $utente->password = Hash::make($data['password']);
+         $utente->nome = ucfirst($data['nome']);
+         $utente->cognome = ucfirst($data['cognome']);
+         $utente->citta_id = $data['citta'];
          $utente->save();
-         $lavoro_id = $data->input('lavoro');
-         UtenteLavoro::where(['utente_id' => $utente->id])
+         $lavoro_id = $data['lavoro'];
+         UtenteLavoro::where('utente_id', $utente->id)
             ->update(['lavoro_id' => $lavoro_id]);
          return $utente;
       }

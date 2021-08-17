@@ -64,11 +64,11 @@
                p.created_at DESC
       ");
          if($profile)
-            $sql = Post::getSQLQuery_postsByProfile($utente_id, $orderBy);
+            $sql = Post::getSQLQuery_ProfilePosts($utente_id, $orderBy);
          return DB::select($sql);
       }
 
-      public static function getSQLQuery_postsByProfile(int $profile, string $orderBy): string {
+      public static function getSQLQuery_ProfilePosts(int $utente_id, string $orderBy): string {
          return ("
             SELECT 
                   p.id,
@@ -87,7 +87,7 @@
                        JOIN Citta c ON u.citta_id = c.id
                        JOIN Nazione n ON c.nazione_id = n.id
                WHERE
-                   u.id = $profile
+                   u.id = $utente_id
                ORDER BY
                    $orderBy
          ");

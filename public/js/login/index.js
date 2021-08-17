@@ -27,6 +27,7 @@ String.prototype.isValidEmail = function() {
        this !== null &&
        this !== undefined &&
        this.length >= 2 &&
+       this.length <= 50 &&
        reg.test(this.toLowerCase())
    );
 }

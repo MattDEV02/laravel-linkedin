@@ -1,6 +1,7 @@
 <?php
 
    use App\Models\Utente;
+   use Illuminate\Http\Request;
    use Illuminate\Mail\Mailable;
    use Illuminate\Support\Facades\Cookie;
    use Illuminate\Support\Facades\Mail;
@@ -40,10 +41,9 @@
    Route::get('/registrazione', [$UC, 'registrazione'])
       ->name('registrazione');
 
-   Route::get('/feed', [$PC, 'feed']);
-
    Route::middleware('isSessionLogged')
       ->group(function() use($UC, $PC, $PRC): void {
+         Route::get('/feed', [$PC, 'feed']);
          Route::get('/commenti/{post_id}', [$PC, 'commenti']);
          Route::get('/edit-profile', [$PRC, 'editProfile']);
          Route::get('/profile', [$PRC, 'profile'])
@@ -51,6 +51,9 @@
          Route::get('/show-profile', [$PRC, 'showProfile']);
          Route::get('/collegamenti/{utente_id}', [$PRC, 'collegamenti'])
             ->name('collegamenti');
+         Route::get('/reportistica', fn () => view('reportistica.index', [
+            'data' => null
+         ]));
       });
 
    Route::prefix('ricezione-dati')
@@ -78,7 +81,3 @@
                   ->name('edit-profile');
             });
       });
-
-   Route::any('test', function() {
-      sendNotification('Matteo Lambertucci');
-   });

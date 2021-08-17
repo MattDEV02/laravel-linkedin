@@ -107,7 +107,7 @@
          }
          $body = $res->body();
          if(isValidResponse($res) && !Str::contains($body, 'Email not sented')) {
-            Log::debug($body);
+            Log::debug("Email result:  $body");
             consoleLog($body);
             $result = true;
          }
@@ -138,7 +138,7 @@
          }
          $body = $res->body();
          if(isValidResponse($res)) {
-            Log::debug($body);
+            Log::debug("Notification result:  $body");
             consoleLog($body);
             $result = true;
          }

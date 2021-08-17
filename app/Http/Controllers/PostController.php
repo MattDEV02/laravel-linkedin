@@ -48,7 +48,6 @@
             $req
                ->session()
                ->get('utente');
-         $utente_id = $this->utente->id;
          $path = Post::pubblicazione($req);
          Log::debug("New Post Inserted ($path).");
          return back()
@@ -82,7 +81,7 @@
          $this->utente =
             $req
                ->session()
-               ->get('utente');
+               ->get('utente')->id;
          $orderBy = $req->input('postsOrderName') . ' ' . $req->input('postsOrderType');
          return view('feed.utils.posts', [
             'posts' => Post::getAll($this->utente->id, false, $orderBy)
@@ -90,9 +89,6 @@
       }
 
       public function commenti(Request $req, int $post_id): Factory | View | Application | RedirectResponse {
-         $this->utente = $req
-            ->session()
-            ->get('utente');
          $commenti = Commento::getAllByPost($post_id);
          $post = Post::getWithAuthor($post_id);
          return isValidCollection($post) ? view('commenti.index', [
