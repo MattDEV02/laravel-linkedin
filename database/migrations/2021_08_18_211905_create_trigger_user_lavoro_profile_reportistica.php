@@ -1,12 +1,10 @@
 <?php
 
    use Illuminate\Database\Migrations\Migration;
-   use Illuminate\Database\Schema\Blueprint;
-   use Illuminate\Support\Facades\Schema;
    use Illuminate\Support\Facades\DB;
 
 
-   class CreateTriggerUserProfile extends Migration {
+   class CreateTriggerUserLavoroProfileReportistica extends Migration {
       /**
        * Run the migrations.
        *
@@ -14,11 +12,12 @@
        */
       public function up(): void {
          DB::statement("
-            CREATE TRIGGER CreateUtente_LavoroProfile AFTER INSERT ON Utente
+            CREATE TRIGGER UtenteLavoroProfiloReportistica_trigger AFTER INSERT ON Utente
                FOR EACH ROW
             BEGIN
                INSERT INTO Profilo(utente_id) VALUES(NEW.id);
                INSERT INTO UtenteLavoro(utente_id, lavoro_id) VALUES(NEW.id, 1);
+               INSERT INTO Reportistica(utente_id) VALUES(NEW.id);
             END
          ");
       }
@@ -29,6 +28,6 @@
        * @return void
        */
       public function down(): void {
-         DB::statement("DROP TRIGGER CreateUserProfile");
+         DB::statement("DROP TRIGGER UtenteLavoroProfiloReportistica_trigger");
       }
    }

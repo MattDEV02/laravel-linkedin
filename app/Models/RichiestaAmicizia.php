@@ -14,7 +14,8 @@
     * @method static getNumCollegamenti(int $utenteRicevente)
     * @method static isSentRichiesta(int $utenteMittente, int $utenteRicevente)
     * @method static getCollegamenti(int $utente_id)
-    * @method static removeCollegamento(mixed $utente_id, $idUtenteCollegamento)
+    * @method static removeCollegamento(int $utente_id, int $idUtenteCollegamento)
+    * @method static getNumTotRichieste(int $utente_id, bool $sented = true)
     * @property int utenteMittente
     * @property int utenteRicevente
     */
@@ -39,11 +40,11 @@
             ->get();
       }
 
-      public  function scopeRemoveCollegamento(Builder $query, int $utente, int $collegamento): void {
-         RichiestaAmicizia::where(function($query) use ($utente) {
+      public  function scopeRemoveCollegamento(Builder $query, int $utente_id, int $collegamento): void {
+         RichiestaAmicizia::where(function($query) use ($utente_id) {
             $query
-               ->where('utenteMittente', $utente)
-               ->Orwhere('utenteRicevente', $utente);
+               ->where('utenteMittente', $utente_id)
+               ->Orwhere('utenteRicevente', $utente_id);
          })
             ->where(function($query) use ($collegamento) {
                $query
@@ -114,5 +115,10 @@
                   ->where('ra.utenteRicevente', $utenteRicevente)
                   ->Orwhere('ra.utenteMittente', $utenteRicevente);
             })->count() ;
+      }
+
+      public function scopeGetNumTotRichieste(Builder $query, int $utente_id, bool $sented = true): int {
+         $attr = $sented ? 'utenteMittente' : 'utenteRicevente';
+         return RichiestaAmicizia::where($attr, $utente_id)->count();
       }
    }

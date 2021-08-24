@@ -1,15 +1,13 @@
 <?php
 
-   use App\Models\Utente;
-   use Illuminate\Http\Request;
-   use Illuminate\Mail\Mailable;
-   use Illuminate\Support\Facades\Cookie;
-   use Illuminate\Support\Facades\Mail;
+   use App\Models\Commento;
+   use App\Models\MiPiace;
+   use App\Models\Post;
+   use App\Models\RichiestaAmicizia;
    use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\UtenteController;
    use App\Http\Controllers\PostController;
    use App\Http\Controllers\ProfileController;
-   use App\Mail\PasswordDimenticata;
 
 
    /*
@@ -81,3 +79,7 @@
                   ->name('edit-profile');
             });
       });
+
+   Route::any('/test', function() {
+      return RichiestaAmicizia::getNumTotRichieste(1, false);
+   });
