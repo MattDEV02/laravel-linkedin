@@ -3,6 +3,7 @@
    use App\Models\Commento;
    use App\Models\MiPiace;
    use App\Models\Post;
+   use App\Models\Reportistica;
    use App\Models\RichiestaAmicizia;
    use Illuminate\Support\Facades\DB;
    use Illuminate\Support\Facades\Route;
@@ -51,7 +52,8 @@
          Route::get('/collegamenti/{utente_id}', [$PRC, 'collegamenti'])
             ->name('collegamenti');
          Route::get('/reportistica', fn () => view('reportistica.index', [
-            'data' => null
+            'data' => Reportistica::getAllByUser(1),
+            'records' => Reportistica::getAllRecords(),
          ]));
       });
 
@@ -70,9 +72,9 @@
                Route::post('/feed', [$PC, 'insert'])
                   ->middleware('isSessionLogged')
                   ->name('insert-post');
-               Route::post('/orderBy', [$PC, 'orderBy'])
+               Route::post('/order-by', [$PC, 'orderBy'])
                   ->middleware('isSessionLogged')
-                  ->name('orderBy-post');
+                  ->name('order-By-post');
                Route::post('/like', [$PC, 'like'])
                   ->middleware('isSessionLogged');
                Route::put('/edit-profile', [$PRC, 'updateProfile'])
@@ -82,5 +84,5 @@
       });
 
    Route::any('/test', function() {
-
+      return Reportistica::getAllByUser(1);
    });

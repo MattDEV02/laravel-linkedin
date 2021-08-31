@@ -6,6 +6,8 @@
    use Illuminate\Database\Eloquent\Builder;
    use Illuminate\Database\Eloquent\Factories\HasFactory;
    use Illuminate\Database\Eloquent\Model;
+   use Illuminate\Support\Arr;
+   use Illuminate\Support\Facades\Schema;
 
 
    /**
@@ -16,16 +18,23 @@
     * @method static updatePost(int $utente_id)
     * @method static updateRichiesteAmicizia(int $utente_id)
     * @method static updateCommenti(int $utente_id)
+    * @method static getAllRecords(): void
+    * @method static getAllByUser(int $int)
     */
-   class Reportistica extends Model
-   {
+   class Reportistica extends Model {
       use HasFactory;
 
       protected $table = 'Reportistica';
       protected $primaryKey = 'utente_id';
       public $incrementing = false;
       public $timestamps = false;
-
+      public array $columns = [
+         'mipiace',
+         'commenti',
+         'post',
+         'richieste_amicizia_inviate',
+         'richieste_amicizia_ricevute'
+      ];
 
       public function scopeUpdateCommenti(Builder $query, int $utente_id): void {
          $reportistica = Reportistica::find($utente_id);
@@ -56,5 +65,39 @@
          $reportistica_utente_ricevente->num_tot_richieste_amicizia_inviate = RichiestaAmicizia::getNumTotRichieste($utente_ricevente);
          $reportistica_utente_ricevente->num_tot_richieste_amicizia_ricevute =  RichiestaAmicizia::getNumTotRichieste($utente_ricevente, false);
          $reportistica_utente_ricevente->save();
+      }
+
+      public function scopeGetAllByUser(Builder $query, int $utente_id): array {
+         $data = [];
+         foreach($this->columns as $column) {
+            $reportistica = Reportistica::find($utente_id);  // find does't work with pluck...
+            $max_column =  "num_max_$column";
+            $tot_column = "num_tot_$column";
+            $data[] = [
+               $column => [
+                  'max' => Schema::hasColumn($this->table, $max_column) ?
+                     $reportistica->value($max_column) : $reportistica->value($tot_column),
+                  'tot' => $reportistica->value($tot_column)
+               ]
+            ];
+         }
+         return $data;
+      }
+
+      public function scopeGetAllRecords(Builder $query): array {
+         $records = [];
+         foreach($this->columns as $column) {
+            $reportistica = Reportistica::all();
+            $max_column =  "num_max_$column";
+            $tot_column = "num_tot_$column";
+            $records[] = [
+               $column => [
+                  'max' => Schema::hasColumn($this->table, $max_column) ?
+                     $reportistica->max($max_column) : $reportistica->sum($tot_column),
+                  'tot' => $reportistica->sum($tot_column)
+               ]
+            ];
+         }
+         return $records;
       }
    }
