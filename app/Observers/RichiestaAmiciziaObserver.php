@@ -15,7 +15,9 @@
        * @return void
        */
       public function created(RichiestaAmicizia $richiestaAmicizia) {
-         Reportistica::updateRichiestaAmicizia(session()->get('utente')->id);
+         $utente_mittente = $richiestaAmicizia->utenteMittente;
+         $utente_ricevente = $richiestaAmicizia->utenteRicevente;
+         Reportistica::updateRichiesteAmicizia($utente_mittente, $utente_ricevente);
       }
 
       /**

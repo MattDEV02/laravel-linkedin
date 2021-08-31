@@ -4,6 +4,7 @@
    use App\Models\MiPiace;
    use App\Models\Post;
    use App\Models\RichiestaAmicizia;
+   use Illuminate\Support\Facades\DB;
    use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\UtenteController;
    use App\Http\Controllers\PostController;
@@ -81,5 +82,5 @@
       });
 
    Route::any('/test', function() {
-      return RichiestaAmicizia::getNumTotRichieste(1, false);
+
    });

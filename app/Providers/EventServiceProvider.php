@@ -32,9 +32,9 @@
        * @return void
        */
       public function boot(): void {
-         /*Post::observe(PostObserver::class);
+         Post::observe(PostObserver::class);
          Commento::observe(CommentoObserver::class);
          MiPiace::observe(MiPiaceObserver::class);
-         RichiestaAmicizia::observe(RichiestaAmiciziaObserver::class);*/
+         RichiestaAmicizia::observe(RichiestaAmiciziaObserver::class);
       }
    }

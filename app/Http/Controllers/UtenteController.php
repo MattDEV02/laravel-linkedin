@@ -35,8 +35,7 @@
             Cookie::queue(Cookie::forget('password'));
             $email = $req
                ->session()
-               ->get('utente')
-               ->email;
+               ->get('utente')->email;
             $req
                ->session()
                ->invalidate();
@@ -123,7 +122,7 @@
          } else
             return back()
                ->withInput($req->all())
-               ->withErrors(['Utente non registrato, è possible farlo.']);
+               ->withErrors('Utente non registrato, è possible farlo.');
       }
 
       public function passwordDimenticata(Request $req): bool {

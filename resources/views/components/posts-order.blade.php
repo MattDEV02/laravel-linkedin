@@ -7,7 +7,7 @@
     <div class="{{ $selectors['row'] }}">
         <form method="{{ $selectors['method'] }}" action="{{ route('orderBy-post') }}" title="Ordina i Post!" class="form-inline postsOrder">
             @csrf
-            <select name="postsOrderName" class="{{ $class }}" required >
+            <select name="postsOrderName" class="{{ $class }}" required>
                 <option value="p.created_at">
                     Data creazione
                 </option>

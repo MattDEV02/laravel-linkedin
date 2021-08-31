@@ -2,12 +2,14 @@
     $selectors = selectors();
 @endphp
 
+@inject('utenti_iscritti', 'App\Models\Utente')
+
 <div class="mr-3 mr-lg-2" wire:key="{{ uniqid() }}">
     <input
             class="form-control inputTXT form-inline"
             type="search"
             id="search"
-            placeholder=" Search Users    🔎"
+            placeholder=" Search {{ $utenti_iscritti->count() }} users    🔎"
             autocomplete="{{ $selectors['autocomplete'] }}"
             minlength="{{ 1 }}"
             maxlength="{{ 35 }}"

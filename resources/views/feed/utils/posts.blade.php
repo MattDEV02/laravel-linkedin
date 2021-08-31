@@ -8,5 +8,4 @@
             <x-none txt="No posts there." />
         </div>
     @endforelse
-
 </div>

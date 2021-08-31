@@ -4,6 +4,8 @@
 
    use App\Models\Commento;
    use App\Models\Reportistica;
+   use Illuminate\Support\Facades\DB;
+   use Illuminate\Support\Facades\Log;
 
 
    class CommentoObserver {
@@ -14,7 +16,12 @@
        * @return void
        */
       public function created(Commento $commento) {
-         Reportistica::updateCommenti(session()->get('utente')->id);
+         $utente_id = DB::table('Commento AS c')
+            ->select('p.utente_id')
+            ->join('Post AS p', 'c.post_id', 'p.id')
+            ->where('c.id', $commento->id)
+            ->first()->utente_id;
+         Reportistica::updateCommenti($utente_id);
       }
 
       /**

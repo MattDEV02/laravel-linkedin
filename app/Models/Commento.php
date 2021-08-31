@@ -12,7 +12,8 @@
     * @method static getAllByPost(int $post_id)
     * @method static getNumByPost(int $post)
     * @method static getNumTotByUtente(int $utente_id)
-    * @method static getMaxByUtente(int $int)
+    * @method static getMaxByUtente(int $utente_id)
+    * @property int id
     * @property string testo
     * @property int utente_id
     * @property int post_id

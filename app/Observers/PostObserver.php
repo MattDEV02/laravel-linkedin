@@ -14,7 +14,7 @@
        * @return void
        */
       public function created(Post $post) {
-         Reportistica::updatePost(session()->get('utente')->id);
+         Reportistica::updatePost($post->utente_id);
       }
 
       /**
@@ -24,7 +24,7 @@
        * @return void
        */
       public function updated(Post $post) {
-         Reportistica::updatePost(session()->get('utente')->id);
+         Reportistica::updatePost($post->utente_id);
       }
 
       /**
@@ -34,6 +34,6 @@
        * @return void
        */
       public function deleted(Post $post) {
-         Reportistica::updatePost(session()->get('utente')->id);
+         Reportistica::updatePost($post->utente_id);
       }
    }

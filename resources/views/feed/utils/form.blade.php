@@ -1,5 +1,5 @@
 @php
-$selectors = selectors();
+   $selectors = selectors();
 @endphp
 
 <div class="{{ $selectors['col'] }}">
