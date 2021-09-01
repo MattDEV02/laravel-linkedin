@@ -5,16 +5,16 @@
     $func = $isLiked ? null : "like($postId)";
 @endphp
 
-
-<button
-        class="btn btn-primary {{ $selectors['fw'] }} {{ $selectors['border'] }} {{ $class }}"
-        id="like"
-        onclick="{{ $func }}"
-        {{  $isLiked ? 'disabled' : '' }}>
-    <i class="fas fa-heart"></i>
-</button>
-<div>
-    <h3 class="card-text ml-3 mt-1">
-        {{ getNumLikes($postId) }}
-    </h3>
+<div id="like_container-{{ $postId }}">
+    <button
+            class="btn btn-primary {{ $selectors['fw'] }} {{ $selectors['border'] }} d-inline-block not-liked"
+            id="like"
+            onclick="{{ $func }}"
+            {{  $isLiked ? 'disabled' : '' }}>
+        <i class="fas fa-heart"></i>
+    </button>
+    <div class="d-inline-block ml-2 mt-1">
+        <strong>{{ getNumLikes($postId) }}</strong>
+        <small>Likes</small>
+    </div>
 </div>

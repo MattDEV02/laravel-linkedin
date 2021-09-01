@@ -33,7 +33,8 @@ $('#postForm').submit(function (e) {
         window.alert('File troppo pesante (max = 2 MB).');
         num_errors++;
     }
-    num_errors > 0 ? e.preventDefault() : console.log('Post is OK.');
+    num_errors > 0 ?
+        e.preventDefault() : console.log('Post is OK.');
 });
 
 const
@@ -41,7 +42,6 @@ const
     formOrder = $('form.postsOrder')[0];
 
 postsOrder.change(async (e) => {
-    console.log(e);
     const res = await axios({
         method: formOrder.method,
         url: formOrder.action,

@@ -81,7 +81,7 @@
          $this->utente =
             $req
                ->session()
-               ->get('utente')->id;
+               ->get('utente');
          $orderBy = $req->input('postsOrderName') . ' ' . $req->input('postsOrderType');
          return view('feed.utils.posts', [
             'posts' => Post::getAll($this->utente->id, false, $orderBy)

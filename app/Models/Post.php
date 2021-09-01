@@ -40,7 +40,8 @@
                u.id AS utente_id,
                p.foto,
                p.testo,
-               p.created_at,
+               p.created_at AS data_pubblicazione,
+               pr.foto AS utente_profile_foto,
                u.email AS utenteEmail,
                CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome,
                CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
@@ -49,6 +50,7 @@
               Post p
               JOIN Utente u ON p.utente_id = u.id
               LEFT JOIN RichiestaAmicizia ra ON (ra.utenteMittente = u.id OR ra.utenteRicevente = u.id)
+              JOIN Profilo pr ON pr.utente_id = u.id
               JOIN UtenteLavoro ul ON ul.utente_id = u.id
               JOIN Lavoro l ON ul.lavoro_id = l.id
               JOIN Citta c ON u.citta_id = c.id
@@ -75,7 +77,7 @@
                   u.id AS utente_id,
                   p.foto,
                   p.testo,
-                  p.created_at,
+                  p.created_at AS data_pubblicazione, 
                   u.email AS utenteEmail, 
                   CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome,
                   CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso

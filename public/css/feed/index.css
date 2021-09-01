@@ -3,16 +3,6 @@
   background-color: #FFFFFF !important;
 }
 
-#card {
-  border: 1px solid #000000;
-}
-
-#post_img {
-  height: 16.5rem !important;
-  border-bottom: 1px solid #000000;
-  border-radius: 0.2666666667rem 0.2666666667rem 0 0;
-}
-
 button.not-liked:hover {
   cursor: pointer;
   color: #15DC07 !important;
@@ -40,4 +30,17 @@ button.not-liked:hover {
   }
 }
 
+
+.w-40 {
+  width: 40px !important;
+  height: auto;
+}
+
+.d-flex, .d-inline-flex, .media, .media>:not(.media-body), .card {
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+
 /*# sourceMappingURL=index.css.map */
+

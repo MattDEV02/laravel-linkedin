@@ -74,7 +74,7 @@
                   ->name('insert-post');
                Route::post('/order-by', [$PC, 'orderBy'])
                   ->middleware('isSessionLogged')
-                  ->name('order-By-post');
+                  ->name('orderBy-post');
                Route::post('/like', [$PC, 'like'])
                   ->middleware('isSessionLogged');
                Route::put('/edit-profile', [$PRC, 'updateProfile'])
