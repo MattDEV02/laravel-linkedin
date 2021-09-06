@@ -3,16 +3,6 @@
   background-color: #FFFFFF !important;
 }
 
-#card {
-  border: 1px solid #000000;
-}
-
-#post_img {
-  height: 16.5rem !important;
-  border-bottom: 1px solid #000000;
-  border-radius: 0.2666666667rem 0.2666666667rem 0 0;
-}
-
 button.not-liked:hover {
   cursor: pointer;
   color: #15DC07 !important;
@@ -39,38 +29,30 @@ button.not-liked:hover {
     margin-top: 2rem !important;
   }
 }
-#profile_img {
-  height: 14.5rem !important;
-  border: 4px solid #FFFFFF;
-}
-
-#profile_bg {
-  height: 27vh;
-  border-radius: 0.8rem 0.8rem 0 0;
-}
-
-#profile_card {
-  border-radius: 0.8rem;
-}
-
-b.numero_collegamenti {
-  position: relative;
-  bottom: -5px;
-}
 
 table.richieste {
   margin-top: 3.2rem;
 }
 
-@media (min-width: 992px) {
-  #mll {
-    margin-left: 9rem !important;
-  }
-}
-@media (max-width: 575px) {
-  #username-container {
-    margin-top: 1.5rem !important;
-  }
+
+.card {
+  box-shadow: 0 1px 3px 0 #00000019, 0 1px 2px 0 #0000000F;
 }
 
-/*# sourceMappingURL=index.css.map */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #FFFFFF;
+  background-clip: border-box;
+  border: 0 solid #0000001F;
+  border-radius: 0.25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
+}

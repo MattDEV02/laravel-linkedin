@@ -16218,6 +16218,16 @@ thead.white_bg {
    margin-top: 2.30rem !important;
 }
 
+.w-50 {
+   width: 50px !important;
+   height: auto;
+}
+
+.d-flex, .d-inline-flex, .media, .media>:not(.media-body), .card {
+   -ms-flex-negative: 1;
+   flex-shrink: 1;
+}
+
 #commenti_link_container {
    margin-left: 7.6rem;
 }

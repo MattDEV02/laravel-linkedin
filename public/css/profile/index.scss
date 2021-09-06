@@ -7,38 +7,29 @@
    @return $result;
 }
 
-#profile_img {
-   height: 14.5rem !important;
-   border: $pad solid getColor('white');
+.card {
+   box-shadow: 0 1px 3px 0 #00000019, 0 1px 2px 0 #0000000F;
 }
 
-#profile_bg {
-   height: 27vh;
-   border-radius: $br $br $default $default;
-}
-
-#profile_card {
-   border-radius: $br;
-}
-
-b.numero_collegamenti {
+.card {
    position: relative;
-   bottom: ($pad + 1) * -1;
+   display: flex;
+   flex-direction: column;
+   min-width: 0;
+   word-wrap: break-word;
+   background-color: #FFFFFF;
+   background-clip: border-box;
+   border: 0 solid #0000001F;
+   border-radius: 0.25rem;
 }
+
+.card-body {
+   flex: 1 1 auto;
+   min-height: 1px;
+   padding: 1rem;
+}
+
 
 table.richieste {
    margin-top: 3.2rem;
-}
-
-
-@media(min-width: 992px) {
-   #mll {
-      margin-left: 9.0rem !important;
-   }
-}
-
-@media(max-width: 575px) {
-   #username-container {
-      margin-top: 1.5rem !important;
-   }
 }

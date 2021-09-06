@@ -16,7 +16,7 @@
                FOR EACH ROW
             BEGIN
                INSERT INTO Profilo(utente_id) VALUES(NEW.id);
-               INSERT INTO UtenteLavoro(utente_id, lavoro_id) VALUES(NEW.id, 1);
+               INSERT INTO UtenteLavoro(utente_id) VALUES(NEW.id);
                INSERT INTO Reportistica(utente_id) VALUES(NEW.id);
             END
          ");

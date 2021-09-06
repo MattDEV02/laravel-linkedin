@@ -13,8 +13,8 @@
             {{  $isLiked ? 'disabled' : '' }}>
         <i class="fas fa-heart"></i>
     </button>
-    <div class="d-inline-block ml-2 mt-1">
+    <div class="d-inline-block ml-sm-2">
         <strong>{{ getNumLikes($postId) }}</strong>
-        <small>Likes</small>
+        <small class="big_font_size">Likes</small>
     </div>
 </div>

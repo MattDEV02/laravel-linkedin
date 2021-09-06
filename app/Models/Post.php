@@ -79,11 +79,13 @@
                   p.testo,
                   p.created_at AS data_pubblicazione, 
                   u.email AS utenteEmail, 
+                  pr.foto AS utente_profile_foto,
                   CONCAT(u.nome, ' ', u.cognome) AS utenteNomeCognome,
                   CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso
                FROM
                    Post p
                        JOIN Utente u ON p.utente_id = u.id
+                       JOIN Profilo pr ON pr.utente_id = u.id
                        JOIN UtenteLavoro ul ON ul.utente_id = u.id
                        JOIN Lavoro l ON ul.lavoro_id = l.id
                        JOIN Citta c ON u.citta_id = c.id

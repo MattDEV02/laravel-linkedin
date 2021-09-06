@@ -2,17 +2,12 @@
 
    namespace App\Models;
 
-   use App\Models\Commento;
    use Illuminate\Database\Eloquent\Builder;
    use Illuminate\Database\Eloquent\Factories\HasFactory;
    use Illuminate\Database\Eloquent\Model;
-   use Illuminate\Support\Arr;
    use Illuminate\Support\Facades\Schema;
 
 
-   /**
-    * @method static updateCommenti(int $utente_id)
-    */
    /**
     * @method static updateMiPiace(int $utente_id)
     * @method static updatePost(int $utente_id)

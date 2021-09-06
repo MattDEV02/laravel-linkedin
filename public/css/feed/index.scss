@@ -1,7 +1,6 @@
 @import '../variables';
 
 
-$b: 1px solid #000000;
 $br2: ($br / 3);
 $max: 100%;
 
@@ -9,21 +8,6 @@ $max: 100%;
 .form-group {
    border-radius: $br !important;
    background-color: #FFFFFF !important;
-}
-
-#card {
-   border: $b;
-}
-
-#post_img {
-   height: 16.5rem !important;
-   border-bottom: $b;
-   border-radius: $br2 $br2 $default $default;
-}
-
-button.not-liked:hover {
-   cursor: pointer;
-   color: #15DC07 !important;
 }
 
 [type=text] {
@@ -40,6 +24,11 @@ button.not-liked:hover {
    opacity: $default;
    outline: none;
    display: block;
+}
+
+button.not-liked:hover {
+   cursor: pointer;
+   color: #15DC07 !important;
 }
 
 

@@ -3,6 +3,7 @@
    namespace App\Console\Commands;
 
    use Illuminate\Console\Command;
+   use Illuminate\Support\Facades\Log;
    use Illuminate\Support\Str;
 
 
@@ -49,7 +50,9 @@
             $output = shell_exec($command);
             $this->info($output);
          }
-         $this->info(env('DB_DATABASE', 'Linkedin') . ' Schema resetted.');
+         $s = env('DB_DATABASE', 'Linkedin') . ' Schema resetted.';
+         $this->info($s);
+         Log::info($s);
          return 1;
       }
    }
