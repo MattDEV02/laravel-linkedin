@@ -9,9 +9,9 @@
 
 <div  wire:key="{{ uniqid() }}">
     <button
-            class="btn btn-primary {{ selectors()['border'] }} ml-4"
+            class="btn btn-primary mt-1 mb-1"
             {{ $cond ? 'disabled' : '' }}
             wire:click="{{ $func }}">
-        <b>Collegati</b>
+        Collegati
     </button>
 </div>

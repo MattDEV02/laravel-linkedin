@@ -3,9 +3,8 @@
     $utente = session('utente');
 @endphp
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
-
 <head>
     <x-head title="Profile" />
     <link rel="stylesheet" type="text/css" href="css/profile/index.css" />
@@ -14,7 +13,7 @@
 <body>
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
-    <div class="{{ $selectors['row'] }} justify-content-md-start">
+    <div class="{{ $selectors['row'] }}">
         @component('components.no-script')
         @endcomponent
         @component('components.profile', [
@@ -28,11 +27,8 @@
             'richieste' => $richieste
         ])
     @endif
-
-    <div id="posts-container">
-        @include('feed.utils.posts', [
-            'profile_id' => $profile->utente_id
-        ])
+    <div class="mb-4" id="posts-container">
+        @include('feed.utils.posts')
     </div>
 </div>
 

@@ -26,11 +26,6 @@ $max: 100%;
    display: block;
 }
 
-button.not-liked:hover {
-   cursor: pointer;
-   color: #15DC07 !important;
-}
-
 
 @media(max-width: 575px) {
    [name = 'postsOrderType'] {

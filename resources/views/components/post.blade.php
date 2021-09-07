@@ -2,7 +2,7 @@
     $selectors = selectors();
 @endphp
 
-<div class="{{ $selectors['col'] }}4 posts-content">
+<div class="{{ $selectors['col'] }}4">
     <div class="{{ $selectors['row'] }}">
         <div class="col-xs-12 col-lg-6 mt-2">
             <div class="card mb-4 {{ $selectors['border'] }} pt-1" title="{{ $post->utenteEmail }}">

@@ -7,29 +7,26 @@
    @return $result;
 }
 
-.card {
-   box-shadow: 0 1px 3px 0 #00000019, 0 1px 2px 0 #0000000F;
-}
 
 .card {
+   box-shadow: 0 1px 3px 0 #00000019, 0 1px 2px 0 #0000000F;
    position: relative;
    display: flex;
    flex-direction: column;
-   min-width: 0;
+   min-width: $default;
    word-wrap: break-word;
-   background-color: #FFFFFF;
+   background-color: getColor('white');
    background-clip: border-box;
-   border: 0 solid #0000001F;
-   border-radius: 0.25rem;
+   border: $default solid #0000001F;
+   border-radius: 0.33rem;
 }
 
 .card-body {
    flex: 1 1 auto;
-   min-height: 1px;
+   min-height: $default + 1px;
    padding: 1rem;
 }
 
-
 table.richieste {
-   margin-top: 3.2rem;
+   margin-top: 3rem;
 }

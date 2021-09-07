@@ -3,11 +3,6 @@
   background-color: #FFFFFF !important;
 }
 
-button.not-liked:hover {
-  cursor: pointer;
-  color: #15DC07 !important;
-}
-
 [type=text] {
   border-radius: 36px !important;
 }
@@ -29,17 +24,8 @@ button.not-liked:hover {
     margin-top: 2rem !important;
   }
 }
-
-table.richieste {
-  margin-top: 3.2rem;
-}
-
-
 .card {
   box-shadow: 0 1px 3px 0 #00000019, 0 1px 2px 0 #0000000F;
-}
-
-.card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -48,7 +34,7 @@ table.richieste {
   background-color: #FFFFFF;
   background-clip: border-box;
   border: 0 solid #0000001F;
-  border-radius: 0.25rem;
+  border-radius: 0.33rem;
 }
 
 .card-body {
@@ -56,3 +42,9 @@ table.richieste {
   min-height: 1px;
   padding: 1rem;
 }
+
+table.richieste {
+  margin-top: 3rem;
+}
+
+/*# sourceMappingURL=index.css.map */
