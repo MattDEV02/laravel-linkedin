@@ -1,15 +1,11 @@
 <?php
 
-   use App\Models\Commento;
-   use App\Models\MiPiace;
-   use App\Models\Post;
    use App\Models\Reportistica;
-   use App\Models\RichiestaAmicizia;
-   use Illuminate\Support\Facades\DB;
    use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\UtenteController;
    use App\Http\Controllers\PostController;
    use App\Http\Controllers\ProfileController;
+   use Illuminate\Http\RedirectResponse;
 
 
    /*
@@ -30,7 +26,7 @@
 
    Route::view('/', 'home');
 
-   Route::any('home', fn() => redirect('/'));
+   Route::any('home', fn(): RedirectResponse => redirect('/'));
 
    Route::get('/login', [$UC, 'login'])
       ->name('login');
@@ -40,6 +36,15 @@
 
    Route::get('/registrazione', [$UC, 'registrazione'])
       ->name('registrazione');
+
+   Route::get('password-dimenticata', [$UC, 'passwordDimenticataView']);
+
+   Route::get('/docs' , function() {
+      $filePath = public_path() . '\docs.pdf';
+      return response()->file($filePath, [
+         'Content-Type' => 'application/pdf'
+      ]);
+   });
 
    Route::middleware('isSessionLogged')
       ->group(function() use($UC, $PC, $PRC): void {
@@ -52,7 +57,7 @@
          Route::get('/collegamenti/{utente_id}', [$PRC, 'collegamenti'])
             ->name('collegamenti');
          Route::get('/reportistica', fn () => view('reportistica.index', [
-            'data' => Reportistica::getAllByUser(1),
+            'data' => Reportistica::getAllByUser(session()->get('utente')->id),
             'records' => Reportistica::getAllRecords(),
          ]));
       });
@@ -63,7 +68,8 @@
             ->name('insert-user');
          Route::post('login-result', [$UC, 'logResult'])
             ->name('log-result');
-         Route::post('/password-dimenticata', [$UC, 'passwordDimenticata']);
+         Route::post('/password-dimenticata', [$UC, 'passwordDimenticata'])
+            ->name('password-dimenticata');
          Route::middleware('isSessionLogged')
             ->group(function () use($UC, $PC, $PRC): void {
                Route::delete('/remove-collegamento', [$PRC, 'removeCollegamento'])

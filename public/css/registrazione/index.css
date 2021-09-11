@@ -8,15 +8,29 @@
   font-size: 100% !important;
 }
 
-#accediBTN, #resetBTN {
+#accediBTN, #resetBTN, #reimpostaBTN, #backBTN {
   border-radius: 28px !important;
   font-size: 104% !important;
   position: relative;
   bottom: -8px;
 }
 
-#accediBTN:hover {
+#accediBTN:hover, #reimpostaBTN:hover {
   background-color: #004182 !important;
+}
+
+#reimpostaBTN, #backBTN {
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+}
+
+#reimpostaBTN {
+  background-color: #0A66C2 !important;
+}
+
+#backBTN:hover {
+  background-color: #BEBEBE3F;
+  text-decoration: underline;
 }
 
 #header {

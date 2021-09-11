@@ -5,7 +5,6 @@
 
 <!DOCTYPE HTML>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
-
 <head>
     <x-head title="Commenti" cond="{{ true }}" />
 </head>

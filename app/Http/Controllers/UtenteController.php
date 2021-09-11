@@ -125,21 +125,27 @@
                ->withErrors('Utente non registrato, è possible farlo.');
       }
 
-      public function passwordDimenticata(Request $req): bool {
+      public function passwordDimenticataView():  Factory | View | Application {
+         return view('login.password-dimenticata');
+      }
+
+      public function passwordDimenticata(Request $req): RedirectResponse {
          $req->validate([
             'email' => ['email', 'required', 'min:2', 'max:35'],
-            'password' => ['required', 'min:8', 'max:8'],
+            'password' => ['required', 'min:8', 'max:8', 'confirmed'],
+            'password_confirmation' => ['required', 'min:8', 'max:8']
          ], [
             'email.email' => 'Inserisci Email valida',
             'required' => ':attribute is Required.',
             'email.min' => 'Email almeno 2 caratteri.',
             'email.max' => 'Email massimo 35 caratteri.',
             'password.min'  => 'Password con 8 caratteri.',
+            'password.confirmed'  => 'Password confirmation not valid.'
          ]);
          $res = false;
-         if(checkRef($req, 'login')) {
+         if(checkRef($req, 'password-dimenticata')) {
             $email = adjustEmail($req->input('email'));
-            $password = $req->input('password');
+            $password = $req->input('password') ?? Cookie::get('password');
             $utente = Utente::where('email', $email)->first();
             if(isset($utente)) {
                $utente->password = Hash::make($password);
@@ -148,6 +154,7 @@
                $res = sendmail($email, $password);
             }
          }
-         return $res;
+         return redirect('login')
+            ->with('msg','Password reimpostata con successo.');
       }
    }

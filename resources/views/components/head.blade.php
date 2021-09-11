@@ -1,6 +1,6 @@
 @php
-$selectors = selectors();
-$path = $cond ? '../' : null;
+    $selectors = selectors();
+    $path = $cond ? '../' : null;
 @endphp
 
 <title>{{ $title }} | {{ $selectors['app'] }}</title>
@@ -26,3 +26,4 @@ $path = $cond ? '../' : null;
 <link rel="manifest" href="{{ $path }}manifest.json" />
 @livewireStyles
 <link rel="stylesheet" type='text/css' href="{{ asset("css/app.css") }}" />
+@livewireScripts

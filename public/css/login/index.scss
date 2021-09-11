@@ -18,15 +18,29 @@
    font-size: $fs !important;
 }
 
-#accediBTN, #resetBTN {
+#accediBTN, #resetBTN, #reimpostaBTN, #backBTN {
    border-radius: ($pad * 7) !important;
    font-size: ($fs + 4) !important;
    position: relative;
    bottom: ($pad * 2) * -1;
 }
 
-#accediBTN:hover{
+#accediBTN:hover, #reimpostaBTN:hover {
    background-color: getColor('darkBlue') !important;
+}
+
+#reimpostaBTN, #backBTN {
+   font-weight: 600 !important;
+   font-size: 1rem !important;
+}
+
+#reimpostaBTN {
+   background-color: #0A66C2 !important;
+}
+
+#backBTN:hover {
+   background-color: #BEBEBE3F;
+   text-decoration: underline;
 }
 
 #header {

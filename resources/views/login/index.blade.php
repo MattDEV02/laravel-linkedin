@@ -2,6 +2,7 @@
     $selectors = selectors();
 @endphp
 
+
 <!DOCTYPE html>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
@@ -45,9 +46,11 @@
                             </div>
                             <div class="{{ $selectors['col'] }}4 ml-2">
                                 <div class="row">
-                                    <h6 id="passwordDimenticata" class="primaryTXT">
-                                        Hai dimenticato la password?
-                                    </h6>
+                                    <a href="/password-dimenticata">
+                                        <h6 id="passwordDimenticata" class="primaryTXT">
+                                            Hai dimenticato la password?
+                                        </h6>
+                                    </a>
                                 </div>
                             </div>
                             <x-submit text="Accedi" mt="{{ 3 }}" />
