@@ -4,11 +4,11 @@
   background-color: #FFFFFF;
 }
 
-#passwordDimenticata {
+#passwordDimenticataLink {
   font-size: 100% !important;
 }
 
-#accediBTN, #resetBTN, #reimpostaBTN, #backBTN {
+.form_btn {
   border-radius: 28px !important;
   font-size: 104% !important;
   position: relative;
@@ -19,7 +19,7 @@
   background-color: #004182 !important;
 }
 
-#reimpostaBTN, #backBTN {
+.forgot_pass_btn {
   font-weight: 600 !important;
   font-size: 1rem !important;
 }
@@ -29,7 +29,7 @@
 }
 
 #backBTN:hover {
-  background-color: #BEBEBE3F;
+  background-color: rgba(171, 170, 170, 0.25);
   text-decoration: underline;
 }
 

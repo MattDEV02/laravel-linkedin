@@ -16,6 +16,7 @@
    use App\Models\Lavoro;
 
 
+
    class UtenteController extends Controller {
 
       public function login(): Factory | View | Application {
@@ -142,19 +143,22 @@
             'password.min'  => 'Password con 8 caratteri.',
             'password.confirmed'  => 'Password confirmation not valid.'
          ]);
-         $res = false;
          if(checkRef($req, 'password-dimenticata')) {
             $email = adjustEmail($req->input('email'));
-            $password = $req->input('password') ?? Cookie::get('password');
+            $password = $req->input('password');
             $utente = Utente::where('email', $email)->first();
             if(isset($utente)) {
                $utente->password = Hash::make($password);
                $utente->save();
                Cookie::queue(Cookie::forever('password', $password));
-               $res = sendmail($email, $password);
-            }
-         }
-         return redirect('login')
-            ->with('msg','Password reimpostata con successo.');
+               return sendMail($email, $password) ? redirect('login')
+                  ->with('msg','Password reimpostata con successo.') : back()
+                  ->withErrors('Errore, email non inviata.');
+            } else
+               return back()
+                  ->withErrors('Errore, email non registrata.');
+         } else
+            return redirect('login');
+
       }
    }

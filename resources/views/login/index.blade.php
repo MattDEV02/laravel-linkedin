@@ -47,7 +47,7 @@
                             <div class="{{ $selectors['col'] }}4 ml-2">
                                 <div class="row">
                                     <a href="/password-dimenticata">
-                                        <h6 id="passwordDimenticata" class="primaryTXT">
+                                        <h6 id="passwordDimenticataLink" class="primaryTXT">
                                             Hai dimenticato la password?
                                         </h6>
                                     </a>

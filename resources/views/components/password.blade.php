@@ -17,6 +17,4 @@ $selectors = selectors();
         value="{{ old('password') }}"
         required
 />
-<h6 class="primaryTXT" id="show">
-    mostra
-</h6>
+<x-show />
