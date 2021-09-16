@@ -16173,20 +16173,12 @@ a.nav-link:hover {
    z-index: 1 !important;
 }
 
-div.output_div_ricerca {
-   background-color: #FFFFFF;
-}
-
 #creatore_post {
    color: #212529;
 }
 
 #utenteNomeCognome {
    color: #0073B1;
-}
-
-.white_bg {
-   background-color: #FFFFFF;
 }
 
 thead.white_bg {
@@ -16222,6 +16214,12 @@ thead.white_bg {
    width: 50px !important;
    height: auto;
 }
+
+.w-57 {
+   width: 57px !important;
+   height: auto;
+}
+
 
 button.not-liked:hover {
    cursor: pointer;
@@ -16277,6 +16275,29 @@ select:hover {
 .success_hover:hover {
    color: #15DC07 !important;;
 }
+
+
+@media (min-width: 992px){
+   .col-lg-2 {
+      flex: 0 0 16.66667%;
+      max-width: 16.66667%;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media(max-width: 991px) {

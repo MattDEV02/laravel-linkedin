@@ -23,14 +23,18 @@
 
       public function search(string $s): void {
          $this->utenti = (Str::length($s) > 0) ?
-            $this->utenti = Utente::select(
-               DB::raw("CONCAT(nome, ' ', cognome) AS nomeCognome"),
-               'email'
-            )
-               ->where('nome', 'like', "$s%")
-               ->orWhere('cognome', 'like', "$s%")
-               ->orderBy('nome', 'ASC')
-               ->orderBy('cognome', 'ASC')
+            DB::table('Utente AS u')
+               ->select(
+                  DB::raw("CONCAT(nome, ' ', cognome) AS nomeCognome"),
+                  'u.id',
+                  'u.email',
+                  'p.foto'
+               )
+               ->join('Profilo AS p', 'p.utente_id', 'u.id')
+               ->where('u.nome', 'like', "$s%")
+               ->orWhere('u.cognome', 'like', "$s%")
+               ->orderBy('u.nome', 'ASC')
+               ->orderBy('u.cognome', 'ASC')
                ->get() : [];
       }
 

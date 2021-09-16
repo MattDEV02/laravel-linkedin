@@ -1,0 +1,77 @@
+@import '../variables';
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  padding: $default;
+  margin: $default;
+}
+
+.notfound {
+  border-radius: ($pad * 3);
+  box-shadow: $default $pad ($pad * 3) rgb(0 0 0 / 15%) !important;
+}
+
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.notfound {
+  max-width: 767px;
+  width: $fs;
+  line-height: 1.4;
+  padding: ($pad * 15) $default;
+  text-align: center;
+}
+
+.notfound .notfound-404 {
+  position: relative;
+  height: ($pad * 45);
+}
+
+.notfound .notfound-404 h1 {
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 165px;
+  font-weight: 700;
+  margin: $default;
+  color: #262626;
+  text-transform: uppercase;
+}
+
+.notfound h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: ($pad * 5);
+  font-weight: ($pad * 100);
+  text-transform: uppercase;
+  color: #151515;
+}
+
+@media only screen and (max-width: 767px) {
+  .notfound h2 {
+    font-size: (($pad * 4) + 2);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .notfound .notfound-404 h1 {
+    font-size: 141px;
+  }
+
+  #linkedin-title {
+    margin-top: 3rem;
+  }
+}

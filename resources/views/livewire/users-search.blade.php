@@ -15,15 +15,21 @@
             maxlength="{{ 35 }}"
             wire:input="search(event.target.value)"
     />
-    <div class="mt-4 ml-lg-3" id="risultato_ricerca">
+    <div class="mt-4 mr-2" id="risultato_ricerca" style="font-size: 105%;">
+        <div wire:loading>
+            <p>Ricerca in corso...</p>
+        </div>
         @foreach($utenti as $utente)
-            <div class="my-4 {{ $selectors['border'] }} p-2 text-center output_div_ricerca big_font_size">
-                <x-profile-link
-                        utenteEmail="{{ $utente->email }}"
-                        utenteNomeCognome="{{ $utente->nomeCognome }}"
-                />
+            <div class="my-3 bg-white {{ $selectors['border'] }} p-2">
+                <table class="table-">
+                    <tbody>
+                            @component('components.user-result', [
+                               'utente' => $utente
+                            ])
+                            @endcomponent
+                    </tbody>
+                </table>
             </div>
         @endforeach
     </div>
 </div>
-

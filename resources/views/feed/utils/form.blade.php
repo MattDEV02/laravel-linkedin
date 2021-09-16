@@ -4,7 +4,7 @@
 
 <div class="{{ $selectors['col'] }}">
     <div class="{{ $selectors['row'] }}">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-7 col-xl-6 mt-5">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-7 col-xl-5 mt-5">
             <form method="{{ $selectors['method'] }}" enctype="multipart/form-data" action="{{ route('insert-post') }}" id="postForm">
                 @csrf
                 <div class="form-group {{ $selectors['border'] }} p-4">

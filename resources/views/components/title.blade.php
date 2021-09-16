@@ -3,7 +3,7 @@ $selectors = selectors();
 @endphp
 
 <div class="{{ $selectors['row'] }} {{ $row }}">
-    <a class="text-decoration-none" href="https://www.linkedin.com/" target="_blank">
+    <a class="text-decoration-none" href="https://www.linkedin.com/" target="_blank" id="linkedin-title">
         <h1 class="primaryTXT {{ $selectors['fw'] }}">
             Linked
             <i class="fab fa-linkedin ml-1"></i>

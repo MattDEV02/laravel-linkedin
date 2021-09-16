@@ -13,7 +13,7 @@
     * @method static isLogged(string $email, string $password)
     * @method static registrazione(array $data)
     * @method static getProfileLink(int $utente_id)
-    * @method static getNomeCognome($id)
+    * @method static getNomeCognome(int $utente_id)
     * @property string email
     * @property string password
     * @property string nome

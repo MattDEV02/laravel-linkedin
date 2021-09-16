@@ -2,6 +2,7 @@
     $selectors = selectors();
 @endphp
 
+
 @if(isValidCollection($richieste))
     <div class="{{ $selectors['col'] }}5" wire:key="{{ uniqid() }}">
         <div class="{{ $selectors['row'] }}">
@@ -11,7 +12,7 @@
                     <h2 class="text-primary ml-3">
                         {{ count($richieste) }}
                     </h2>
-                    <table class="{{ $selectors['table'] }} richieste white_bg">
+                    <table class="{{ $selectors['table'] }} richieste bg-white">
                         <thead class="white_bg">
                         <tr>
                             <th scope="col">Utente</th>

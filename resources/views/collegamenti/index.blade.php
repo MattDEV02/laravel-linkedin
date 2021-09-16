@@ -36,7 +36,7 @@
                 <div class="col-xl-4 col-lg-5 col-md-7 col-sm-8 col-xs-12 mt-4">
                     <div class="{{ $selectors['row']}}">
                         @if(isValidCollection($collegamenti))
-                            <table class="{{ $selectors['table'] }} mt-5 collegamento white_bg">
+                            <table class="{{ $selectors['table'] }} mt-5 collegamento bg-white">
                                 <thead class="white_bg">
                                 <tr>
                                     <th scope="col">
