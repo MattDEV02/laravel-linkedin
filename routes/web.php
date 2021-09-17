@@ -1,11 +1,16 @@
 <?php
 
    use App\Models\Reportistica;
+   use App\Models\Utente;
+   use Illuminate\Contracts\Foundation\Application;
+   use Illuminate\Contracts\View\Factory;
+   use Illuminate\Contracts\View\View;
    use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\UtenteController;
    use App\Http\Controllers\PostController;
    use App\Http\Controllers\ProfileController;
    use Illuminate\Http\RedirectResponse;
+   use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 
    /*
@@ -39,7 +44,7 @@
 
    Route::get('password-dimenticata', [$UC, 'passwordDimenticataView']);
 
-   Route::get('/docs' , function() {
+   Route::get('/docs' , function(): BinaryFileResponse {
       $filePath = public_path() . '\docs.pdf';
       return response()->file($filePath, [
          'Content-Type' => 'application/pdf'
@@ -56,7 +61,7 @@
          Route::get('/show-profile', [$PRC, 'showProfile']);
          Route::get('/collegamenti/{utente_id}', [$PRC, 'collegamenti'])
             ->name('collegamenti');
-         Route::get('/reportistica', fn () => view('reportistica.index', [
+         Route::get('/reportistica', fn (): Factory | View | Application => view('reportistica.index', [
             'data' => Reportistica::getAllByUser(session()->get('utente')->id),
             'records' => Reportistica::getAllRecords(),
          ]));
@@ -88,6 +93,10 @@
                   ->name('edit-profile');
             });
       });
+
+   Route::any('/api/users/{user_id?}', function (?int $user_id = null) {
+      return $user_id ? Utente::find($user_id) : Utente::all();
+   });
 
    Route::any('/test', function() {
       return Reportistica::getAllByUser(1);

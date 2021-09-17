@@ -16215,12 +16215,6 @@ thead.white_bg {
    height: auto;
 }
 
-.w-57 {
-   width: 57px !important;
-   height: auto;
-}
-
-
 button.not-liked:hover {
    cursor: pointer;
    color: #15DC07 !important;
@@ -16277,15 +16271,11 @@ select:hover {
 }
 
 
-@media (min-width: 992px){
-   .col-lg-2 {
-      flex: 0 0 16.66667%;
-      max-width: 16.66667%;
+@media(max-width: 991px) {
+   #users_profile_links {
+      font-size: 120%;
    }
 }
-
-
-
 
 
 

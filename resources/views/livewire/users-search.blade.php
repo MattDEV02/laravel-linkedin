@@ -17,16 +17,16 @@
     />
     <div class="mt-4 mr-2" id="risultato_ricerca" style="font-size: 105%;">
         <div wire:loading>
-            <p>Ricerca in corso...</p>
+            <p style="font-family: 'Roboto', sans-serif">Ricerca in corso...</p>
         </div>
         @foreach($utenti as $utente)
             <div class="my-3 bg-white {{ $selectors['border'] }} p-2">
                 <table class="table-">
                     <tbody>
-                            @component('components.user-result', [
-                               'utente' => $utente
-                            ])
-                            @endcomponent
+                    @component('components.user-result', [
+                       'utente' => $utente
+                    ])
+                    @endcomponent
                     </tbody>
                 </table>
             </div>
