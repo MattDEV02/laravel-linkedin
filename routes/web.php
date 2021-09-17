@@ -94,10 +94,6 @@
             });
       });
 
-   Route::any('/api/users/{user_id?}', function (?int $user_id = null) {
+   Route::middleware('auth:api')->any('/api/users/{user_id?}', function (?int $user_id = null) {
       return $user_id ? Utente::find($user_id) : Utente::all();
-   });
-
-   Route::any('/test', function() {
-      return Reportistica::getAllByUser(1);
    });

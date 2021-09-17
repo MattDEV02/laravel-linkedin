@@ -34,10 +34,7 @@
          $utente = Utente::select($attr)
             ->where($attr[0], $email)
             ->first();
-         return isset($utente) && (
-               Hash::check($password, $utente->password) ||
-               $password === $utente->password
-            );
+         return isset($utente) && Hash::check($password, $utente->password);
       }
 
       public function scopeRegistrazione(Builder $query, array $data): Utente {

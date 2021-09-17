@@ -5,6 +5,7 @@
    use App\Models\Utente;
    use Illuminate\Database\Seeder;
    use Illuminate\Support\Facades\Hash;
+   use Illuminate\Support\Str;
 
 
    class UtenteSeeder extends Seeder {
@@ -16,7 +17,8 @@
             'password' => '12345678',
             'nome' => 'Matteo',
             'cognome' => 'Lambertucci',
-            'citta_id' => 1
+            'citta_id' => 1,
+            'api_token' => true
          ],
          [
             'id' => 2,
@@ -24,7 +26,8 @@
             'password' => 'oprrrrrr',
             'nome' => 'Alessandro',
             'cognome' => 'Oprea',
-            'citta_id' => 4
+            'citta_id' => 4,
+            'api_token' => null
          ],
          [
             'id' => 3,
@@ -32,7 +35,8 @@
             'password' => 'michelee',
             'nome' => 'Michele',
             'cognome' => 'Mammucari',
-            'citta_id' => 4
+            'citta_id' => 4,
+            'api_token' => null
          ],
          [
             'id' => 4,
@@ -40,7 +44,8 @@
             'password' => '12345678',
             'nome' => 'Carol',
             'cognome' => 'Muscedere',
-            'citta_id' => 2
+            'citta_id' => 2,
+            'api_token' => null
          ],
          [
             'id' => 5,
@@ -48,7 +53,8 @@
             'password' => 'devakkkk',
             'nome' => 'Devak',
             'cognome' => 'Ballins',
-            'citta_id' => 1
+            'citta_id' => 1,
+            'api_token' => null
          ],
          [
             'id' => 6,
@@ -56,7 +62,8 @@
             'password' => 'jitaruuu',
             'nome' => 'Gabriel',
             'cognome' => 'Jitaru',
-            'citta_id' => 9
+            'citta_id' => 9,
+            'api_token' => null
          ],
          [
             'id' => 7,
@@ -64,7 +71,8 @@
             'password' => 'brunoooo',
             'nome' => 'Bruno',
             'cognome' => 'Graziosi',
-            'citta_id' => 1
+            'citta_id' => 1,
+            'api_token' => null
          ],
          [
             'id' => 8,
@@ -72,7 +80,8 @@
             'password' => 'chialaaa',
             'nome' => 'Matteo',
             'cognome' => 'Chialastri',
-            'citta_id' => 1
+            'citta_id' => 1,
+            'api_token' => null
          ],
          [
             'id' => 9,
@@ -80,7 +89,8 @@
             'password' => 'riggiiii',
             'nome' => 'Luigi',
             'cognome' => 'Riggi',
-            'citta_id' => 10
+            'citta_id' => 10,
+            'api_token' => null
          ],
          [
             'id' => 10,
@@ -88,7 +98,8 @@
             'password' => 'ciarlaaa',
             'nome' => 'Matteo',
             'cognome' => 'Ciarla',
-            'citta_id' => 11
+            'citta_id' => 11,
+            'api_token' => null
          ],
          [
             'id' => 11,
@@ -96,7 +107,8 @@
             'password' => '12345678',
             'nome' => 'Riccardo',
             'cognome' => 'Cassanelli',
-            'citta_id' => 12
+            'citta_id' => 12,
+            'api_token' => null
          ],
          [
             'id' => 12,
@@ -104,7 +116,8 @@
             'password' => 'beaaaaaa',
             'nome' => 'Beatrice',
             'cognome' => 'Cioccari',
-            'citta_id' => 1
+            'citta_id' => 1,
+            'api_token' => null
          ],
          [
             'id' => 13,
@@ -112,7 +125,8 @@
             'password' => '87654321',
             'nome' => 'Elisa',
             'cognome' => 'Lambertucci',
-            'citta_id' => 10
+            'citta_id' => 10,
+            'api_token' => null
          ],
          [
             'id' => 14,
@@ -120,7 +134,8 @@
             'password' => '09876543',
             'nome' => 'Francesco',
             'cognome' => 'Ballini',
-            'citta_id' => 1
+            'citta_id' => 1,
+            'api_token' => null
          ],
       ];
       /**
@@ -129,14 +144,15 @@
        * @return void
        */
       public function run(): void {
-         $attr = 'password';
+         $special_attributes = ['password', 'api_token'];
          foreach($this->utenti as $utente) {
             foreach($utente as $key => $value) {
-               if($key === $attr) {
-                  $utente[$attr] = Hash::make($value);
-                  Utente::create($utente);
-               }
+               if($key === $special_attributes[0])
+                  $utente[$special_attributes[0]] = Hash::make($value);
+               else if($key === $special_attributes[1] && isset($value))
+                  $utente[$special_attributes[1]] = Str::random(env('API_TOKEN_LENGTH'));
             }
+            Utente::create($utente);
          }
       }
    }
