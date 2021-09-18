@@ -1,9 +1,26 @@
+@php
+    $selectors = selectors();
+@endphp
+
+
 <tr>
     <td>
-        <x-profile-link
-                utenteEmail="{{ $collegamento->utenteEmail }}"
-                utenteNomeCognome="{{ $collegamento->utenteNomeCognome }}"
-        />
+       <div class="{{ $selectors['col'] }}">
+           <div class="row">
+               <img
+                       src="/storage/profiles/{{ getProfileImage($collegamento->utenteFoto, $collegamento->utente_id) }}"
+                       alt="{{ $collegamento->utenteEmail }}"
+                       title="{{ $collegamento->utenteEmail }}"
+                       class="img-fluid img-responsive rounded-circle {{ $selectors['border'] }} d-block ml-3 w-40"
+               />
+               <div class="ml-4 mt-1">
+                   <x-profile-link
+                           utenteEmail="{{ $collegamento->utenteEmail }}"
+                           utenteNomeCognome="{{ $collegamento->utenteNomeCognome }}"
+                   />
+               </div>
+           </div>
+       </div>
     </td>
     <td>
         {{ $collegamento->dataInvioRichiesta }}

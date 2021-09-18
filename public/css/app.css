@@ -16215,6 +16215,11 @@ thead.white_bg {
    height: auto;
 }
 
+.w-40 {
+   width: 40px !important;
+   height: auto;
+}
+
 button.not-liked:hover {
    cursor: pointer;
    color: #15DC07 !important;

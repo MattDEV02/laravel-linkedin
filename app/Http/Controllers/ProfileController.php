@@ -108,7 +108,8 @@
             return view('utils.user-not-found');
          }
       }
-      public function collegamenti(int $utente_id): Factory | View | Application | RedirectResponse {
+      public function collegamenti(Request $req, int $utente_id): Factory | View | Application | RedirectResponse {
+         $req->session()->put('cond', true);
          return (Utente::find($utente_id) !== null) ? view('collegamenti.index', [
             'collegamenti' => RichiestaAmicizia::getCollegamenti($utente_id),
             'utente_profile' => Utente::getProfileLink($utente_id),

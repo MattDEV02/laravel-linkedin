@@ -31,9 +31,12 @@
                DB::raw("DATE_FORMAT(ra.created_at, '%Y-%m-%d %H:%i') AS dataInvio"),
                'ra.stato',
                'u.email AS utenteMittenteEmail',
+               'u.id AS utente_id',
+               'p.foto AS utenteMittenteFoto',
                DB::raw("CONCAT(u.nome, ' ', u.cognome) AS utenteMittenteNomeCognome")
             ])
             ->join('Utente AS u', 'ra.utenteMittente', 'u.id')
+            ->join('Profilo AS p', 'p.utente_id', 'u.id')
             ->where('ra.utenteRicevente', $utente_id)
             ->where('ra.stato', 'Sospesa')
             ->orderBy('dataInvio', 'DESC')
@@ -70,14 +73,17 @@
             ->select([
                DB::raw('CONCAT(u.nome, " ", u.cognome) AS utenteNomeCognome'),
                'u.email AS utenteEmail',
+               'u.id AS utente_id',
+               'p.foto AS utenteFoto',
                DB::raw('DATE_FORMAT(ra.created_at, "%Y-%m-%d %H:%i") AS dataInvioRichiesta')
             ])
             ->join('RichiestaAmicizia AS ra', function ($join) {
                $join
-                  ->on('u.id', 'ra.utenteMittente')
-                  ->orOn('u.id', 'ra.utenteRicevente');
+                  ->on('ra.utenteMittente', 'u.id')
+                  ->orOn('ra.utenteRicevente', 'u.id');
             })
-            ->join('Utente AS u2', 'u2.id', 'ra.utenteRicevente')
+            ->join('Utente AS u2', 'ra.utenteRicevente', 'u2.id')
+            ->join('Profilo AS p', 'p.utente_id', 'u.id')
             ->where(function($query) use ($utente_id) {
                $query
                   ->where('ra.utenteRicevente', $utente_id)

@@ -5,6 +5,8 @@
    use Illuminate\Contracts\Foundation\Application;
    use Illuminate\Contracts\View\Factory;
    use Illuminate\Contracts\View\View;
+   use Illuminate\Http\Request;
+   use Illuminate\Support\Collection;
    use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\UtenteController;
    use App\Http\Controllers\PostController;
@@ -94,6 +96,11 @@
             });
       });
 
-   Route::middleware('auth:api')->any('/api/users/{user_id?}', function (?int $user_id = null) {
-      return $user_id ? Utente::find($user_id) : Utente::all();
+   Route::middleware('auth:api')
+      ->any('/api/users/{user_id?}',
+         fn (?int $user_id = null): Utente | Collection | null =>
+            $user_id ? Utente::findOrFail($user_id) : Utente::all());
+
+   Route::any('/test', function(Request $request) {
+      return $request->user();
    });

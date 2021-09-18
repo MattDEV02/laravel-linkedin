@@ -16,7 +16,12 @@
    |
    */
 
-   Route::middleware('auth:api')->get('/user', function (Request $request) {
-      return $request->user();
+   Route::middleware('auth:api')
+      ->get('/user', function (Request $request) {
+         return $request->user();
    });
 
+   Route::middleware('auth:api')
+      ->any('/api/users/{user_id?}',
+         fn (?int $user_id = null): Utente | Collection | null =>
+         $user_id ? Utente::findOrFail($user_id) : Utente::all());

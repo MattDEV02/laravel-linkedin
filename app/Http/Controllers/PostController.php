@@ -20,7 +20,6 @@
 
 
       public function feed(Request $req): Factory | View | Application | RedirectResponse {
-         consoleLog($req->header('referer'));
          if($req->session()->exists('utente')) {
             $this->utente = $req
                ->session()
@@ -89,6 +88,7 @@
       }
 
       public function commenti(Request $req, int $post_id): Factory | View | Application | RedirectResponse {
+         $req->session()->put('cond', true);
          $commenti = Commento::getAllByPost($post_id);
          $post = Post::getWithAuthor($post_id);
          return isValidCollection($post) ? view('commenti.index', [

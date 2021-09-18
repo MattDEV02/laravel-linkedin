@@ -4,7 +4,7 @@
 
 <div class="{{ $selectors['col'] }}4">
     <div class="{{ $selectors['row'] }}">
-        <div class="col-xs-12 col-lg-6 mt-2">
+        <div class="col-xs-12 col-sm-11 col-md-8 col-lg-6 mt-2">
             <div class="card mb-4 {{ $selectors['border'] }} pt-1" title="{{ $post->utenteEmail }}">
                 <div class="card-body">
                     <div class="media mb-3">

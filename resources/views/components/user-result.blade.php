@@ -1,7 +1,7 @@
 <tr>
     <td>
         <img
-                src="storage/profiles/{{ getProfileImage($utente->foto, $utente->id) }}"
+                src="{{ session('cond') ? '..' : null }}/storage/profiles/{{ getProfileImage($utente->foto, $utente->id) }}"
                 alt="{{ $utente->email }}"
                 title="{{ $utente->email }}"
                 class="img-fluid img-responsive rounded-circle {{ selectors()['border'] }} d-block ml-5 ml-lg-1 w-50"

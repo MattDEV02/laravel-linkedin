@@ -2,7 +2,7 @@
    "name": "laravel-linkedin",
    "private": false,
    "version": "0.1.0",
-   "author": "Matteo Lambertucci matteolambertucci3@gmail.com",
+   "author": "Matteo Lambertucci <matteolambertucci3@gmail.com>",
    "description": "Linkedin Clone in Laravel 8",
    "license": "null",
    "homepage": "/",
@@ -24,15 +24,15 @@
       "production": "mix --production"
    },
    "devDependencies": {
-      "axios": "^0.21",
-      "bootstrap": "^4.6.0",
-      "laravel-mix": "^6.0.19",
+      "axios": "^0.21.4",
+      "bootstrap": "^5.1.1",
+      "laravel-mix": "^6.0.31",
       "lodash": "^4.17.21",
       "popper.js": "^1.12",
-      "postcss": "^8.1.14",
+      "postcss": "^8.3.6",
       "resolve-url-loader": "^4.0.0",
-      "sass": "^1.15.2",
-      "sass-loader": "^8.0.0"
+      "sass": "^1.41.1",
+      "sass-loader": "^12.1.0"
    },
    "dependencies": {
       "@fortawesome/fontawesome-free": "^5.15.3",
