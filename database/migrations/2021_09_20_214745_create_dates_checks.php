@@ -13,6 +13,7 @@
          'Post',
          'RichiestaAmicizia',
          'Commento',
+         'MiPiace',
          'Profilo'
       ];
 
@@ -34,7 +35,7 @@
                      BEGIN
                         IF(NEW.created_at > CURRENT_TIMESTAMP() OR NEW.updated_at > CURRENT_TIMESTAMP() OR NEW.created_at > NEW.updated_at) THEN
                            SIGNAL SQLSTATE VALUE '99999'
-                           SET MESSAGE_TEXT = 'La data di created_at e updated_at devono essere antecedenti o uguali alla data attuale.';
+                           SET MESSAGE_TEXT = 'Le date di created_at e updated_at devono essere antecedenti o uguali alla data attuale.';
                         END IF;
                      END
                ");

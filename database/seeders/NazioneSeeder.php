@@ -10,19 +10,19 @@
 
       private array $nazioni =  [
          [
-            'nome' => 'Italia',
+            'nome' => 'Italy',
             'id' => 1
          ],
          [
-            'nome' => 'Giappone',
+            'nome' => 'Japan',
             'id' => 2,
          ],
          [
-            'nome' => 'Stati Uniti',
+            'nome' => 'United States',
             'id' => 3,
          ],
          [
-            'nome' => 'Inghilterra',
+            'nome' => 'England',
             'id' => 4
          ],
          [
@@ -30,15 +30,15 @@
             'id' => 5
          ],
          [
-            'nome' => 'Francia',
+            'nome' => 'France',
             'id' => 6
          ],
          [
-            'nome' => 'Germania',
+            'nome' => 'Germany',
             'id' => 7
          ],
          [
-            'nome' => 'Cina',
+            'nome' => 'China',
             'id' => 8
          ],
          [
@@ -46,15 +46,15 @@
             'id' => 9
          ],
          [
-            'nome' => 'Nuova Zelanda',
+            'nome' => 'New Zeland',
             'id' => 10
          ],
          [
-            'nome' => 'Svizzera',
+            'nome' => 'Switzerland',
             'id' => 11
          ],
          [
-            'nome' => 'Finlandia',
+            'nome' => 'Finland',
             'id' => 12
          ]
       ];

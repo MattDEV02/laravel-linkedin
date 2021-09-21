@@ -15,7 +15,7 @@
       public function up(): void {
          if(!Schema::hasTable('Utente')) {
             Schema::create('Utente', function (Blueprint $table) {
-               $table->increments('id')->comment('Identificativo Intero dell\' Utente');
+               $table->bigIncrements('id')->comment('Identificativo Intero dell\' Utente');
                $table->string('email', 50)->unique('Email_Utente_UNIQUE')->comment('Email dell\' Utente');
                $table->char('password', 60)->comment('Password dell\' Utente (memorizzata con bcrypt hashing)');
                $table->string('nome', 50)->comment('Nome anagrafico dell\'Utente');

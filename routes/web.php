@@ -63,10 +63,17 @@
          Route::get('/show-profile', [$PRC, 'showProfile']);
          Route::get('/collegamenti/{utente_id}', [$PRC, 'collegamenti'])
             ->name('collegamenti');
-         Route::get('/reportistica', fn (): Factory | View | Application => view('reportistica.index', [
-            'user_data' => Reportistica::getAllByUser(session()->get('utente')->id),
-            'records' => Reportistica::getAllRecords(),
-         ]));
+         Route::get('/reportistica', function (): Factory | View | Application {
+            $utente_id = session()->get('utente')->id;
+            return view('reportistica.index', [
+               'user_data' => Reportistica::getAllByUser($utente_id),
+               'records' => Reportistica::getAllRecords(),
+               'num_users_group_by_nazione' => Reportistica::getNumUsersGroupByNazione(),
+               'num_posts_group_by_date' => Reportistica::getNumPostGroupByDate($utente_id),
+               'num_likes_group_by_date' => Reportistica::getNumMiPiaceGroupByDate($utente_id),
+               'num_comments_group_by_date' => Reportistica::getNumCommentiGroupByDate($utente_id)
+            ]);
+         });
       });
 
    Route::prefix('form')
@@ -80,18 +87,13 @@
          Route::middleware('isSessionLogged')
             ->group(function () use($UC, $PC, $PRC): void {
                Route::delete('/remove-collegamento', [$PRC, 'removeCollegamento'])
-                  ->middleware('isSessionLogged')
                   ->name('remove-collegamento');
                Route::post('/feed', [$PC, 'insert'])
-                  ->middleware('isSessionLogged')
                   ->name('insert-post');
                Route::post('/order-by', [$PC, 'orderBy'])
-                  ->middleware('isSessionLogged')
                   ->name('orderBy-post');
-               Route::post('/like', [$PC, 'like'])
-                  ->middleware('isSessionLogged');
+               Route::post('/like', [$PC, 'like']);
                Route::put('/edit-profile', [$PRC, 'updateProfile'])
-                  ->middleware('isSessionLogged')
                   ->name('edit-profile');
             });
       });
@@ -99,11 +101,8 @@
    Route::middleware('auth:api')
       ->any('/api/users/{user_id?}',
          fn (?int $user_id = null): Utente | Collection | null =>
-            $user_id ? Utente::findOrFail($user_id) : Utente::all());
+         $user_id ? Utente::findOrFail($user_id) : Utente::all());
 
    Route::any('/test', function(Request $request) {
-      return [
-         'data' => Reportistica::getAllByUser(1),
-         'records' => Reportistica::getAllRecords(),
-      ];
+      return Reportistica::getNumCommentiGroupByDate(1);
    });

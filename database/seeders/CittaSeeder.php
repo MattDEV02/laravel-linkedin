@@ -11,27 +11,27 @@
       private array $citta = [
          [
             'id' => 1,
-            'nome' => 'Roma',
+            'nome' => 'Rome',
             'nazione_id' => 1
          ],
          [
             'id' => 2,
-            'nome' => 'Milano',
+            'nome' => 'Milan',
             'nazione_id' => 1
          ],
          [
             'id' => 3,
-            'nome' => 'Londra',
+            'nome' => 'London',
             'nazione_id' => 4
          ],
          [
             'id' => 4,
-            'nome' => 'Pechino',
+            'nome' => 'Beijing',
             'nazione_id' => 8
          ],
          [
             'id' => 5,
-            'nome' => 'Nuova Delhi',
+            'nome' => 'New Delhi',
             'nazione_id' => 5
          ],
          [
@@ -51,12 +51,12 @@
          ],
          [
             'id' => 9,
-            'nome' => 'Parigi',
+            'nome' => 'Paris',
             'nazione_id' => 6
          ],
          [
             'id' => 10,
-            'nome' => 'Marsiglia',
+            'nome' => 'Marseille',
             'nazione_id' => 6
          ],
          [
@@ -66,7 +66,7 @@
          ],
          [
             'id' => 12,
-            'nome' => 'Francoforte',
+            'nome' => 'Frankfurt',
             'nazione_id' => 7
          ],
          [

@@ -15,7 +15,7 @@
       public function up(): void {
          if(!Schema::hasTable('Profilo')) { // IF EXISTS...
             Schema::create('Profilo', function (Blueprint $table) {
-               $table->unsignedInteger('utente_id')->primary()->comment('Riferimento alla Chiava Primaria di Utente e chiave primaria del Profilo');
+               $table->unsignedBigInteger('utente_id')->primary()->comment('Riferimento alla Chiava Primaria di Utente e chiave primaria del Profilo');
                $table->string('descrizione', 255)->nullable()->comment('Testo della Descrizione del Profilo Utente');
                $table->string('foto', 25)->nullable()->comment('Foto del Profilo (relativa path del file)');
                $table->timestamp('created_at')->useCurrent()->comment('Data Creazione del Record (consente di ottenere anche la di creazione del Profilo)');

@@ -19,7 +19,7 @@
    class MiPiace extends Model {
 
       protected $table = 'MiPiace';
-      protected $primaryKey = ['utente_id', 'post_id'];
+      protected $primaryKey = ['utente_id', 'post_id', 'created_at'];
       public $incrementing = false;
       public $timestamps = false;
 

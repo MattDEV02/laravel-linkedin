@@ -5,6 +5,8 @@
    use Illuminate\Database\Eloquent\Builder;
    use Illuminate\Database\Eloquent\Factories\HasFactory;
    use Illuminate\Database\Eloquent\Model;
+   use Illuminate\Support\Collection;
+   use Illuminate\Support\Facades\DB;
    use Illuminate\Support\Facades\Schema;
 
 
@@ -15,6 +17,9 @@
     * @method static updateCommenti(int $utente_id)
     * @method static getAllRecords(): void
     * @method static getAllByUser(int $int)
+    * @method static usersGroupByNazione()
+    * @method static getNumActionGroupByDate(int $int)
+    * @method static getNumUsersGroupByNazione()
     */
    class Reportistica extends Model {
       use HasFactory;
@@ -30,6 +35,7 @@
          'richieste_amicizia_inviate',
          'richieste_amicizia_ricevute'
       ];
+
 
       public function scopeUpdateCommenti(Builder $query, int $utente_id): void {
          $reportistica = Reportistica::find($utente_id);
@@ -68,7 +74,7 @@
          foreach($this->columns as $column) {
             $max_column =  "num_max_$column";
             $tot_column = "num_tot_$column";
-            $data[$column] = (object) [
+            $data[$column] =  [
                'max' => Schema::hasColumn($this->table, $max_column) ?
                   $reportistica->value($max_column) : $reportistica->value($tot_column),
                'tot' => $reportistica->value($tot_column)
@@ -79,16 +85,71 @@
 
       public function scopeGetAllRecords(Builder $query): object {
          $records = [];
+         $reportistica = Reportistica::all();
          foreach($this->columns as $column) {
-            $reportistica = Reportistica::all();
             $max_column =  "num_max_$column";
             $tot_column = "num_tot_$column";
-            $records[$column] = (object) [
+            $records[$column] = [
                'max' => Schema::hasColumn($this->table, $max_column) ?
                   $reportistica->max($max_column) : $reportistica->sum($tot_column),
                'tot' => $reportistica->sum($tot_column)
             ];
          }
          return (object) $records;
+      }
+
+      public function scopeGetNumUsersGroupByNazione(Builder $query): Collection {
+         return DB::table('Utente AS u')
+            ->select(
+               'n.nome AS Country',
+               DB::raw('COUNT(u.id) AS Utenti_Linkedin')
+            )
+            ->join('Citta AS c', 'u.citta_id', 'c.id')
+            ->join('Nazione AS n', 'c.nazione_id', 'n.id')
+            ->groupBy('n.id')
+            ->orderBy('Utenti_Linkedin', 'DESC')
+            ->get();
+      }
+
+      public function scopeGetNumPostGroupByDate(Builder $query, int $utente_id): Collection {
+         return DB::table('Utente AS u')
+            ->select(
+               DB::raw('DATE(p.created_at) AS data_pubblicazione'),
+               DB::raw('TIME(p.created_at) AS orario_pubblicazione'),
+               DB::raw('COUNT(p.id) AS num_post_pubblicati')
+            )
+            ->join('Post AS p', 'p.utente_id', 'u.id')
+            ->where('u.id', $utente_id)
+            ->groupBy('data_pubblicazione')
+            ->orderBy('data_pubblicazione', 'DESC')
+            ->get();
+      }
+
+      public function scopeGetNumMiPiaceGroupByDate(Builder $query, int $utente_id): Collection {
+         return DB::table('Utente AS u')
+            ->select(
+               DB::raw('DATE(mp.created_at) AS data_like'),
+               DB::raw('TIME(mp.created_at) AS orario_like'),
+               DB::raw('COUNT(*) AS num_like')
+            )
+            ->join('MiPiace AS mp', 'mp.utente_id', 'u.id')
+            ->where('u.id', $utente_id)
+            ->groupBy('data_like')
+            ->orderBy('data_like', 'DESC')
+            ->get();
+      }
+
+      public function scopeGetNumCommentiGroupByDate(Builder $query, int $utente_id): Collection {
+         return DB::table('Utente AS u')
+            ->select(
+               DB::raw('DATE(c.created_at) AS data_commento'),
+               DB::raw('TIME(c.created_at) AS orario_commento'),
+               DB::raw('COUNT(c.id) AS num_commenti')
+            )
+            ->join('Commento AS c', 'c.utente_id', 'u.id')
+            ->where('u.id', $utente_id)
+            ->groupBy('data_commento')
+            ->orderBy('data_commento', 'DESC')
+            ->get();
       }
    }

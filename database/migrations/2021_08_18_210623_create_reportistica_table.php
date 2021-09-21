@@ -14,7 +14,7 @@
       public function up(): void {
          if(!Schema::hasTable('Reportistica')) {
             Schema::create('Reportistica', function (Blueprint $table) {
-               $table->unsignedInteger('utente_id')->primary()->comment('Riferimento alla Chiava Primaria dell\' Utente.');
+               $table->unsignedBigInteger('utente_id')->primary()->comment('Riferimento alla Chiava Primaria dell\' Utente.');
                $table->unsignedBigInteger('num_tot_mipiace')->default(0)->comment('Numero totale Like di ogni Post di un Utente.');
                $table->unsignedInteger('num_max_mipiace')->default(0)->comment('Numero massimo di Like ricevuti ad un Post di un Utente.');
                $table->unsignedBigInteger('num_tot_commenti')->default(0)->comment('Numero totale Commenti di ogni Post di un Utente.');
