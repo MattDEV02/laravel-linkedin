@@ -12,7 +12,7 @@
        */
       public function up(): void {
          DB::statement("
-            CREATE TRIGGER UtenteLavoroProfiloReportistica_trigger AFTER INSERT ON Utente
+            CREATE OR REPLACE TRIGGER UtenteLavoroProfiloReportistica_trigger AFTER INSERT ON Utente
                FOR EACH ROW
             BEGIN
                INSERT INTO Profilo(utente_id) VALUES(NEW.id);

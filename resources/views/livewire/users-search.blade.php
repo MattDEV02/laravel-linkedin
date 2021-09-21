@@ -17,12 +17,10 @@
             wire:input="search(event.target.value)"
     />
     <div class="mt-4 mr-2" id="risultato_ricerca" style="font-size: 105%;">
-        <div wire:loading class="{{ $selectors['col'] }}5 mb-5">
-            <div class="{{ $selectors['row'] }}">
+        <div wire:loading style="margin: 5rem;">
                 <div class="spinner-border" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
-            </div>
         </div>
         @foreach($utenti as $utente)
             <div class="my-3 bg-white {{ $selectors['border'] }} p-2">

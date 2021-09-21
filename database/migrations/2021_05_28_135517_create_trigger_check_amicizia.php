@@ -5,15 +5,20 @@
 
 
    class CreateTriggerCheckAmicizia extends Migration {
+
+      private array $events = [
+         'INSERT',
+         'UPDATE'
+      ];
       /**
        * Run the migrations.
        *
        * @return void
        */
       public function up(): void {
-         DB::statement("
-              CREATE TRIGGER CHECK_Amicizia BEFORE INSERT ON RichiestaAmicizia 
-              FOR EACH ROW
+         foreach($this->events as $event)
+            DB::statement("
+              CREATE OR REPLACE TRIGGER CHECK_Amicizia$event BEFORE $event ON RichiestaAmicizia FOR EACH ROW
                   BEGIN
                      IF (
               SELECT
@@ -27,7 +32,8 @@
                   (ra.utenteMittente = NEW.utenteRicevente OR ra.utenteRicevente = NEW.utenteRicevente) AND 
                   ra.stato = 'Accettata'
               ) > 0 THEN
-                 SIGNAL SQLSTATE VALUE '99999' SET MESSAGE_TEXT = 'Richiesta Amicizia già esistente!';
+                 SIGNAL SQLSTATE VALUE '99999' 
+                    SET MESSAGE_TEXT = 'Richiesta Amicizia già esistente!';
           END IF;
             END
      ");
@@ -39,6 +45,7 @@
        * @return void
        */
       public function down(): void {
-         DB::statement("DROP TRIGGER IF EXISTS CHECK_Amicizia;");
+         foreach($this->events as $event)
+            DB::statement("DROP TRIGGER IF EXISTS CHECK_Amicizia$event;");
       }
    }

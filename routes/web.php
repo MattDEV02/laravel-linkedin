@@ -64,12 +64,12 @@
          Route::get('/collegamenti/{utente_id}', [$PRC, 'collegamenti'])
             ->name('collegamenti');
          Route::get('/reportistica', fn (): Factory | View | Application => view('reportistica.index', [
-            'data' => Reportistica::getAllByUser(session()->get('utente')->id),
+            'user_data' => Reportistica::getAllByUser(session()->get('utente')->id),
             'records' => Reportistica::getAllRecords(),
          ]));
       });
 
-   Route::prefix('ricezione-dati')
+   Route::prefix('form')
       ->group(function() use($UC, $PC, $PRC): void {
          Route::post('/registrazione', [$UC, 'insert'])
             ->name('insert-user');
@@ -102,5 +102,8 @@
             $user_id ? Utente::findOrFail($user_id) : Utente::all());
 
    Route::any('/test', function(Request $request) {
-      return $request->user();
+      return [
+         'data' => Reportistica::getAllByUser(1),
+         'records' => Reportistica::getAllRecords(),
+      ];
    });

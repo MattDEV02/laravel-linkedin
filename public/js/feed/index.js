@@ -16,8 +16,6 @@ image.on({
     }
 );
 
-const isValid = val => val !== null && val !== undefined && val !== false;
-
 $('#postForm').submit(function (e) {
     let num_errors = 0;
     const
@@ -41,7 +39,7 @@ const
     postsOrder = $('select.postsOrder'),
     formOrder = $('form.postsOrder')[0];
 
-postsOrder.change(async (e) => {
+postsOrder.change(async () => {
     const res = await axios({
         method: formOrder.method,
         url: formOrder.action,
@@ -58,12 +56,11 @@ postsOrder.change(async (e) => {
 
 
 const like = async (post_id) => {
-    sound();
     const res = await axios
-        .post('ricezione-dati/like', { post_id })
+        .post('form/like', { post_id })
         .catch(e => console.error(e));
     console.log(res);
     isValid(res) && res.status === 200 ?
-        $('#like_container-' + post_id).html(res.data) :
+        ($('#like_container-' + post_id).html(res.data), sound()):
         window.alert('Errore nel click del Like.');
 };

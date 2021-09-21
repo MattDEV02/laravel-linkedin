@@ -3,10 +3,17 @@
    "type": "project",
    "description": "Linkedin Clone in Laravel 8.",
    "keywords": [
-      "framework",
-      "laravel",
+      "Laravel",
       "Linkedin",
-      "Full-stack"
+      "Bootstrap",
+      "SASS",
+      "PHP",
+      "Javascript",
+      "Front-end",
+      "Back-end",
+      "Full-Stack",
+      "Responsive-Layout",
+      "HTTP"
    ],
    "license": "MIT",
    "require": {

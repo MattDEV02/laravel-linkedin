@@ -8,7 +8,7 @@
        <div class="{{ $selectors['col'] }}">
            <div class="row">
                <img
-                       src="/storage/profiles/{{ getProfileImage($collegamento->utenteFoto, $collegamento->utente_id) }}"
+                       src="{{ getProfileImage($collegamento->utenteFoto, $collegamento->utente_id) }}"
                        alt="{{ $collegamento->utenteEmail }}"
                        title="{{ $collegamento->utenteEmail }}"
                        class="img-fluid img-responsive rounded-circle {{ $selectors['border'] }} d-block ml-3 w-40"

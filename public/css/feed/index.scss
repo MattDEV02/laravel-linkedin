@@ -1,7 +1,8 @@
+@use "sass:math";
 @import '../variables';
 
 
-$br2: ($br / 3);
+$br2: math.div($br, 3);
 $max: 100%;
 
 

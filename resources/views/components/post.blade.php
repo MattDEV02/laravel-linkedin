@@ -2,17 +2,18 @@
     $selectors = selectors();
 @endphp
 
-<div class="{{ $selectors['col'] }}4">
+
+<div class="{{ $selectors['col'] }}5">
     <div class="{{ $selectors['row'] }}">
-        <div class="col-xs-12 col-sm-11 col-md-8 col-lg-6 mt-2">
+        <div class="col-md-6">
             <div class="card mb-4 {{ $selectors['border'] }} pt-1" title="{{ $post->utenteEmail }}">
                 <div class="card-body">
                     <div class="media mb-3">
                         <img
-                            src="storage/profiles/{{ getProfileImage($post->utente_profile_foto, $post->utente_id) }}"
-                            alt="{{ ucfirst($post->utenteNomeCognome) }}"
-                            class="d-block w-50 rounded-circle mt-3 border border-secondary"
-                            title="{{ $post->utenteEmail }}"
+                                src="{{ getProfileImage($post->utente_profile_foto, $post->utente_id) }}"
+                                alt="{{ ucfirst($post->utenteNomeCognome) }}"
+                                class="d-block w-50 rounded-circle mt-2 border border-secondary"
+                                title="{{ $post->utenteEmail }}"
                         />
                         <div class="media-body ml-3">
                             <a href="{{ $selectors['show-profile'] }}{{ $post->utenteEmail }}" class="text-dark">
@@ -35,10 +36,10 @@
                     <div class="{{ $selectors['col'] }}">
                         <div class="{{ $selectors['row'] }}">
                             <img
-                                src="storage/posts/{{ $post->utente_id }}/{{ $post->foto }}"
-                                class="img-fluid mt-2"
-                                alt="{{ $post->testo }}"
-                                title="{{ $post->testo }}"
+                                    src="storage/posts/{{ $post->utente_id }}/{{ $post->foto }}"
+                                    class="img-fluid mt-2"
+                                    alt="{{ $post->testo }}"
+                                    title="{{ $post->testo }}"
                             />
                         </div>
                     </div>
@@ -64,3 +65,4 @@
         </div>
     </div>
 </div>
+

@@ -12,7 +12,7 @@
        <div class="{{ $selectors['col'] }}">
            <div class="row">
                <img
-                       src="/storage/profiles/{{ getProfileImage($richiesta['utenteMittenteFoto'], $richiesta['utente_id']) }}"
+                       src="{{ getProfileImage($richiesta['utenteMittenteFoto'], $richiesta['utente_id']) }}"
                        alt="{{ $richiesta['utenteMittenteEmail'] }}"
                        title="{{ $richiesta['utenteMittenteEmail'] }}"
                        class="img-fluid img-responsive rounded-circle {{ $selectors['border'] }} d-block ml-4 w-40"

@@ -17,7 +17,7 @@
        *
        * @return void
        */
-      public function __construct()
+      public function __construct(string $password)
       {
          //
       }
@@ -27,7 +27,9 @@
        *
        * @return $this
        */
-      public function build() {
-         return $this;
+      public function build(): static {
+         return $this
+            ->view('utils.password-dimenticata')
+            ;
       }
    }

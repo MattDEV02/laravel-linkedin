@@ -9,6 +9,7 @@
 /Homestead.yaml
 /npm-debug.log
 /yarn-error.log
+/composer.lock
 /package-lock.json
 /.idea
 /.env.example

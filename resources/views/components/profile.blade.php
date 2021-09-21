@@ -1,7 +1,6 @@
 @php
     $selectors = selectors();
     $utente = session('utente');
-    $foto = getProfileImage($profile->foto, $profile->utente_id);
     $profileData = [
        'Nome' => $profile->utenteNomeCognome,
        'Email' => $profile->utenteEmail,
@@ -21,7 +20,7 @@
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <img
-                                    src="storage/profiles/{{ $foto }}"
+                                    src="{{ getProfileImage($profile->foto, $profile->utente_id) }}"
                                     alt="{{ $profile->utenteEmail }}"
                                     class="rounded-circle border border-secondary mt-3"
                                     width="{{ 157 }}"

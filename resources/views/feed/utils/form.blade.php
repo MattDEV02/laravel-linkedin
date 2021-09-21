@@ -8,10 +8,10 @@
             <form method="{{ $selectors['method'] }}" enctype="multipart/form-data" action="{{ route('insert-post') }}" id="postForm">
                 @csrf
                 <div class="form-group {{ $selectors['border'] }} p-4">
-                      <div class="mt-2">
-                          <x-success />
-                          <x-errors />
-                      </div>
+                    <div class="mt-2">
+                        <x-success />
+                        <x-errors />
+                    </div>
                     <div class="{{ $selectors['col'] }}">
                         <div class="{{ $selectors['row'] }}">
                             <input

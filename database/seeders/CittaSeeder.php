@@ -30,6 +30,11 @@
             'nazione_id' => 8
          ],
          [
+            'id' => 5,
+            'nome' => 'Nuova Delhi',
+            'nazione_id' => 5
+         ],
+         [
             'id' => 6,
             'nome' => 'Los Angeles',
             'nazione_id' => 3

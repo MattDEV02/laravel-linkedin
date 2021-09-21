@@ -3,6 +3,7 @@
     $utente = session('utente');
 @endphp
 
+
 <!DOCTYPE HTML>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
@@ -81,7 +82,7 @@
                                                 required >
                                             @component('components.option', [
                                                 'data' => $citta,
-                                                'selected' => $utente->citta
+                                                'selected' => $utente->citta_id
                                             ])
                                             @endcomponent
                                         </select>
@@ -128,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="{{ $selectors['col'] }}5 mb-4">
+                <div class="{{ $selectors['col'] }}4-5 mb-4">
                     <div class="{{ $selectors['row'] }}">
                         <p id="footer" class="big_font_size">
                             Clicca per tornare al

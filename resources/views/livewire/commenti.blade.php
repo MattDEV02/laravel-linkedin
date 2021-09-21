@@ -1,14 +1,12 @@
 @php
     $utente = session('utente');
     $selectors = selectors();
-    $base = '../storage';
-    $path = getProfileImage($utente->profile->foto, $utente->id);
 @endphp
 
 <div wire:key="{{ uniqid() }}" wire:poll.625ms="refresh({{ $post['id'] }})">
     <div class="d-flex flex-row align-items-center text-left p-2 bg-white {{ $selectors['border'] }} border-bottom-0 px-4">
         <img
-                src="{{ $base }}/posts/{{ $post['autore_id'] }}/{{ $post['foto'] }}"
+                src="../storage/posts/{{ $post['autore_id'] }}/{{ $post['foto'] }}"
                 alt="Immagine Post."
                 title="Immagine Post."
                 width="{{ 72 }}"
@@ -37,7 +35,7 @@
     <div class="bg-white p-2 px-4 pb-4 {{ $selectors['border'] }}">
         <div class="d-flex flex-row mt-4 mb-4">
             <img
-                    src="{{ $base }}/profiles/{{ $path }}"
+                    src="{{ getProfileImage($utente->profile->foto, $utente->id) }}"
                     alt="La tua Immagine di Profilo."
                     width="{{ 40 }}"
                     class="img-fluid img-responsive rounded-circle mr-2"

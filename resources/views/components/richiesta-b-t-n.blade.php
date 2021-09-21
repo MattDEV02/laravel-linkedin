@@ -10,7 +10,7 @@
         wire:click="{{ $txt }}({{ $utenteMittente }})"
         onclick="sound()">
     <b>
-        {{ ucfirst($txt) }}
+        <i class="fas fa-{{ $cond ? 'check' : 'times' }}"></i>
     </b>
 </button>
 

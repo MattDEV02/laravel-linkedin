@@ -77,7 +77,7 @@
          [
             'utente_id' => 14,
             'lavoro_id' => 1,
-            'dataInizioLavoro' => '2021-07-20'
+            'dataInizioLavoro' => null
          ],
       ];
       /**

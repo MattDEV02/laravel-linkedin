@@ -14,24 +14,20 @@
 @include('utils.navbar')
 <div class="{{ $selectors['container'] }}">
     <div class="{{ $selectors['row']}}">
+        @component('components.no-script')
+        @endcomponent
         <div class="{{ $selectors['col'] }}5">
-            <div class="{{ $selectors['row']}}">
-                @component('components.no-script')
-                @endcomponent
-                <div class="{{ $selectors['col'] }}">
-                    <div class="{{ $selectors['row'] }}">
-                        <h1>Benvenuto</h1>
-                        <h1 class="text-info ml-3">
-                            {{ $utente->nome }} {{ $utente->cognome }}
-                        </h1>
-                    </div>
-                </div>
-                @include('feed.utils.form')
-                <x-posts-order />
-                <div id="posts-container">
-                    @include('feed.utils.posts')
-                </div>
+            <div class="{{ $selectors['row'] }}">
+                <h1>Benvenuto</h1>
+                <h1 class="text-info ml-3">
+                    {{ $utente->nome }} {{ $utente->cognome }}
+                </h1>
             </div>
+        </div>
+        @include('feed.utils.form')
+        <x-posts-order />
+        <div id="posts-container">
+            @include('feed.utils.posts')
         </div>
     </div>
 </div>

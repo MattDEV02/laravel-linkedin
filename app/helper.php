@@ -199,7 +199,8 @@
          return Str::lower(trim($email));
       }
       function getProfileImage(?string $profile_foto, int $utente_id): string {
-         return isset($profile_foto) ? ($utente_id . '/' . $profile_foto) : 'default.jpg';
+         $path = isset($profile_foto) ? ($utente_id . '/' . $profile_foto) : 'default.jpg';
+         return "/storage/profiles/$path";
       }
       function sessionPutUser(Request $req): void {
          $email = $req->input('email') ?? $req->session()->get('utente')->email;

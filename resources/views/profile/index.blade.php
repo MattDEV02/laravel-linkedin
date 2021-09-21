@@ -3,7 +3,7 @@
     $utente = session('utente');
 @endphp
 
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 <head>
     <x-head title="Profile" />
@@ -27,7 +27,7 @@
             'richieste' => $richieste
         ])
     @endif
-    <div class="mb-4" id="posts-container">
+    <div id="posts-container">
         @include('feed.utils.posts')
     </div>
 </div>

@@ -22,7 +22,8 @@
        *
        * @return array
        */
-      #[ArrayShape(['nome' => "string", 'cognome' => "string", 'email' => "mixed", 'password' => "string", 'citta_id' => "int"])] public function definition(): array {
+      #[ArrayShape(['nome' => "string", 'cognome' => "string", 'email' => "string", 'password' => "string", 'citta_id' => "int"])]
+      public function definition(): array {
          return [
             'nome' => $this->faker->name(),
             'cognome' => $this->faker->lastName(),

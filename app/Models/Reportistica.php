@@ -62,37 +62,33 @@
          $reportistica_utente_ricevente->save();
       }
 
-      public function scopeGetAllByUser(Builder $query, int $utente_id): array {
+      public function scopeGetAllByUser(Builder $query, int $utente_id): object {
          $data = [];
+         $reportistica = Reportistica::find($utente_id);
          foreach($this->columns as $column) {
-            $reportistica = Reportistica::find($utente_id);  // find does't work with pluck...
             $max_column =  "num_max_$column";
             $tot_column = "num_tot_$column";
-            $data[] = [
-               $column => [
-                  'max' => Schema::hasColumn($this->table, $max_column) ?
-                     $reportistica->value($max_column) : $reportistica->value($tot_column),
-                  'tot' => $reportistica->value($tot_column)
-               ]
+            $data[$column] = (object) [
+               'max' => Schema::hasColumn($this->table, $max_column) ?
+                  $reportistica->value($max_column) : $reportistica->value($tot_column),
+               'tot' => $reportistica->value($tot_column)
             ];
          }
-         return $data;
+         return (object) $data;
       }
 
-      public function scopeGetAllRecords(Builder $query): array {
+      public function scopeGetAllRecords(Builder $query): object {
          $records = [];
          foreach($this->columns as $column) {
             $reportistica = Reportistica::all();
             $max_column =  "num_max_$column";
             $tot_column = "num_tot_$column";
-            $records[] = [
-               $column => [
-                  'max' => Schema::hasColumn($this->table, $max_column) ?
-                     $reportistica->max($max_column) : $reportistica->sum($tot_column),
-                  'tot' => $reportistica->sum($tot_column)
-               ]
+            $records[$column] = (object) [
+               'max' => Schema::hasColumn($this->table, $max_column) ?
+                  $reportistica->max($max_column) : $reportistica->sum($tot_column),
+               'tot' => $reportistica->sum($tot_column)
             ];
          }
-         return $records;
+         return (object) $records;
       }
    }
