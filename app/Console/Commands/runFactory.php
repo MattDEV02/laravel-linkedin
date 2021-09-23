@@ -6,14 +6,13 @@
    use Illuminate\Console\Command;
 
 
-   class runFactory extends Command
-   {
+   class runFactory extends Command {
       /**
        * The name and signature of the console command.
        *
        * @var string
        */
-      protected $signature = 'factory:run {n=1}';
+      protected $signature = 'factory:run {--n=1}';
 
       /**
        * The console command description.
@@ -27,8 +26,7 @@
        *
        * @return void
        */
-      public function __construct()
-      {
+      public function __construct() {
          parent::__construct();
       }
 
@@ -38,11 +36,11 @@
        * @return int
        */
       public function handle(): int {
-         $n = (int) $this->arguments('n');
-         if(Utente::factory()->count(20)->create())
-            $this->info('Factory data inserted.');
+         $n = (int) $this->option('n');
+         if(Utente::factory()->count($n)->create())
+            $this->info("$n factory data inserted.");
          else
-            $this->info('Factory data not inserted.');
+            $this->info("$n factory data not inserted.");
          return 1;
       }
    }

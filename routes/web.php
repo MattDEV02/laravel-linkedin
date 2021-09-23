@@ -73,7 +73,7 @@
                'num_likes_group_by_date' => Reportistica::getNumMiPiaceGroupByDate($utente_id),
                'num_comments_group_by_date' => Reportistica::getNumCommentiGroupByDate($utente_id)
             ]);
-         });
+         })->name('reportistica');
       });
 
    Route::prefix('form')

@@ -6,6 +6,7 @@
    use Illuminate\Database\Eloquent\Builder;
    use Illuminate\Http\Request;
    use Illuminate\Support\Facades\DB;
+   use Illuminate\Support\Str;
 
 
    /**
@@ -26,7 +27,7 @@
          $utente_id = $req->session()->get('utente')->id;
          $fileName = store($req->file('image'), 'posts', $utente_id);
          $post = new Post();
-         $post->testo= $req->input('testo');
+         $post->testo= Str::ucfirst($req->input('testo'));
          $post->foto = $fileName;
          $post->utente_id = $utente_id;
          $post->save();

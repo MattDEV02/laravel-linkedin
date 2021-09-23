@@ -1,12 +1,6 @@
 @import '../variables';
 
 
-@function getColor($key) {
-   $result: map-get($colors, $key);
-   @debug 'Color: ' + $result; // Console Output
-   @return $result;
-}
-
 
 #form-card {
    border-radius: ($pad * 3);

@@ -6,10 +6,17 @@ $colors: (
         'white': #FFFFFF,
         'grey': #E7E6E6BA,
         'black': #000000,
+		'green': #25AF09,
         'lightBlue': #B9DDEF,
         'blue': #0A66C2,
         'darkBlue': #004182,
+        'darkred': #830606,
         'primary': #0073B1,
 );
 
+@function getColor($key) {
+  $result: map-get($colors, $key);
+  @debug 'Color: ' + $result; // Console Output
+  @return $result;
+}
 

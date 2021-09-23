@@ -121,7 +121,7 @@
             ->join('Post AS p', 'p.utente_id', 'u.id')
             ->where('u.id', $utente_id)
             ->groupBy('data_pubblicazione')
-            ->orderBy('data_pubblicazione', 'DESC')
+            ->orderBy('data_pubblicazione', 'ASC')
             ->get();
       }
 
@@ -135,7 +135,7 @@
             ->join('MiPiace AS mp', 'mp.utente_id', 'u.id')
             ->where('u.id', $utente_id)
             ->groupBy('data_like')
-            ->orderBy('data_like', 'DESC')
+            ->orderBy('data_like', 'ASC')
             ->get();
       }
 
@@ -149,7 +149,7 @@
             ->join('Commento AS c', 'c.utente_id', 'u.id')
             ->where('u.id', $utente_id)
             ->groupBy('data_commento')
-            ->orderBy('data_commento', 'DESC')
+            ->orderBy('data_commento', 'ASC')
             ->get();
       }
    }

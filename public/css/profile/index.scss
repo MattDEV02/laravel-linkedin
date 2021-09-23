@@ -1,12 +1,6 @@
 @import '../feed/index';
 
 
-@function getColor($key) {
-   $result: map-get($colors, $key);
-   @debug 'Color: ' + $result; // Console Output
-   @return $result;
-}
-
 
 .card {
    box-shadow: 0 1px 3px 0 #00000019, 0 1px 2px 0 #0000000F;

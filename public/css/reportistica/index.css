@@ -1,3 +1,34 @@
+:root {
+  --fc-border-color: #000000;
+}
 
+div.fc-header-toolbar {
+  background-color: #25AF09;
+}
+
+.fc-col-header-cell-cushion {
+  color: #830606;
+}
+
+.fc-event-title {
+  color: #000000;
+}
+
+.fc-event-time {
+  color: #25AF09;
+}
+
+.fc-event-time, .fc-event-title, option {
+  font-weight: bold;
+  margin-left: 0.125rem;
+}
+
+select.chart-select {
+  border-radius: 5px;
+}
+
+select.chart-select:hover {
+  border-color: #25AF09 !important;
+}
 
 /*# sourceMappingURL=index.css.map */

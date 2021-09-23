@@ -1,0 +1,40 @@
+@import '../variables';
+
+
+:root {
+  --fc-border-color: #000000;
+}
+
+
+div.fc-header-toolbar  {
+  background-color: getColor('green');
+}
+
+.fc-col-header-cell-cushion {
+  color: getColor('darkred');
+}
+
+.fc-daygrid-day-number {
+  color: getColor('red');
+}
+
+.fc-event-title {
+  color: getColor('black');
+}
+
+.fc-event-time {
+  color: getColor('green');
+}
+
+.fc-event-time, .fc-event-title, option {
+  font-weight: bold;
+  margin-left: 0.125rem;
+}
+
+select.chart-select {
+  border-radius: 5px;
+}
+
+select.chart-select:hover {
+  border-color: getColor('green') !important;
+}
