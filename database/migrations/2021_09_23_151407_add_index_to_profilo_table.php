@@ -6,7 +6,7 @@
    use Illuminate\Support\Facades\Schema;
 
 
-   class AddForeignKeysToProfiloTable extends Migration {
+   class AddIndexToProfiloTable extends Migration {
       /**
        * Run the migrations.
        *

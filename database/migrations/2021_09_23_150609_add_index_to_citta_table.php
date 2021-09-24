@@ -6,7 +6,7 @@
    use Illuminate\Support\Facades\Schema;
 
 
-   class AddForeignKeysToCittaTable extends Migration {
+   class AddIndexToCittaTable extends Migration {
       /**
        * Run the migrations.
        *
@@ -31,4 +31,5 @@
             $table->dropForeign('NazioneCittaFK');
          });
       }
+
    }

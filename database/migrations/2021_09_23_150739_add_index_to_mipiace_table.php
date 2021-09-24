@@ -6,14 +6,13 @@
    use Illuminate\Support\Facades\Schema;
 
 
-   class AddForeignKeysToMipiaceTable extends Migration {
+   class AddIndexToMipiaceTable extends Migration {
       /**
        * Run the migrations.
        *
        * @return void
        */
-      public function up(): void
-      {
+      public function up(): void {
          Schema::table('MiPiace', function (Blueprint $table) {
             $table->foreign('post_id', 'PostMiPiaceFK')->references('id')->on('Post')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('utente_id', 'UtenteMiPiaceFK')->references('id')->on('Utente')->onUpdate('CASCADE')->onDelete('CASCADE');

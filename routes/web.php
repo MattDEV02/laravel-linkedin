@@ -54,7 +54,7 @@
    });
 
    Route::middleware('isSessionLogged')
-      ->group(function() use($UC, $PC, $PRC): void {
+      ->group(callback: function() use($UC, $PC, $PRC): void {
          Route::get('/feed', [$PC, 'feed']);
          Route::get('/commenti/{post_id}', [$PC, 'commenti']);
          Route::get('/edit-profile', [$PRC, 'editProfile']);

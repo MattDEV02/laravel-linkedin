@@ -6,7 +6,7 @@
    use Illuminate\Support\Facades\Schema;
 
 
-   class AddForeignKeysToRichiestaamiciziaTable extends Migration {
+   class AddIndexToRichiestaamiciziaTable extends Migration {
       /**
        * Run the migrations.
        *

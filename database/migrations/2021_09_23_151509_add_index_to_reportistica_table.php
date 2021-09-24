@@ -6,7 +6,7 @@
    use Illuminate\Support\Facades\Schema;
 
 
-   class AddForeignKeysToUtentelavoroTable extends Migration {
+   class AddIndexToReportisticaTable extends Migration {
       /**
        * Run the migrations.
        *

@@ -6,7 +6,7 @@
    use Illuminate\Support\Facades\Schema;
 
 
-   class AddForeignKeysToUtenteTable extends Migration {
+   class AddIndexToUtenteTable extends Migration {
       /**
        * Run the migrations.
        *
@@ -28,8 +28,7 @@
        *
        * @return void
        */
-      public function down()
-      {
+      public function down(): void {
          Schema::table('Utente', function (Blueprint $table) {
             $table->dropForeign('UtenteCittaFK');
          });

@@ -15,11 +15,13 @@
     * @method static updatePost(int $utente_id)
     * @method static updateRichiesteAmicizia(int $utente_id)
     * @method static updateCommenti(int $utente_id)
-    * @method static getAllRecords(): void
+    * @method static getAllRecords()
     * @method static getAllByUser(int $int)
     * @method static usersGroupByNazione()
-    * @method static getNumActionGroupByDate(int $int)
     * @method static getNumUsersGroupByNazione()
+    * @method static getNumPostGroupByDate(int $utente_id)
+    * @method static getNumMiPiaceGroupByDate(int $utente_id)
+    * @method static getNumCommentiGroupByDate(int $utente_id)
     */
    class Reportistica extends Model {
       use HasFactory;

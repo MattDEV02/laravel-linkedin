@@ -6,7 +6,7 @@
    use Illuminate\Support\Facades\Schema;
 
 
-   class AddForeignKeysToPostTable extends Migration {
+   class AddIndexToPostTable extends Migration {
       /**
        * Run the migrations.
        *

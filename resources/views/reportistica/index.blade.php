@@ -82,7 +82,6 @@
                     <option value="line">Lineare</option>
                     <option value="pie">Torta</option>
                     <option value="doughnut">Ciambella</option>
-                    <option value="polarArea">Polare</option>
                     <option value="bubble">Bolle</option>
                 </select>
                 <select
@@ -108,7 +107,7 @@
                         target="_blank"
                         type="button"
                         role="button"
-                        class="{{ $selectors['btn'] }} btn-success border-2 border-white mr-3"
+                        class="{{ $selectors['btn'] }} btn-success mr-3"
                         id="docs-btn"
                 >
                     <i class="fas fa-file-alt mr-1"></i>
@@ -119,7 +118,7 @@
                         target="_blank"
                         type="button"
                         role="button"
-                        class="{{ $selectors['btn'] }} btn-dark border border-light ml-3 mr-3"
+                        class="{{ $selectors['btn'] }} btn-dark ml-3 mr-3"
                 >
                     <i class="fab fa-github mr-1"></i>
                     Github
@@ -127,7 +126,7 @@
                 <button
                         type="button"
                         role="button"
-                        class="{{ $selectors['btn'] }} btn-primary border-2 border-white ml-3 mr-3"
+                        class="{{ $selectors['btn'] }} btn-primary ml-3 mr-3"
                         onclick="window.print()"
                         id="print-btn"
                 >
@@ -136,10 +135,10 @@
                 </button>
                 <a
                         href="{{ route('reportistica') }}"
-                        download="index.html"
+                        download="reportistica.html"
                         type="button"
                         role="button"
-                        class="{{ $selectors['btn'] }} btn-secondary border border-white ml-3 mr-3"
+                        class="{{ $selectors['btn'] }} btn-secondary ml-3 mr-3"
                         id="download-btn"
                 >
                     <i class="fas fa-download mr-1"></i>
@@ -149,7 +148,7 @@
                         href="#top"
                         type="button"
                         role="button"
-                        class="{{ $selectors['btn'] }} btn-light border border-dark ml-3"
+                        class="{{ $selectors['btn'] }} btn-light ml-3"
                 >
                     <b>
                         <i class="fas fa-arrow-up mr-1"></i>
