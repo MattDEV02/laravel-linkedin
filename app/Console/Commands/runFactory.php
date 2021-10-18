@@ -2,7 +2,7 @@
 
    namespace App\Console\Commands;
 
-   use App\Models\Utente;
+   use App\Models\User;
    use Illuminate\Console\Command;
 
 
@@ -37,10 +37,8 @@
        */
       public function handle(): int {
          $n = (int) $this->option('n');
-         if(Utente::factory()->count($n)->create())
-            $this->info("$n factory data inserted.");
-         else
-            $this->info("$n factory data not inserted.");
+         User::factory()->count($n)->create() ?
+            $this->info("$n factory data inserted.") : $this->info("$n factory data not inserted.");
          return 1;
       }
    }

@@ -2,7 +2,7 @@
 
    namespace Database\Seeders;
 
-   use App\Models\Utente;
+   use App\Models\User;
    use Illuminate\Database\Seeder;
    use Illuminate\Support\Facades\Hash;
    use Illuminate\Support\Str;
@@ -144,15 +144,16 @@
        * @return void
        */
       public function run(): void {
-         $special_attributes = ['password', 'api_token'];
+         $special_attributes = ['password', 'api_token', 'remember_token'];
          foreach($this->utenti as $utente) {
             foreach($utente as $key => $value) {
                if($key === $special_attributes[0])
                   $utente[$special_attributes[0]] = Hash::make($value);
                else if($key === $special_attributes[1] && isset($value))
                   $utente[$special_attributes[1]] = Str::random(env('API_TOKEN_LENGTH'));
+               $utente[$special_attributes[2]] = Str::random(10);
             }
-            Utente::create($utente);
+            User::create($utente);
          }
       }
    }

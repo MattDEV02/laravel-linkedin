@@ -27,15 +27,14 @@
     23 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     24 => 'Fruitcake\\Cors\\CorsServiceProvider',
     25 => 'Laravel\\Sail\\SailServiceProvider',
-    26 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    27 => 'Laravel\\Ui\\UiServiceProvider',
-    28 => 'Livewire\\LivewireServiceProvider',
-    29 => 'Carbon\\Laravel\\ServiceProvider',
-    30 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    31 => 'App\\Providers\\AppServiceProvider',
-    32 => 'App\\Providers\\AuthServiceProvider',
-    33 => 'App\\Providers\\EventServiceProvider',
-    34 => 'App\\Providers\\RouteServiceProvider',
+    26 => 'Laravel\\Ui\\UiServiceProvider',
+    27 => 'Livewire\\LivewireServiceProvider',
+    28 => 'Carbon\\Laravel\\ServiceProvider',
+    29 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    30 => 'App\\Providers\\AppServiceProvider',
+    31 => 'App\\Providers\\AuthServiceProvider',
+    32 => 'App\\Providers\\EventServiceProvider',
+    33 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -184,7 +183,6 @@
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'Laravel\\Sail\\Console\\InstallCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'Laravel\\Sail\\Console\\PublishCommand' => 'Laravel\\Sail\\SailServiceProvider',
-    'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
   ),
   'when' => 
   array (
@@ -225,9 +223,6 @@
     array (
     ),
     'Laravel\\Sail\\SailServiceProvider' => 
-    array (
-    ),
-    'Laravel\\Tinker\\TinkerServiceProvider' => 
     array (
     ),
   ),

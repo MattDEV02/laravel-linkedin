@@ -9,6 +9,7 @@
    use Illuminate\Http\Request;
    use Illuminate\Support\Facades\Log;
    use Illuminate\Support\Facades\Storage;
+   use Illuminate\Support\Str;
 
 
    /**
@@ -54,7 +55,7 @@
             ->get('utente')->id;
          $img = $req->file('image');
          $toUpdate = [
-            'descrizione' => $req->input('descrizione'),
+            'descrizione' => Str::ucfirst($req->input('descrizione')),
          ];
          if(isset($img)) {
             $dir = 'profiles';
@@ -71,7 +72,7 @@
                'lavoro_id' => $req->input('lavoro'),
                'dataInizioLavoro' => $req->input('dataInizioLavoro')
             ]);
-         $utente = Utente::find($utente_id);
+         $utente = User::find($utente_id);
          $utente->nome = $req->input('nome');
          $utente->cognome = $req->input('cognome');
          $utente->citta_id = $req->input('citta');

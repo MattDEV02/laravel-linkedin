@@ -11,9 +11,9 @@
     ];
 @endphp
 
-
 <div class="{{ $selectors['col'] }}5 mb-4">
     <div class="main-body mt-2">
+        <x-success />
         <div class="{{ $selectors['row'] }}">
             <div class="col-md-4">
                 <div class="card border border-secondary" title="{{ $profile->utenteEmail }}">

@@ -14,6 +14,7 @@ $colors: (
         'primary': #0073B1,
 );
 
+
 @function getColor($key) {
   $result: map-get($colors, $key);
   @debug 'Color: ' + $result; // Console Output

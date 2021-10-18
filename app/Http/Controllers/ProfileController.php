@@ -13,18 +13,13 @@
    use Illuminate\Support\Facades\Log;
    use App\Models\Citta;
    use App\Models\Lavoro;
-   use App\Models\Utente;
+   use App\Models\User;
 
 
    class ProfileController extends Controller {
 
-      private ?Utente $utente;
-
       public function profile(Request $req): Factory | View | Application {
-         $this->utente = $req
-            ->session()
-            ->get('utente');
-         $utente_id = $this->utente->id;
+         $utente_id = $req->session()->get('utente')->id;
          return view('profile.index', [
             'profile' => Profilo::getAll($utente_id),
             'richieste' => RichiestaAmicizia::getRichieste($utente_id),
@@ -35,11 +30,11 @@
 
       public function editProfile(Request $req): Factory | View | Application | RedirectResponse {
          if(checkRef($req, 'profile') || checkRef($req, 'show-profile') || checkRef($req, 'edit-profile')) {
-            $this->utente = $req
+            $utente = $req
                ->session()
                ->get('utente');
             return view('profile.utils.form', [
-               'profilo' => Profilo::getAll($this->utente->id),
+               'profilo' => Profilo::getAll($utente->id),
                'lavori' => Lavoro::all(),
                'citta' => Citta::all()
             ]);
@@ -88,12 +83,12 @@
       public function showProfile(Request $req): Factory | View | Application {
          $emailSearched = $req->query('search');
          consoleLog("Profile searched:  ($emailSearched)");
-         $this->utente = $req
+         $utente = $req
             ->session()
             ->get('utente');
-         $utenteSearched = Utente::where('email', $emailSearched)->first();
+         $utenteSearched = User::where('email', $emailSearched)->first();
          if(isset($utenteSearched)) {
-            $utente_id = $this->utente->id;
+            $utente_id = $utente->id;
             $utenteSearched_id = $utenteSearched->id;
             $profile = Profilo::getAll($utenteSearched_id);
             $own_profile = $profile->utente_id === $utente_id;
@@ -107,33 +102,5 @@
             Log::error("User ($emailSearched) NOT FOUND.");
             return view('utils.user-not-found');
          }
-      }
-      public function collegamenti(Request $req, int $utente_id): Factory | View | Application | RedirectResponse {
-         $req->session()->put('cond', true);
-         return (Utente::find($utente_id) !== null) ? view('collegamenti.index', [
-            'collegamenti' => RichiestaAmicizia::getCollegamenti($utente_id),
-            'utente_profile' => Utente::getProfileLink($utente_id),
-            'profile_id' => $utente_id
-         ]) : back();
-      }
-
-      public function removeCollegamento(Request $req) {
-         if(checkRef($req, 'collegamenti')) {
-            $req->validate([
-               'email' => ['required', 'email', 'min:2', 'max:35']
-            ], [
-               'required' => ':attribute is Required.',
-               'email.email' => 'Inserisci Email valida.',
-               'email.min' => 'Email almeno 2 caratteri.',
-               'email.max' => 'Email massimo 35 caratteri.',
-            ]);
-            $utente_id = $req
-               ->session()
-               ->get('utente')->id;
-            $utenteCollegamento = Utente::where('email', $req->input('email'))->first();
-            RichiestaAmicizia::removeCollegamento($utente_id, $utenteCollegamento->id);
-            return 'Collegamento deleted.';
-         } else
-            redirect('/profile');
       }
    }

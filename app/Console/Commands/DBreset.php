@@ -47,8 +47,7 @@
          foreach($this->commands as $command) {
             if(Str::contains($command, 'migrat'))
                $this->info('yes');
-            $output = shell_exec($command);
-            $this->info($output);
+            $this->info(shell_exec($command));
          }
          $s = env('DB_DATABASE', 'Linkedin') . ' Schema resetted.';
          $this->info($s);

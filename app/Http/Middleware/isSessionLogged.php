@@ -6,8 +6,7 @@
    use Illuminate\Http\Request;
 
 
-   class isSessionLogged
-   {
+   class isSessionLogged {
       /**
        * Handle an incoming request.
        *
@@ -21,6 +20,6 @@
             ->exists('utente') ?
             $next($request) :
             redirect('/login')
-               ->withErrors(['Effettua il Login.']);
+               ->withErrors('Effettua il Login.');
       }
    }

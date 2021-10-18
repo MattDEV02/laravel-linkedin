@@ -5,7 +5,6 @@
    use App\Models\Commento;
    use App\Models\Reportistica;
    use Illuminate\Support\Facades\DB;
-   use Illuminate\Support\Facades\Log;
 
 
    class CommentoObserver {

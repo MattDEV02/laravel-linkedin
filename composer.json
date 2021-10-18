@@ -23,7 +23,6 @@
       "fruitcake/laravel-cors": "^2.0.4",
       "guzzlehttp/guzzle": "^7.3",
       "laravel/framework": "^8.61",
-      "laravel/tinker": "^2.6.1",
       "laravel/ui": "^3.3",
       "livewire/livewire": "^2.6.4"
    },

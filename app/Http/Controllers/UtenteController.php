@@ -1,8 +1,7 @@
 <?php
 
    namespace App\Http\Controllers;
-
-   use App\Models\Post;
+   
    use Illuminate\Contracts\View\Factory;
    use Illuminate\Contracts\View\View;
    use Illuminate\Contracts\Foundation\Application;
@@ -11,7 +10,7 @@
    use Illuminate\Support\Facades\Hash;
    use Illuminate\Support\Facades\Log;
    use Illuminate\Support\Facades\Cookie;
-   use App\Models\Utente;
+   use App\Models\User;
    use App\Models\Citta;
    use App\Models\Lavoro;
 
@@ -50,7 +49,7 @@
       public function insert(Request $req): RedirectResponse {
          if(checkRef($req, 'registrazione')) {
             $data = $req->validate([
-               'email' => ['email', 'required', 'unique:Utente','min:2', 'max:35'],
+               'email' => ['email', 'required', 'unique:User','min:2', 'max:35'],
                'password' => ['required', 'min:8', 'max:8'],
                'nome' => ['required', 'min:3', 'max:45'],
                'cognome' => ['required', 'min:3', 'max:45'],
@@ -87,9 +86,9 @@
             else {
                $password = $req->input('password');
                Cookie::queue(Cookie::forever('password', $password));
-               $utente = Utente::registrazione($data);
+               $utente = User::registrazione($data);
                $utenteEmail = $utente->email;
-               sendNotification(Utente::getNomeCognome($utente->id));
+               sendNotification(User::getNomeCognome($utente->id));
                Log::debug("New User inserted ($utenteEmail).");
                return redirect('/login')
                   ->with('msg', 'reg')
@@ -113,7 +112,7 @@
          ]);
          $email = adjustEmail($req->input('email'));
          $password = $req->input('password');
-         if(Utente::isLogged($email, $password)) {
+         if(User::isLogged($email, $password)) {
             $req->session()->regenerate();
             if(!$req->session()->exists('utente')) {
                sessionPutUser($req);
@@ -146,7 +145,7 @@
          if(checkRef($req, 'password-dimenticata')) {
             $email = adjustEmail($req->input('email'));
             $password = $req->input('password');
-            $utente = Utente::where('email', $email)->first();
+            $utente = User::where('email', $email)->first();
             if(isset($utente)) {
                $utente->password = Hash::make($password);
                $utente->save();
@@ -159,6 +158,5 @@
                   ->withErrors('Errore, email non registrata.');
          } else
             return redirect('login');
-
       }
    }

@@ -9,7 +9,6 @@
    use Illuminate\Support\Facades\DB;
    use Livewire\Component;
    use Illuminate\Support\Str;
-   use App\Models\Utente;
 
 
    class UsersSearch extends Component {

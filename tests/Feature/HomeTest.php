@@ -1,20 +1,18 @@
 <?php
 
-namespace Tests\Feature;
+   namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
+   use Tests\TestCase;
 
-class HomeTest extends TestCase
-{
-   /**
-    * A basic feature test example.
-    *
-    * @return void
-    */
-   public function test() {
-      $response = $this->get('/');
-      $response->assertStatus(200);
+
+   class HomeTest extends TestCase {
+      /**
+       * A basic feature test example.
+       *
+       * @return void
+       */
+      public function test(): void {
+         $response = $this->get('/');
+         $response->assertStatus(200);
+      }
    }
-}

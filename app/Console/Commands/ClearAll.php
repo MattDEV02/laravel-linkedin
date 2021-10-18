@@ -31,6 +31,7 @@
          'php artisan clear-compiled',
          'php artisan db:reset',
          'php artisan storage:link',
+         'php artisan route:clear',
          'php artisan optimize' ,
          'php artisan optimize:clear',
          'composer dump-autoload --optimize',

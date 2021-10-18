@@ -8,13 +8,7 @@
 ## Run this Commands to replicate the Application:
 
 - #### git clone https://github.com/MattDEV02/laravel-linkedin.git
-- #### npm install
-- #### composer install (if you use Linux add the --ignore-platform-reqs flag)
-- #### php artisan storage:link
-- #### php artisan optimize:clear
-- #### php artisan db:create
-- #### php artisan migrate:refresh --seed
-- #### php artisan serve --host 0.0.0.0 --port PORT
+- ###  php artisan reset
 
   ##### N.B. = If the migration command does not work, there is an .sql file in the Database folder to replicate it.
 
@@ -145,3 +139,5 @@ On the Login page, the user can also retrieve his password by entering his email
 - ### Artisan
 
 - ### Mail
+
+- ### ResourceCollection

@@ -4,7 +4,7 @@
 @endphp
 
 
-        <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="{{ $selectors['lang'] }}" dir="{{ $selectors['dir'] }}">
 
 <head>

@@ -1,12 +1,15 @@
 <?php
 
+   use App\Http\Controllers\CollegamentiController;
+   use App\Http\Controllers\CommentiController;
+   use App\Http\Resources\UserCollection;
+   use App\Http\Resources\UserResource;
    use App\Models\Reportistica;
-   use App\Models\Utente;
+   use App\Models\User;
    use Illuminate\Contracts\Foundation\Application;
    use Illuminate\Contracts\View\Factory;
    use Illuminate\Contracts\View\View;
    use Illuminate\Http\Request;
-   use Illuminate\Support\Collection;
    use Illuminate\Support\Facades\Route;
    use App\Http\Controllers\UtenteController;
    use App\Http\Controllers\PostController;
@@ -29,6 +32,8 @@
    $UC = UtenteController::class;
    $PC = PostController::class;
    $PRC = ProfileController::class;
+   $CC = CommentiController::class;
+   $CL = CollegamentiController::class;
 
 
    Route::view('/', 'home');
@@ -54,14 +59,14 @@
    });
 
    Route::middleware('isSessionLogged')
-      ->group(callback: function() use($UC, $PC, $PRC): void {
+      ->group(callback: function() use($UC, $PC, $PRC, $CC, $CL): void {
          Route::get('/feed', [$PC, 'feed']);
-         Route::get('/commenti/{post_id}', [$PC, 'commenti']);
+         Route::get('/commenti/{post_id}', [$CC, 'commenti']);
          Route::get('/edit-profile', [$PRC, 'editProfile']);
          Route::get('/profile', [$PRC, 'profile'])
             ->name('profile');
          Route::get('/show-profile', [$PRC, 'showProfile']);
-         Route::get('/collegamenti/{utente_id}', [$PRC, 'collegamenti'])
+         Route::get('/collegamenti/{utente_id}', [$CL, 'collegamenti'])
             ->name('collegamenti');
          Route::get('/reportistica', function (): Factory | View | Application {
             $utente_id = session()->get('utente')->id;
@@ -77,7 +82,7 @@
       });
 
    Route::prefix('form')
-      ->group(function() use($UC, $PC, $PRC): void {
+      ->group(function() use($UC, $PC, $PRC, $CL): void {
          Route::post('/registrazione', [$UC, 'insert'])
             ->name('insert-user');
          Route::post('login-result', [$UC, 'logResult'])
@@ -85,8 +90,8 @@
          Route::post('/password-dimenticata', [$UC, 'passwordDimenticata'])
             ->name('password-dimenticata');
          Route::middleware('isSessionLogged')
-            ->group(function () use($UC, $PC, $PRC): void {
-               Route::delete('/remove-collegamento', [$PRC, 'removeCollegamento'])
+            ->group(function () use($UC, $PC, $PRC, $CL): void {
+               Route::delete('/remove-collegamento', [$CL, 'removeCollegamento'])
                   ->name('remove-collegamento');
                Route::post('/feed', [$PC, 'insert'])
                   ->name('insert-post');
@@ -98,11 +103,11 @@
             });
       });
 
-   Route::middleware('auth:api')
-      ->any('/api/users/{user_id?}',
-         fn (?int $user_id = null): Utente | Collection | null =>
-         $user_id ? Utente::findOrFail($user_id) : Utente::all());
+   Route::middleware('auth:api')->any('/api/users/{user_id?}',
+      fn (?int $user_id = null): UserResource | UserCollection => $user_id ?
+         new UserResource(User::findOrFail($user_id)) :
+         new UserCollection(User::all()));
 
    Route::any('/test', function(Request $request) {
-      return Reportistica::getNumCommentiGroupByDate(1);
+      return $request->user();
    });

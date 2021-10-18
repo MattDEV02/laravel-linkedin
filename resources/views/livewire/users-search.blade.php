@@ -2,7 +2,7 @@
     $selectors = selectors();
 @endphp
 
-@inject('utenti_iscritti', 'App\Models\Utente')
+@inject('utenti_iscritti', 'App\Models\User')
 
 
 <div class="mr-3 mr-lg-2" wire:key="{{ uniqid() }}">

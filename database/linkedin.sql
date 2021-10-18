@@ -1,7 +1,11 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
 -- Host: 127.0.0.1
--- Creato il: Mag 20, 2021 alle 19:59
--- Versione del server: 10.4.17-MariaDB
-
+-- Creato il: Ott 09, 2021 alle 14:12
+-- Versione del server: 10.4.20-MariaDB
+-- Versione PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -13,21 +17,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-
 --
--- Database: `Linkedin`
+-- Database: `linkedin`
 --
-
-SELECT CURRENT_TIMESTAMP();
-
-SHOW SCHEMAS;
-
-DROP SCHEMA IF EXISTS Linkedin;
-
-CREATE SCHEMA IF NOT EXISTS Linkedin;
-
-USE Linkedin;
-
 
 -- --------------------------------------------------------
 
@@ -80,15 +72,15 @@ CREATE TABLE `commento` (
 --
 
 INSERT INTO `commento` (`id`, `post_id`, `utente_id`, `testo`, `created_at`, `updated_at`) VALUES
-                                                                                               (1, 1, 3, 'Bellissimo Post !!', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                               (2, 2, 3, 'Forza Romaaa !!', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                               (3, 3, 7, 'Buongiorno a tutti i cugini', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                               (4, 4, 1, 'Ok', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                               (5, 8, 4, 'Bella bici', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                               (6, 6, 2, 'Viva il futurismoooo', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                               (7, 5, 6, 'Viva il futurismoooo', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                               (8, 1, 1, 'Ehh già lo so.', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                               (9, 7, 1, 'Molto utile.', '2021-09-23 12:26:09', '2021-09-23 12:26:09');
+                                                                                               (1, 1, 3, 'Bellissimo Post !!', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                               (2, 2, 3, 'Forza Romaaa !!', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                               (3, 3, 7, 'Buongiorno a tutti i cugini', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                               (4, 4, 1, 'Ok', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                               (5, 8, 4, 'Bella bici', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                               (6, 6, 2, 'Viva il futurismoooo', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                               (7, 5, 6, 'Viva il futurismoooo', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                               (8, 1, 1, 'Ehh già lo so.', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                               (9, 7, 1, 'Molto utile.', '2021-09-27 11:13:12', '2021-09-27 11:13:12');
 
 --
 -- Trigger `commento`
@@ -169,21 +161,21 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
                                                           (6, '2021_05_16_201732_create_richiestaamicizia_table', 1),
                                                           (7, '2021_05_16_201732_create_utente_table', 1),
                                                           (8, '2021_05_16_201732_create_utentelavoro_table', 1),
-                                                          (9, '2021_05_16_201733_add_foreign_keys_to_citta_table', 1),
-                                                          (10, '2021_05_16_201733_add_foreign_keys_to_mipiace_table', 1),
-                                                          (11, '2021_05_16_201733_add_foreign_keys_to_post_table', 1),
-                                                          (12, '2021_05_16_201733_add_foreign_keys_to_richiestaamicizia_table', 1),
-                                                          (13, '2021_05_16_201733_add_foreign_keys_to_utente_table', 1),
-                                                          (14, '2021_05_16_201733_add_foreign_keys_to_utentelavoro_table', 1),
-                                                          (15, '2021_05_28_135517_create_trigger_check_amicizia', 1),
-                                                          (16, '2021_07_10_164827_create_commento_table', 1),
-                                                          (17, '2021_08_06_123610_create_profilo_table', 1),
-                                                          (18, '2021_08_06_125200_add_foreign_keys_to_profilo_table', 1),
-                                                          (19, '2021_08_18_210623_create_reportistica_table', 1),
-                                                          (20, '2021_08_18_211905_create_trigger_user_lavoro_profile_reportistica', 1),
-                                                          (21, '2021_08_18_212302_add_foreign_keys_to_reportistica_table', 1),
-                                                          (22, '2021_09_18_125359_create_trigger_check_utente_lavoro_data_inizio', 1),
-                                                          (23, '2021_09_20_214745_create_dates_checks', 1);
+                                                          (9, '2021_07_10_164827_create_commento_table', 1),
+                                                          (10, '2021_08_06_123610_create_profilo_table', 1),
+                                                          (11, '2021_08_18_210623_create_reportistica_table', 1),
+                                                          (12, '2021_09_23_150609_add_index_to_citta_table', 1),
+                                                          (13, '2021_09_23_150739_add_index_to_mipiace_table', 1),
+                                                          (14, '2021_09_23_150951_add_index_to_post_table', 1),
+                                                          (15, '2021_09_23_151048_add_index_to_richiestaamicizia_table', 1),
+                                                          (16, '2021_09_23_151206_add_index_to_utente_table', 1),
+                                                          (17, '2021_09_23_151316_add_index_to_utentelavoro_table', 1),
+                                                          (18, '2021_09_23_151407_add_index_to_profilo_table', 1),
+                                                          (19, '2021_09_23_151509_add_index_to_reportistica_table', 1),
+                                                          (20, '2021_09_23_151631_create_triggers_dates_checks', 1),
+                                                          (21, '2021_09_23_151632_create_trigger_user_lavoro_profile_reportistica', 1),
+                                                          (22, '2021_09_24_150609_create_trigger_check_amicizia', 1),
+                                                          (23, '2021_09_24_150609_create_trigger_check_utente_lavoro_data_inizio', 1);
 
 -- --------------------------------------------------------
 
@@ -203,10 +195,10 @@ CREATE TABLE `mipiace` (
 --
 
 INSERT INTO `mipiace` (`post_id`, `utente_id`, `created_at`, `updated_at`) VALUES
-                                                                               (1, 1, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                               (3, 5, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                               (4, 1, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                               (8, 5, '2021-09-23 12:26:09', '2021-09-23 12:26:09');
+                                                                               (1, 1, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                               (3, 5, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                               (4, 1, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                               (8, 5, '2021-09-27 11:13:12', '2021-09-27 11:13:12');
 
 --
 -- Trigger `mipiace`
@@ -279,14 +271,14 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `testo`, `foto`, `utente_id`, `created_at`, `updated_at`) VALUES
-                                                                                        (1, 'Ecco il mio Primo Post.', '2021_05_05_16_43_53.svg', 1, '2021-05-21 15:12:55', '2021-09-23 12:26:09'),
-                                                                                        (2, 'Forza Romaaa', '2021_05_15_15_07_34.png', 1, '2021-05-20 16:13:35', '2021-09-23 12:26:09'),
-                                                                                        (3, 'Buongiorno a tutti.', '2021_05_06_08_40_54.jpg', 2, '2021-05-12 10:12:59', '2021-09-23 12:26:09'),
-                                                                                        (4, 'Ecco la mia Foto di Profilo', '2021_05_14_23_29_51.jpg', 3, '2020-07-10 10:12:59', '2021-09-23 12:26:09'),
-                                                                                        (5, 'Opera del Futurismo.', '2021_05_06_08_38_27.jpg', 4, '2019-07-10 10:12:59', '2021-09-23 12:26:09'),
-                                                                                        (6, 'Opera del Futurismo.', '2021_05_11_18_19_57.jpg', 5, '2021-03-12 11:12:59', '2021-09-23 12:26:09'),
-                                                                                        (7, 'GITHUB.', '2021_05_17_21_23_34.png', 3, '2021-02-12 11:12:59', '2021-09-23 12:26:09'),
-                                                                                        (8, 'La mia Bici.', '2021_05_11_18_19_59.webp', 6, '2021-01-12 11:12:59', '2021-09-23 12:26:09');
+                                                                                        (1, 'Ecco il mio Primo Post.', '2021_05_05_16_43_53.svg', 1, '2021-05-21 15:12:55', '2021-09-27 11:13:12'),
+                                                                                        (2, 'Forza Romaaa', '2021_05_15_15_07_34.png', 1, '2021-05-20 16:13:35', '2021-09-27 11:13:12'),
+                                                                                        (3, 'Buongiorno a tutti.', '2021_05_06_08_40_54.jpg', 2, '2021-05-12 10:12:59', '2021-09-27 11:13:12'),
+                                                                                        (4, 'Ecco la mia Foto di Profilo', '2021_05_14_23_29_51.jpg', 3, '2020-07-10 10:12:59', '2021-09-27 11:13:12'),
+                                                                                        (5, 'Opera del Futurismo.', '2021_05_06_08_38_27.jpg', 4, '2019-07-10 10:12:59', '2021-09-27 11:13:12'),
+                                                                                        (6, 'Opera del Futurismo.', '2021_05_11_18_19_57.jpg', 5, '2021-03-12 11:12:59', '2021-09-27 11:13:12'),
+                                                                                        (7, 'GITHUB.', '2021_05_17_21_23_34.png', 3, '2021-02-12 11:12:59', '2021-09-27 11:13:12'),
+                                                                                        (8, 'La mia Bici.', '2021_05_11_18_19_59.webp', 6, '2021-01-12 11:12:59', '2021-09-27 11:13:12');
 
 --
 -- Trigger `post`
@@ -329,20 +321,20 @@ CREATE TABLE `profilo` (
 --
 
 INSERT INTO `profilo` (`utente_id`, `descrizione`, `foto`, `created_at`, `updated_at`) VALUES
-                                                                                           (1, 'Ciao a tutti mi chiamo Matteo Lambertucci e sono in cerca di Lavoro !!', '2021_06_19_11_52_26.jpg', '2021-09-23 12:26:08', '2021-09-23 12:26:09'),
-                                                                                           (2, 'Ciao a tutti mi chiamo Oprea e sono un Cuoco Cinese.', '2021_05_13_11_14_14.jpg', '2021-09-23 12:26:08', '2021-09-23 12:26:09'),
-                                                                                           (3, 'Ciao a tutti mi chiamo Michele Mammucari e sono un Poliziotto Cinese.', '2021_05_13_11_05_08.jpg', '2021-09-23 12:26:08', '2021-09-23 12:26:09'),
-                                                                                           (4, 'Buongiorno a tutti sono Carol e mi piace il futurismo 🤣🤣🤣', NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:09'),
-                                                                                           (5, 'Bella regaaa io so er Devakk', '2021_05_13_11_12_22.jpg', '2021-09-23 12:26:08', '2021-09-23 12:26:09'),
-                                                                                           (6, 'Mi chiamo JIT e sono un Imprenditore Parigino', NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:09'),
-                                                                                           (7, 'Bella rega io so Bruno Graziosi e faccio Biologia.  FS', NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:09'),
-                                                                                           (8, 'Bella Rega, nso voi ma io so Chialastri Matteooo', NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:09'),
-                                                                                           (9, 'Io so Riggi Luigi, vengo da Velletri e ovviamente tifo Roma.', NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                           (10, 'Io so Matteo Ciarla, vengo da Velletri e ovviamente tifo Roma.', NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                           (11, 'Buongiorno. Signori e signore sono un Freelancer di Valmontone.', NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                           (12, 'Ciao a tutti, io mi chiamo Bea Cioc ed ho tanti problemi mentali.', NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                           (13, 'Ciao a tutti io mi chiamo Elisa Lambertucci ed abito a Valmontone.', NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                           (14, 'De giorno so Francesco Ballini, de notte nvece so er Devakkk', NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09');
+                                                                                           (1, 'Ciao a tutti mi chiamo Matteo Lambertucci e sono in cerca di Lavoro !!', '2021_06_19_11_52_26.jpg', '2021-09-27 11:13:11', '2021-09-27 11:13:12'),
+                                                                                           (2, 'Ciao a tutti mi chiamo Oprea e sono un Cuoco Cinese.', '2021_05_13_11_14_14.jpg', '2021-09-27 11:13:11', '2021-09-27 11:13:12'),
+                                                                                           (3, 'Ciao a tutti mi chiamo Michele Mammucari e sono un Poliziotto Cinese.', '2021_05_13_11_05_08.jpg', '2021-09-27 11:13:11', '2021-09-27 11:13:12'),
+                                                                                           (4, 'Buongiorno a tutti sono Carol e mi piace il futurismo 🤣🤣🤣', NULL, '2021-09-27 11:13:11', '2021-09-27 11:13:12'),
+                                                                                           (5, 'Bella regaaa io so er Devakk', '2021_05_13_11_12_22.jpg', '2021-09-27 11:13:11', '2021-09-27 11:13:12'),
+                                                                                           (6, 'Mi chiamo JIT e sono un Imprenditore Parigino', NULL, '2021-09-27 11:13:11', '2021-09-27 11:13:12'),
+                                                                                           (7, 'Bella rega io so Bruno Graziosi e faccio Biologia.  FS', NULL, '2021-09-27 11:13:11', '2021-09-27 11:13:12'),
+                                                                                           (8, 'Bella Rega, nso voi ma io so Chialastri Matteooo', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                           (9, 'Io so Riggi Luigi, vengo da Velletri e ovviamente tifo Roma.', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                           (10, 'Io so Matteo Ciarla, vengo da Velletri e ovviamente tifo Roma.', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                           (11, 'Buongiorno. Signori e signore sono un Freelancer di Valmontone.', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                           (12, 'Ciao a tutti, io mi chiamo Bea Cioc ed ho tanti problemi mentali.', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                           (13, 'Ciao a tutti io mi chiamo Elisa Lambertucci ed abito a Valmontone.', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                           (14, 'De giorno so Francesco Ballini, de notte nvece so er Devakkk', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12');
 
 --
 -- Trigger `profilo`
@@ -381,7 +373,7 @@ CREATE TABLE `reportistica` (
                                 `num_tot_post` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Numero totale di Post pubblicati da un Utente.',
                                 `num_tot_richieste_amicizia_ricevute` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Numero totale Richieste Amicizia ricevute, sia in sospeso che accettate.',
                                 `num_tot_richieste_amicizia_inviate` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'Numero totale Richieste Amicizia inviate, sia in sospeso che accettate.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Tabella contenente dati di Reportistica relativi ad un singolo Utente.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `reportistica`
@@ -423,26 +415,26 @@ CREATE TABLE `richiestaamicizia` (
 --
 
 INSERT INTO `richiestaamicizia` (`id`, `utenteMittente`, `utenteRicevente`, `stato`, `created_at`, `updated_at`) VALUES
-                                                                                                                     (1, 3, 1, 'Accettata', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (2, 2, 1, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (3, 4, 2, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (4, 1, 6, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (5, 5, 1, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (6, 2, 6, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (7, 3, 5, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (8, 4, 1, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (9, 2, 5, 'Accettata', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (10, 4, 6, 'Accettata', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (11, 2, 7, 'Accettata', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (12, 1, 7, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (13, 4, 8, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (14, 8, 5, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (15, 2, 9, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (16, 9, 2, 'Accettata', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (17, 7, 9, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (18, 11, 13, 'Accettata', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (19, 12, 1, 'Sospesa', '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                     (20, 14, 1, 'Accettata', '2021-09-23 12:26:09', '2021-09-23 12:26:09');
+                                                                                                                     (1, 3, 1, 'Accettata', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (2, 2, 1, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (3, 4, 2, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (4, 1, 6, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (5, 5, 1, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (6, 2, 6, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (7, 3, 5, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (8, 4, 1, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (9, 2, 5, 'Accettata', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (10, 4, 6, 'Accettata', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (11, 2, 7, 'Accettata', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (12, 1, 7, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (13, 4, 8, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (14, 8, 5, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (15, 2, 9, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (16, 9, 2, 'Accettata', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (17, 7, 9, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (18, 11, 13, 'Accettata', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (19, 12, 1, 'Sospesa', '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                     (20, 14, 1, 'Accettata', '2021-09-27 11:13:12', '2021-09-27 11:13:12');
 
 --
 -- Trigger `richiestaamicizia`
@@ -519,6 +511,7 @@ CREATE TABLE `utente` (
                           `nome` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Nome anagrafico dell''Utente',
                           `cognome` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Cognome anagrafico dell''Utente',
                           `citta_id` int(10) UNSIGNED NOT NULL COMMENT 'Riferimento alla Chiave Primaria di Citta',
+                          `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Token che consente di evitare il dirottamento dei Cookie.',
                           `api_token` char(42) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Token API per alcuni servizi Linkedin',
                           `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Data Creazione del Record',
                           `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'Data Aggiornamento del Record'
@@ -528,21 +521,21 @@ CREATE TABLE `utente` (
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`id`, `email`, `password`, `nome`, `cognome`, `citta_id`, `api_token`, `created_at`, `updated_at`) VALUES
-                                                                                                                             (1, 'matteolambertucci3@gmail.com', '$2y$10$Di/LaFRUBkqNp/qBo1nmH.A0gnBGge7sMtye6APtPH6Ek1QJl0oAG', 'Matteo', 'Lambertucci', 1, '6pAd0LVA8rN8mwfQhvrriSmvjZ34ikaXGPyImGKocJ', '2021-09-23 12:26:08', '2021-09-23 12:26:08'),
-                                                                                                                             (2, 'opr@gmail.com', '$2y$10$X/04A/y9A6GOuAIZWMiQMubVmpDqXV6NQAEU80YF1u7ZLC1FPLVJ.', 'Alessandro', 'Oprea', 4, NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:08'),
-                                                                                                                             (3, 'mich@gmail.com', '$2y$10$l/u7pHIoDR9eqTv6dE0t9.TU29CUzbOpaXacTqn4vFTIUppqRMhHi', 'Michele', 'Mammucari', 4, NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:08'),
-                                                                                                                             (4, 'carol@libero.it', '$2y$10$Pb.vUV6tyYxkLO8P3re5JetYnW4im1whkf24IgPG.6BoN.6RBquvm', 'Carol', 'Muscedere', 2, NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:08'),
-                                                                                                                             (5, 'devak@yahoo.it', '$2y$10$CR40SojqJqxXeP6ws3z0RuHUI90wxlk/QiXB.Pe4Ur.6fcQShogRi', 'Devak', 'Ballins', 1, NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:08'),
-                                                                                                                             (6, 'jitaru@alice.it', '$2y$10$fMf9pMZLbaEhcqgMZQCh8u6.iGmjYkm6e685ovfsRgYC5UMGEZ2.K', 'Gabriel', 'Jitaru', 9, NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:08'),
-                                                                                                                             (7, 'brunograziosi@gmail.it', '$2y$10$kZjqWL63vvucBgehlFeycuqrP2yOjKbw88WaFJPwHhMj0kMv5IuQK', 'Bruno', 'Graziosi', 1, NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:08'),
-                                                                                                                             (8, 'chialastri02@gmail.it', '$2y$10$TLgKAVy.ADdg/7u0B2rhLu1hOGbnzJKDHtGXNM5QKm34ooy/3nv5y', 'Matteo', 'Chialastri', 1, NULL, '2021-09-23 12:26:08', '2021-09-23 12:26:08'),
-                                                                                                                             (9, 'riggi@gmail.it', '$2y$10$3QmBcZIXCkA3NJraY/PsBeNqqjmGTM77iBbu.mFVeog.KD1ZeJAsC', 'Luigi', 'Riggi', 10, NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                             (10, 'mattciarlax@yahoo.it', '$2y$10$LSVr5SQusLiouwieJDArRukFEux7RGSuea6MByEN1PkxzgoqtzLnC', 'Matteo', 'Ciarla', 11, NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                             (11, 'richcass@libero.it', '$2y$10$LAr9RVDuc1f6pEz1j94E0.zTxMQr4kQ2PhdSQdDg4zJYQnPMgT6pa', 'Riccardo', 'Cassanelli', 12, NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                             (12, 'beaciocc@gmail.com', '$2y$10$d15qJqVoGzSlt90JVSbaRuL38f8ICfkjd.qNwm7OhDpp0Gg/vYhP.', 'Beatrice', 'Cioccari', 1, NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                             (13, 'elisa@gmail.com', '$2y$10$Xbbc3AbMIsTeivRb2FK7YOXi9VlyFklj45dbmiYbRJ6SuZ4EGZWSu', 'Elisa', 'Lambertucci', 10, NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09'),
-                                                                                                                             (14, 'francescoballini@alice.it', '$2y$10$7sXdOz5p6Tfco..QNMnp4O8U38z6mqGwxlXU8GGc3Yqcw74d2FuiK', 'Francesco', 'Ballini', 1, NULL, '2021-09-23 12:26:09', '2021-09-23 12:26:09');
+INSERT INTO `utente` (`id`, `email`, `password`, `nome`, `cognome`, `citta_id`, `remember_token`, `api_token`, `created_at`, `updated_at`) VALUES
+                                                                                                                                               (1, 'matteolambertucci3@gmail.com', '$2y$10$1wnIENvCXt7RxbSIKDS38e.YPXKGp86UUrFdcWQzYHo.oJJDVH/s2', 'Matteo', 'Lambertucci', 1, 'EFyNqufEsm', 'ToG9YUm9PyrteiowAFpeIkGimFlmTiTpWsrCKUaE5L', '2021-09-27 11:13:11', '2021-09-27 11:13:11'),
+                                                                                                                                               (2, 'opr@gmail.com', '$2y$10$cibgUMmB3x9xMh/3HgeBtudCWJRyOsMAvKCUEAUHyd8sxD8q4u5LC', 'Alessandro', 'Oprea', 4, '2lfGiINWQb', NULL, '2021-09-27 11:13:11', '2021-09-27 11:13:11'),
+                                                                                                                                               (3, 'mich@gmail.com', '$2y$10$PEj/aj4BiWoN.skSSirz/OfVCr.2WDAmOTV44rg4kszgejVd217Rq', 'Michele', 'Mammucari', 4, 'KmRcdqYRdi', NULL, '2021-09-27 11:13:11', '2021-09-27 11:13:11'),
+                                                                                                                                               (4, 'carol@libero.it', '$2y$10$iRoU5oRRV.6YSTtm35Fy/e2xHivwDA0z7.IHoU7HVitsjW2u/vSYK', 'Carol', 'Muscedere', 2, 'sT7my3fJiB', NULL, '2021-09-27 11:13:11', '2021-09-27 11:13:11'),
+                                                                                                                                               (5, 'devak@yahoo.it', '$2y$10$go5L2d3X1kW25t9bBY/PdOMYdBuNzb/gklW58nlJGz51F2bwJhEm.', 'Devak', 'Ballins', 1, 'H7o8x08GF0', NULL, '2021-09-27 11:13:11', '2021-09-27 11:13:11'),
+                                                                                                                                               (6, 'jitaru@alice.it', '$2y$10$hlps7CMNTOVntYaxK906aulEBt9Egfd15zpczsuwX5D2SHp68DTFK', 'Gabriel', 'Jitaru', 9, '1sINBgI5c2', NULL, '2021-09-27 11:13:11', '2021-09-27 11:13:11'),
+                                                                                                                                               (7, 'brunograziosi@gmail.it', '$2y$10$7.3qbYTcTneLgkWTf/3IY.GGUMj6A/W0hZmcm935maGOUnkb2nik2', 'Bruno', 'Graziosi', 1, 'tX74uly29s', NULL, '2021-09-27 11:13:11', '2021-09-27 11:13:11'),
+                                                                                                                                               (8, 'chialastri02@gmail.it', '$2y$10$w6D1fnLMPO3AWB2y5Dg3H.C1yGE3nPLqxO2S1vgzMaqhGuLUtCY6i', 'Matteo', 'Chialastri', 1, 'IXL3JWzSjZ', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                                               (9, 'riggi@gmail.it', '$2y$10$qE9XCd5rD3V7F5GcWnjTAOwYNuv9s.2QQD/WpC6cHuRzNyDT1TEba', 'Luigi', 'Riggi', 10, 'MWXM0EoRl6', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                                               (10, 'mattciarlax@yahoo.it', '$2y$10$JXqcAtyrSHqZHR0AWS3KkeUZeEVIemRqIAPYtkXz1LZwVby4YIcfO', 'Matteo', 'Ciarla', 11, 'QEKXikJRHH', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                                               (11, 'richcass@libero.it', '$2y$10$ustkEk0oJdGDbUvQxRROGeNy.mvuilmGEvODk1xTPzV84IRjMteQK', 'Riccardo', 'Cassanelli', 12, 'sQKyRa93cR', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                                               (12, 'beaciocc@gmail.com', '$2y$10$fpxKxEDiFtOC9RYc1sC1RuayT9gyrmFxlwGHrV26nbeo6ZcBc2HA6', 'Beatrice', 'Cioccari', 1, '4PleVZAgYU', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                                               (13, 'elisa@gmail.com', '$2y$10$Uv2cU1/UyphCG3Hk/IczkOIPMEpWb4ISZYo.flw8zD7dvyvLzmFDi', 'Elisa', 'Lambertucci', 10, 'Wx6foRjXNR', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12'),
+                                                                                                                                               (14, 'francescoballini@alice.it', '$2y$10$hOZkhVi1PIf3Lt57Z2R7V.X9sai1vlb4Ct8.RgnA2nVMP3EQ/4T/a', 'Francesco', 'Ballini', 1, '2X9gNFgdoR', NULL, '2021-09-27 11:13:12', '2021-09-27 11:13:12');
 
 --
 -- Trigger `utente`
@@ -801,12 +794,6 @@ ALTER TABLE `profilo`
     ADD CONSTRAINT `ProfiloUtenteFK` FOREIGN KEY (`utente_id`) REFERENCES `utente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `reportistica`
---
-ALTER TABLE `reportistica`
-    ADD CONSTRAINT `ReportisticaUtenteFK` FOREIGN KEY (`utente_id`) REFERENCES `utente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Limiti per la tabella `richiestaamicizia`
 --
 ALTER TABLE `richiestaamicizia`
@@ -825,6 +812,11 @@ ALTER TABLE `utente`
 ALTER TABLE `utentelavoro`
     ADD CONSTRAINT `LavoroUtenteFK` FOREIGN KEY (`lavoro_id`) REFERENCES `lavoro` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
     ADD CONSTRAINT `UtenteLavoroFK` FOREIGN KEY (`utente_id`) REFERENCES `utente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
 OPTIMIZE TABLE UtenteLavoro;
@@ -837,8 +829,6 @@ SHOW CREATE TABLE UtenteLavoro;
 
 DESCRIBE UtenteLavoro;
 
-
-
 COMMIT;
 
 SHOW TABLES;
@@ -848,7 +838,6 @@ SHOW TABLES;
 SET @n = 15;
 
 SELECT
-    p.id,
     p.utente_id AS utente_id,
     p.foto,
     p.testo,
@@ -856,17 +845,17 @@ SELECT
     CONCAT(u.nome, ' ', u.cognome) AS utente,
     CONCAT(l.nome, ' presso ', c.nome, ', ', n.nome, '.') AS lavoroPresso,
     u.email AS utenteEmail,
-    COUNT(mp.id) AS miPiace
+    COUNT(co.id) AS commenti
 FROM
     Post p
-        LEFT JOIN MiPiace mp ON p.id = mp.post
-        JOIN Utente u ON p.utente = u.id
-        JOIN UtenteLavoro ul ON ul.utente = u.id
-        JOIN Lavoro l ON ul.lavoro = l.id
-        JOIN Citta c ON u.citta = c.id
-        JOIN Nazione n ON c.nazione = n.id
+        LEFT JOIN Commento co ON p.id = co.post_id
+        JOIN Utente u ON p.utente_id = u.id
+        JOIN UtenteLavoro ul ON ul.utente_id = u.id
+        JOIN Lavoro l ON ul.utente_id = l.id
+        JOIN Citta c ON u.citta_id = c.id
+        JOIN Nazione n ON c.nazione_id = n.id
 WHERE
-        Nazione <> 'Finlandia' AND
+        n.nome <> 'Finlandia' AND
         p.utente_id < (SELECT @n)
 GROUP BY
     p.id
@@ -874,12 +863,11 @@ ORDER BY
     p.created_at DESC
 LIMIT 25;
 
-
 FLUSH PRIVILEGES;
 
 DROP USER 'Lambertucci'@'%';
 
-CREATE USER IF NOT EXISTS `Lambertucci`@`%` IDENTIFIED BY PASSWORD '12345678'
+CREATE USER IF NOT EXISTS `Lambertucci`@`%` IDENTIFIED BY PASSWORD '12345678';
 
 GRANT ALL ON Linkedin.* TO 'Lambertucci'@'%';
 

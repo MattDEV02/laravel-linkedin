@@ -21,6 +21,7 @@
                $table->string('nome', 50)->comment('Nome anagrafico dell\'Utente');
                $table->string('cognome', 50)->comment('Cognome anagrafico dell\'Utente');
                $table->unsignedInteger('citta_id')->index('UtenteCittaFK')->comment('Riferimento alla Chiave Primaria di Citta');
+               $table->rememberToken()->comment('Token che consente di evitare il dirottamento dei Cookie.');
                $table->char('api_token', env('API_TOKEN_LENGTH'))->unique()->nullable()->default(null)->comment('Token API per alcuni servizi Linkedin');
                $table->timestamp('created_at')->useCurrent()->comment('Data Creazione del Record');
                $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP()'))->comment('Data Aggiornamento del Record');

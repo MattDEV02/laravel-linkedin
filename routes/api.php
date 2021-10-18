@@ -1,7 +1,8 @@
 <?php
 
-   use App\Models\Utente;
-   use Illuminate\Http\Request;
+   use App\Http\Resources\UserCollection;
+   use App\Http\Resources\UserResource;
+   use App\Models\User;
    use Illuminate\Support\Facades\Route;
 
 
@@ -16,12 +17,8 @@
    |
    */
 
-   Route::middleware('auth:api')
-      ->get('/user', function (Request $request) {
-         return $request->user();
-   });
 
-   Route::middleware('auth:api')
-      ->any('/api/users/{user_id?}',
-         fn (?int $user_id = null): Utente | Collection | null =>
-         $user_id ? Utente::findOrFail($user_id) : Utente::all());
+   Route::middleware('auth:api')->any('/api/users/{user_id?}',
+      fn (?int $user_id = null): UserResource | UserCollection => $user_id ?
+         new UserResource(User::findOrFail($user_id)) :
+         new UserCollection(User::all()));

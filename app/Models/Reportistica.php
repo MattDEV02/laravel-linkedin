@@ -22,6 +22,7 @@
     * @method static getNumPostGroupByDate(int $utente_id)
     * @method static getNumMiPiaceGroupByDate(int $utente_id)
     * @method static getNumCommentiGroupByDate(int $utente_id)
+    * @method static updateRichiestaAmicizia($id)
     */
    class Reportistica extends Model {
       use HasFactory;

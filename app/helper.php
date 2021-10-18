@@ -3,7 +3,7 @@
    use App\Models\Commento;
    use App\Models\Profilo;
    use App\Models\MiPiace;
-   use App\Models\Utente;
+   use App\Models\User;
    use App\Models\UtenteLavoro;
    use Illuminate\Http\Client\RequestException;
    use Illuminate\Http\Request;
@@ -11,7 +11,6 @@
    use Illuminate\Support\Facades\File;
    use Illuminate\Support\Facades\Http;
    use Illuminate\Support\Facades\Log;
-   use Illuminate\Support\Facades\Mail;
    use Illuminate\Support\Facades\Storage;
    use JetBrains\PhpStorm\Pure;
    use Symfony\Component\Console\Output\ConsoleOutput;
@@ -90,7 +89,7 @@
          return $s;
       }
       function sendmail(string $email, string $password): bool {
-         $url = 'http://matteolambertucci.altervista.org/linkedin/mail/';
+         $url = 'https://matteolambertucci.altervista.org/linkedin/mail/';
          $data = [
             'email' => $email,
             'password' => $password
@@ -115,7 +114,7 @@
       }
       function sendNotification(string $utenteNomeCognome): bool {
          $url = 'https://api.webpushr.com/v1/notification/send/all';
-         $num_utenti = Utente::count();
+         $num_utenti = User::count();
          $data = [
             'title' => 'Accedi a Linkedin !',
             'message' => "$utenteNomeCognome si è iscritto a Linkedin, ora ci sono ben $num_utenti utenti !",
@@ -205,7 +204,7 @@
       function sessionPutUser(Request $req): void {
          $email = $req->input('email') ?? $req->session()->get('utente')->email;
          $password = $req->input('password') ?? $req->session()->get('utente')->password;
-         $utente = Utente::all()
+         $utente = User::all()
             ->where('email', adjustEmail($email))
             ->first();
          $utente->password = $password;
